@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use App\Http\Controllers\SitemapController; // Pastikan hanya import yang diperlukan
 
 class Product extends Model
 {
@@ -39,23 +40,36 @@ class Product extends Model
         'tags' => 'array',     
     ];
 
-    // Fungsi boot untuk otomatis mengisi UUID saat membuat record
-    protected static function boot()
+    // Relasi many-to-many dengan kategori produk
+    public function categories()
     {
-        parent::boot();
-        static::creating(function ($model) {
-            $model->id = (string) Str::uuid();
-        });
+        return $this->belongsToMany(ProductCategory::class, 'product_category_product', 'product_id', 'category_id');
     }
 
+    // Relasi ke model downloads
     public function downloads()
     {
         return $this->hasMany(Download::class);
     }
 
-    // Relasi many-to-many dengan kategori produk
-    public function categories()
+    // Method boot untuk event observer dan UUID
+    protected static function boot()
     {
-        return $this->belongsToMany(ProductCategory::class, 'product_category_product', 'product_id', 'category_id');
+        parent::boot();
+
+        // Otomatis isi UUID saat record dibuat
+        static::creating(function ($model) {
+            $model->id = (string) Str::uuid();
+        });
+
+        // Ketika produk disimpan (baru atau update), regenerate sitemap
+        static::saved(function ($product) {
+            app(SitemapController::class)->generate();
+        });
+
+        // Ketika produk dihapus, regenerate sitemap
+        static::deleted(function ($product) {
+            app(SitemapController::class)->generate();
+        });
     }
 }

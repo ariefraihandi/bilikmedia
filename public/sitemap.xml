@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+    <url>
+        <loc>http://127.0.0.1:8000</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/about</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/envanto-downloader</loc>
+    
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product-details/logo-creation-kit-s1Cqe</loc>
+        <lastmod>2024-09-18T03:14:31+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product-details/iphone-mockup-cdoMw</loc>
+        <lastmod>2024-09-17T03:30:52+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product-details/digital-product-marketplace-react-template-xUWnE</loc>
+        <lastmod>2024-09-17T04:02:38+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/website-template</loc>
+        <lastmod>2024-09-16T09:04:56+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/admin-template</loc>
+        <lastmod>2024-09-16T09:05:21+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/wordpress</loc>
+        <lastmod>2024-09-16T09:07:32+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/blogger</loc>
+        <lastmod>2024-09-16T09:16:34+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/adobe-photoshop</loc>
+        <lastmod>2024-09-17T02:54:34+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/graphic</loc>
+        <lastmod>2024-09-17T02:54:42+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/adobe-illustrator</loc>
+        <lastmod>2024-09-18T03:19:39+07:00</lastmod>
+
+            </url>
+    <url>
+        <loc>http://127.0.0.1:8000/product/category/adobe-indesign</loc>
+        <lastmod>2024-09-18T03:23:07+07:00</lastmod>
+
+            </url>
+</urlset>

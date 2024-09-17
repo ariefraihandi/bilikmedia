@@ -22,8 +22,8 @@
                         <a href="javascript:void(0)" class="nav-menu__link">Tools</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
-                                <a href="all-product.html" class="nav-submenu__link"> Envanto Downloader</a>
-                            </li>
+                                <a href="{{ route('envanto.downloader') }}" class="nav-submenu__link">Envanto Downloader</a>
+                            </li>                            
                             <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Freepik Downloader</a>
                             </li>
