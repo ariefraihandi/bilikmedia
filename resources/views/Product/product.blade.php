@@ -551,58 +551,58 @@
 </div>
 <!-- ======================== Brand Section End ========================= -->
 @endsection
+
 @push('footer-script')
-<script>
-    const requestDownloadUrl = "{{ route('request.download') }}";
-    
-    function handleInputChange(value) {      
+    <script>
+        const requestDownloadUrl = "{{ route('request.download') }}";
+        
+        function handleInputChange(value) {      
 
-        if (value.length > 0) {
-            fetch(`/search-products?search=${value}`)
-                .then(response => response.json())
-                .then(data => {
-                    let suggestionList = document.getElementById('suggestionList');
-                    suggestionList.innerHTML = '';
+            if (value.length > 0) {
+                fetch(`/search-products?search=${value}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        let suggestionList = document.getElementById('suggestionList');
+                        suggestionList.innerHTML = '';
 
-                    if (data.products.length > 0) {
-                        // Tampilkan hasil produk jika ada
-                        data.products.forEach(product => {
-                            let li = document.createElement('li');
-                            li.classList.add('list-group-item');
-                            li.innerHTML = `<strong>${product.title}</strong> - Category: ${product.categories[0]?.name ?? 'No Category'}`;
-                            li.addEventListener('click', function() {
-                                window.location.href = `/product-details/${product.slug}`;
+                        if (data.products.length > 0) {
+                            // Tampilkan hasil produk jika ada
+                            data.products.forEach(product => {
+                                let li = document.createElement('li');
+                                li.classList.add('list-group-item');
+                                li.innerHTML = `<strong>${product.title}</strong> - Category: ${product.categories[0]?.name ?? 'No Category'}`;
+                                li.addEventListener('click', function() {
+                                    window.location.href = `/product-details/${product.slug}`;
+                                });
+                                suggestionList.appendChild(li);
                             });
-                            suggestionList.appendChild(li);
-                        });
-                    } else if (data.categories.length > 0) {
-                        // Jika tidak ada produk, tampilkan hasil kategori
-                        data.categories.forEach(category => {
-                            let li = document.createElement('li');
-                            li.classList.add('list-group-item');
-                            li.innerHTML = `<strong>Category: ${category.name}</strong>`;
-                            li.addEventListener('click', function() {
-                                window.location.href = `/product/category/${category.slug}`;
+                        } else if (data.categories.length > 0) {
+                            // Jika tidak ada produk, tampilkan hasil kategori
+                            data.categories.forEach(category => {
+                                let li = document.createElement('li');
+                                li.classList.add('list-group-item');
+                                li.innerHTML = `<strong>Category: ${category.name}</strong>`;
+                                li.addEventListener('click', function() {
+                                    window.location.href = `/product/category/${category.slug}`;
+                                });
+                                suggestionList.appendChild(li);
                             });
+                        } else {
+                            // Jika tidak ada hasil produk maupun kategori, tampilkan opsi "Request File"
+                            let li = document.createElement('li');
+                            li.classList.add('list-group-item', 'text-center');
+                            li.innerHTML = `<strong>No results found.</strong><br> <a href="${requestDownloadUrl}">Request File</a>`;
                             suggestionList.appendChild(li);
-                        });
-                    } else {
-                        // Jika tidak ada hasil produk maupun kategori, tampilkan opsi "Request File"
-                        let li = document.createElement('li');
-                        li.classList.add('list-group-item', 'text-center');
-                        li.innerHTML = `<strong>No results found.</strong><br> <a href="${requestDownloadUrl}">Request File</a>`;
-                        suggestionList.appendChild(li);
-                    }
+                        }
 
-                    suggestionList.style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Error during fetch:', error);
-                });
-        } else {
-            document.getElementById('suggestionList').style.display = 'none';
+                        suggestionList.style.display = 'block';
+                    })
+                    .catch(error => {
+                        console.error('Error during fetch:', error);
+                    });
+            } else {
+                document.getElementById('suggestionList').style.display = 'none';
+            }
         }
-    }
-</script>
-
+    </script>
 @endpush

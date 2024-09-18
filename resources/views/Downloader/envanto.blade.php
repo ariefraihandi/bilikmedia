@@ -5,11 +5,11 @@
 
 <!-- ============================== Banner Two Start =========================== -->
 <section class="banner-two position-relative z-index-1 overflow-hidden">
-    <img src="assets/images/gradients/banner-two-gradient.png" alt="" class="bg--gradient white-version">
-    <img src="assets/images/gradients/banner-two-gradient-dark.png" alt="" class="bg--gradient dark-version">
-    <img src="assets/images/shapes/element-moon3.png" alt="" class="element one">
-    <img src="assets/images/shapes/element-moon2.png" alt="" class="element two">
-    <img src="assets/images/shapes/element-moon1.png" alt="" class="element three">
+    <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient.png" alt="" class="bg--gradient white-version">
+    <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient-dark.png" alt="" class="bg--gradient dark-version">
+    <img src="{{ asset('assets') }}/images/shapes/element-moon3.png" alt="" class="element one">
+    <img src="{{ asset('assets') }}/images/shapes/element-moon2.png" alt="" class="element two">
+    <img src="{{ asset('assets') }}/images/shapes/element-moon1.png" alt="" class="element three">
     
     
     <div class="container container-full">
@@ -17,8 +17,8 @@
 
             <div class="col-xl-3 col-sm-6 order-xl-0 order-2">
                 <div class="position-relative z-index-1">
-                    <img src="assets/images/shapes/dots-sm.png" alt="" class="dotted-img d-xl-block d-none white-version">
-                    <img src="assets/images/shapes/dots-sm-white.png" alt="" class="dotted-img d-xl-block d-none dark-version">
+                    <img src="{{ asset('assets') }}/images/shapes/dots-sm.png" alt="" class="dotted-img d-xl-block d-none white-version">
+                    <img src="{{ asset('assets') }}/images/shapes/dots-sm-white.png" alt="" class="dotted-img d-xl-block d-none dark-version">
                     <div class="statistics-wrapper">                    
                     </div>
                 </div>
@@ -30,55 +30,38 @@
                     <p class="banner-two__desc text-center">
                         Download files from Envanto quickly and for free right here! Enjoy the convenience and speed without any additional cost. Simply enter the Envanto file URL and get the files you need instantly. Start downloading your favorite files with just a few clicks.
                     </p>
-                    
-                    <form action="#" class="search-box style-two">
-                        <div class="search-box__select select-has-icon">
-                            <select class="form-control form-control py-0 border-0 bg-transparent">
-                                <option value="1" selected disabled>All Categories</option>
-                                <option value="2">WordPress</option>
-                                <option value="3">Laravel</option>
-                                <option value="4">PHP</option>
-                                <option value="5">React</option>
-                                <option value="6">HTML</option>
-                                <option value="7">Figma</option>
-                            </select>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         </div>
-                        <input type="text" class="common-input common-input--lg pill shadow-sm" placeholder="Search theme, plugins &amp; more...">
-                        <button type="submit" class="btn btn-main btn-icon icon border-0">
-                            <img src="assets/images/icons/search.svg" alt="">
+                    @endif
+                    <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
+                        @csrf
+                        <input 
+                            type="text" 
+                            class="common-input common-input--lg pill shadow-sm" 
+                            placeholder="Enter Envanto URL: exp. https://elements.envato.com/iphone-mockup-2UC6ZLK" 
+                            oninput="handleInputChange(this.value)" 
+                            id="envantoInput"
+                            name="envanto_url"
+                        >
+                        <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
+                            <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
                         </button>
                     </form>
-        
-                    <div class="popular-search d-flex align-items-start gap-3 justify-content-center">
-                        <h6 class="popular-search__title font-18 fw-700 mb-0 mt-1 flex-shrink-0 flx-align gap-1"> <span class="d-md-flex d-none">Popular</span> Search: </h6>
-                        <ul class="search-list">
-                            <li class="search-list__item">
-                                <a href="all-product.html" class="search-list__link font-14 text-heading">theme</a>
-                            </li>
-                            <li class="search-list__item">
-                                <a href="all-product.html" class="search-list__link font-14 text-heading">plugins</a>
-                            </li>
-                            <li class="search-list__item">
-                                <a href="all-product.html" class="search-list__link font-14 text-heading">ui template</a>
-                            </li>
-                            <li class="search-list__item">
-                                <a href="all-product.html" class="search-list__link font-14 text-heading">mobile app</a>
-                            </li>
-                            <li class="search-list__item">
-                                <a href="all-product.html" class="search-list__link font-14 text-heading">html template</a>
-                            </li>
-                            <li class="search-list__item">
-                                <a href="all-product.html" class="search-list__link font-14 text-heading">dashboard</a>
-                            </li>
-                        </ul>
-                    </div>
+                    
+                    <ul id="suggestionList" class="list-group" style="display:none;"></ul>                                    
                 </div>
             </div>
 
             <div class="col-xl-3 col-sm-6">
                 <div class="position-relative z-index-1">
-                    <img src="assets/images/shapes/dots-sm.png" alt="" class="dotted-img d-xl-block d-none white-version">
-                    <img src="assets/images/shapes/dots-sm-white.png" alt="" class="dotted-img d-xl-block d-none dark-version">
+                    <img src="{{ asset('assets') }}/images/shapes/dots-sm.png" alt="" class="dotted-img d-xl-block d-none white-version">
+                    <img src="{{ asset('assets') }}/images/shapes/dots-sm-white.png" alt="" class="dotted-img d-xl-block d-none dark-version">
                     <div class="statistics-wrapper style-right">                       
                     </div>
                 </div>
@@ -91,7 +74,7 @@
 <!-- ============================ Popular Item Section Start =========================== -->
 <section class="popular-item-card-section padding-y-120 overflow-hidden">
 
-  <img src="assets/images/shapes/brush.png" alt="" class="element-brush">
+  <img src="{{ asset('assets') }}/images/shapes/brush.png" alt="" class="element-brush">
   
     <div class="container container-two">
         <div class="section-heading">
@@ -137,6 +120,7 @@
                                         <img src="{{ asset('assets/images/icons/link.svg') }}" alt="" class="white-version">
                                         <img src="{{ asset('assets/images/icons/link-light.svg') }}" alt="" class="dark-version">
                                     </a>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -150,15 +134,15 @@
 
 <!-- ====================== Newsletter Section Start ===================== -->
 <section class="newsletter position-relative z-index-1 overflow-hidden">
-    <img src="assets/images/gradients/newsletter-gradient-bg.png" alt="" class="bg--gradient">
+    <img src="{{ asset('assets') }}/images/gradients/newsletter-gradient-bg.png" alt="" class="bg--gradient">
 
-    <img src="assets/images/shapes/element1.png" alt="" class="element two">
-    <img src="assets/images/shapes/element2.png" alt="" class="element one">
+    <img src="{{ asset('assets') }}/images/shapes/element1.png" alt="" class="element two">
+    <img src="{{ asset('assets') }}/images/shapes/element2.png" alt="" class="element one">
 
-    <img src="assets/images/shapes/line-vector-one.png" alt="" class="line-vector one">
-    <img src="assets/images/shapes/line-vector-two.png" alt="" class="line-vector two">
+    <img src="{{ asset('assets') }}/images/shapes/line-vector-one.png" alt="" class="line-vector one">
+    <img src="{{ asset('assets') }}/images/shapes/line-vector-two.png" alt="" class="line-vector two">
 
-    <img src="assets/images/thumbs/newsletter-man.png" alt="" class="newsletter-man">
+    <img src="{{ asset('assets') }}/images/thumbs/newsletter-man.png" alt="" class="newsletter-man">
     
     <div class="container container-two">
         <div class="row justify-content-center">
@@ -179,3 +163,65 @@
 </section>
 <!-- ====================== Newsletter Section End ===================== -->
 @endsection
+
+@push('footer-script')
+<script>
+    const requestDownloadUrl = "{{ route('request.download') }}";
+    
+    // Handle input changes and show suggestions
+    function handleInputChange(value) {
+        if (value.length > 0) {
+            fetch(`/search-products?search=${value}`)
+                .then(response => response.json())
+                .then(data => {
+                    let suggestionList = document.getElementById('suggestionList');
+                    suggestionList.innerHTML = '';
+
+                    if (data.products.length > 0) {
+                        // Show product suggestions
+                        data.products.forEach(product => {
+                            let li = document.createElement('li');
+                            li.classList.add('list-group-item');
+                            li.innerHTML = `<strong>${product.title}</strong> - Category: ${product.categories[0]?.name ?? 'No Category'}`;
+                            li.addEventListener('click', function() {
+                                window.location.href = `/product-details/${product.slug}`;
+                            });
+                            suggestionList.appendChild(li);
+                        });
+                    } else if (data.categories.length > 0) {
+                        // Show category suggestions if products are not found
+                        data.categories.forEach(category => {
+                            let li = document.createElement('li');
+                            li.classList.add('list-group-item');
+                            li.innerHTML = `<strong>Category: ${category.name}</strong>`;
+                            li.addEventListener('click', function() {
+                                window.location.href = `/product/category/${category.slug}`;
+                            });
+                            suggestionList.appendChild(li);
+                        });
+                    }
+
+                    suggestionList.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Error during fetch:', error);
+                });
+        } else {
+            document.getElementById('suggestionList').style.display = 'none';
+        }
+    }
+
+    // Handle form submit only when download button is clicked
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        let form = document.getElementById('envantoForm');
+        let input = document.getElementById('envantoInput').value;
+
+        if (input.length > 0) {
+            form.submit(); // Submit the form when button is clicked and input has value
+        } else {
+            alert('Please enter a URL.');
+        }
+    });
+</script>
+
+@endpush

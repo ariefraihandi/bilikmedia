@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Download;
 use App\Models\Product;
+use App\Models\RequestDownload;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\DownloadRequestNotification;
+
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
@@ -62,6 +66,64 @@ class DownloadController extends Controller
     
         // Mengirim data ke view 'Download.download'
         return view('Download.download', $data);
+    }
+
+    public function requestDownload(Request $request)
+    {
+        // Validasi input URL
+        $request->validate([
+            'envanto_url' => [
+                'required',
+                'url', // Validasi URL standar
+                function ($attribute, $value, $fail) {
+                    // Validasi apakah URL dimulai dengan https://elements.envato.com/
+                    if (!str_starts_with($value, 'https://elements.envato.com/')) {
+                        $fail('The URL must start with https://elements.envato.com/');
+                    }
+                },
+            ],
+        ]);
+
+        // Cek apakah URL ada di dalam tabel produk berdasarkan url_source
+        $product = Product::where('url_source', $request->input('envanto_url'))->first();
+
+        // Jika produk ditemukan, arahkan ke halaman detail produk berdasarkan slug
+        if ($product) {
+            return redirect()->route('product.details', ['slug' => $product->slug]);
+        }
+
+        // Jika tidak ditemukan, arahkan ke view 'requestEnvanto.blade.php'
+        return view('Downloader.requestEnvanto', [
+            'envanto_url' => $request->input('envanto_url') // Kirim URL ke view
+        ]);
+    }
+
+   
+    public function submitDownload(Request $request)
+    {
+        // Validasi input email dan url
+        $request->validate([
+            'email' => 'required|email',
+            'envanto_url' => 'required|url',
+        ]);
+    
+        // Simpan request download ke database
+        RequestDownload::create([
+            'email' => $request->input('email'),
+            'url' => $request->input('envanto_url'),
+            'status' => 0, // Set status default ke 0
+        ]);
+    
+        // Kirim email ke raihandi93@gmail.com dengan detail request
+        Mail::to('raihandi93@gmail.com')->send(
+            new DownloadRequestNotification($request->input('email'), $request->input('envanto_url'))
+        );
+    
+        // Arahkan ke halaman submited.blade.php setelah berhasil
+        return view('Downloader.submited', [
+            'email' => $request->input('email'),
+            'envanto_url' => $request->input('envanto_url'),
+        ]);
     }
     
 }
