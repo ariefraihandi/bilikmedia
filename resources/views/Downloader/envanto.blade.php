@@ -28,8 +28,14 @@
                 <div class="banner-two__content">
                     <h2 class="banner-two__title text-center mb-3">Envanto Downloader</h2>
                     <p class="banner-two__desc text-center">
-                        Download files from Envanto quickly and for free right here! Enjoy the convenience and speed without any additional cost. Simply enter the Envanto file URL and get the files you need instantly. Start downloading your favorite files with just a few clicks.
+                        Get Envanto files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
+                    @if (request('success'))
+                    <div class="alert alert-success">
+                        {{ request('success') }}
+                    </div>
+                @endif
+                    
                     @if ($errors->any())
                         <div class="alert alert-danger">
                             <ul>
@@ -39,6 +45,9 @@
                             </ul>
                         </div>
                     @endif
+                    
+                    <!-- Form dan konten lain tetap di sini -->
+                
                     <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
                         @csrf
                         <input 

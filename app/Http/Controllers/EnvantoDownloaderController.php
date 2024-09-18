@@ -10,8 +10,8 @@ class EnvantoDownloaderController extends Controller
     public function showEnvantoDownloader()
     {
         // Meta description dan keywords yang relevan untuk Envanto
-        $metaDescription = "Bilik Media menyediakan jasa download file dari Envanto dengan mudah dan cepat.";
-        $metaKeywords = "Envanto, Download File Envanto, Envanto Downloader, Bilik Media";
+        $metaDescription = "Bilik Media offers a fast and easy service to download files from Envanto. Get your desired files effortlessly.";
+        $metaKeywords = "Envanto, Download Envanto Files, Envanto Downloader, Bilik Media, Fast Envanto Downloads";
         $products = Product::withCount('downloads')
             ->orderBy('downloads_count', 'desc')
             ->take(12)

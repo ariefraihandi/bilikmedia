@@ -119,11 +119,8 @@ class DownloadController extends Controller
             new DownloadRequestNotification($request->input('email'), $request->input('envanto_url'))
         );
     
-        // Arahkan ke halaman submited.blade.php setelah berhasil
-        return view('Downloader.submited', [
-            'email' => $request->input('email'),
-            'envanto_url' => $request->input('envanto_url'),
-        ]);
+        // Redirect ke halaman envanto downloader dengan pesan sukses di query string
+        return redirect()->route('envanto.downloader', ['success' => 'Download request submitted successfully']);
     }
     
 }

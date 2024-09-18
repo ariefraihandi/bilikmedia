@@ -56,8 +56,7 @@
                         <button type="submit" class="btn btn-main btn-icon icon border-0" id="downloadButton">
                             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
                         </button>
-                    </form>
-                                            
+                    </form>                                            
                 </div>
             </div>
 
