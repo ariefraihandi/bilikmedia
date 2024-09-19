@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('assets') }}/css/magnific-popup.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/line-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('assets') }}/css/main.css">
+    <meta name="msvalidate.01" content="59894226D4BEAEE11743D1E1A5CAF44F" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTRYD66LYS"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
