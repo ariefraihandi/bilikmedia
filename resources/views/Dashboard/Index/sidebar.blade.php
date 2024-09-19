@@ -39,6 +39,7 @@
                     <span class="text">Produk</span>
                 </a>
             </li>
+
             <li class="sidebar-list__item">
                 <a href="{{ route('show.list.product') }}" class="sidebar-list__link">
                     <span class="sidebar-list__icon">
@@ -51,6 +52,16 @@
                         @endif
                     </span>
                     <span class="text">Produk List</span>
+                </a>
+            </li>
+
+            <li class="sidebar-list__item">
+                <a href="{{ route('showDownloadRequestlist') }}" class="sidebar-list__link">
+                    <span class="sidebar-list__icon">
+                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon6.svg" alt="" class="icon">
+                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active6.svg" alt="" class="icon icon-active">
+                    </span>
+                    <span class="text">Downloads Request</span>
                 </a>
             </li>
                                           
@@ -118,15 +129,7 @@
                 </a>
             </li>
         
-            <li class="sidebar-list__item">
-                <a href="download.html" class="sidebar-list__link">
-                    <span class="sidebar-list__icon">
-                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon6.svg" alt="" class="icon">
-                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active6.svg" alt="" class="icon icon-active">
-                    </span>
-                    <span class="text">Downloads</span>
-                </a>
-            </li>
+           
             <li class="sidebar-list__item">
                 <a href="refund.html" class="sidebar-list__link">
                     <span class="sidebar-list__icon">

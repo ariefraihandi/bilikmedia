@@ -8,13 +8,70 @@ use App\Models\Product;
 use App\Models\RequestDownload;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DownloadRequestNotification;
+use App\Mail\DownloadNotification;
+use DataTables;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 
 class DownloadController extends Controller
 {
-    // Fungsi untuk membuat token unduhan dan mengarahkan ke tautan unduhan
+    public function showDownloadRequestlist(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = RequestDownload::leftJoin('products', 'request_download.url', '=', 'products.url_source')
+                ->select('request_download.*', 'products.url_source as product_url')
+                ->get();
+    
+            return DataTables::of($data)
+                ->addColumn('action', function($data) {
+                    return '<button class="btn btn-sm btn-primary notify-btn" data-id="'.$data->id.'">Notify</button>';
+                })
+                ->addColumn('url_exists', function($data) {
+                    return $data->product_url ? 'exists' : 'not-exists';
+                })
+                ->editColumn('status', function($data) {
+                    return $data->status == 0 ? 'Pending' : 'Completed';
+                })
+                ->make(true);
+        }
+    
+        return view('Dashboard.downloadRequestList');
+    }
+
+    public function sendDownloadNotification(Request $request)
+    {
+        // Temukan data request download berdasarkan ID
+        $downloadRequest = RequestDownload::find($request->id);
+    
+        if ($downloadRequest) {
+            // Ambil URL dari request download
+            $url = $downloadRequest->url;
+    
+            // Cari di database product berdasarkan url_source
+            $product = Product::where('url_source', $url)->first();
+    
+            if ($product) {
+                // Ambil detail produk seperti title dan slug
+                $title = $product->title;
+                $slug = $product->slug;
+                $downloadUrl = route('product.details', ['slug' => $slug]);
+    
+                // Kirim email dengan detail produk
+                Mail::to($downloadRequest->email)->send(new DownloadNotification($title, $downloadUrl));
+    
+                // Kembalikan respon JSON untuk AJAX
+                return response()->json(['success' => 'Email sent successfully']);
+            } else {
+                return response()->json(['error' => 'Product not found']);
+            }
+        }
+    
+        // Jika request download tidak ditemukan
+        return response()->json(['error' => 'Download request not found']);
+    }
+
+
     public function generateDownloadLink($productId)
     {
         // Cari produk berdasarkan ID
@@ -121,6 +178,5 @@ class DownloadController extends Controller
     
         // Redirect ke halaman envanto downloader dengan pesan sukses di query string
         return redirect()->route('envanto.downloader', ['success' => 'Download request submitted successfully']);
-    }
-    
+    }    
 }

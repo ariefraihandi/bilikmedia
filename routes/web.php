@@ -37,10 +37,13 @@ Route::post('/submit-download',             [DownloadController::class, 'submitD
 
 
 Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
-    Route::get('/dashboard',                [DashboardController::class, 'showDashboard'])->name('showDashboard');
-    Route::get('/add/product',              [ProductController::class, 'showProduct'])->name('show.add.product');
-    Route::get('/list/product',             [ProductController::class, 'showProductlist'])->name('show.list.product');
-    Route::post('/add/product',             [ProductController::class, 'storeProduct'])->name('product.store');
-    Route::post('/store-category',          [ProductController::class, 'storeCategory'])->name('store-category');
-    Route::get('/get-product-list-data',    [ProductController::class, 'getProductListData'])->name('get.product.list.data');
+    Route::get('/dashboard',                        [DashboardController::class, 'showDashboard'])->name('showDashboard');
+    Route::get('/add/product',                      [ProductController::class, 'showProduct'])->name('show.add.product');
+    Route::get('/list/product',                     [ProductController::class, 'showProductlist'])->name('show.list.product');
+    Route::post('/add/product',                     [ProductController::class, 'storeProduct'])->name('product.store');
+    Route::post('/store-category',                  [ProductController::class, 'storeCategory'])->name('store-category');
+    Route::get('/get-product-list-data',            [ProductController::class, 'getProductListData'])->name('get.product.list.data');
+
+    Route::get('/download/request/list',            [DownloadController::class, 'showDownloadRequestlist'])->name('showDownloadRequestlist');
+    Route::post('/send-download-notification',      [DownloadController::class, 'sendDownloadNotification'])->name('sendDownloadNotification');
 });

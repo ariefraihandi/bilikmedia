@@ -19,7 +19,7 @@ class AuthController extends Controller
             'title' => 'Welcome'
         ];
             
-        return view('Auth.register', $data);
+        // return view('Auth.register', $data);
     }
     
     public function showLoginForm()

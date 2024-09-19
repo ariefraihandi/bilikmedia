@@ -24,12 +24,12 @@
                             <li class="nav-submenu__item">
                                 <a href="{{ route('envanto.downloader') }}" class="nav-submenu__link">Envanto Downloader</a>
                             </li>                            
-                            <li class="nav-submenu__item">
+                            {{-- <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Freepik Downloader</a>
                             </li>
                             <li class="nav-submenu__item">
                                 <a href="all-product.html" class="nav-submenu__link"> Motionarray Downloader</a>
-                            </li>                                               
+                            </li>                                                --}}
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
