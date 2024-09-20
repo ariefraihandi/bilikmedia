@@ -31,9 +31,10 @@ Route::get('/search-products',              [ProductController::class, 'searchPr
 
 Route::get('/download/{productId}',         [DownloadController::class, 'generateDownloadLink'])->name('generate.download.link');
 Route::get('/download-file/{token}',        [DownloadController::class, 'downloadFile'])->name('download.file');
-
+Route::get('/rating/{token}',               [DownloadController::class, 'showRating'])->name('rating.show');
 Route::post('/request-download',            [DownloadController::class, 'requestDownload'])->name('request.download');
 Route::post('/submit-download',             [DownloadController::class, 'submitDownload'])->name('submit.download');
+Route::post('/rating', [DownloadController::class, 'submitRating'])->name('rating.submit');
 
 
 Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {

@@ -15,12 +15,10 @@
                 <div class="col-lg-8 col-sm-10 text-center">
                     <!-- Gambar produk ditampilkan di tengah -->
                     <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->title }}" class="img-fluid mb-4" style="max-width: 200px;">
+                                        
+                    <h5 class="rating__title mb-2">{{ $product->title }}</h5>
                     
-                    <!-- Title Produk -->
-                    <h5 class="cart-payment__title mb-4">{{ $product->title }}</h5>
-                    
-                    <!-- Author Produk -->
-                    <p class="text-muted">Author: <a href="{{ $product->author_url }}" target="_blank">{{ $product->author }}</a></p>
+                    <p class="text-muted mb-4">Author: <a href="{{ $product->author_url }}" target="_blank">{{ $product->author }}</a></p>
                     
                     <div class="cart-payment-card">
                         <form action="#">
@@ -96,8 +94,16 @@
         }, 1000);
         
         // Event listener untuk membuka url_download ketika tombol di klik
-        downloadButton.addEventListener('click', function () {
+        downloadButton.addEventListener('click', function (event) {
+            event.preventDefault(); // Mencegah aksi default form
+            
+            // Buka file unduhan di tab baru
             window.open("{{ $product->url_download }}", '_blank');
+            
+            // Setelah unduhan selesai, arahkan ke halaman rating dengan token
+            setTimeout(function() {
+                window.location.href = "/rating/{{ $download->token ?? '' }}";
+            }, 2000); // Tambahkan jeda waktu untuk memastikan unduhan dimulai
         });
     });
 </script>

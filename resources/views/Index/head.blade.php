@@ -35,8 +35,8 @@
         gtag('config', 'G-KTRYD66LYS');
     </script>
     
-    @stack('header-script')
-
+    
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    @stack('header-script')
   
 </head>

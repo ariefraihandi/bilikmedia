@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Download;
 use App\Models\Product;
 use App\Models\RequestDownload;
+use App\Models\Rating;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DownloadRequestNotification;
 use App\Mail\DownloadNotification;
@@ -96,35 +97,77 @@ class DownloadController extends Controller
     {
         // Cari download berdasarkan token
         $download = Download::where('token', $token)->first();
-    
+
         // Jika token tidak ditemukan
         if (!$download) {
             return redirect()->back()->withErrors('Download link is invalid.');
         }
-    
+
         // Periksa apakah token sudah expired
         if (Carbon::now()->greaterThan($download->expires_at)) {
             return redirect()->back()->withErrors('Download link has expired.');
         }
-    
+
         // Ambil produk terkait
         $product = $download->product;
-    
+
         // Jika file produk tidak ditemukan
         if (!$product || !file_exists(public_path('uploads/products/' . $product->image))) {
             return redirect()->back()->withErrors('File not found.');
         }
-    
+
         // Data yang akan dikirim ke view
         $data = [
             'title' => 'Download ' . $product->title, // Gabungkan string "Download" dengan title produk
             'product' => $product,                    // Mengirim informasi produk ke view
+            'download' => $download,                  // Mengirim token download ke view
         ];
-    
+
         // Mengirim data ke view 'Download.download'
         return view('Download.download', $data);
     }
 
+    public function showRating($token)
+    {        
+        $download = Download::where('token', $token)->first();
+        if (!$download) {
+            return redirect()->back()->withErrors('Invalid token.');
+        }
+    
+        $product = Product::find($download->product_id);
+            
+        if (!$product) {
+            return redirect()->back()->withErrors('Product not found.');
+        }
+    
+        $data = [
+            'title' => 'Rating ' . $product->title,  // Gabungkan string "Rating" dengan title produk
+            'product' => $product,                   // Mengirim informasi produk ke view
+            'download' => $download,                 // Mengirim informasi download ke view
+        ];
+            
+        return view('Download.rating', $data);
+    }
+
+    public function submitRating(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'rating' => 'required|integer|min:1|max:5',
+        ]);
+    
+        // Simpan rating tanpa user_id
+        Rating::create([
+            'product_id' => $request->input('product_id'),
+            'rating' => $request->input('rating'),
+        ]);
+    
+        // Redirect ke halaman envanto downloader dengan pesan sukses
+        return redirect()->route('envanto.downloader')->with('success', 'Thank you for your rating!');
+    }
+
+    
     public function requestDownload(Request $request)
     {
         // Validasi input URL

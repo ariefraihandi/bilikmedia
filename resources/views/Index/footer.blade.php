@@ -110,7 +110,7 @@
 <div class="bottom-footer">
     <div class="container container-two">
         <div class="bottom-footer__inner flx-between gap-3">
-            <p class="bottom-footer__text font-14"> Copyright &copy; 2024 DPmarket, All rights reserved.</p>
+            <p class="bottom-footer__text font-14"> Copyright &copy; 2024 Bilik Media, All rights reserved.</p>
             <div class="footer-links">
                 <a href="#" class="footer-link font-14">Terms of service</a>
                 <a href="#" class="footer-link font-14">Privacy Policy</a>

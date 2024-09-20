@@ -31,21 +31,21 @@
                         Get Envanto files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     @if (request('success'))
-                    <div class="alert alert-success">
-                        {{ request('success') }}
-                    </div>
-                @endif
-                    
-                    @if ($errors->any())
-                        <div class="alert alert-danger">
-                            <ul>
-                                @foreach ($errors->all() as $error)
-                                    <li>{{ $error }}</li>
-                                @endforeach
-                            </ul>
+                        <div class="alert alert-success">
+                            {{ request('success') }}
                         </div>
                     @endif
-                    
+                        
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        
                     <!-- Form dan konten lain tetap di sini -->
                 
                     <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
@@ -125,7 +125,7 @@
                                     <h6 class="popular-item-card__title mb-0">
                                         <a href="{{ route('product.details', $product->slug) }}" class="link"> {{ $product->title }}</a>
                                     </h6>
-                                    <a href="{{ route('product.details', $product->id) }}" class="btn-link line-height-1 flex-shrink-0">
+                                    <a href="{{ route('product.details', $product->slug) }}" class="btn-link line-height-1 flex-shrink-0">
                                         <img src="{{ asset('assets/images/icons/link.svg') }}" alt="" class="white-version">
                                         <img src="{{ asset('assets/images/icons/link-light.svg') }}" alt="" class="dark-version">
                                     </a>

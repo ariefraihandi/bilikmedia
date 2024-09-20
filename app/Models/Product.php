@@ -72,4 +72,10 @@ class Product extends Model
             app(SitemapController::class)->generate();
         });
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
 }

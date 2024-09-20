@@ -262,16 +262,37 @@
                                                     <a href="{{ $product->author_url }}" class="link hover-text-decoration-underline">{{ $product->author }}</a>
                                                 </span>
                                                 <span class="product-item__sales font-14 mb-2">{{ $product->downloads_count }} Downloads</span>
+                            
+                                                <!-- Menampilkan Rating -->
                                                 <div class="d-flex align-items-center gap-1">
                                                     <ul class="star-rating">
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        @php
+                                                            // Cek apakah ada rating yang tersedia
+                                                            $avgRating = $product->ratings_avg_rating ?? 0; // Rata-rata rating atau 0
+                                                            $ratingCount = $product->ratings_count ?? 0; // Jumlah rating
+                            
+                                                            // Tentukan berapa bintang yang diisi penuh
+                                                            $filledStars = floor($avgRating);
+                                                            $emptyStars = 5 - $filledStars; // Sisa bintang kosong
+                                                        @endphp
+                            
+                                                        <!-- Loop untuk menampilkan bintang yang terisi penuh -->
+                                                        @for ($i = 0; $i < $filledStars; $i++)
+                                                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        @endfor
+                            
+                                                        <!-- Loop untuk menampilkan bintang kosong -->
+                                                        @for ($i = 0; $i < $emptyStars; $i++)
+                                                            <li class="star-rating__item font-11"><i class="far fa-star"></i></li> <!-- Far adalah versi kosong dari icon bintang -->
+                                                        @endfor
                                                     </ul>
-                                                    <span class="star-rating__text text-heading fw-500 font-14">(16)</span>
+                            
+                                                    <!-- Menampilkan jumlah rating -->
+                                                    <span class="star-rating__text text-heading fw-500 font-14">
+                                                        ({{ $product->ratings_count > 0 ? $product->ratings_count : 0 }}) <!-- Tampilkan jumlah rating -->
+                                                    </span>
                                                 </div>
+                            
                                                 <div class="flx-align gap-2">
                                                     <h6 class="product-item__price mb-0">Free</h6>
                                                     <span class="product-item__prevPrice text-decoration-line-through">$300</span>
@@ -292,7 +313,6 @@
                                 </div>
                             @endforelse
                         </div>
-                        
                     </div>
             
                     <!-- Pagination Links -->

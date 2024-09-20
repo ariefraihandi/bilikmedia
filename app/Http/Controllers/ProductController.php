@@ -16,17 +16,19 @@ class ProductController extends Controller
     {
         // Mengambil semua kategori dengan jumlah produk terkait
         $categories = ProductCategory::withCount('products')->get();
-    
+
         // Mengambil produk dengan pagination (misalnya 9 produk per halaman)
-        $products = Product::withCount('downloads')->paginate(9);
-    
+        $products = Product::withCount(['downloads', 'ratings']) // Tambahkan withCount untuk menghitung jumlah rating
+            ->withAvg('ratings', 'rating') // Mengambil rata-rata rating
+            ->paginate(9);
+
         // Data yang ingin dikirim ke view
         $data = [
             'title' => 'Product',
             'products' => $products, // Mengirim data produk yang sudah dipaginate
             'categories' => $categories, // Mengirim data kategori dan jumlah produk
         ];
-    
+
         // Menampilkan view dengan data yang dikirim
         return view('Product.product', $data);
     }
@@ -35,17 +37,17 @@ class ProductController extends Controller
     {
         // Mengambil kategori berdasarkan slug
         $category = ProductCategory::where('slug', $slug)->firstOrFail();
-
-        // Mengambil produk berdasarkan kategori
+    
         $products = Product::whereHas('categories', function($query) use ($category) {
             $query->where('product_category.id', $category->id);
         })
-        ->withCount('downloads') // Menghitung jumlah unduhan untuk setiap produk
+        ->withCount(['downloads', 'ratings']) // Tambahkan withCount untuk menghitung jumlah rating
+        ->withAvg('ratings', 'rating') // Mengambil rata-rata rating
         ->paginate(9);
-
+    
         // Mengambil semua kategori dengan jumlah produk terkait
         $categories = ProductCategory::withCount('products')->get();
-
+    
         // Data yang ingin dikirim ke view
         $data = [
             'title' => 'Product by Category: ' . $category->name,
@@ -53,10 +55,11 @@ class ProductController extends Controller
             'categories' => $categories, // Mengirim data kategori dan jumlah produk
             'currentCategory' => $category, // Kategori yang sedang dipilih
         ];
-
+    
         // Menampilkan view dengan data yang dikirim
         return view('Product.product', $data);
     }
+    
 
     public function showProductDetails($slug)
     {
