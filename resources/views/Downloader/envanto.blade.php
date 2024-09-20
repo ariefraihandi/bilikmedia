@@ -98,7 +98,7 @@
                         <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-6">
                             <div class="popular-item-card">
                                 <div class="popular-item-card__thumb">
-                                    <a href="{{ route('product.details', $product->id) }}" class="link w-100"> 
+                                    <a href="{{ route('product.details', $product->slug) }}" class="link w-100"> 
                                         <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->title }}">
                                     </a>
                                     <div class="product-item__bottom flx-between gap-2">
@@ -123,7 +123,7 @@
                                 </div>
                                 <div class="popular-item-card__content d-flex align-items-center justify-content-between gap-2 text-start">
                                     <h6 class="popular-item-card__title mb-0">
-                                        <a href="{{ route('product.details', $product->id) }}" class="link"> {{ $product->title }}</a>
+                                        <a href="{{ route('product.details', $product->slug) }}" class="link"> {{ $product->title }}</a>
                                     </h6>
                                     <a href="{{ route('product.details', $product->id) }}" class="btn-link line-height-1 flex-shrink-0">
                                         <img src="{{ asset('assets/images/icons/link.svg') }}" alt="" class="white-version">

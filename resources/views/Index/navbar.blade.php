@@ -36,7 +36,7 @@
                         <a href="javascript:void(0)" class="nav-menu__link">Graphic</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
-                                <a href="all-product.html" class="nav-submenu__link"> Adobe Photoshop</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'adobe-photoshop']) }}" class="nav-submenu__link"> Adobe Photoshop</a>
                             </li>
                             <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Adobe Illustrator</a>

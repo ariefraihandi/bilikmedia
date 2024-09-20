@@ -45,7 +45,7 @@
                         <div class="footer-widget__logo">
                             <a href="index.html"> <img src="{{ asset('assets') }}/images/logo/white-logo.png" alt=""></a>
                         </div>
-                        <p class="footer-widget__desc">Lorem consultancy elitsed do eiusmod tempor inci didunt ut labore dolore magna aliqua sed do eiusmod.</p>                    
+                        <p>Your gateway to digital creativity and media solutions.</p>
                         <div class="footer-widget__social">
                             <ul class="social-icon-list">
                                 <li class="social-icon-list__item">
