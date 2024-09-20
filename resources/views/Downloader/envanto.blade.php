@@ -104,15 +104,26 @@
                                     <div class="product-item__bottom flx-between gap-2">
                                         <div>
                                             <span class="product-item__sales font-14 mb-0 text-white">{{ $product->downloads_count }} Downloads</span>
+                                            
+                                            <!-- Menampilkan rating bintang -->
                                             <div class="d-flex align-items-center gap-1">
                                                 <ul class="star-rating">
-                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                </ul>
-                                                <span class="star-rating__text text-white fw-500 font-14"> (16)</span>
+                                                    @php
+                                                        $avgRating = $product->ratings_avg_rating ?? 0; // Rata-rata rating
+                                                        $filledStars = floor($avgRating); // Bintang penuh
+                                                        $emptyStars = 5 - $filledStars; // Bintang kosong
+                                                    @endphp
+        
+                                                    <!-- Bintang terisi penuh -->
+                                                    @for ($i = 0; $i < $filledStars; $i++)
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    @endfor
+        
+                                                    <!-- Bintang kosong -->
+                                                    @for ($i = 0; $i < $emptyStars; $i++)
+                                                        <li class="star-rating__item font-11"><i class="far fa-star"></i></li>
+                                                    @endfor
+                                                </ul>                                                                                              
                                             </div>
                                         </div>
                                         <span class="product-item__author">
@@ -129,7 +140,6 @@
                                         <img src="{{ asset('assets/images/icons/link.svg') }}" alt="" class="white-version">
                                         <img src="{{ asset('assets/images/icons/link-light.svg') }}" alt="" class="dark-version">
                                     </a>
-                                    
                                 </div>
                             </div>
                         </div>
@@ -137,6 +147,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
 </section>
 <!-- ============================ Popular Item Section End =========================== -->
