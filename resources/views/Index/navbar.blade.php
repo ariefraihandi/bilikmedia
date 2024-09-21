@@ -18,6 +18,9 @@
                     <li class="nav-menu__item">
                         <a href="/" class="nav-menu__link">Home</a>
                     </li>
+                    <li class="nav-menu__item">
+                        <a href="{{ route('showAllProduct') }}" class="nav-menu__link">Product</a>
+                    </li>
                     <li class="nav-menu__item has-submenu">
                         <a href="javascript:void(0)" class="nav-menu__link">Tools</a>
                         <ul class="nav-submenu">
@@ -84,9 +87,17 @@
                                 <a href="cart-thank-you.html" class="nav-submenu__link"> Portfolio</a>
                             </li>                        
                         </ul>
+                    </li>                    
+                    <li class="nav-menu__item has-submenu">
+                        <a href="javascript:void(0)" class="nav-menu__link">Video</a>
+                        <ul class="nav-submenu">
+                            <li class="nav-submenu__item">
+                                <a href="{{ route('showProductByCategory', ['slug' => 'stock-footage']) }}" class="nav-submenu__link"> Stock Footage</a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
-                        <a href="javascript:void(0)" class="nav-menu__link">Sound Effects</a>
+                        <a href="javascript:void(0)" class="nav-menu__link">Sound</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
                                 <a href="blog.html" class="nav-submenu__link"> Game Sounds</a>
