@@ -47,4 +47,6 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
 
     Route::get('/download/request/list',            [DownloadController::class, 'showDownloadRequestlist'])->name('showDownloadRequestlist');
     Route::post('/send-download-notification',      [DownloadController::class, 'sendDownloadNotification'])->name('sendDownloadNotification');
+    Route::delete('/delete-download-request/{id}', [DownloadController::class, 'deleteDownloadRequest']);
+
 });

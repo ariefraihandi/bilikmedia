@@ -20,13 +20,18 @@ class DownloadController extends Controller
     public function showDownloadRequestlist(Request $request)
     {
         if ($request->ajax()) {
+            // Ambil data dari tabel request_download dan produk, urutkan berdasarkan kolom created_at secara descending (terbaru di atas)
             $data = RequestDownload::leftJoin('products', 'request_download.url', '=', 'products.url_source')
                 ->select('request_download.*', 'products.url_source as product_url')
+                ->orderBy('request_download.created_at', 'DESC')  // Mengurutkan berdasarkan kolom created_at
                 ->get();
     
             return DataTables::of($data)
                 ->addColumn('action', function($data) {
-                    return '<button class="btn btn-sm btn-primary notify-btn" data-id="'.$data->id.'">Notify</button>';
+                    return '
+                        <button class="btn btn-sm btn-primary notify-btn" data-id="'.$data->id.'">Notify</button>
+                        <button class="btn btn-sm btn-danger delete-btn" data-id="'.$data->id.'">Delete</button>
+                    ';
                 })
                 ->addColumn('url_exists', function($data) {
                     return $data->product_url ? 'exists' : 'not-exists';
@@ -39,6 +44,7 @@ class DownloadController extends Controller
     
         return view('Dashboard.downloadRequestList');
     }
+    
 
     public function sendDownloadNotification(Request $request)
     {
@@ -71,6 +77,19 @@ class DownloadController extends Controller
         // Jika request download tidak ditemukan
         return response()->json(['error' => 'Download request not found']);
     }
+
+    public function deleteDownloadRequest($id)
+    {
+        try {
+            $requestDownload = RequestDownload::findOrFail($id);
+            $requestDownload->delete();
+
+            return response()->json(['success' => true, 'message' => 'Request deleted successfully']);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to delete request']);
+        }
+    }
+
 
 
     public function generateDownloadLink($productId)

@@ -87,7 +87,7 @@
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ],
             rowCallback: function(row, data, index) {
-                if (data.product_url) {  // Check if product_url exists
+                if (data.product_url) {  
                     $(row).addClass('table-success');  // Green for exists
                 } else {
                     $(row).addClass('table-danger');  // Red for not exists
@@ -101,15 +101,14 @@
 
         // Event listener for Notify button
         $('#request-table').on('click', '.notify-btn', function() {
-            var requestId = $(this).data('id'); // Retrieve the data-id from the button
+            var requestId = $(this).data('id');
 
-            // Send AJAX request to trigger notification
             $.ajax({
-                url: '/send-download-notification',  // Ganti dengan route yang sesuai
+                url: '/send-download-notification',
                 type: 'POST',
                 data: {
                     id: requestId,
-                    _token: '{{ csrf_token() }}'  // Include CSRF token
+                    _token: '{{ csrf_token() }}'
                 },
                 success: function(response) {
                     if (response.success) {
@@ -127,11 +126,59 @@
                     }
                 },
                 error: function(xhr, status, error) {
-                    console.log(xhr.responseText); // Log the error for debugging
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'An error occurred while sending the notification.'
+                    });
+                }
+            });
+        });
+
+        // Event listener for Delete button
+        $('#request-table').on('click', '.delete-btn', function() {
+            var requestId = $(this).data('id');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Send AJAX request to delete the record
+                    $.ajax({
+                        url: '/delete-download-request/' + requestId, // Ganti dengan route yang sesuai
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            if (response.success) {
+                                Swal.fire(
+                                    'Deleted!',
+                                    'The request has been deleted.',
+                                    'success'
+                                );
+                                $('#request-table').DataTable().ajax.reload();  // Reload DataTables
+                            } else {
+                                Swal.fire(
+                                    'Error!',
+                                    'Failed to delete the request.',
+                                    'error'
+                                );
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire(
+                                'Error!',
+                                'An error occurred while deleting the request.',
+                                'error'
+                            );
+                        }
                     });
                 }
             });
