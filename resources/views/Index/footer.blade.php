@@ -76,19 +76,19 @@
                         </ul>
                     </div>
                 </div>
-                {{-- <div class="col-xl-3 col-sm-6 col-xs-6 ps-xl-5">
+                <div class="col-xl-3 col-sm-6 col-xs-6 ps-xl-5">
                     <div class="footer-widget">
-                        <h5 class="footer-widget__title text-white">Quick Links</h5>
+                        <h5 class="footer-widget__title text-white">Product</h5>
                         <ul class="footer-lists">
-                            <li class="footer-lists__item"><a href="dashboard.html" class="footer-lists__link">Dashboard </a></li>
-                            <li class="footer-lists__item"><a href="login.html" class="footer-lists__link">Login </a></li>
-                            <li class="footer-lists__item"><a href="register.html" class="footer-lists__link">Register</a></li>
-                            <li class="footer-lists__item"><a href="blog.html" class="footer-lists__link">Blog </a></li>
-                            <li class="footer-lists__item"><a href="blog-details.html" class="footer-lists__link">Blog Details</a></li>
+                            <li class="footer-lists__item"><a href="{{ route('showProductByCategory', ['slug' => 'presentation-templates']) }}" class="footer-lists__link">Presentation Templates </a></li>
+                            <li class="footer-lists__item"><a href="{{ route('showProductByCategory', ['slug' => 'stock-footage']) }}" class="footer-lists__link">Stock Footage</a></li>
+                            <li class="footer-lists__item"><a href="{{ route('showProductByCategory', ['slug' => 'adobe-photoshop']) }}" class="footer-lists__link">Adobe Photoshop</a></li>
+                            <li class="footer-lists__item"><a href="{{ route('showProductByCategory', ['slug' => 'admin-template']) }}" class="footer-lists__link">Admin Template </a></li>
+                            <li class="footer-lists__item"><a href="{{ route('showProductByCategory', ['slug' => 'website-template']) }}" class="footer-lists__link">Website Template</a></li>
                         </ul>
                     </div>
-                </div> --}}
-                {{-- <div class="col-xl-4 col-sm-6">
+                </div>
+                <div class="col-xl-4 col-sm-6">
                     <div class="footer-widget">
                         <h5 class="footer-widget__title text-white">Subscribe</h5>
                         <p class="footer-widget__desc">Subscribe our newsletter to get updated the latest news</p>
@@ -97,7 +97,7 @@
                             <button type="submit" class="btn btn-main btn-lg w-100 pill">Subscribe Now</button>
                         </form>
                     </div>
-                </div> --}}
+                </div>
             </div>
         </div>
     </div>

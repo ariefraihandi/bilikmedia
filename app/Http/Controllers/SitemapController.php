@@ -16,7 +16,7 @@ class SitemapController extends Controller
         $sitemap = Sitemap::create()
             ->add(Url::create('/'))            // Halaman Home
             ->add(Url::create('/about'))       // Halaman About
-            ->add(Url::create('/envanto-downloader') // Halaman Envanto Downloader
+            ->add(Url::create('/envato-downloader') // Halaman Envanto Downloader
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.9)); // Prioritas lebih tinggi untuk halaman ini
 

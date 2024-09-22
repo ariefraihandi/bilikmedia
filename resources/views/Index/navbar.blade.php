@@ -92,7 +92,7 @@
                         <a href="javascript:void(0)" class="nav-menu__link">Video</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
-                                <a href="{{ route('showProductByCategory', ['slug' => 'stock-footage']) }}" class="nav-submenu__link"> Stock Footage</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'stock-footage']) }}" class="nav-submenu__link">Stock Footage</a>
                             </li>
                         </ul>
                     </li>
@@ -100,7 +100,7 @@
                         <a href="{{ route('showProductByCategory', ['slug' => 'presentation-templates']) }}" class="nav-menu__link">Presentation Templates</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
-                                <a href="{{ route('showProductByCategory', ['slug' => 'power-point']) }}" class="nav-submenu__link"> Power Point</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'power-point']) }}" class="nav-submenu__link">Power Point</a>
                             </li>
                         </ul>
                     </li>
