@@ -19,18 +19,18 @@
     <link rel="shortcut icon" href="{{ asset('assets') }}/images/logo/favicon.png">
 
     <!-- Open Graph (OG) Tags for Social Media Optimization -->
-    <meta property="og:title" content="{{ $title ?? 'Bilik Media | Best Digital Solution for Your Business' }}">
-    <meta property="og:description" content="{{ $description ?? 'Bilik Media menyediakan berbagai jasa digital terbaik untuk bisnis Anda.' }}">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:image" content="{{ asset('assets') }}/images/logo/favicon.png">
-    <meta property="og:site_name" content="Bilik Media">
+<meta property="og:title" content="{{ $title ?? 'Bilik Media | Best Digital Solution for Your Business' }}">
+<meta property="og:description" content="{{ $description ?? 'Bilik Media menyediakan berbagai jasa digital terbaik untuk bisnis Anda.' }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ url()->current() }}">
+<meta property="og:image" content="{{ $product->image ? asset('uploads/products/' . $product->image) : asset('assets/images/logo/favicon.png') }}">
+<meta property="og:site_name" content="Bilik Media">
 
-    <!-- Twitter Card Tags for Twitter Sharing Optimization -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $title ?? 'Bilik Media | Best Digital Solution for Your Business' }}">
-    <meta name="twitter:description" content="{{ $description ?? 'Bilik Media menyediakan berbagai jasa digital terbaik untuk bisnis Anda.' }}">
-    <meta name="twitter:image" content="{{ asset('assets') }}/images/logo/favicon.png">
+<!-- Twitter Card Tags for Twitter Sharing Optimization -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ $title ?? 'Bilik Media | Best Digital Solution for Your Business' }}">
+<meta name="twitter:description" content="{{ $description ?? 'Bilik Media menyediakan berbagai jasa digital terbaik untuk bisnis Anda.' }}">
+<meta name="twitter:image" content="{{ $product->image ? asset('uploads/products/' . $product->image) : asset('assets/images/logo/favicon.png') }}">
     
     <!-- Structured Data (JSON-LD) for Rich Results in Google -->
     <script type="application/ld+json">

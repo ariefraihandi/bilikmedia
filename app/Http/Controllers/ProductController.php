@@ -87,6 +87,7 @@ class ProductController extends Controller
         // Membuat array data untuk dikirim ke view
         $data = [
             'title' => $product->title,    // Mengambil title dari produk
+            'description' => $product->description,    // Mengambil title dari produk
             'product' => $product,         // Mengirim seluruh data produk
             'category' => $category,       // Mengirim satu kategori yang dipilih
             'downloadCount' => $downloadCount,  // Mengirim jumlah download
