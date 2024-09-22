@@ -97,6 +97,14 @@
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
+                        <a href="{{ route('showProductByCategory', ['slug' => 'presentation-templates']) }}" class="nav-menu__link">Presentation Templates</a>
+                        <ul class="nav-submenu">
+                            <li class="nav-submenu__item">
+                                <a href="{{ route('showProductByCategory', ['slug' => 'power-point']) }}" class="nav-submenu__link"> Power Point</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-menu__item has-submenu">
                         <a href="javascript:void(0)" class="nav-menu__link">Sound</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
