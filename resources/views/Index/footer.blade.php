@@ -11,7 +11,7 @@
         <div class="text-slider d-flex align-items-center gap-4">
             <div class="text-slider__item flex-nowrap flex-shrink-0 flx-align gap-3">
                 <span class="icon flex-shrink-0"><i class="las la-star-of-life"></i></span>
-                <span class="text flex-grow-1">Web Application</span>
+                <span class="text flex-grow-1">Web Template</span>
             </div>
             <div class="text-slider__item flex-nowrap flex-shrink-0 flx-align gap-3">
                 <span class="icon flex-shrink-0"><i class="las la-star-of-life"></i></span>
@@ -71,15 +71,12 @@
                     <div class="footer-widget">
                         <h5 class="footer-widget__title text-white">Useful Link</h5>
                         <ul class="footer-lists">
-                            <li class="footer-lists__item"><a href="all-product.html" class="footer-lists__link">Product </a></li>
-                            <li class="footer-lists__item"><a href="product-details.html" class="footer-lists__link">Product Details</a></li>
-                            <li class="footer-lists__item"><a href="profile.html" class="footer-lists__link">Profile </a></li>
-                            <li class="footer-lists__item"><a href="cart.html" class="footer-lists__link">Shopping Cart</a></li>
-                            <li class="footer-lists__item"><a href="dashboard.html" class="footer-lists__link">Dashboard</a></li>
+                            <li class="footer-lists__item"><a href="{{ route('showAllProduct') }}" class="footer-lists__link">Product </a></li>
+                            <li class="footer-lists__item"><a href="{{ route('envanto.downloader') }}" class="footer-lists__link">Envato Downloader</a></li>                            
                         </ul>
                     </div>
                 </div>
-                <div class="col-xl-3 col-sm-6 col-xs-6 ps-xl-5">
+                {{-- <div class="col-xl-3 col-sm-6 col-xs-6 ps-xl-5">
                     <div class="footer-widget">
                         <h5 class="footer-widget__title text-white">Quick Links</h5>
                         <ul class="footer-lists">
@@ -90,8 +87,8 @@
                             <li class="footer-lists__item"><a href="blog-details.html" class="footer-lists__link">Blog Details</a></li>
                         </ul>
                     </div>
-                </div>
-                <div class="col-xl-4 col-sm-6">
+                </div> --}}
+                {{-- <div class="col-xl-4 col-sm-6">
                     <div class="footer-widget">
                         <h5 class="footer-widget__title text-white">Subscribe</h5>
                         <p class="footer-widget__desc">Subscribe our newsletter to get updated the latest news</p>
@@ -100,7 +97,7 @@
                             <button type="submit" class="btn btn-main btn-lg w-100 pill">Subscribe Now</button>
                         </form>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

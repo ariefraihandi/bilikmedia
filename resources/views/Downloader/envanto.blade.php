@@ -26,9 +26,9 @@
 
             <div class="col-xl-6">
                 <div class="banner-two__content">
-                    <h2 class="banner-two__title text-center mb-3">Envanto Downloader</h2>
+                    <h2 class="banner-two__title text-center mb-3">Envato Downloader</h2>
                     <p class="banner-two__desc text-center">
-                        Get Envanto files instantly with our free downloader. No hassle, just fast and easy downloads!
+                        Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     @if (request('success'))
                         <div class="alert alert-success">

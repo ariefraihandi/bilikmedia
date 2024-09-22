@@ -22,7 +22,7 @@ Route::get('/logout',                       [AuthController::class, 'logout'])->
 Route::post('register',                     [AuthController::class, 'register'])->name('register');
 Route::post('login',                        [AuthController::class, 'login'])->name('login');
 
-Route::get('/envanto-downloader',           [EnvantoDownloaderController::class, 'showEnvantoDownloader'])->name('envanto.downloader');
+Route::get('/envato-downloader',           [EnvantoDownloaderController::class, 'showEnvantoDownloader'])->name('envanto.downloader');
 
 Route::get('/product',                      [ProductController::class, 'showAllProduct'])->name('showAllProduct');
 Route::get('/product/category/{slug}',      [ProductController::class, 'showProductByCategory'])->name('showProductByCategory');
