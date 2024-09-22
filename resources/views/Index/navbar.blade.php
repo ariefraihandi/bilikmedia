@@ -42,6 +42,9 @@
                                 <a href="{{ route('showProductByCategory', ['slug' => 'adobe-photoshop']) }}" class="nav-submenu__link"> Adobe Photoshop</a>
                             </li>
                             <li class="nav-submenu__item">
+                                <a href="{{ route('showProductByCategory', ['slug' => 'after-effects']) }}" class="nav-submenu__link"> After Effects</a>
+                            </li>
+                            <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Adobe Illustrator</a>
                             </li>
                             <li class="nav-submenu__item">
