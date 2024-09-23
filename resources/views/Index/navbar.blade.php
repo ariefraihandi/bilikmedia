@@ -92,7 +92,7 @@
                         </ul>
                     </li>                    
                     <li class="nav-menu__item has-submenu">
-                        <a href="javascript:void(0)" class="nav-menu__link">Video</a>
+                        <a href="{{ route('showProductByCategory', ['slug' => 'video-templates']) }}" class="nav-menu__link">Video</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'stock-footage']) }}" class="nav-submenu__link">Stock Footage</a>
@@ -148,8 +148,13 @@
                             </li>
                         </ul>
                     </li>                                                                             
-                    <li class="nav-menu__item">
-                        <a href="contact.html" class="nav-menu__link">Contact</a>
+                    <li class="nav-menu__item has-submenu">
+                        <a href="{{ route('showProductByCategory', ['slug' => 'add-ons']) }}" class="nav-menu__link">Add Ons</a>
+                        <ul class="nav-submenu">
+                            <li class="nav-submenu__item">
+                                <a href="{{ route('showProductByCategory', ['slug' => 'adobe-illustrator']) }}" class="nav-submenu__link"> Adobe Illustrator</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
