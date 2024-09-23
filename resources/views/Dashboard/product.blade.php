@@ -159,7 +159,7 @@
         </div>
     </div>
 @endsection
-  
+  {{-- as --}}
 @push('footer-script')    
 <script>
     document.addEventListener('DOMContentLoaded', function () {
