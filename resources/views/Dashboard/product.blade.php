@@ -17,7 +17,7 @@
 
 
                 <div class="col-lg-8">
-                    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
+                    <form id="productForm" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="setting-content" data-bs-spy="scroll" data-bs-target="#sidebar-scroll-spy">
                             <div class="card common-card border border-gray-five overflow-hidden mb-24"  id="personalInfo">
@@ -130,7 +130,7 @@
                                     </div>
                                 </div>
                             </div>                            
-                            <button type="submit" class="btn w-100 btn-main btn-md">Save Information</button>                
+                            <button type="submit" class="btn w-100 btn-main btn-md" id="submitBtn">Save Information</button>
                         </div>
                     </form>
                 </div>
@@ -161,20 +161,41 @@
 @endsection
   
 @push('footer-script')    
-    <script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var submitButton = document.getElementById('submitBtn');
+        var productForm = document.getElementById('productForm');
+
+        // Event listener untuk form submit
+        productForm.addEventListener('submit', function (event) {
+            // Prevent form submission segera
+            event.preventDefault();
+            
+            // Ubah tombol menjadi 'On Process' dan disable tombol
+            submitButton.innerHTML = 'On Process...';
+            submitButton.disabled = true;
+
+            // Gunakan timeout kecil agar perubahan tombol terlihat
+            setTimeout(() => {
+                // Submit form secara manual
+                productForm.submit();
+            }, 300); // Delay kecil (0.3 detik) untuk render
+        });
+
+        // Event listener untuk menyimpan kategori
         document.getElementById('saveCategoryBtn').addEventListener('click', function() {
             var newCategoryName = document.getElementById('newCategory').value;
 
-            // Pastikan CSRF token ada
+            // Ambil CSRF token dari meta
             var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
             if (newCategoryName) {
-                // Kirim data ke server menggunakan AJAX
+                // Kirim data AJAX ke server
                 fetch('{{ route("store-category") }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken // Masukkan CSRF token di header
+                        'X-CSRF-TOKEN': csrfToken
                     },
                     body: JSON.stringify({
                         name: newCategoryName
@@ -183,21 +204,18 @@
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        // Menampilkan SweetAlert jika berhasil
                         Swal.fire({
                             title: 'Success!',
                             text: 'Category has been added successfully!',
                             icon: 'success',
                             confirmButtonText: 'OK'
                         }).then(() => {
-                            // Setelah SweetAlert selesai, tutup modal
                             var modal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
                             modal.hide();
 
-                            // Reset input modal
                             document.getElementById('newCategory').value = '';
 
-                            // Tambahkan kategori baru ke dalam select
+                            // Tambah kategori baru ke select
                             var select = document.getElementById('category');
                             var option = document.createElement('option');
                             option.value = data.category.id;
@@ -231,6 +249,6 @@
                 });
             }
         });
-
-    </script>
+    });
+</script>
 @endpush
