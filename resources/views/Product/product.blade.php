@@ -316,9 +316,48 @@
                     </div>
             
                     <!-- Pagination Links -->
-                    <div class="pagination-wrapper mt-4">
-                        {{ $products->links() }} <!-- Memunculkan tautan pagination -->
-                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination common-pagination">
+                            <!-- Tombol Previous -->
+                            @if ($products->onFirstPage())
+                               
+                            @else
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
+                                        <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>
+                            @endif
+                    
+                            <!-- Menampilkan nomor halaman -->
+                            @foreach ($products->links()->elements[0] as $page => $url)
+                                @if ($page == $products->currentPage())
+                                    <li class="page-item active" aria-current="page">
+                                        <span class="page-link">{{ $page }}</span>
+                                    </li>
+                                @else
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                    </li>
+                                @endif
+                            @endforeach
+                    
+                            <!-- Tombol Next -->
+                            @if ($products->hasMorePages())
+                                <li class="page-item">
+                                    <a class="page-link" href="{{ $products->nextPageUrl() }}" aria-label="Next">
+                                        Next
+                                        <span class="icon line-height-1 font-20"><i class="las la-arrow-right"></i></span>
+                                    </a>
+                                </li>
+                            @else
+                                <li class="page-item disabled">
+                                    <span class="page-link">Next</span>
+                                </li>
+                            @endif
+                        </ul>
+                    </nav>
+                    
                 </div>
             </div>
             
