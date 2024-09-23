@@ -28,4 +28,27 @@
     </script>
 @endif
 
+@if(session('error'))
+    <script>
+        Swal.fire({
+            title: 'Error!',
+            text: "{{ session('error') }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
+
+@if($errors->any())
+    <script>
+        Swal.fire({
+            title: 'Error!',
+            text: "{{ $errors->first() }}",
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+    </script>
+@endif
+
+
 @stack('footer-script')

@@ -68,22 +68,19 @@
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
-                        <a href="javascript:void(0)" class="nav-menu__link">Website</a>
+                        <a href="{{ route('showProductByCategory', ['slug' => 'website-template']) }}" class="nav-menu__link">Website</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'admin-template']) }}" class="nav-submenu__link"> Admin Template</a>
                             </li>                            
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'website-template']) }}" class="nav-submenu__link"> Website Template</a>
-                            </li>                                                     
+                            </li>                                                                          
                             <li class="nav-submenu__item">
-                                <a href="profile.html" class="nav-submenu__link"> HTML</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'wordpress']) }}" class="nav-submenu__link"> Wordpress</a>
                             </li>
                             <li class="nav-submenu__item">
-                                <a href="cart.html" class="nav-submenu__link"> Wordpress</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="cart-personal.html" class="nav-submenu__link"> Blogger</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'woocommerce']) }}" class="nav-submenu__link"> WooCommerce</a>
                             </li>
                            
                             <li class="nav-submenu__item">

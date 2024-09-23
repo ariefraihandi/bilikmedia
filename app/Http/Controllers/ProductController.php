@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\RequestDownload;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use Illuminate\Support\Str;
@@ -60,7 +61,6 @@ class ProductController extends Controller
         return view('Product.product', $data);
     }
     
-
     public function showProductDetails($slug)
     {
         // Cari produk berdasarkan slug di database
@@ -132,7 +132,6 @@ class ProductController extends Controller
         ]);
     }
 
-    
     public function showProduct()
     {
         // Mengambil semua kategori dari tabel product_category
@@ -175,10 +174,10 @@ class ProductController extends Controller
             'category.*' => 'exists:product_category,id', // Validasi setiap kategori harus ada di database
             'fileUpload' => 'nullable|image|mimes:webp,jpeg,png,jpg,gif|max:2048',
         ]);
-    
+
         // Menggunakan transaksi untuk memastikan rollback jika terjadi error
         DB::beginTransaction();
-    
+
         try {
             // Proses upload file gambar
             $imageName = null;
@@ -186,10 +185,10 @@ class ProductController extends Controller
                 $imageName = time() . '.' . $request->fileUpload->extension();
                 $request->fileUpload->move(public_path('uploads/products'), $imageName);
             }
-    
+
             // Generate slug dari title dan tambahkan 5 karakter acak
             $slug = Str::slug($validated['title']) . '-' . Str::random(5);
-    
+
             // Menyimpan data produk ke database
             $product = new Product();
             $product->title = $validated['title'];
@@ -206,28 +205,40 @@ class ProductController extends Controller
             $product->url_download = $validated['url_download']; // Simpan url_download
             $product->image = $imageName;
             $product->save();
-    
+
             // Menyimpan kategori (relasi many-to-many)
             if (isset($validated['category'])) {
                 $product->categories()->sync($validated['category']); // Menghubungkan kategori dengan produk
             }
-    
+
+            // Cek apakah ada request download yang memiliki url_source yang sama
+            if ($product->url_source) {
+                $requestDownload = RequestDownload::where('url', $product->url_source)->first();
+
+                if ($requestDownload) {
+                    // Update status menjadi 1 jika ditemukan
+                    $requestDownload->status = 1;
+                    $requestDownload->save();
+                }
+            }
+
             // Commit transaksi jika semua berhasil
             DB::commit();
-    
+
             // Jika berhasil, tampilkan alert sukses
             Alert::success('Submitted', 'New Product Submitted!');
             return redirect()->route('show.add.product')->with('success', 'Product saved successfully!');
-    
+
         } catch (\Exception $e) {
             // Rollback semua perubahan jika terjadi error
             DB::rollBack();
-    
+
             // Jika gagal, tampilkan alert error
             Alert::error('Error', 'Failed to submit product: ' . $e->getMessage());
             return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
         }
     }
+
 
     public function storeCategory(Request $request)
     {

@@ -37,8 +37,21 @@ class DownloadController extends Controller
                     return $data->product_url ? 'exists' : 'not-exists';
                 })
                 ->editColumn('status', function($data) {
-                    return $data->status == 0 ? 'Pending' : 'Completed';
+                    // Menampilkan badge berdasarkan status
+                    switch ($data->status) {
+                        case 0:
+                            return '<span class="badge bg-warning">Pending</span>';
+                        case 1:
+                            return '<span class="badge bg-primary">Uploaded</span>';
+                        case 2:
+                            return '<span class="badge bg-danger">Unsent</span>';
+                        case 3:
+                            return '<span class="badge bg-success">Completed</span>';
+                        default:
+                            return '<span class="badge bg-secondary">Unknown</span>';
+                    }
                 })
+                ->rawColumns(['action', 'status']) // Agar HTML badge dieksekusi dengan benar
                 ->make(true);
         }
     
@@ -64,11 +77,20 @@ class DownloadController extends Controller
                 $slug = $product->slug;
                 $downloadUrl = route('product.details', ['slug' => $slug]);
     
-                // Kirim email dengan detail produk
-                Mail::to($downloadRequest->email)->send(new DownloadNotification($title, $downloadUrl));
+                try {
+                    // Kirim email
+                    Mail::to($downloadRequest->email)->send(new DownloadNotification($title, $downloadUrl));
     
-                // Kembalikan respon JSON untuk AJAX
-                return response()->json(['success' => 'Email sent successfully']);
+                    // Jika pengiriman email berhasil, ubah status menjadi 3
+                    $downloadRequest->status = 3;
+                    $downloadRequest->save();
+    
+                    // Kembalikan respon JSON untuk AJAX jika sukses
+                    return response()->json(['success' => 'Email sent successfully and status updated']);
+                } catch (\Exception $e) {
+                    // Jika gagal mengirim email, kembalikan pesan error dan simpan log error
+                    return response()->json(['error' => 'Failed to send email: ' . $e->getMessage()]);
+                }
             } else {
                 return response()->json(['error' => 'Product not found']);
             }
@@ -77,6 +99,7 @@ class DownloadController extends Controller
         // Jika request download tidak ditemukan
         return response()->json(['error' => 'Download request not found']);
     }
+    
 
     public function deleteDownloadRequest($id)
     {
