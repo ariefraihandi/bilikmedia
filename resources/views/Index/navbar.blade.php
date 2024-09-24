@@ -45,12 +45,12 @@
                                 <a href="{{ route('showProductByCategory', ['slug' => 'after-effects']) }}" class="nav-submenu__link"> After Effects</a>
                             </li>
                             <li class="nav-submenu__item">
-                                <a href="product-details.html" class="nav-submenu__link"> Adobe Illustrator</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'adobe-illustrator']) }}" class="nav-submenu__link"> Adobe Illustrator</a>
                             </li>
                             <li class="nav-submenu__item">
-                                <a href="all-product.html" class="nav-submenu__link"> Adobe InDesign</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'adobe-indesign']) }}" class="nav-submenu__link"> Adobe InDesign</a>
                             </li>
-                            <li class="nav-submenu__item">
+                            {{-- <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Adobe XD</a>
                             </li>                            
                             <li class="nav-submenu__item">
@@ -58,13 +58,13 @@
                             </li>
                             <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Sketch</a>
-                            </li>
+                            </li> --}}
                             <li class="nav-submenu__item">
-                                <a href="all-product.html" class="nav-submenu__link"> Canva</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'canva']) }}" class="nav-submenu__link"> Canva</a>
                             </li>
-                            <li class="nav-submenu__item">
+                            {{-- <li class="nav-submenu__item">
                                 <a href="product-details.html" class="nav-submenu__link"> Microsoft Word</a>
-                            </li>                        
+                            </li>                         --}}
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
