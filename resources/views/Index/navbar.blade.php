@@ -105,15 +105,15 @@
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
-                        <a href="javascript:void(0)" class="nav-menu__link">Sound</a>
+                        <a href="{{ route('showProductByCategory', ['slug' => 'sound']) }}" class="nav-menu__link">Sound</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
-                                <a href="blog.html" class="nav-submenu__link"> Game Sounds</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'music']) }}" class="nav-submenu__link"> Music</a>
                             </li>
                             <li class="nav-submenu__item">
-                                <a href="blog-details.html" class="nav-submenu__link"> Transitions & Movement</a>
+                                <a href="{{ route('showProductByCategory', ['slug' => 'royalty-free-music']) }}" class="nav-submenu__link"> Royalty Free Music</a>
                             </li>
-                            <li class="nav-submenu__item">
+                            {{-- <li class="nav-submenu__item">
                                 <a href="blog-details-sidebar.html" class="nav-submenu__link"> Domestic Sounds</a>
                             </li>
                             <li class="nav-submenu__item">
@@ -142,7 +142,7 @@
                             </li>
                             <li class="nav-submenu__item">
                                 <a href="blog-details-sidebar.html" class="nav-submenu__link"> Miscellaneous</a>
-                            </li>
+                            </li> --}}
                         </ul>
                     </li>                                                                             
                     <li class="nav-menu__item has-submenu">
