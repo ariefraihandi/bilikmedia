@@ -1,4 +1,46 @@
 @extends('Index.app')
+@push('header-script')
+<style>
+    /* Gaya untuk iklan mengambang di sisi kanan dan kiri layar */
+    .ad-banner {
+        position: fixed;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 14px;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    /* Iklan di sebelah kiri */
+    .ad-banner.left {
+        width: 160px;
+        height: 600px;
+        top: 100px;
+        left: 10px;
+    }
+
+    /* Iklan di sebelah kanan */
+    .ad-banner.right {
+        width: 160px;
+        height: 600px;
+        top: 100px;
+        right: 10px;
+    }
+
+    /* Sembunyikan iklan di layar kecil (mobile) */
+    @media (max-width: 768px) {
+        .ad-banner {
+            display: none;
+        }
+    }
+</style>
+@endpush
 
 @section('content')
 
@@ -19,85 +61,119 @@
                     <h5 class="rating__title mb-2">{{ $product->title }}</h5>
                     
                     <p class="text-muted mb-4">Author: <a href="{{ $product->author_url }}" target="_blank">{{ $product->author }}</a></p>
-                    
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '8c73778e9881b45dc5bd0a256476bba4',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//snugwednesday.com/8c73778e9881b45dc5bd0a256476bba4/invoke.js"></script>
+                    <br>
                     <div class="cart-payment-card">
                         <form action="#">
                             <div class="row gy-4">
-                                <div class="col-lg-12">
+                                <div class="col-lg-12">                                  
                                     <!-- Tombol Download dengan hitung mundur -->
                                     <button id="downloadButton" class="btn btn-main btn-lg w-100 pill" disabled>Download in <span id="countdown">10</span> seconds</button>
-                                </div>
+                                </div>                                
                             </div>
+                            
                         </form>
                     </div>
+                    <br>
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '8c73778e9881b45dc5bd0a256476bba4',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//snugwednesday.com/8c73778e9881b45dc5bd0a256476bba4/invoke.js"></script>
                 </div>
             </div>
             
         </div>        
-    </div>
+    </div>   
 </section>
-<!-- ======================= Cart Payment Section End ========================= -->
-
-<!-- ======================== Brand Section Start ========================= -->
-<div class="brand ">
-    <div class="container container mb-3">
-        <div class="brand-slider">
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img1.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img1.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img2.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img2.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img3.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img3.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img4.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img4.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img5.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img5.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img3.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img3.png" alt="" class="dark-version">
-            </div>
-        </div>
-    </div>
+<div class="ad-banner left">
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '524f24dd8496a7370ff58c400a05b2c8',
+            'format' : 'iframe',
+            'height' : 600,
+            'width' : 160,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//snugwednesday.com/524f24dd8496a7370ff58c400a05b2c8/invoke.js"></script>
 </div>
-<!-- ======================== Brand Section End ========================= -->
 
+<div class="ad-banner right">
+    <script type="text/javascript">
+        atOptions = {
+            'key' : '524f24dd8496a7370ff58c400a05b2c8',
+            'format' : 'iframe',
+            'height' : 600,
+            'width' : 160,
+            'params' : {}
+        };
+    </script>
+    <script type="text/javascript" src="//snugwednesday.com/524f24dd8496a7370ff58c400a05b2c8/invoke.js"></script>
+</div>
 @endsection
 
 @push('footer-script')
+<script type="text/javascript">
+	atOptions = {
+		'key' : '524f24dd8496a7370ff58c400a05b2c8',
+		'format' : 'iframe',
+		'height' : 600,
+		'width' : 160,
+		'params' : {}
+	};
+</script>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var countdownElement = document.getElementById('countdown');
         var downloadButton = document.getElementById('downloadButton');
         var secondsLeft = 10;
+        var isAdBlockActive = false; // Flag to track AdBlock status
         
-        // Hitung mundur selama 10 detik
-        var countdownTimer = setInterval(function () {
-            secondsLeft--;
-            countdownElement.textContent = secondsLeft;
-            
-            // Ketika hitungan mencapai 0, aktifkan tombol
-            if (secondsLeft <= 0) {
-                clearInterval(countdownTimer);
-                downloadButton.textContent = 'Download';
-                downloadButton.disabled = false;
-            }
-        }, 1000);
-        
+        // Fungsi untuk memulai hitung mundur download
+        function startCountdown() {
+            var countdownTimer = setInterval(function () {
+                secondsLeft--;
+                countdownElement.textContent = secondsLeft;
+                
+                // Ketika hitungan mencapai 0, aktifkan tombol
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    downloadButton.textContent = 'Download';
+                    downloadButton.disabled = false;
+                }
+            }, 1000);
+        }
+
         // Event listener untuk membuka url_download ketika tombol di klik
         downloadButton.addEventListener('click', function (event) {
             event.preventDefault(); // Mencegah aksi default form
             
-            // Buka file unduhan di tab baru
+            if (isAdBlockActive) {
+                // Ubah teks tombol menjadi pesan peringatan dan aktifkan tombol
+                downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh';
+                downloadButton.disabled = false; // Pastikan tombol dapat di-klik
+                downloadButton.onclick = function() {
+                    location.reload(); 
+                };
+                return; // Keluar dari fungsi jika AdBlock terdeteksi
+            }
+            
+            // Jika AdBlock tidak aktif, buka file unduhan di tab baru
             window.open("{{ $product->url_download }}", '_blank');
             
             // Setelah unduhan selesai, arahkan ke halaman rating dengan token
@@ -105,6 +181,41 @@
                 window.location.href = "/rating/{{ $download->token ?? '' }}";
             }, 2000); // Tambahkan jeda waktu untuk memastikan unduhan dimulai
         });
+
+        // Fungsi untuk deteksi AdBlock
+        (function() {     
+
+            function adBlockDetected() {
+                isAdBlockActive = true; // Set flag AdBlock aktif               
+                downloadButton.disabled = false; // Aktifkan tombol untuk refresh
+                downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh'; // Ubah teks tombol
+            }
+
+            function adBlockNotDetected() {
+                isAdBlockActive = false; // Set flag AdBlock non-aktif               
+                downloadButton.disabled = true; // Nonaktifkan tombol hingga countdown selesai
+                startCountdown(); // Mulai hitung mundur jika tidak ada AdBlock
+            }
+
+            // Buat elemen bait menggunakan iframe, yang biasanya diblokir oleh ad blockers
+            var bait = document.createElement('iframe');
+            bait.style = 'width: 1px; height: 1px; position: absolute; left: -9999px; border: none;';
+            bait.src = "https://ads.fakeurl.com"; // URL palsu yang akan diblokir oleh kebanyakan ad blockers
+            document.body.appendChild(bait);
+
+            // Tunggu ad blocker untuk memblokir iframe
+            setTimeout(function() {
+                // Cek apakah iframe diblokir (tidak dirender atau disembunyikan)
+                if (!bait || bait.offsetParent === null || bait.offsetHeight === 0 || bait.offsetWidth === 0) {
+                    adBlockDetected();  // AdBlock aktif
+                } else {
+                    adBlockNotDetected();  // AdBlock tidak aktif
+                }
+                // Hapus bait iframe setelah deteksi selesai
+                document.body.removeChild(bait);
+            }, 100);  // Jeda singkat agar ad blockers bisa bereaksi
+        })();
     });
+
 </script>
 @endpush
