@@ -61,16 +61,7 @@
                     <h5 class="rating__title mb-2">{{ $product->title }}</h5>
                     
                     <p class="text-muted mb-4">Author: <a href="{{ $product->author_url }}" target="_blank">{{ $product->author }}</a></p>
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '8c73778e9881b45dc5bd0a256476bba4',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    
+                    {!! $bannerAd->code !!}
                     <br>
                     <div class="cart-payment-card">
                         <form action="#">
@@ -84,16 +75,7 @@
                         </form>
                     </div>
                     <br>
-                    <script type="text/javascript">
-                        atOptions = {
-                            'key' : '8c73778e9881b45dc5bd0a256476bba4',
-                            'format' : 'iframe',
-                            'height' : 90,
-                            'width' : 728,
-                            'params' : {}
-                        };
-                    </script>
-                    
+                    {!! $bannerAd->code !!}
                 </div>
             </div>
             
@@ -101,29 +83,11 @@
     </div>   
 </section>
 <div class="ad-banner left">
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '524f24dd8496a7370ff58c400a05b2c8',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-        };
-    </script>
-    
+    {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '524f24dd8496a7370ff58c400a05b2c8',
-            'format' : 'iframe',
-            'height' : 600,
-            'width' : 160,
-            'params' : {}
-        };
-    </script>
-    
+    {!! $sideAd->code !!}
 </div>
 @endsection
 
