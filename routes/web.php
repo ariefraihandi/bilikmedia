@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Middleware\RedirectIfAuthenticated; 
 use App\Http\Middleware\RedirectIfNotAuthenticated; 
+use App\Http\Controllers\AdController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\EnvantoDownloaderController;
 
@@ -47,6 +48,7 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
 
     Route::get('/download/request/list',            [DownloadController::class, 'showDownloadRequestlist'])->name('showDownloadRequestlist');
     Route::post('/send-download-notification',      [DownloadController::class, 'sendDownloadNotification'])->name('sendDownloadNotification');
-    Route::delete('/delete-download-request/{id}', [DownloadController::class, 'deleteDownloadRequest']);
-
+    Route::delete('/delete-download-request/{id}',  [DownloadController::class, 'deleteDownloadRequest']);
+    
+    Route::post('/ads-store',      [AdController::class, 'adsStore'])->name('ads.store');
 });

@@ -18,6 +18,9 @@
         <div class="welcome-balance__left">
             <h4 class="welcome-balance__title mb-0">Welcome back!</h4>
         </div>     
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAdModal">
+            Create New Ad
+        </button>
     </div>
     <div class="dashboard-body__item-wrapper">
         <div class="dashboard-body__item">
@@ -50,6 +53,34 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createAdModal" tabindex="-1" aria-labelledby="createAdModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createAdModalLabel">Create New Ad</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('ads.store') }}" method="POST">
+                        @csrf
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" name="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="code" class="form-label">Code</label>
+                            <textarea class="form-control" id="code" name="code" rows="3" required></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Save Ad</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

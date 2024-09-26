@@ -7,6 +7,7 @@ use App\Models\Download;
 use App\Models\Product;
 use App\Models\RequestDownload;
 use App\Models\Rating;
+use App\Models\Ad;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DownloadRequestNotification;
 use App\Mail\DownloadNotification;
@@ -152,6 +153,8 @@ class DownloadController extends Controller
 
         // Ambil produk terkait
         $product = $download->product;
+        $sideAd = Ad::where('name', 'side')->first();
+        $bannerAd = Ad::where('name', 'banner')->first();
 
         // Jika file produk tidak ditemukan
         if (!$product || !file_exists(public_path('uploads/products/' . $product->image))) {
@@ -163,6 +166,8 @@ class DownloadController extends Controller
             'title' => 'Download ' . $product->title, // Gabungkan string "Download" dengan title produk
             'product' => $product,                    // Mengirim informasi produk ke view
             'download' => $download,                  // Mengirim token download ke view
+            'sideAd' => $sideAd,                  // Mengirim token download ke view
+            'bannerAd' => $bannerAd,                  // Mengirim token download ke view
         ];
 
         // Mengirim data ke view 'Download.download'
