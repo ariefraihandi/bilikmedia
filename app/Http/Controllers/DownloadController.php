@@ -138,10 +138,8 @@ class DownloadController extends Controller
 
     public function downloadFile($token)
     {
-        // Cari download berdasarkan token
         $download = Download::where('token', $token)->first();
-
-        // Jika token tidak ditemukan
+    
         if (!$download) {
             return redirect()->back()->withErrors('Download link is invalid.');
         }
@@ -163,14 +161,13 @@ class DownloadController extends Controller
 
         // Data yang akan dikirim ke view
         $data = [
-            'title' => 'Download ' . $product->title, // Gabungkan string "Download" dengan title produk
-            'product' => $product,                    // Mengirim informasi produk ke view
-            'download' => $download,                  // Mengirim token download ke view
-            'sideAd' => $sideAd,                  // Mengirim token download ke view
-            'bannerAd' => $bannerAd,                  // Mengirim token download ke view
+            'title' => 'Download ' . $product->title, 
+            'product' => $product,                    
+            'download' => $download,                  
+            'sideAd' => $sideAd,          
+            'bannerAd' => $bannerAd,     
         ];
 
-        // Mengirim data ke view 'Download.download'
         return view('Download.download', $data);
     }
 
