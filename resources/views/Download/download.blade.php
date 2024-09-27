@@ -1,5 +1,6 @@
 @extends('Index.app')
 @push('header-script')
+{!! $socialAd->code !!}
 <style>
     /* Gaya untuk iklan mengambang di sisi kanan dan kiri layar */
     .ad-banner {
@@ -92,15 +93,7 @@
 @endsection
 
 @push('footer-script')
-<script type="text/javascript">
-	atOptions = {
-		'key' : '524f24dd8496a7370ff58c400a05b2c8',
-		'format' : 'iframe',
-		'height' : 600,
-		'width' : 160,
-		'params' : {}
-	};
-</script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var countdownElement = document.getElementById('countdown');

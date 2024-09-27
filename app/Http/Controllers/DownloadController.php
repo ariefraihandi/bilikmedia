@@ -153,7 +153,8 @@ class DownloadController extends Controller
         $product = $download->product;
         $sideAd = Ad::where('name', 'side')->first();
         $bannerAd = Ad::where('name', 'banner')->first();
-
+        $socialAd = Ad::where('name', 'social')->first();
+        
         // Jika file produk tidak ditemukan
         if (!$product || !file_exists(public_path('uploads/products/' . $product->image))) {
             return redirect()->back()->withErrors('File not found.');
@@ -166,6 +167,7 @@ class DownloadController extends Controller
             'download' => $download,                  
             'sideAd' => $sideAd,          
             'bannerAd' => $bannerAd,     
+            'socialAd' => $socialAd,     
         ];
 
         return view('Download.download', $data);
