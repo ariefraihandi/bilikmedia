@@ -1,8 +1,8 @@
 @extends('Index.app')
 @push('header-script')
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>
 {!! $socialAd->code !!}
 <style>
-    /* Gaya untuk iklan mengambang di sisi kanan dan kiri layar */
     .ad-banner {
         position: fixed;
         background-color: #ccc;
@@ -40,6 +40,7 @@
             display: none;
         }
     }
+
 </style>
 @endpush
 
@@ -98,15 +99,18 @@
     document.addEventListener('DOMContentLoaded', function () {
         var countdownElement = document.getElementById('countdown');
         var downloadButton = document.getElementById('downloadButton');
+        var adLeft = document.querySelector('.ad-banner.left');
+        var adRight = document.querySelector('.ad-banner.right');
+        var targetSection = document.querySelector('.cart-payment__box');
         var secondsLeft = 10;
         var isAdBlockActive = false; // Flag to track AdBlock status
-        
+
         // Fungsi untuk memulai hitung mundur download
         function startCountdown() {
             var countdownTimer = setInterval(function () {
                 secondsLeft--;
                 countdownElement.textContent = secondsLeft;
-                
+
                 // Ketika hitungan mencapai 0, aktifkan tombol
                 if (secondsLeft <= 0) {
                     clearInterval(countdownTimer);
@@ -116,62 +120,55 @@
             }, 1000);
         }
 
-        // Event listener untuk membuka url_download ketika tombol di klik
-        downloadButton.addEventListener('click', function (event) {
-            event.preventDefault(); // Mencegah aksi default form
-            
-            if (isAdBlockActive) {
-                // Ubah teks tombol menjadi pesan peringatan dan aktifkan tombol
-                downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh';
-                downloadButton.disabled = false; // Pastikan tombol dapat di-klik
-                downloadButton.onclick = function() {
-                    location.reload(); 
-                };
-                return; // Keluar dari fungsi jika AdBlock terdeteksi
-            }
-            
-            // Jika AdBlock tidak aktif, buka file unduhan di tab baru
-            window.open("{{ $product->url_download }}", '_blank');
-            
-            // Setelah unduhan selesai, arahkan ke halaman rating dengan token
-            setTimeout(function() {
-                window.location.href = "/rating/{{ $download->token ?? '' }}";
-            }, 2000); // Tambahkan jeda waktu untuk memastikan unduhan dimulai
-        });
-
         // Fungsi untuk deteksi AdBlock
-        (function() {     
-
+        (function() {
             function adBlockDetected() {
-                isAdBlockActive = true; // Set flag AdBlock aktif               
+                isAdBlockActive = true; // Set flag AdBlock aktif
                 downloadButton.disabled = false; // Aktifkan tombol untuk refresh
                 downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh'; // Ubah teks tombol
             }
 
             function adBlockNotDetected() {
-                isAdBlockActive = false; // Set flag AdBlock non-aktif               
+                isAdBlockActive = false; // Set flag AdBlock non-aktif
                 downloadButton.disabled = true; // Nonaktifkan tombol hingga countdown selesai
                 startCountdown(); // Mulai hitung mundur jika tidak ada AdBlock
             }
 
-            // Buat elemen bait menggunakan iframe, yang biasanya diblokir oleh ad blockers
             var bait = document.createElement('iframe');
             bait.style = 'width: 1px; height: 1px; position: absolute; left: -9999px; border: none;';
-            bait.src = "https://ads.fakeurl.com"; // URL palsu yang akan diblokir oleh kebanyakan ad blockers
+            bait.src = "https://ads.fakeurl.com";
             document.body.appendChild(bait);
 
-            // Tunggu ad blocker untuk memblokir iframe
             setTimeout(function() {
-                // Cek apakah iframe diblokir (tidak dirender atau disembunyikan)
                 if (!bait || bait.offsetParent === null || bait.offsetHeight === 0 || bait.offsetWidth === 0) {
-                    adBlockDetected();  // AdBlock aktif
+                    adBlockDetected();
                 } else {
-                    adBlockNotDetected();  // AdBlock tidak aktif
+                    adBlockNotDetected();
                 }
-                // Hapus bait iframe setelah deteksi selesai
                 document.body.removeChild(bait);
-            }, 100);  // Jeda singkat agar ad blockers bisa bereaksi
+            }, 100);
         })();
+
+        // Fungsi untuk menyesuaikan posisi banner agar berhenti pada akhir section
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var windowHeight = window.innerHeight;
+            var sectionBottom = targetSection.offsetTop + targetSection.offsetHeight;
+
+            // Jika scroll mencapai bagian bawah section
+            if (scrollTop + windowHeight >= sectionBottom) {
+                var bottomPosition = sectionBottom - windowHeight;
+                adLeft.style.position = 'absolute';
+                adRight.style.position = 'absolute';
+                adLeft.style.top = bottomPosition + 'px';
+                adRight.style.top = bottomPosition + 'px';
+            } else {
+                adLeft.style.position = 'fixed';
+                adRight.style.position = 'fixed';
+                adLeft.style.top = '100px';
+                adRight.style.top = '100px';
+            }
+        });
     });
 
 </script>
