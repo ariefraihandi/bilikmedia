@@ -27,6 +27,7 @@ Route::get('/envato-downloader',           [EnvantoDownloaderController::class, 
 
 Route::get('/product',                      [ProductController::class, 'showAllProduct'])->name('showAllProduct');
 Route::get('/product/category/{slug}',      [ProductController::class, 'showProductByCategory'])->name('showProductByCategory');
+Route::get('/product/rating/{rating}',      [ProductController::class, 'filterByRating'])->name('filterByRating');
 Route::get('/product-details/{slug}',       [ProductController::class, 'showProductDetails'])->name('product.details');
 Route::get('/search-products',              [ProductController::class, 'searchProducts'])->name('search.products');
 

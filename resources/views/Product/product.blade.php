@@ -105,8 +105,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-xl-3 col-lg-4">
-                <!-- ===================== Filter Sidebar Start ============================= -->
+            <div class="col-xl-3 col-lg-4">                
                 <div class="filter-sidebar">
                     <button type="button" class="filter-sidebar__close p-2 position-absolute end-0 top-0 z-index-1 text-body hover-text-main font-20 d-lg-none d-block"><i class="las la-times"></i></button>
                     <div class="filter-sidebar__item">
@@ -131,114 +130,74 @@
                                 <li class="filter-sidebar-list__item">
                                     <div class="filter-sidebar-list__text">
                                         <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="veiwAll">
-                                            <label class="form-check-label" for="veiwAll"> View All</label>
+                                            <input class="form-check-input" type="radio" name="radio" id="viewAll"
+                                                onclick="window.location.href='/product/rating/0'"
+                                                {{ request()->route('rating') == 0 ? 'checked' : '' }}>
+                                            <label class="form-check-label" for="viewAll"> View All</label>
                                         </div>
-                                        <span class="qty">(1859)</span>
+                                        <span class="qty">({{ $ratingCounts['viewAll'] }})</span>
                                     </div>
                                 </li>
                                 <li class="filter-sidebar-list__item">
                                     <div class="filter-sidebar-list__text">
                                         <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="oneStar">
+                                            <input class="form-check-input" type="radio" name="radio" id="oneStar"
+                                                onclick="window.location.href='/product/rating/1'"
+                                                {{ request()->route('rating') == 1 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="oneStar"> 1 Star and above</label>
                                         </div>
-                                        <span class="qty">(785)</span>
+                                        <span class="qty">({{ $ratingCounts['oneStar'] }})</span>
                                     </div>
                                 </li>
                                 <li class="filter-sidebar-list__item">
                                     <div class="filter-sidebar-list__text">
                                         <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="twoStar">
+                                            <input class="form-check-input" type="radio" name="radio" id="twoStar"
+                                                onclick="window.location.href='/product/rating/2'"
+                                                {{ request()->route('rating') == 2 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="twoStar"> 2 Star and above</label>
                                         </div>
-                                        <span class="qty">(1250)</span>
+                                        <span class="qty">({{ $ratingCounts['twoStar'] }})</span>
                                     </div>
                                 </li>
                                 <li class="filter-sidebar-list__item">
                                     <div class="filter-sidebar-list__text">
                                         <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="threeStar">
+                                            <input class="form-check-input" type="radio" name="radio" id="threeStar"
+                                                onclick="window.location.href='/product/rating/3'"
+                                                {{ request()->route('rating') == 3 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="threeStar"> 3 Star and above</label>
                                         </div>
-                                        <span class="qty">(7580)</span>
+                                        <span class="qty">({{ $ratingCounts['threeStar'] }})</span>
                                     </div>
                                 </li>
                                 <li class="filter-sidebar-list__item">
                                     <div class="filter-sidebar-list__text">
                                         <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="fourStar">
+                                            <input class="form-check-input" type="radio" name="radio" id="fourStar"
+                                                onclick="window.location.href='/product/rating/4'"
+                                                {{ request()->route('rating') == 4 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="fourStar"> 4 Star and above</label>
                                         </div>
-                                        <span class="qty">(1450)</span>
+                                        <span class="qty">({{ $ratingCounts['fourStar'] }})</span>
                                     </div>
                                 </li>
                                 <li class="filter-sidebar-list__item">
                                     <div class="filter-sidebar-list__text">
                                         <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="fiveStar">
+                                            <input class="form-check-input" type="radio" name="radio" id="fiveStar"
+                                                onclick="window.location.href='/product/rating/5'"
+                                                {{ request()->route('rating') == 5 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="fiveStar"> 5 Star Rating</label>
                                         </div>
-                                        <span class="qty">(2530)</span>
+                                        <span class="qty">({{ $ratingCounts['fiveStar'] }})</span>
                                     </div>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="filter-sidebar__item">
-                        <button type="button" class="filter-sidebar__button font-16 text-capitalize fw-500">Date Updated</button>
-                        <div class="filter-sidebar__content">
-                            <ul class="filter-sidebar-list">
-                                <li class="filter-sidebar-list__item">
-                                    <div class="filter-sidebar-list__text">
-                                        <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="anyDate">
-                                            <label class="form-check-label" for="anyDate"> Any Date</label>
-                                        </div>
-                                        <span class="qty"> 5,203</span>
-                                    </div>
-                                </li>
-                                <li class="filter-sidebar-list__item">
-                                    <div class="filter-sidebar-list__text">
-                                        <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="lastYear">
-                                            <label class="form-check-label" for="lastYear"> In the last year</label>
-                                        </div>
-                                        <span class="qty">1,258</span>
-                                    </div>
-                                </li>
-                                <li class="filter-sidebar-list__item">
-                                    <div class="filter-sidebar-list__text">
-                                        <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="lastMonth">
-                                            <label class="form-check-label" for="lastMonth"> In the last month</label>
-                                        </div>
-                                        <span class="qty">2450</span>
-                                    </div>
-                                </li>
-                                <li class="filter-sidebar-list__item">
-                                    <div class="filter-sidebar-list__text">
-                                        <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="LastWeek">
-                                            <label class="form-check-label" for="LastWeek"> In the last week</label>
-                                        </div>
-                                        <span class="qty">325</span>
-                                    </div>
-                                </li>
-                                <li class="filter-sidebar-list__item">
-                                    <div class="filter-sidebar-list__text">
-                                        <div class="common-check common-radio">
-                                            <input class="form-check-input" type="radio" name="radio" id="lastDay">
-                                            <label class="form-check-label" for="lastDay"> In the last day</label>
-                                        </div>
-                                        <span class="qty">745</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                                                      
                 </div>
-
             </div>           
             <div class="col-xl-9 col-lg-8">
                 <div class="tab-content" id="pills-tabContent">
@@ -313,14 +272,14 @@
                                 </div>
                             @endforelse
                         </div>
-                    </div>
-            
-                    <!-- Pagination Links -->
+                    </div>                
                     <nav aria-label="Page navigation example">
                         <ul class="pagination common-pagination">
                             <!-- Tombol Previous -->
                             @if ($products->onFirstPage())
-                               
+                                <li class="page-item disabled">
+                                    <span class="page-link">&laquo;</span>
+                                </li>
                             @else
                                 <li class="page-item">
                                     <a class="page-link" href="{{ $products->previousPageUrl() }}" aria-label="Previous">
@@ -330,17 +289,35 @@
                             @endif
                     
                             <!-- Menampilkan nomor halaman -->
-                            @foreach ($products->links()->elements[0] as $page => $url)
-                                @if ($page == $products->currentPage())
+                            @php
+                                $currentPage = $products->currentPage(); // Halaman saat ini
+                                $lastPage = $products->lastPage(); // Total halaman
+                                $startPage = max(1, $currentPage - 2); // Halaman awal (max untuk mencegah halaman negatif)
+                                $endPage = min($lastPage, $currentPage + 2); // Halaman akhir (min untuk mencegah lebih dari total halaman)
+                    
+                                // Pastikan hanya ada 5 halaman yang ditampilkan
+                                if ($endPage - $startPage < 4) {
+                                    if ($startPage > 1) {
+                                        $startPage = max(1, $endPage - 4); // Perbaiki halaman awal jika ruang kosong di akhir
+                                    }
+                                    if ($endPage < $lastPage) {
+                                        $endPage = min($lastPage, $startPage + 4); // Perbaiki halaman akhir jika ruang kosong di awal
+                                    }
+                                }
+                            @endphp
+                    
+                            <!-- Loop untuk menampilkan halaman -->
+                            @for ($page = $startPage; $page <= $endPage; $page++)
+                                @if ($page == $currentPage)
                                     <li class="page-item active" aria-current="page">
                                         <span class="page-link">{{ $page }}</span>
                                     </li>
                                 @else
                                     <li class="page-item">
-                                        <a class="page-link" href="{{ $url }}">{{ $page }}</a>
+                                        <a class="page-link" href="{{ $products->url($page) }}">{{ $page }}</a>
                                     </li>
                                 @endif
-                            @endforeach
+                            @endfor
                     
                             <!-- Tombol Next -->
                             @if ($products->hasMorePages())
@@ -356,224 +333,10 @@
                                 </li>
                             @endif
                         </ul>
-                    </nav>
-                    
+                    </nav>                                
                 </div>
             </div>
             
-        </div>
-    </div>
-</section>
-
-<section class="resource style-two padding-y-120 section-bg position-relative z-index-1 overflow-hidden">
-
-    <img src="{{ asset('assets') }}/images/shapes/element-moon1.png" alt="" class="element one">
-    <img src="{{ asset('assets') }}/images/shapes/curve-pattern3.png" alt="" class="d-none position-absolute end-0 top-0 z-index--1">
-    
-    <div class="container container-two">
-        <div class="section-heading style-left style-flex flx-between align-items-end gap-3">
-            <div class="section-heading__inner w-lg">
-                <h3 class="section-heading__title">Free Resources</h3>
-                <p class="section-heading__desc">Every month we pick some best products for you. This month's best web themes &amp; templates have arrived, chosen by our content specialists.</p>
-            </div>
-            <a href="#" class="btn btn-main btn-lg pill">View All Items</a>
-        </div>
-        <div class="resource-slider gy-4">
-            <div class="product-item shadow-sm">
-    <div class="product-item__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="{{ asset('assets') }}/images/thumbs/product-img1.png" alt="" class="cover-img"> 
-        </a>
-        <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-    </div>
-    <div class="product-item__content">
-        <h6 class="product-item__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-        </h6>
-        <div class="product-item__info flx-between gap-2">
-            <span class="product-item__author">
-                by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-            </span>
-            <div class="flx-align gap-2">
-                <h6 class="product-item__price mb-0">$120</h6>
-                <span class="product-item__prevPrice text-decoration-line-through">$259</span>
-            </div>
-        </div>
-        <div class="product-item__bottom flx-between gap-2">
-            <div>
-                <span class="product-item__sales font-14 mb-2">1200 Sales</span>
-                <div class="d-flex align-items-center gap-1">
-                    <ul class="star-rating">
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                    </ul>
-                    <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                </div>
-            </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-        </div>
-    </div>
-    </div>
-            <div class="product-item shadow-sm">
-                <div class="product-item__thumb d-flex">
-                    <a href="product-details.html" class="link w-100">
-                        <img src="{{ asset('assets') }}/images/thumbs/product-img2.png" alt="" class="cover-img"> 
-                    </a>
-                    <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-                </div>
-                <div class="product-item__content">
-                    <h6 class="product-item__title">
-                        <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-                    </h6>
-                    <div class="product-item__info flx-between gap-2">
-                        <span class="product-item__author">
-                            by
-                            <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-                        </span>
-                        <div class="flx-align gap-2">
-                            <h6 class="product-item__price mb-0">$100</h6>
-                            <span class="product-item__prevPrice text-decoration-line-through">$130</span>
-                        </div>
-                    </div>
-                    <div class="product-item__bottom flx-between gap-2">
-                        <div>
-                            <span class="product-item__sales font-14 mb-2">952 Sales</span>
-                            <div class="d-flex align-items-center gap-1">
-                                <ul class="star-rating">
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                </ul>
-                                <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                            </div>
-                        </div>
-                        <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item shadow-sm">
-    <div class="product-item__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="{{ asset('assets') }}/images/thumbs/product-img3.png" alt="" class="cover-img"> 
-        </a>
-        <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-    </div>
-    <div class="product-item__content">
-        <h6 class="product-item__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-        </h6>
-        <div class="product-item__info flx-between gap-2">
-            <span class="product-item__author">
-                by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-            </span>
-            <div class="flx-align gap-2">
-                <h6 class="product-item__price mb-0">$160</h6>
-                <span class="product-item__prevPrice text-decoration-line-through">$000</span>
-            </div>
-        </div>
-        <div class="product-item__bottom flx-between gap-2">
-            <div>
-                <span class="product-item__sales font-14 mb-2">1000 Sales</span>
-                <div class="d-flex align-items-center gap-1">
-                    <ul class="star-rating">
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                    </ul>
-                    <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                </div>
-            </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-        </div>
-    </div>
-    </div>
-            <div class="product-item shadow-sm">
-                <div class="product-item__thumb d-flex">
-                    <a href="product-details.html" class="link w-100">
-                        <img src="{{ asset('assets') }}/images/thumbs/product-img4.png" alt="" class="cover-img"> 
-                    </a>
-                    <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-                </div>
-                <div class="product-item__content">
-                    <h6 class="product-item__title">
-                        <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-                    </h6>
-                    <div class="product-item__info flx-between gap-2">
-                        <span class="product-item__author">
-                            by
-                            <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-                        </span>
-                        <div class="flx-align gap-2">
-                            <h6 class="product-item__price mb-0">$250</h6>
-                            <span class="product-item__prevPrice text-decoration-line-through">$300</span>
-                        </div>
-                    </div>
-                    <div class="product-item__bottom flx-between gap-2">
-                        <div>
-                            <span class="product-item__sales font-14 mb-2">320 Sales</span>
-                            <div class="d-flex align-items-center gap-1">
-                                <ul class="star-rating">
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                </ul>
-                                <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                            </div>
-                        </div>
-                        <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-                    </div>
-                </div>
-            </div>
-            <div class="product-item shadow-sm">
-    <div class="product-item__thumb d-flex">
-        <a href="product-details.html" class="link w-100">
-            <img src="{{ asset('assets') }}/images/thumbs/product-img5.png" alt="" class="cover-img"> 
-        </a>
-        <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-    </div>
-    <div class="product-item__content">
-        <h6 class="product-item__title">
-            <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
-        </h6>
-        <div class="product-item__info flx-between gap-2">
-            <span class="product-item__author">
-                by
-                <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
-            </span>
-            <div class="flx-align gap-2">
-                <h6 class="product-item__price mb-0">$65</h6>
-                <span class="product-item__prevPrice text-decoration-line-through">$85</span>
-            </div>
-        </div>
-        <div class="product-item__bottom flx-between gap-2">
-            <div>
-                <span class="product-item__sales font-14 mb-2">1001 Sales</span>
-                <div class="d-flex align-items-center gap-1">
-                    <ul class="star-rating">
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                    </ul>
-                    <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                </div>
-            </div>
-            <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-        </div>
-    </div>
-    </div>
         </div>
     </div>
 </section>

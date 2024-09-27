@@ -15,49 +15,134 @@ class ProductController extends Controller
 {
     public function showAllProduct()
     {
-        // Mengambil semua kategori dengan jumlah produk terkait
-        $categories = ProductCategory::withCount('products')->get();
+        $categories = ProductCategory::withCount('products')
+            ->orderBy('products_count', 'desc')
+            ->take(10)
+            ->get();
 
-        // Mengambil produk dengan pagination (misalnya 9 produk per halaman)
-        $products = Product::withCount(['downloads', 'ratings']) // Tambahkan withCount untuk menghitung jumlah rating
-            ->withAvg('ratings', 'rating') // Mengambil rata-rata rating
+        $products = Product::withCount(['downloads', 'ratings'])
+            ->withAvg('ratings', 'rating')
             ->paginate(9);
 
-        // Data yang ingin dikirim ke view
-        $data = [
-            'title' => 'Product',
-            'products' => $products, // Mengirim data produk yang sudah dipaginate
-            'categories' => $categories, // Mengirim data kategori dan jumlah produk
+        $ratingCounts = [
+            'viewAll' => Product::count(), // Semua produk
+            'oneStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 1);
+            })->count(),
+            'twoStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 2);
+            })->count(),
+            'threeStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 3);
+            })->count(),
+            'fourStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 4);
+            })->count(),
+            'fiveStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 5);
+            })->count(),
         ];
 
-        // Menampilkan view dengan data yang dikirim
+        $data = [
+            'title' => 'Product',
+            'products' => $products,
+            'categories' => $categories,
+            'ratingCounts' => $ratingCounts, 
+        ];
+
         return view('Product.product', $data);
     }
 
     public function showProductByCategory($slug)
     {
-        // Mengambil kategori berdasarkan slug
         $category = ProductCategory::where('slug', $slug)->firstOrFail();
     
-        $products = Product::whereHas('categories', function($query) use ($category) {
-            $query->where('product_category.id', $category->id);
-        })
-        ->withCount(['downloads', 'ratings']) // Tambahkan withCount untuk menghitung jumlah rating
-        ->withAvg('ratings', 'rating') // Mengambil rata-rata rating
-        ->paginate(9);
+        $products = Product::whereHas('categories', function($query) use ($category) {$query->where('product_category.id', $category->id);})
+            ->withCount(['downloads', 'ratings'])
+            ->withAvg('ratings', 'rating')
+            ->paginate(9);
     
-        // Mengambil semua kategori dengan jumlah produk terkait
-        $categories = ProductCategory::withCount('products')->get();
+        $categories = ProductCategory::withCount('products')
+            ->orderBy('products_count', 'desc')
+            ->take(10)
+            ->get();
+
+        $ratingCounts = [
+            'viewAll' => Product::count(), // Semua produk
+            'oneStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 1);
+            })->count(),
+            'twoStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 2);
+            })->count(),
+            'threeStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 3);
+            })->count(),
+            'fourStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '>=', 4);
+            })->count(),
+            'fiveStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 5);
+            })->count(),
+        ];
     
-        // Data yang ingin dikirim ke view
         $data = [
             'title' => 'Product by Category: ' . $category->name,
-            'products' => $products, // Mengirim data produk yang sudah difilter berdasarkan kategori
-            'categories' => $categories, // Mengirim data kategori dan jumlah produk
-            'currentCategory' => $category, // Kategori yang sedang dipilih
+            'products' => $products,
+            'categories' => $categories,
+            'currentCategory' => $category,
+            'ratingCounts' => $ratingCounts, 
         ];
     
         // Menampilkan view dengan data yang dikirim
+        return view('Product.product', $data);
+    }
+
+    public function filterByRating($rating)
+    {
+        // Ambil 10 kategori dengan jumlah produk terbanyak
+        $categories = ProductCategory::withCount('products')
+            ->orderBy('products_count', 'desc')
+            ->take(10)
+            ->get();
+
+        // Ambil produk dengan rating yang sesuai (>= rating yang dipilih)
+        $products = Product::whereHas('ratings', function ($query) use ($rating) {
+                $query->where('rating', '>=', $rating);
+            })
+            ->withCount(['downloads', 'ratings']) // Hitung jumlah download dan rating
+            ->withAvg('ratings', 'rating') // Ambil rata-rata rating
+            ->paginate(9); // Pagination untuk produk
+
+        // Menghitung jumlah produk untuk setiap filter rating
+        $ratingCounts = [
+            'viewAll' => Product::count(), // Semua produk
+            'oneStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 1);
+            })->count(),
+            'twoStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 2);
+            })->count(),
+            'threeStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 3);
+            })->count(),
+            'fourStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 4);
+            })->count(),
+            'fiveStar' => Product::whereHas('ratings', function ($query) {
+                $query->where('rating', '=', 5);
+            })->count(),
+        ];
+
+        // Data yang ingin dikirim ke view
+        $data = [
+            'title' => 'Product',
+            'products' => $products, // Data produk yang difilter berdasarkan rating
+            'categories' => $categories, // Data kategori
+            'ratingCounts' => $ratingCounts, // Jumlah produk untuk setiap rating
+        ];
+
+        // Mengirim data ke view 'Product.product'
         return view('Product.product', $data);
     }
     
