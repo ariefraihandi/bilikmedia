@@ -1,9 +1,11 @@
 @extends('Index.app')
-
+@push('header-script')    
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>
+    {!! $socialAd->code !!}
+@endpush
 @section('content')
 <!-- ======================== Breadcrumb Two Section Start ===================== -->
 <section class="breadcrumb border-bottom p-0 d-block section-bg position-relative z-index-1">
-
     <div class="breadcrumb-two">
         <img src="{{ asset('assets') }}/images/gradients/breadcrumb-gradient-bg.png" alt="" class="bg--gradient">
         <div class="container container-two">
@@ -125,6 +127,7 @@
                                 <img src="{{ asset('uploads/products/' . $product->image) }}" alt="">
                             </div>
                             <div class="product-details__buttons flx-align justify-content-center gap-3">
+                                {!! $bannerAd->code !!}
                                 @if($product->live_preview_url !== $product->url_source)
                                     <a href="{{ $product->live_preview_url }}" target="_blank" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
                                         Live Preview
@@ -135,8 +138,8 @@
                                     Download
                                     <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
                                 </a>
+                                {!! $bannerAd->code !!}
                             </div>
-
                             <p class="product-details__desc">{{ $product->description }}</p>
 
                             <div class="product-details__item">
@@ -188,14 +191,13 @@
                             <span class="text">Quality verified</span>
                         </li>                      
                     </ul>
-                    
-                    <button type="button" class="btn btn-main d-flex w-100 justify-content-center align-items-center gap-2 pill px-sm-5 mt-32"
+                    {!! $smallAd->code !!}
+                    <button type="button" class="btn btn-main d-flex w-100 justify-content-center align-items-center gap-2 pill px-sm-5 mt-3 mb-3"
                         onclick="window.location.href='{{ route('generate.download.link', $product->id) }}'">
                         <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
                         Download
-                    </button>
-                
-
+                    </button>                
+                    {!! $petakAd->code !!}
 
                     <!-- Meta Attribute List Start -->
                     <ul class="meta-attribute">
@@ -217,7 +219,7 @@
                     
                     <!-- Meta Attribute List End -->
                 </div>
-
+                {!! $besarAd->code !!}
             </div>
         </div>
     </div>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\RequestDownload;
 use App\Models\Product;
 use App\Models\ProductCategory;
+use App\Models\Ad;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; // Import DB untuk transaksi
 use RealRashid\SweetAlert\Facades\Alert;
@@ -159,14 +160,17 @@ class ProductController extends Controller
         // Ambil kategori produk (jika ada lebih dari satu, ambil yang pertama)
         $category = $product->categories()->first();
     
-        // Hitung jumlah download untuk produk ini
-        $downloadCount = $product->downloads()->count();
-        $relatedProducts = Product::whereHas('categories', function ($query) use ($category) {
-            $query->where('category_id', $category->id);
-        })
-        ->where('id', '!=', $product->id) // Exclude current product
-        ->limit(9) // Batasi hasilnya hingga 9 produk
-        ->get();
+        $downloadCount      = $product->downloads()->count();
+        $relatedProducts    = Product::whereHas('categories', function ($query) use ($category) {$query->where('category_id', $category->id);})
+                              ->where('id', '!=', $product->id)
+                              ->limit(9)
+                              ->get();
+       
+        $bannerAd           = Ad::where('name', 'banner')->first();
+        $socialAd           = Ad::where('name', 'social')->first();
+        $smallAd           = Ad::where('name', 'small')->first();
+        $petakAd           = Ad::where('name', 'petak')->first();
+        $besarAd           = Ad::where('name', 'besar')->first();
     
     
         // Membuat array data untuk dikirim ke view
@@ -177,9 +181,14 @@ class ProductController extends Controller
             'category' => $category,       // Mengirim satu kategori yang dipilih
             'downloadCount' => $downloadCount,  // Mengirim jumlah download
             'additions' => $additions,    // Mengirim daftar additions yang dipisahkan
-            'tags' => $tags,    // Mengirim daftar additions yang dipisahkan
+            'tags' => $tags,
             'features' => $features,
-            'relatedProducts' => $relatedProducts
+            'relatedProducts' => $relatedProducts, 
+            'bannerAd'      => $bannerAd,     
+            'socialAd'      => $socialAd, 
+            'smallAd'      => $smallAd, 
+            'petakAd'      => $petakAd, 
+            'besarAd'      => $besarAd, 
         ];
     
         // Return view dan kirim data
