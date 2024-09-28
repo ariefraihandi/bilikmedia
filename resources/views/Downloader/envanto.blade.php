@@ -1,9 +1,49 @@
 @extends('Index.app')
 
-@section('content')
-<!-- ==================== Header End Here ==================== -->
+@push('header-script')    
+    {!! $socialAd->code !!}
+    <style>
+        .ad-banner {
+            position: fixed;
+            background-color: #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 14px;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            z-index: 1000;
+        }
 
-<!-- ============================== Banner Two Start =========================== -->
+        /* Iklan di sebelah kiri */
+        .ad-banner.left {
+            width: 160px;
+            height: 600px;
+            top: 100px;
+            left: 10px;
+        }
+
+        /* Iklan di sebelah kanan */
+        .ad-banner.right {
+            width: 160px;
+            height: 600px;
+            top: 100px;
+            right: 10px;
+        }
+
+        /* Sembunyikan iklan di layar kecil (mobile) */
+        @media (max-width: 768px) {
+            .ad-banner {
+                display: none;
+            }
+        }
+
+    </style>
+@endpush
+@section('content')
 <section class="banner-two position-relative z-index-1 overflow-hidden">
     <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient.png" alt="" class="bg--gradient white-version">
     <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient-dark.png" alt="" class="bg--gradient dark-version">
@@ -14,7 +54,6 @@
     
     <div class="container container-full">
         <div class="row gy-sm-5 gy-4 align-items-center">
-
             <div class="col-xl-3 col-sm-6 order-xl-0 order-2">
                 <div class="position-relative z-index-1">
                     <img src="{{ asset('assets') }}/images/shapes/dots-sm.png" alt="" class="dotted-img d-xl-block d-none white-version">
@@ -30,6 +69,10 @@
                     <p class="banner-two__desc text-center">
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
+                    {!! $bannerAd->code !!}
+                    <br>
+                    <br>
+                    <br>
                     @if (request('success'))
                         <div class="alert alert-success">
                             {{ request('success') }}
@@ -61,9 +104,11 @@
                         <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
                             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
                         </button>
-                    </form>
-                    
-                    <ul id="suggestionList" class="list-group" style="display:none;"></ul>                                    
+                    </form>                    
+                    <ul id="suggestionList" class="list-group" style="display:none;"></ul>     
+                    <br>
+                    <br>
+                    {!! $bannerAd->code !!}                               
                 </div>
             </div>
 
@@ -79,8 +124,7 @@
         </div>
     </div>
 </section>
-<!-- ============================== Banner Two End =========================== -->
-<!-- ============================ Popular Item Section Start =========================== -->
+
 <section class="popular-item-card-section padding-y-120 overflow-hidden">
 
   <img src="{{ asset('assets') }}/images/shapes/brush.png" alt="" class="element-brush">
@@ -150,9 +194,7 @@
         
     </div>
 </section>
-<!-- ============================ Popular Item Section End =========================== -->
 
-<!-- ====================== Newsletter Section Start ===================== -->
 <section class="newsletter position-relative z-index-1 overflow-hidden">
     <img src="{{ asset('assets') }}/images/gradients/newsletter-gradient-bg.png" alt="" class="bg--gradient">
 
@@ -181,10 +223,18 @@
         </div>
     </div>
 </section>
-<!-- ====================== Newsletter Section End ===================== -->
+
+<div class="ad-banner left">
+    {!! $sideAd->code !!}    
+</div>
+
+<div class="ad-banner right">
+    {!! $sideAd->code !!}
+</div>
 @endsection
 
 @push('footer-script')
+
 <script>
     const requestDownloadUrl = "{{ route('request.download') }}";
     
