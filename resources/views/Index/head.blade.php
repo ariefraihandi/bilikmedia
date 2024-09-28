@@ -72,6 +72,17 @@
         gtag('config', 'G-KTRYD66LYS');
     </script>
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-16627863910">
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'AW-16627863910');
+    </script>
+
     <!-- CSRF Token for Security -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
