@@ -1,11 +1,5 @@
 @extends('Index.app')
-@push('header-script')
-
-    <script>
-        gtag('event', 'form_submit', {    
-        });
-    </script>
-  
+@push('header-script')  
     <script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>
     {!! $socialAd->code !!}
     <style>

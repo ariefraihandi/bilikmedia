@@ -1,7 +1,6 @@
 @extends('Index.app')
 
-@push('header-script')    
-    {!! $socialAd->code !!}
+@push('header-script')       
     <style>
         .ad-banner {
             position: fixed;
