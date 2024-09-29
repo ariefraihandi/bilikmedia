@@ -1,5 +1,6 @@
 @extends('Index.app')
-@push('header-script')      
+@push('header-script')  
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>    
     {!! $socialAd->code !!}
     <style>
         .ad-banner {
@@ -113,12 +114,14 @@
                 if (secondsLeft <= 0) {
                     clearInterval(countdownTimer);
                     downloadButton.textContent = 'Download';
-                    downloadButton.disabled = false;
+                    downloadButton.disabled = false;             
 
-                    // Tambahkan event listener ke tombol download untuk mengarahkan ke URL unduhan
                     downloadButton.addEventListener('click', function (event) {
-                        event.preventDefault(); // Mencegah pengiriman form default
-                        window.open("{{ $product->url_download }}", '_blank'); // Buka URL download di tab baru
+                        event.preventDefault();
+
+                        window.open("{{ $product->url_download }}", '_blank'); 
+
+                        window.location.href = "{{ route('rating.show', $download->token) }}";
                     });
                 }
             }, 1000);
