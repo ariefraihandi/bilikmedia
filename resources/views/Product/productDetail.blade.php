@@ -1,8 +1,8 @@
 @extends('Index.app')
-@push('header-script')    
-<script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>
-    {!! $socialAd->code !!}
-@endpush
+{{-- @push('header-script')    
+
+
+@endpush --}}
 @section('content')
 <!-- ======================== Breadcrumb Two Section Start ===================== -->
 <section class="breadcrumb border-bottom p-0 d-block section-bg position-relative z-index-1">

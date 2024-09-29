@@ -67,8 +67,7 @@
                     <div class="cart-payment-card">
                         <form action="#">
                             <div class="row gy-4">
-                                <div class="col-lg-12">                                  
-                                    <!-- Tombol Download dengan hitung mundur -->
+                                <div class="col-lg-12">                                                                      
                                     <button id="downloadButton" class="btn btn-main btn-lg w-100 pill" disabled>Download in <span id="countdown">10</span> seconds</button>
                                 </div>                                
                             </div>
@@ -115,6 +114,12 @@
                     clearInterval(countdownTimer);
                     downloadButton.textContent = 'Download';
                     downloadButton.disabled = false;
+
+                    // Tambahkan event listener ke tombol download untuk mengarahkan ke URL unduhan
+                    downloadButton.addEventListener('click', function (event) {
+                        event.preventDefault(); // Mencegah pengiriman form default
+                        window.open("{{ $product->url_download }}", '_blank'); // Buka URL download di tab baru
+                    });
                 }
             }, 1000);
         }
@@ -125,6 +130,9 @@
                 isAdBlockActive = true; // Set flag AdBlock aktif
                 downloadButton.disabled = false; // Aktifkan tombol untuk refresh
                 downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh'; // Ubah teks tombol
+                downloadButton.addEventListener('click', function() {
+                    location.reload(); // Reload halaman jika AdBlock terdeteksi
+                });
             }
 
             function adBlockNotDetected() {
@@ -169,6 +177,5 @@
             }
         });
     });
-
 </script>
 @endpush
