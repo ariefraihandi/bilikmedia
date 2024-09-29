@@ -200,16 +200,22 @@ class ProductController extends Controller
         // Ambil input pencarian
         $search = $request->input('search');
 
+        // Hapus query string jika ada (misalnya ?epik=...)
+        $cleanedSearch = explode('?', $search)[0];
+
+        // Hapus bahasa dari URL jika ada (misalnya /ru/ atau /fr/)
+        $cleanedSearch = preg_replace('/\/[a-z]{2}\//', '/', $cleanedSearch);
+
         // Cari produk berdasarkan title atau url_source
-        $products = Product::where('title', 'LIKE', "%{$search}%")
-            ->orWhere('url_source', 'LIKE', "%{$search}%")
+        $products = Product::where('title', 'LIKE', "%{$cleanedSearch}%")
+            ->orWhere('url_source', 'LIKE', "%{$cleanedSearch}%")
             ->with('categories') // Ambil kategori produk
             ->limit(10) // Batasi hasil ke 10 item
             ->get();
 
         // Jika produk tidak ditemukan, cari berdasarkan kategori
         if ($products->isEmpty()) {
-            $categories = ProductCategory::where('name', 'LIKE', "%{$search}%")
+            $categories = ProductCategory::where('name', 'LIKE', "%{$cleanedSearch}%")
                 ->limit(10)
                 ->get();
 

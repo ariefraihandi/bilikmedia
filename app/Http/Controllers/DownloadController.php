@@ -230,42 +230,42 @@ class DownloadController extends Controller
             ],
         ]);
 
+        // Bersihkan URL sebelum pencarian dan penyimpanan
+        $envantoUrl = $request->input('envanto_url');
+        
+        // Hilangkan query string dari URL (misalnya ?epik=...)
+        $cleanedUrl = explode('?', $envantoUrl)[0];
+
+        // Hapus kode bahasa dari URL (misalnya /ru/ atau /fr/)
+        $cleanedUrl = preg_replace('/\/[a-z]{2}\//', '/', $cleanedUrl);
+
         // Cek apakah URL ada di dalam tabel produk berdasarkan url_source
-        $product = Product::where('url_source', $request->input('envanto_url'))->first();
+        $product = Product::where('url_source', $cleanedUrl)->first();
 
         // Jika produk ditemukan, arahkan ke halaman detail produk berdasarkan slug
         if ($product) {
             return redirect()->route('product.details', ['slug' => $product->slug]);
         }
 
-        // Jika tidak ditemukan, arahkan ke view 'requestEnvanto.blade.php'
-        return view('Downloader.requestEnvanto', [
-            'envanto_url' => $request->input('envanto_url') // Kirim URL ke view
-        ]);
-    }
-
-   
-    public function submitDownload(Request $request)
-    {
-        // Validasi input email dan url
+        // Validasi input email
         $request->validate([
             'email' => 'required|email',
-            'envanto_url' => 'required|url',
         ]);
-    
-        // Simpan request download ke database
+
+        // Simpan request download ke database dengan URL yang sudah dibersihkan
         RequestDownload::create([
             'email' => $request->input('email'),
-            'url' => $request->input('envanto_url'),
+            'url' => $cleanedUrl, // Simpan URL yang sudah dibersihkan
             'status' => 0, // Set status default ke 0
         ]);
-    
-        // Kirim email ke raihandi93@gmail.com dengan detail request
+
+        // Kirim email ke raihandi93@gmail.com dengan detail request (menggunakan URL yang sudah dibersihkan)
         Mail::to('raihandi93@gmail.com')->send(
-            new DownloadRequestNotification($request->input('email'), $request->input('envanto_url'))
+            new DownloadRequestNotification($request->input('email'), $cleanedUrl)
         );
-    
-        // Redirect ke halaman envanto downloader dengan pesan sukses di query string
+
+        // Redirect ke halaman downloader dengan pesan sukses
         return redirect()->route('envanto.downloader', ['success' => 'Download request submitted successfully']);
-    }    
+    }
+   
 }

@@ -69,14 +69,19 @@
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     {!! $bannerAd->code !!}
-                    <br>
-                    <br>
-                    <br>
+                 
+
+                    @if (session('success'))
+                        <div class="alert alert-success" id="alertSuccess">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     @if (request('success'))
                         <div class="alert alert-success">
                             {{ request('success') }}
                         </div>
-                    @endif
+                    @endif                  
                         
                         @if ($errors->any())
                             <div class="alert alert-danger">
@@ -87,6 +92,8 @@
                                 </ul>
                             </div>
                         @endif
+
+                    
                         
                     <!-- Form dan konten lain tetap di sini -->
                 
@@ -96,15 +103,24 @@
                             type="text" 
                             class="common-input common-input--lg pill shadow-sm" 
                             placeholder="Enter Envanto URL: exp. https://elements.envato.com/iphone-mockup-2UC6ZLK" 
-                            oninput="handleInputChange(this.value)" 
                             id="envantoInput"
                             name="envanto_url"
                         >
+                    
+                        <!-- Button download yang akan disembunyikan jika URL tidak ditemukan -->
                         <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
-                            <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
+                            <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download">
                         </button>
-                    </form>                    
-                    <ul id="suggestionList" class="list-group" style="display:none;"></ul>     
+                      
+                        <!-- New email input field, initially hidden -->
+                        <div id="emailContainer" style="display: none; margin-top: 10px;">
+                            <input type="email" class="common-input common-input--lg pill shadow-sm" placeholder="Enter your email" id="email" name="email">
+                            <br><br><br><br><br><br><br><br><br>  
+                            <button type="button" class="btn btn-main" id="requestDownloadButton" style="margin-top: 10px;">
+                                Request Download
+                            </button>
+                        </div>
+                    </form>                                                                                                   
                     <br>
                     <br>
                     {!! $bannerAd->code !!}                               
@@ -233,64 +249,71 @@
 @endsection
 
 @push('footer-script')
-
 <script>
     const requestDownloadUrl = "{{ route('request.download') }}";
-    
-    // Handle input changes and show suggestions
-    function handleInputChange(value) {
-        if (value.length > 0) {
-            fetch(`/search-products?search=${value}`)
-                .then(response => response.json())
-                .then(data => {
-                    let suggestionList = document.getElementById('suggestionList');
-                    suggestionList.innerHTML = '';
 
-                    if (data.products.length > 0) {
-                        // Show product suggestions
-                        data.products.forEach(product => {
-                            let li = document.createElement('li');
-                            li.classList.add('list-group-item');
-                            li.innerHTML = `<strong>${product.title}</strong> - Category: ${product.categories[0]?.name ?? 'No Category'}`;
-                            li.addEventListener('click', function() {
-                                window.location.href = `/product-details/${product.slug}`;
-                            });
-                            suggestionList.appendChild(li);
-                        });
-                    } else if (data.categories.length > 0) {
-                        // Show category suggestions if products are not found
-                        data.categories.forEach(category => {
-                            let li = document.createElement('li');
-                            li.classList.add('list-group-item');
-                            li.innerHTML = `<strong>Category: ${category.name}</strong>`;
-                            li.addEventListener('click', function() {
-                                window.location.href = `/product/category/${category.slug}`;
-                            });
-                            suggestionList.appendChild(li);
-                        });
-                    }
-
-                    suggestionList.style.display = 'block';
-                })
-                .catch(error => {
-                    console.error('Error during fetch:', error);
-                });
-        } else {
-            document.getElementById('suggestionList').style.display = 'none';
-        }
-    }
-
-    // Handle form submit only when download button is clicked
+    // Handle form submit when download button is clicked
     document.getElementById('downloadButton').addEventListener('click', function() {
-        let form = document.getElementById('envantoForm');
         let input = document.getElementById('envantoInput').value;
 
-        if (input.length > 0) {
-            form.submit(); // Submit the form when button is clicked and input has value
+        // Cek apakah input URL ada dalam database sebelum submit form
+        fetch(`/search-products?search=${input}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.products.length > 0) {
+                    // URL ditemukan, submit form untuk download
+                    document.getElementById('envantoForm').submit();
+                } else {
+                    // URL tidak ditemukan, sembunyikan tombol download dan munculkan input email
+                    document.getElementById('downloadButton').style.display = 'none';
+                    document.getElementById('emailContainer').style.display = 'block';
+
+                    // Tampilkan alert melalui JavaScript
+                    let alertSuccess = document.getElementById('alertSuccess');
+                    if (!alertSuccess) {
+                        let alertDiv = document.createElement('div');
+                        alertDiv.classList.add('alert', 'alert-success');
+                        alertDiv.id = 'alertSuccess';
+                        alertDiv.innerHTML = 'The element is not yet available in our database. Please enter your email address and wait 5-15 minutes for notification.';
+                        
+                        // Atur letak alert - gunakan `insertAdjacentElement` untuk memasukkannya di posisi tertentu
+                        document.getElementById('envantoForm').insertAdjacentElement('beforebegin', alertDiv);
+                    }
+                }
+            })
+            .catch(error => {
+                console.error('Error during fetch:', error);
+            });
+    });
+
+    // Handle form submit when "Request Download" button is clicked
+    document.getElementById('requestDownloadButton').addEventListener('click', function() {
+        let email = document.getElementById('emailInput').value;
+        let url = document.getElementById('envantoInput').value;
+
+        if (email && url) {
+            // Simulate form submission or send request via AJAX (if needed)
+            alert('Your download request has been submitted with email: ' + email);
         } else {
-            alert('Please enter a URL.');
+            alert('Please enter a valid email and URL.');
         }
     });
+
+    document.getElementById('requestDownloadButton').addEventListener('click', function(event) {
+        let requestDownloadButton = document.getElementById('requestDownloadButton');
+        let form = document.getElementById('envantoForm');
+
+        // Prevent default form submission to ensure button change happens first
+        event.preventDefault();
+
+        // Change text to "On Process..." and disable the button
+        requestDownloadButton.disabled = true;
+        requestDownloadButton.textContent = 'On Process...';
+
+        // Trigger form submission after the button is disabled and text is changed
+        form.submit();
+    });
+
 </script>
 
 @endpush
