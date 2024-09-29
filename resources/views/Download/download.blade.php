@@ -1,7 +1,6 @@
 @extends('Index.app')
 @push('header-script')  
-<script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>    
-    {!! $socialAd->code !!}
+    <script src="https://alwingulla.com/88/tag.min.js" data-zone="104084" async data-cfasync="false"></script>        
     <style>
         .ad-banner {
             position: fixed;
@@ -45,8 +44,6 @@
 @endpush
 
 @section('content')
-
-<!-- ==================== Header End Here ==================== -->
 
 <!-- ======================= Cart Payment Section Start ========================= -->
 <section class="cart-payment padding-y-10 overflow-hidden">

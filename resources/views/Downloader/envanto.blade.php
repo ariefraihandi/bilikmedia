@@ -111,8 +111,7 @@
                         <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
                             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download">
                         </button>
-                      
-                        <!-- New email input field, initially hidden -->
+                                              
                         <div id="emailContainer" style="display: none; margin-top: 10px;">
                             <input type="email" class="common-input common-input--lg pill shadow-sm" placeholder="Enter your email" id="email" name="email">
                             <br><br><br><br><br><br><br><br><br>  
@@ -252,7 +251,6 @@
 <script>
     const requestDownloadUrl = "{{ route('request.download') }}";
 
-    // Handle form submit when download button is clicked
     document.getElementById('downloadButton').addEventListener('click', function() {
         let input = document.getElementById('envantoInput').value;
 

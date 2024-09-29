@@ -70,8 +70,7 @@ class AuthController extends Controller
     }
 
     public function login(Request $request)
-    {
-        // Validasi input pengguna
+    {    
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
@@ -91,7 +90,7 @@ class AuthController extends Controller
         }
     }
 
-    // Logout user
+    // Logout userasas
     public function logout(Request $request)
     {
         // Logout pengguna
