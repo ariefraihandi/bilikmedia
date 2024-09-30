@@ -9,11 +9,13 @@ use App\Http\Controllers\HomeController;
 use App\Http\Middleware\RedirectIfAuthenticated; 
 use App\Http\Middleware\RedirectIfNotAuthenticated; 
 use App\Http\Controllers\AdController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\EnvantoDownloaderController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'viewSitemap']);
 
+Route::get('/blog/website-template', [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
 
 Route::get('/',                             [HomeController::class, 'index'])->name('index');
 
