@@ -13,6 +13,12 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\EnvantoDownloaderController;
 
+Route::get('/robots.txt', function () {
+    return response("User-agent: *\nDisallow: /admin", 200)
+              ->header('Content-Type', 'text/plain');
+});
+
+
 Route::get('/sitemap.xml', [SitemapController::class, 'viewSitemap']);
 
 Route::get('/blog/website-template',        [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
