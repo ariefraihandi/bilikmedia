@@ -15,7 +15,8 @@ use App\Http\Controllers\EnvantoDownloaderController;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'viewSitemap']);
 
-Route::get('/blog/website-template', [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
+Route::get('/blog/website-template',        [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
+Route::get('/blog/adobe-photoshop',         [BlogController::class, 'showAdobePhotoshop'])->name('blog.adobePhotoshop');
 
 Route::get('/',                             [HomeController::class, 'index'])->name('index');
 

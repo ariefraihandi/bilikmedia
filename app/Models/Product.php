@@ -10,11 +10,9 @@ use App\Http\Controllers\SitemapController; // Pastikan hanya import yang diperl
 class Product extends Model
 {
     use HasFactory;
-
-    // Tentukan tabel yang digunakan oleh model ini
+    
     protected $table = 'products';
 
-    // UUID sebagai primary key
     protected $keyType = 'string';
     public $incrementing = false; // Non-incrementing key
 

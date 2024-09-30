@@ -69,7 +69,6 @@
                                     <button id="downloadButton" class="btn btn-main btn-lg w-100 pill" disabled>Download in <span id="countdown">10</span> seconds</button>
                                 </div>                                
                             </div>
-                            
                         </form>
                     </div>
                     <br>
@@ -116,7 +115,9 @@
                     downloadButton.addEventListener('click', function (event) {
                         event.preventDefault();
 
-                        window.open("{{ $product->url_download }}", '_blank'); 
+                        
+                        window.open("{{ route('blog.websiteTemp') }}?data={{ $download->token }}", '_blank');
+
 
                         window.location.href = "{{ route('rating.show', $download->token) }}";
                     });

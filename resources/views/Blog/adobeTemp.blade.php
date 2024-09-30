@@ -1,7 +1,6 @@
 @extends('Index.app')
-@push('header-script')      
-{!! $popAd->code !!}  
-{!! $socialAd->code !!}  
+@push('header-script')   
+{!! $monetagAd->code !!}     
     <style>
         .ad-banner {
             position: fixed;
@@ -197,17 +196,16 @@
                 </div>
             </div>
         </div>
-     
-        <a href="{{ route('blog.adobePhotoshop') }}?data={{ $token }}" id="continueDownload" target="_blank" style="display:none" class="btn btn-primary align-center"> 
+       
+        <a href=" {{$product->url_download}}" id="continueDownload" style="display:none" class="btn btn-primary align-center"> 
             Continue Download
             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download Icon">
-        </a>  
-            
+        </a>      
        
     </div>
 </section>
 <div class="ad-banner left">
-    {!! $sideAd->code !!}          
+    {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
@@ -217,70 +215,72 @@
 
 @push('footer-script')
 <script>
-    let countdown = 10; // Set countdown time (in seconds)
-    const verifyBtn = document.getElementById('verifydownload');
-    const continueDownloadBtn = document.getElementById('continueDownload');
+   let countdown = 10; // Set countdown time (in seconds)
+const verifyBtn = document.getElementById('verifydownload');
+const continueDownloadBtn = document.getElementById('continueDownload');
 
-    // Function to handle countdown
-    function startCountdown() {
-        verifyBtn.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default link behavior
+// Function to handle countdown
+function startCountdown() {
+    verifyBtn.addEventListener('click', function(e) {
+        e.preventDefault(); // Prevent default link behavior
 
-            // Start countdown and disable the verify button
-            verifyBtn.innerHTML = `Waiting ${countdown} seconds`;
-            verifyBtn.style.pointerEvents = "none"; // Disable further clicks during countdown
+        // Start countdown and disable the verify button
+        verifyBtn.innerHTML = `Waiting ${countdown} seconds`;
+        verifyBtn.style.pointerEvents = "none"; // Disable further clicks during countdown
 
-            // Start the countdown
-            const timer = setInterval(function() {
-                if (countdown > 0) {
-                    verifyBtn.innerHTML = `Waiting ${countdown} seconds`; // Update countdown text
-                    countdown--;
-                } else {
-                    clearInterval(timer); // Stop the timer
-                    verifyBtn.innerHTML = "Scroll down to continue download"; // Update the verify button text
-                    continueDownloadBtn.style.display = 'block'; // Show "Continue Download" button
-                }
-            }, 1000); // Countdown interval set to 1 second (1000 ms)
-        });
-    }
-
-    // Event listener for the "Continue Download" button
-    continueDownloadBtn.addEventListener('click', function(e) {
-        // Open the download link in a new tab
-        e.preventDefault();
-        window.open(this.href, '_blank');
-
-        // Redirect the current page to the desired URL
-        window.location.href = "https://noohapou.com/4/6533224";
-    });
-
-    // AdBlock detection (optional)
-    function adBlockDetected() {
-        verifyBtn.innerHTML = "AdBlock detected. Please disable AdBlock to continue.";
-        verifyBtn.classList.add("disabled");
-        verifyBtn.style.pointerEvents = "none"; // Disable the button if AdBlock is detected
-    }
-
-    // Example function when no AdBlock is detected
-    function adBlockNotDetected() {
-        startCountdown(); // Call the function to start the countdown
-    }
-
-    // Detect AdBlock
-    (function() {
-        var bait = document.createElement('iframe');
-        bait.style = 'width: 1px; height: 1px; position: absolute; left: -9999px; border: none;';
-        bait.src = "https://ads.fakeurl.com"; // Fake ad URL for detection
-        document.body.appendChild(bait);
-
-        setTimeout(function() {
-            if (!bait || bait.offsetParent === null || bait.offsetHeight === 0 || bait.offsetWidth === 0) {
-                adBlockDetected(); // If iframe is blocked, AdBlock is detected
+        // Start the countdown
+        const timer = setInterval(function() {
+            if (countdown > 0) {
+                verifyBtn.innerHTML = `Waiting ${countdown} seconds`; // Update countdown text
+                countdown--;
             } else {
-                adBlockNotDetected(); // If iframe is not blocked, proceed with countdown
+                clearInterval(timer); // Stop the timer
+                verifyBtn.innerHTML = "Scroll down to continue download"; // Update the verify button text
+                continueDownloadBtn.style.display = 'block'; // Show "Continue Download" button
             }
-            document.body.removeChild(bait); // Remove the iframe after detection
-        }, 100);
-    })();
+        }, 1000); // Countdown interval set to 1 second (1000 ms)
+    });
+}
+
+// Event listener for the "Continue Download" button
+continueDownloadBtn.addEventListener('click', function(e) {
+    e.preventDefault(); // Prevent default behavior
+
+    // Open the download link in a new tab
+    window.open(this.href, '_blank');
+
+    // Redirect the current page to the desired URL
+    window.location.href = "https://noohapou.com/4/6533224";
+});
+
+// AdBlock detection (optional)
+function adBlockDetected() {
+    verifyBtn.innerHTML = "AdBlock detected. Please disable AdBlock to continue.";
+    verifyBtn.classList.add("disabled");
+    verifyBtn.style.pointerEvents = "none"; // Disable the button if AdBlock is detected
+}
+
+// Example function when no AdBlock is detected
+function adBlockNotDetected() {
+    startCountdown(); // Call the function to start the countdown
+}
+
+// Detect AdBlock
+(function() {
+    var bait = document.createElement('iframe');
+    bait.style = 'width: 1px; height: 1px; position: absolute; left: -9999px; border: none;';
+    bait.src = "https://ads.fakeurl.com"; // Fake ad URL for detection
+    document.body.appendChild(bait);
+
+    setTimeout(function() {
+        if (!bait || bait.offsetParent === null || bait.offsetHeight === 0 || bait.offsetWidth === 0) {
+            adBlockDetected(); // If iframe is blocked, AdBlock is detected
+        } else {
+            adBlockNotDetected(); // If iframe is not blocked, proceed with countdown
+        }
+        document.body.removeChild(bait); // Remove the iframe after detection
+    }, 100);
+})();
+
 </script>
 @endpush
