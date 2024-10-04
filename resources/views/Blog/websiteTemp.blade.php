@@ -67,11 +67,11 @@
             
             <div class="blog-details-top__info flx-align gap-3 mb-4">
                 <div class="blog-details-top__thumb flx-align gap-2">
-                    <img src="{{ asset('assets') }}/images/logo/favicon.png" alt="">
+                    <img src="{{ asset('assets') }}/images/logo/favicon.png" alt="logo">
                     <span class="text-heading fw-500">Bilik Media</span>
                 </div>
                 <span class="blog-details-top__date flx-align gap-2">
-                    <img src="{{ asset('assets') }}/images/icons/clock.svg" alt="">
+                    <img src="{{ asset('assets') }}/images/icons/clock.svg" alt="clock">
                     25 Jan 2024
                 </span>
             </div>

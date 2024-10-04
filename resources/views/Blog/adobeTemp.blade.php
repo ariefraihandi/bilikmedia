@@ -58,7 +58,7 @@
         <div class="d-flex justify-content-center">
             <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center"> 
                 Please Verify to Continue Download
-                <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download Icon">
+                <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download-Icon">
             </a>            
         </div>
        
@@ -66,11 +66,11 @@
             
             <div class="blog-details-top__info flx-align gap-3 mb-4">
                 <div class="blog-details-top__thumb flx-align gap-2">
-                    <img src="{{ asset('assets') }}/images/logo/favicon.png" alt="">
+                    <img src="{{ asset('assets') }}/images/logo/favicon.png" alt="logo-bilik-media">
                     <span class="text-heading fw-500">Bilik Media</span>
                 </div>
                 <span class="blog-details-top__date flx-align gap-2">
-                    <img src="{{ asset('assets') }}/images/icons/clock.svg" alt="">
+                    <img src="{{ asset('assets') }}/images/icons/clock.svg" alt="clock">
                     25 Jan 2024
                 </span>
             </div>
@@ -199,7 +199,7 @@
        
         <a href=" {{$product->url_download}}" id="continueDownload" style="display:none" class="btn btn-primary align-center"> 
             Continue Download
-            <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download Icon">
+            <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download-Icon">
         </a>      
        
     </div>

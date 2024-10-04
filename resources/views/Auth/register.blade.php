@@ -31,9 +31,9 @@
             </div>
             
             <div class="account-content">
-                <a href="index.html" class="logo mb-64">  
-                    <img src="{{ asset('assets') }}/images/logo/logo.png" alt="" class="white-version">
-                    <img src="{{ asset('assets') }}/images/logo/white-logo-two.png" alt="" class="dark-version">
+                <a href="{{ route('index') }}" class="logo mb-64">  
+                    <img src="{{ asset('assets') }}/images/logo/logo.png" alt="logo" class="white-version">
+                    <img src="{{ asset('assets') }}/images/logo/white-logo-two.png" alt="logo" class="dark-version">
                 </a>
                 <h4 class="account-content__title mb-48 text-capitalize">Create A Free Account</h4>
 
@@ -44,7 +44,7 @@
                             <label for="name" class="form-label mb-2 font-18 font-heading fw-600">Full Name</label>
                             <div class="position-relative">
                                 <input type="text" class="common-input common-input--bg common-input--withIcon" id="name" name="name" placeholder="Your full name" required>
-                                <span class="input-icon"><img src="{{ asset('assets') }}/images/icons/user-icon.svg" alt=""></span>
+                                <span class="input-icon"><img src="{{ asset('assets') }}/images/icons/user-icon.svg" alt="user"></span>
                             </div>
                         </div>
                 
@@ -52,7 +52,7 @@
                             <label for="email" class="form-label mb-2 font-18 font-heading fw-600">Email</label>
                             <div class="position-relative">
                                 <input type="email" class="common-input common-input--bg common-input--withIcon" id="email" name="email" placeholder="infoname@mail.com" required>
-                                <span class="input-icon"><img src="{{ asset('assets') }}/images/icons/envelope-icon.svg" alt=""></span>
+                                <span class="input-icon"><img src="{{ asset('assets') }}/images/icons/envelope-icon.svg" alt="envelope"></span>
                             </div>
                         </div>
                 
@@ -60,7 +60,7 @@
                             <label for="password" class="form-label mb-2 font-18 font-heading fw-600">Password</label>
                             <div class="position-relative">
                                 <input type="password" class="common-input common-input--bg common-input--withIcon" id="password" name="password" placeholder="6+ characters, 1 Capital letter" required>
-                                <span class="input-icon toggle-password cursor-pointer" id="#password"><img src="{{ asset('assets') }}/images/icons/lock-icon.svg" alt=""></span>
+                                <span class="input-icon toggle-password cursor-pointer" id="#password"><img src="{{ asset('assets') }}/images/icons/lock-icon.svg" alt="lock"></span>
                             </div>
                         </div>
                 
@@ -68,7 +68,7 @@
                             <label for="password_confirmation" class="form-label mb-2 font-18 font-heading fw-600">Confirm Password</label>
                             <div class="position-relative">
                                 <input type="password" class="common-input common-input--bg common-input--withIcon" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
-                                <span class="input-icon toggle-password cursor-pointer" id="#password_confirmation"><img src="{{ asset('assets') }}/images/icons/lock-icon.svg" alt=""></span>
+                                <span class="input-icon toggle-password cursor-pointer" id="#password_confirmation"><img src="{{ asset('assets') }}/images/icons/lock-icon.svg" alt="lock"></span>
                             </div>
                         </div>
                 

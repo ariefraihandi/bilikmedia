@@ -1,7 +1,7 @@
 <div class="mobile-menu d-lg-none d-block">
     <button type="button" class="close-button"> <i class="las la-times"></i> </button>
     <div class="mobile-menu__inner">
-        <a href="index.html" class="mobile-menu__logo">
+        <a href="/" class="mobile-menu__logo">
             <img src="{{ asset('assets') }}/images/logo/logo.png" alt="Logo" class="white-version">
             <img src="{{ asset('assets') }}/images/logo/white-logo-two.png" alt="Logo" class="dark-version">
         </a>
@@ -10,75 +10,142 @@
                 <li class="nav-menu__item">
                     <a href="/" class="nav-menu__link">Home</a>
                 </li>
-                <li class="nav-menu__item has-submenu">
-                    <a href="javascript:void(0)" class="nav-menu__link">Products</a>
-                    <ul class="nav-submenu">
-                        <li class="nav-submenu__item">
-                            <a href="all-product.html" class="nav-submenu__link"> All Products</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="product-details.html" class="nav-submenu__link"> Product Details</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-menu__item has-submenu">
-                    <a href="javascript:void(0)" class="nav-menu__link">Pages</a>
-                    <ul class="nav-submenu">
-                        <li class="nav-submenu__item">
-                            <a href="profile.html" class="nav-submenu__link"> Profile</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="cart.html" class="nav-submenu__link"> Shopping Cart</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="cart-personal.html" class="nav-submenu__link"> Mailing Address</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="cart-payment.html" class="nav-submenu__link"> Payment Method</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="cart-thank-you.html" class="nav-submenu__link"> Preview Order</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="dashboard.html" class="nav-submenu__link"> Dashboard</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-menu__item has-submenu">
-                    <a href="javascript:void(0)" class="nav-menu__link">Blog</a>
-                    <ul class="nav-submenu">
-                        <li class="nav-submenu__item">
-                            <a href="blog.html" class="nav-submenu__link"> Blog</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details.html" class="nav-submenu__link"> Blog Details</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Blog Details Sidebar</a>
-                        </li>
-                    </ul>
-                </li>
                 <li class="nav-menu__item">
-                    <a href="contact.html" class="nav-menu__link">Contact</a>
+                    <a href="{{ route('showAllProduct') }}" class="nav-menu__link">Product</a>
                 </li>
-            </ul>
-            <div class="header-right__inner d-lg-none my-3 gap-1 d-flex flx-align">                    
-                <a href="register.html" class="btn btn-main pill">
-                    <span class="icon-left icon"> 
-                        <img src="{{ asset('assets') }}/images/icons/user.svg" alt="">
-                    </span>Create Account  
-                </a>
-                <div class="language-select flx-align select-has-icon">
-                    <img src="{{ asset('assets') }}/images/icons/globe.svg" alt="" class="globe-icon white-version">
-                    <img src="{{ asset('assets') }}/images/icons/globe-white.svg" alt="" class="globe-icon dark-version">
-                    <select class="select py-0 ps-2 border-0 fw-500">
-                        <option value="1">Eng</option>
-                        <option value="2">Bn</option>
-                        <option value="3">Eur</option>
-                        <option value="4">Urd</option>
-                    </select>
-                </div>
-            </div>
+                <li class="nav-menu__item has-submenu">
+                    <a href="javascript:void(0)" class="nav-menu__link">Tools</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('envanto.downloader') }}" class="nav-submenu__link">Envato Downloader</a>
+                        </li>                            
+                        {{-- <li class="nav-submenu__item">
+                            <a href="product-details.html" class="nav-submenu__link"> Freepik Downloader</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="all-product.html" class="nav-submenu__link"> Motionarray Downloader</a>
+                        </li>                                                --}}
+                    </ul>
+                </li>
+                <li class="nav-menu__item has-submenu">
+                    <a href="javascript:void(0)" class="nav-menu__link">Graphic</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'adobe-photoshop']) }}" class="nav-submenu__link"> Adobe Photoshop</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'after-effects']) }}" class="nav-submenu__link"> After Effects</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'adobe-illustrator']) }}" class="nav-submenu__link"> Adobe Illustrator</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'adobe-indesign']) }}" class="nav-submenu__link"> Adobe InDesign</a>
+                        </li>
+                        {{-- <li class="nav-submenu__item">
+                            <a href="product-details.html" class="nav-submenu__link"> Adobe XD</a>
+                        </li>                            
+                        <li class="nav-submenu__item">
+                            <a href="product-details.html" class="nav-submenu__link"> Figma</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="product-details.html" class="nav-submenu__link"> Sketch</a>
+                        </li> --}}
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'canva']) }}" class="nav-submenu__link"> Canva</a>
+                        </li>
+                        {{-- <li class="nav-submenu__item">
+                            <a href="product-details.html" class="nav-submenu__link"> Microsoft Word</a>
+                        </li>                         --}}
+                    </ul>
+                </li>
+                <li class="nav-menu__item has-submenu">
+                    <a href="{{ route('showProductByCategory', ['slug' => 'website-template']) }}" class="nav-menu__link">Website</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'admin-template']) }}" class="nav-submenu__link"> Admin Template</a>
+                        </li>                            
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'website-template']) }}" class="nav-submenu__link"> Website Template</a>
+                        </li>                                                                          
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'wordpress']) }}" class="nav-submenu__link"> Wordpress</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'woocommerce']) }}" class="nav-submenu__link"> WooCommerce</a>
+                        </li>
+                       
+                        <li class="nav-submenu__item">
+                            <a href="cart-thank-you.html" class="nav-submenu__link"> Portfolio</a>
+                        </li>                        
+                    </ul>
+                </li>                    
+                <li class="nav-menu__item has-submenu">
+                    <a href="{{ route('showProductByCategory', ['slug' => 'video-templates']) }}" class="nav-menu__link">Video</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'stock-footage']) }}" class="nav-submenu__link">Stock Footage</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-menu__item has-submenu">
+                    <a href="{{ route('showProductByCategory', ['slug' => 'presentation-templates']) }}" class="nav-menu__link">Presentation Templates</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'power-point']) }}" class="nav-submenu__link">Power Point</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-menu__item has-submenu">
+                    <a href="{{ route('showProductByCategory', ['slug' => 'sound']) }}" class="nav-menu__link">Sound</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'music']) }}" class="nav-submenu__link"> Music</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'royalty-free-music']) }}" class="nav-submenu__link"> Royalty Free Music</a>
+                        </li>
+                        {{-- <li class="nav-submenu__item">
+                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Domestic Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog.html" class="nav-submenu__link"> Human Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog-details.html" class="nav-submenu__link"> Urban Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Nature Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog.html" class="nav-submenu__link"> Futuristic Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog-details.html" class="nav-submenu__link"> Interface Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Cartoon Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog.html" class="nav-submenu__link"> Industrial Sounds</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog-details.html" class="nav-submenu__link"> Sound Packs</a>
+                        </li>
+                        <li class="nav-submenu__item">
+                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Miscellaneous</a>
+                        </li> --}}
+                    </ul>
+                </li>                                                                             
+                <li class="nav-menu__item has-submenu">
+                    <a href="{{ route('showProductByCategory', ['slug' => 'add-ons']) }}" class="nav-menu__link">Add Ons</a>
+                    <ul class="nav-submenu">
+                        <li class="nav-submenu__item">
+                            <a href="{{ route('showProductByCategory', ['slug' => 'adobe-illustrator']) }}" class="nav-submenu__link"> Adobe Illustrator</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>            
         </div>
     </div>
 </div>

@@ -5,12 +5,12 @@
             <i class="las la-bars"></i>
         </button>
         <button type="button" class="icon-btn arrow-icon text-heading bg-gray-seven flx-center">
-            <img src="{{ asset('assets') }}/images/icons/angle-right.svg" alt="">
+            <img src="{{ asset('assets') }}/images/icons/angle-right.svg" alt="angle">
         </button>
         <form action="#" class="search-input d-sm-block d-none">
             <span class="icon">
-                <img src="{{ asset('assets') }}/images/icons/search-dark.svg" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/icons/search-dark-white.svg" alt="" class="dark-version">
+                <img src="{{ asset('assets') }}/images/icons/search-dark.svg" alt="search" class="white-version">
+                <img src="{{ asset('assets') }}/images/icons/search-dark-white.svg" alt="search" class="dark-version">
             </span>
             <input type="text" class="common-input common-input--md common-input--bg pill w-100" placeholder="Search here...">
         </form>

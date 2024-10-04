@@ -1,11 +1,11 @@
 <div class="dashboard-sidebar">
     <button type="button" class="dashboard-sidebar__close d-lg-none d-flex"><i class="las la-times"></i></button>
     <div class="dashboard-sidebar__inner">
-        <a href="index.html" class="logo mb-48">
+        <a href="#" class="logo mb-48">
             <img src="{{ asset('assets') }}/images/logo/logo.png" alt="" class="white-version">
             <img src="{{ asset('assets') }}/images/logo/white-logo-two.png" alt="" class="dark-version">
         </a>
-        <a href="index.html" class="logo favicon mb-48">
+        <a href="#" class="logo favicon mb-48">
             <img src="{{ asset('assets') }}/images/logo/favicon.png" alt="" width="50px">
         </a>
 
