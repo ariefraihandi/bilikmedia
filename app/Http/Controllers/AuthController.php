@@ -77,7 +77,7 @@ class AuthController extends Controller
                 'username' => $request->username,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'role' => 1, // Set role menjadi 1
+                'role' => 2, 
                 'status' => 0, // Set status menjadi 0
                 'reffered_by' => $refferedBy, // Simpan reff ke kolom reffered_by
             ]);
