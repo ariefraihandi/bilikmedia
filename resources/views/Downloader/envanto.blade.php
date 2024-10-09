@@ -62,15 +62,14 @@
                 </div>
             </div>
 
-            <div class="col-xl-6">
-                <div class="banner-two__content">
-                    <h2 class="banner-two__title text-center mb-3">Envato Downloader</h2>
-                    <p class="banner-two__desc text-center">
+            <div class="col-xl-6 d-flex justify-content-center align-items-center flex-column">
+                <div class="banner-two__content text-center">
+                    <h2 class="banner-two__title mb-3">Envato Downloader</h2>
+                    <p class="banner-two__desc">
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
-                    {!! $bannerAd->code !!}
-                 
-
+                    <!-- Banner Ad -->
+                    {!! $bannerAd->code !!}                 
                     @if (session('success'))
                         <div class="alert alert-success" id="alertSuccess">
                             {{ session('success') }}
@@ -91,11 +90,7 @@
                                     @endforeach
                                 </ul>
                             </div>
-                        @endif
-
-                    
-                        
-                    <!-- Form dan konten lain tetap di sini -->
+                        @endif                    
                 
                     <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
                         @csrf
@@ -111,18 +106,7 @@
                         <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
                             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download">
                         </button>
-                                              
-                        <div id="emailContainer" style="display: none; margin-top: 10px;">
-                            <input type="email" class="common-input common-input--lg pill shadow-sm" placeholder="Enter your email" id="email" name="email">
-                            <br><br><br><br><br><br><br><br><br>  
-                            <button type="button" class="btn btn-main" id="requestDownloadButton" style="margin-top: 10px;">
-                                Request Download
-                            </button>
-                        </div>
-                    </form>                                                                                                   
-                    <br>
-                    <br>
-                    {!! $bannerAd->code !!}                               
+                    </form>                                                                                                                                                
                 </div>
             </div>
 
@@ -248,33 +232,28 @@
 @endsection
 
 @push('footer-script')
-<script>
+{{-- <script>
     const requestDownloadUrl = "{{ route('request.download') }}";
 
     document.getElementById('downloadButton').addEventListener('click', function() {
         let input = document.getElementById('envantoInput').value;
 
-        // Cek apakah input URL ada dalam database sebelum submit form
         fetch(`/search-products?search=${input}`)
             .then(response => response.json())
             .then(data => {
                 if (data.products.length > 0) {
-                    // URL ditemukan, submit form untuk download
                     document.getElementById('envantoForm').submit();
                 } else {
-                    // URL tidak ditemukan, sembunyikan tombol download dan munculkan input email
                     document.getElementById('downloadButton').style.display = 'none';
                     document.getElementById('emailContainer').style.display = 'block';
 
-                    // Tampilkan alert melalui JavaScript
                     let alertSuccess = document.getElementById('alertSuccess');
                     if (!alertSuccess) {
                         let alertDiv = document.createElement('div');
                         alertDiv.classList.add('alert', 'alert-success');
                         alertDiv.id = 'alertSuccess';
                         alertDiv.innerHTML = 'The element is not yet available in our database. Please enter your email address and wait 5-15 minutes for notification.';
-                        
-                        // Atur letak alert - gunakan `insertAdjacentElement` untuk memasukkannya di posisi tertentu
+                                                
                         document.getElementById('envantoForm').insertAdjacentElement('beforebegin', alertDiv);
                     }
                 }
@@ -312,6 +291,104 @@
         form.submit();
     });
 
+</script> --}}
+
+<script>
+    const userCredit = {{ $userDetail ? $userDetail->kredit : 0 }};
+    const isUserLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; // Check if the user is logged in
+
+    document.getElementById('downloadButton').addEventListener('click', function () {
+        // Disable the download button to prevent double submission
+        const downloadButton = this;
+        downloadButton.disabled = true;
+        downloadButton.innerHTML = '...'; // Optional: Change button text to show processing
+
+        // Check if the user has enough credit
+        if (userCredit >= 2) {
+            // If the user has enough credits, proceed to check the product availability
+            let input = document.getElementById('envantoInput').value;
+
+            fetch(`/search-products?search=${input}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.products.length > 0) {
+                        // Show the SweetAlert for processing
+                        Swal.fire({
+                            title: 'Processing',
+                            text: 'Please wait while we process your request...',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            didOpen: () => {
+                                Swal.showLoading(); // Show a loading spinner
+                            }
+                        });
+
+                        // Submit the form after showing the alert
+                        document.getElementById('envantoForm').submit();
+                    } else {
+                        // Show the SweetAlert for processing
+                        Swal.fire({
+                            title: 'Processing',
+                            text: 'Please wait while we process your request...',
+                            icon: 'info',
+                            allowOutsideClick: false,
+                            showConfirmButton: false,
+                            didOpen: () => {
+                                Swal.showLoading(); // Show a loading spinner
+                            }
+                        });
+
+                        // Submit the form after showing the alert
+                        document.getElementById('envantoForm').submit();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during fetch:', error);
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'An error occurred while checking the product. Please try again later.',
+                        icon: 'error',
+                        confirmButtonText: 'OK'
+                    });
+
+                    // Re-enable the button in case of an error
+                    downloadButton.disabled = false;
+                    downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">'; // Reset button text/icon
+                });
+        } else {
+            // If the user does not have enough credits, show a SweetAlert with different messages based on login status
+            if (isUserLoggedIn === 'false') {
+                // User is not logged in
+                Swal.fire({
+                    title: 'You Don\'t Have Enough Credits',
+                    text: 'Claim your FREE credit by registering to BILIK MEDIA.',
+                    icon: 'warning',
+                    confirmButtonText: 'Register Now'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/auth/register';
+                    }
+                });
+            } else {
+                Swal.fire({
+                    title: 'No Credits Available',
+                    text: 'Claim your FREE credit.',
+                    icon: 'info',
+                    confirmButtonText: 'Claim'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = '/credit';
+                    }
+                });
+            }
+
+            // Re-enable the button since no credit deduction occurs
+            downloadButton.disabled = false;
+            downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">'; // Reset button text/icon
+        }
+    });
 </script>
+
 
 @endpush

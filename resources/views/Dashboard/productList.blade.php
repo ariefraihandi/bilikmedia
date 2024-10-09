@@ -22,16 +22,16 @@
     <div class="dashboard-body__item-wrapper">
         <div class="dashboard-body__item">
             <div class="table-responsive">
-                <table class="table style-two" id="product-table"  style="width: 100%; table-layout: fixed;">
+                <table  id="product-table" class="table text-body mt--24">            
                     <thead>
                         <tr>
-                            <th style="width: 5%;">#</th>
-                            <th style="width: 25%;">Product</th>
-                            <th style="width: 30%;">Description</th>
-                            <th style="width: 15%;">Categories</th>
-                            <th style="width: 10%;">URL Source</th>
-                            <th style="width: 10%;">URL Download</th>
-                            <th style="width: 10%;">Live Preview URL</th>
+                            <th>#</th>
+                            <th>Product</th>
+                            <th>Description</th>
+                            <th>Categories</th>
+                            <th>URL Source</th>
+                            <th>URL Download</th>
+                            <th>Live Preview URL</th>                        
                         </tr>
                     </thead>
                 </table>

@@ -97,86 +97,60 @@
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
-                        <a href="{{ route('showProductByCategory', ['slug' => 'presentation-templates']) }}" class="nav-menu__link">Presentation Templates</a>
+                        <a href="{{ route('showProductByCategory', ['slug' => 'presentation-templates']) }}" class="nav-menu__link">Presentation</a>
                         <ul class="nav-submenu">
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'power-point']) }}" class="nav-submenu__link">Power Point</a>
                             </li>
                         </ul>
-                    </li>
-                    <li class="nav-menu__item has-submenu">
-                        <a href="{{ route('showProductByCategory', ['slug' => 'sound']) }}" class="nav-menu__link">Sound</a>
-                        <ul class="nav-submenu">
-                            <li class="nav-submenu__item">
-                                <a href="{{ route('showProductByCategory', ['slug' => 'music']) }}" class="nav-submenu__link"> Music</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="{{ route('showProductByCategory', ['slug' => 'royalty-free-music']) }}" class="nav-submenu__link"> Royalty Free Music</a>
-                            </li>
-                            {{-- <li class="nav-submenu__item">
-                                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Domestic Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog.html" class="nav-submenu__link"> Human Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog-details.html" class="nav-submenu__link"> Urban Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Nature Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog.html" class="nav-submenu__link"> Futuristic Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog-details.html" class="nav-submenu__link"> Interface Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Cartoon Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog.html" class="nav-submenu__link"> Industrial Sounds</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog-details.html" class="nav-submenu__link"> Sound Packs</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="blog-details-sidebar.html" class="nav-submenu__link"> Miscellaneous</a>
-                            </li> --}}
-                        </ul>
-                    </li>                                                                             
-                    <li class="nav-menu__item has-submenu">
-                        <a href="{{ route('showProductByCategory', ['slug' => 'add-ons']) }}" class="nav-menu__link">Add Ons</a>
-                        <ul class="nav-submenu">
-                            <li class="nav-submenu__item">
-                                <a href="{{ route('showProductByCategory', ['slug' => 'adobe-illustrator']) }}" class="nav-submenu__link"> Adobe Illustrator</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                    </li>                                                                                                        
+                </ul>               
             </div>
             <!-- Menu End  -->
 
             <!-- Header Right start -->
-            <div class="header-right flx-align">
-                    <!-- <button type="button" class="header-right__button"><img src="{{ asset('assets') }}/images/icons/sun.svg" alt=""></button> -->
-                    <!-- Light Dark Mode -->
+            <div class="header-right flx-align">    
                 <div class="theme-switch-wrapper position-relative">
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" class="d-none" id="checkbox">
                         <span class="slider text-black header-right__button white-version">
-                            <img src="{{ asset('assets') }}/images/icons/sun.svg" alt="">
+                            <img src="assets/images/icons/sun.svg" alt="">
                         </span>
                         <span class="slider text-black header-right__button dark-version">
-                            <img src="{{ asset('assets') }}/images/icons/moon.svg" alt="">
+                            <img src="assets/images/icons/moon.svg" alt="">
                         </span>
                     </label>
                 </div>
+                
+                <div class="header-right__inner gap-3 flx-align d-lg-flex d-none">
                     
-                    <div class="header-right__inner gap-3 flx-align d-lg-flex d-none">                        
-                    </div>
-                    <button type="button" class="toggle-mobileMenu d-lg-none"> <i class="las la-bars"></i> </button>
-            </div>           
+                    @if(Auth::check())
+                    <!-- Jika pengguna sudah login, tampilkan tombol "Profile" -->
+                        <a href="{{ route('user.profile') }}" class="btn btn-main pill">
+                            <span class="icon-left icon"> 
+                                <img src="{{ asset('assets/images/icons/user.svg') }}" alt="">
+                            </span>Profile  
+                        </a>
+                        <div class="language-select flx-align">
+                            <strong class="user-credit">Credit: 
+                                @isset($userDetail)
+                                    {{ $userDetail->kredit ?? 0 }}
+                                @else
+                                    0
+                                @endisset
+                            </strong>                                 
+                        </div>
+                    @else
+                        <!-- Jika pengguna belum login, tampilkan tombol "Create Account" -->
+                        <a href="{{ route('showRegisterForm') }}" class="btn btn-main pill">
+                            <span class="icon-left icon"> 
+                                <img src="{{ asset('assets/images/icons/user.svg') }}" alt="">
+                            </span>Create Account  
+                        </a>
+                    @endif                
+                </div>
+                <button type="button" class="toggle-mobileMenu d-lg-none"> <i class="las la-bars"></i> </button>
+            </div>         
         </nav>
     </div>
 </header>

@@ -71,7 +71,7 @@
                             </div>
                         
                             <!-- Submit Button -->
-                            <button type="submit" class="btn btn-main btn-lg w-100 pill mt-3">Submit Rating</button>
+                            <button type="submit" class="btn btn-main btn-lg w-100 pill mt-3 mb-5">Submit Rating</button>
                         </form>
                     </div>
                 </div>
@@ -79,22 +79,6 @@
         </div>        
     </div>
 </section>
-
-<!-- ======================= Rating Section End ========================= -->
-
-<!-- ======================== Brand Section Start ========================= -->
-<div class="brand mt-5">
-    <div class="container container mb-3">
-        <div class="brand-slider">
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img1.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img1.png" alt="" class="dark-version">
-            </div>
-            <!-- Brand items continue here -->
-        </div>
-    </div>
-</div>
-<!-- ======================== Brand Section End ========================= -->
 
 @endsection
 

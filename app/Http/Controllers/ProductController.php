@@ -7,6 +7,7 @@ use App\Models\RequestDownload;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Ad;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB; // Import DB untuk transaksi
 use RealRashid\SweetAlert\Facades\Alert;
@@ -202,18 +203,16 @@ class ProductController extends Controller
 
         // Hapus query string jika ada (misalnya ?epik=...)
         $cleanedSearch = explode('?', $search)[0];
-
-        // Hapus bahasa dari URL jika ada (misalnya /ru/ atau /fr/)
-        $cleanedSearch = preg_replace('/\/[a-z]{2}\//', '/', $cleanedSearch);
+        
+        $cleanedSearch = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedSearch);
 
         // Cari produk berdasarkan title atau url_source
         $products = Product::where('title', 'LIKE', "%{$cleanedSearch}%")
             ->orWhere('url_source', 'LIKE', "%{$cleanedSearch}%")
-            ->with('categories') // Ambil kategori produk
-            ->limit(10) // Batasi hasil ke 10 item
+            ->with('categories')
+            ->limit(10) 
             ->get();
 
-        // Jika produk tidak ditemukan, cari berdasarkan kategori
         if ($products->isEmpty()) {
             $categories = ProductCategory::where('name', 'LIKE', "%{$cleanedSearch}%")
                 ->limit(10)
@@ -234,12 +233,13 @@ class ProductController extends Controller
 
     public function showProduct()
     {
-        // Mengambil semua kategori dari tabel product_category
+        $user = Auth::user(); 
         $categories = ProductCategory::all();
     
         // Data yang ingin dikirim ke view dashboard
         $data = [
             'title' => 'Product',
+            'user' => $user,
             'categories' => $categories,
         ];
     
@@ -249,8 +249,11 @@ class ProductController extends Controller
 
     public function showProductlist()
     {
+        $user = Auth::user(); 
+
         $data = [
             'title' => 'Product List',
+            'user' => $user,
         ];
         return view('Dashboard.productList', $data);
     }

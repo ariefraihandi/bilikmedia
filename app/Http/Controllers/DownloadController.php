@@ -7,14 +7,17 @@ use App\Models\Download;
 use App\Models\Product;
 use App\Models\RequestDownload;
 use App\Models\Rating;
+use App\Models\Credit;
 use App\Models\Ad;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\DownloadRequestNotification;
+use App\Mail\FixUrlNotification;
 use App\Mail\DownloadNotification;
 use DataTables;
-
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DownloadController extends Controller
 {
@@ -55,10 +58,41 @@ class DownloadController extends Controller
                 ->rawColumns(['action', 'status']) // Agar HTML badge dieksekusi dengan benar
                 ->make(true);
         }
+
+        $user = Auth::user(); 
+
+        $data = [
+            'title' => 'Download Request List | Bilik Media',
+            'user' => $user,           
+        ];
     
-        return view('Dashboard.downloadRequestList');
+        return view('Dashboard.downloadRequestList', $data);
     }
-    
+
+    public function showDownloadHistory()
+    {
+        $user                   = Auth::user(); 
+        $userEmail              = auth()->user()->email;
+        $userDetail             = $user->userDetail;
+        Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
+        
+        $envatoCount            = RequestDownload::where('email', $userEmail)->where('url', 'LIKE', 'https://elements.envato.com/%')->count();
+        $freepikCount           = RequestDownload::where('email', $userEmail)->where('url', 'LIKE', 'https://www.freepik.com/%')->count();        
+        $motionCount            = RequestDownload::where('email', $userEmail)->where('url', 'LIKE', 'https://motionarray.com/%')->count();
+        $downloadHistory        = RequestDownload::where('email', $userEmail)->with('product') ->orderBy('created_at', 'desc') ->paginate(10);
+
+        $data = [
+            'title'             => 'Download History | Bilik Media',
+            'envatoCount'       => $envatoCount,
+            'freepikCount'      => $freepikCount,
+            'motionCount'       => $motionCount,
+            'downloadHistory'   => $downloadHistory,
+            'user'              => $user,    
+            'userDetail'        => $userDetail,
+        ];
+
+        return view('Dashboard.User.downloadHistory', $data);
+    }
 
     public function sendDownloadNotification(Request $request)
     {
@@ -101,6 +135,28 @@ class DownloadController extends Controller
         return response()->json(['error' => 'Download request not found']);
     }
     
+    public function fixUrl(Request $request)
+    {
+        // Validasi input yang diterima dari AJAX
+        $validatedData = $request->validate([
+            'id' => 'required|exists:request_download,id', // Memastikan ID valid dan ada
+            'new_url' => 'required|url', // Memastikan new_url adalah URL yang valid
+        ]);
+    
+        // Mengambil record berdasarkan id
+        $download = RequestDownload::find($validatedData['id']);
+    
+        // Memperbarui URL dengan yang baru
+        $download->url = $validatedData['new_url'];
+        $download->status = 5; // Contoh: mungkin juga mengubah status setelah memperbarui URL
+        $download->save(); // Menyimpan perubahan ke database
+    
+        // Mengirim email ke admin
+        Mail::to('raihandi93@gmail.com')->send(new FixUrlNotification($download));
+    
+        // Mengembalikan respon JSON sukses
+        return response()->json(['message' => 'URL has been updated successfully.', 'new_url' => $download->url]);
+    }
 
     public function deleteDownloadRequest($id)
     {
@@ -113,8 +169,6 @@ class DownloadController extends Controller
             return response()->json(['success' => false, 'message' => 'Failed to delete request']);
         }
     }
-
-
 
     public function generateDownloadLink($productId)
     {
@@ -149,14 +203,13 @@ class DownloadController extends Controller
             return redirect()->back()->withErrors('Download link has expired.');
         }
 
-        // Ambil produk terkait
         $product = $download->product;
         $sideAd = Ad::where('name', 'side')->first();
         $bannerAd = Ad::where('name', 'banner')->first();
         $socialAd = Ad::where('name', 'social')->first();
         
         // Jika file produk tidak ditemukan
-        if (!$product || !file_exists(public_path('uploads/products/' . $product->image))) {
+        if (!$product) {
             return redirect()->back()->withErrors('File not found.');
         }
 
@@ -215,57 +268,173 @@ class DownloadController extends Controller
 
     
     public function requestDownload(Request $request)
-    {
-        // Validasi input URL
-        $request->validate([
-            'envanto_url' => [
-                'required',
-                'url', // Validasi URL standar
-                function ($attribute, $value, $fail) {
-                    // Validasi apakah URL dimulai dengan https://elements.envato.com/
-                    if (!str_starts_with($value, 'https://elements.envato.com/')) {
-                        $fail('The URL must start with https://elements.envato.com/');
-                    }
-                },
-            ],
-        ]);
+{
+    // Validate the Envato URL input
+    $request->validate([
+        'envanto_url' => [
+            'required',
+            'url', // Standard URL validation
+            function ($attribute, $value, $fail) {
+                // Validate that the URL starts with https://elements.envato.com/
+                if (!str_starts_with($value, 'https://elements.envato.com/')) {
+                    $fail('The URL must start with https://elements.envato.com/');
+                }
+            },
+        ],
+    ]);
 
-        // Bersihkan URL sebelum pencarian dan penyimpanan
-        $envantoUrl = $request->input('envanto_url');
-        
-        // Hilangkan query string dari URL (misalnya ?epik=...)
-        $cleanedUrl = explode('?', $envantoUrl)[0];
+    // Check if the user is authenticated
+    if (!Auth::check()) {
+        return redirect()->route('login')->with('error', 'Please log in to proceed with the download.');
+    }
 
-        // Hapus kode bahasa dari URL (misalnya /ru/ atau /fr/)
-        $cleanedUrl = preg_replace('/\/[a-z]{2}\//', '/', $cleanedUrl);
+    $user = Auth::user();
+    $userDetail = $user->userDetail;
 
-        // Cek apakah URL ada di dalam tabel produk berdasarkan url_source
-        $product = Product::where('url_source', $cleanedUrl)->first();
+    // Clean up the Envato URL
+    $envantoUrl = $request->input('envanto_url');
+    $cleanedUrl = explode('?', $envantoUrl)[0];
+    $cleanedUrl = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedUrl);
 
-        // Jika produk ditemukan, arahkan ke halaman detail produk berdasarkan slug
-        if ($product) {
-            return redirect()->route('product.details', ['slug' => $product->slug]);
+    // Check if the request_download already has the URL with the same email
+    $existingRequest = RequestDownload::where('email', $user->email)
+        ->where('url', $cleanedUrl)
+        ->first();
+
+    if ($existingRequest) {
+        // Use SweetAlert to show the error message
+        Alert::error('Error', 'The file is already in your download history. Please check your download history.');
+
+        // Redirect back to the previous page without deducting credits
+        return redirect()->back();
+    }
+
+    // If no existing request is found, proceed with credit deduction logic
+    if ($userDetail) {
+        // Update expired credits to 0
+        Credit::where('user_id', $user->id)
+            ->where('is_expires', true)
+            ->where('expires_at', '<', now())
+            ->update(['credit_amount' => 0]);
+
+        $remainingCreditToDeduct = 2; // Total credits required for deduction
+
+        // Step 1: Check "daily" credits first
+        $dailyCredits = Credit::where('user_id', $user->id)
+            ->where('credit_type', 'daily')
+            ->where('credit_amount', '>', 0)
+            ->sum('credit_amount');
+
+        if ($dailyCredits >= $remainingCreditToDeduct) {
+            // Deduct all from "daily" if sufficient credits are available
+            Credit::where('user_id', $user->id)
+                ->where('credit_type', 'daily')
+                ->where('credit_amount', '>', 0)
+                ->limit($remainingCreditToDeduct)
+                ->update(['credit_amount' => 0]);
+            $remainingCreditToDeduct = 0;
+        } elseif ($dailyCredits > 0) {
+            // If only partial daily credits are available, deduct what is possible
+            Credit::where('user_id', $user->id)
+                ->where('credit_type', 'daily')
+                ->where('credit_amount', '>', 0)
+                ->update(['credit_amount' => 0]);
+            $remainingCreditToDeduct -= $dailyCredits;
         }
 
-        // Validasi input email
-        $request->validate([
-            'email' => 'required|email',
-        ]);
+        // Step 2: Check "share" credits if more credits are needed
+        if ($remainingCreditToDeduct > 0) {
+            $shareCredits = Credit::where('user_id', $user->id)
+                ->where('credit_type', 'share')
+                ->where('credit_amount', '>', 0)
+                ->sum('credit_amount');
 
-        // Simpan request download ke database dengan URL yang sudah dibersihkan
-        RequestDownload::create([
-            'email' => $request->input('email'),
-            'url' => $cleanedUrl, // Simpan URL yang sudah dibersihkan
-            'status' => 0, // Set status default ke 0
-        ]);
+            if ($shareCredits >= $remainingCreditToDeduct) {
+                // Deduct all from "share" if sufficient credits are available
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'share')
+                    ->where('credit_amount', '>', 0)
+                    ->limit($remainingCreditToDeduct)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct = 0;
+            } elseif ($shareCredits > 0) {
+                // If only partial share credits are available, deduct what is possible
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'share')
+                    ->where('credit_amount', '>', 0)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct -= $shareCredits;
+            }
+        }
 
-        // Kirim email ke raihandi93@gmail.com dengan detail request (menggunakan URL yang sudah dibersihkan)
-        Mail::to('raihandi93@gmail.com')->send(
-            new DownloadRequestNotification($request->input('email'), $cleanedUrl)
-        );
+        // Step 3: Check "ad" credits if more credits are still needed
+        if ($remainingCreditToDeduct > 0) {
+            $adCredits = Credit::where('user_id', $user->id)
+                ->where('credit_type', 'ad')
+                ->where('credit_amount', '>', 0)
+                ->sum('credit_amount');
 
-        // Redirect ke halaman downloader dengan pesan sukses
-        return redirect()->route('envanto.downloader', ['success' => 'Download request submitted successfully']);
+            if ($adCredits >= $remainingCreditToDeduct) {
+                // Deduct all from "ad" if sufficient credits are available
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'ad')
+                    ->where('credit_amount', '>', 0)
+                    ->limit($remainingCreditToDeduct)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct = 0;
+            } elseif ($adCredits > 0) {
+                // If only partial ad credits are available, deduct what is possible
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'ad')
+                    ->where('credit_amount', '>', 0)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct -= $adCredits;
+            }
+        }
+
+        // Deduct the total of 2 credits from the user's total in userDetail regardless of the source
+        $userDetail->kredit -= 2;
+        $userDetail->save();
     }
-   
+
+    // Check if the product exists in the database
+    $product = Product::where('url_source', $cleanedUrl)->first();
+
+    if ($product) {
+        // Create a new download request entry for the existing product
+        RequestDownload::create([
+            'email' => $user->email,
+            'url' => $cleanedUrl, // Save the cleaned URL
+            'status' => 3,
+        ]);
+
+        $download = Download::create([
+            'product_id' => $product->id,
+            'token' => Str::random(40),
+            'expires_at' => Carbon::now()->addHours(2), 
+        ]);
+
+        sleep(rand(2, 5));
+        return redirect()->route('download.file', ['token' => $download->token]);
+    }
+
+    // If the product is not found, create a download request using the user's email and show SweetAlert
+    RequestDownload::create([
+        'email' => $user->email,
+        'url' => $cleanedUrl, // Save the cleaned URL
+        'status' => 0, // Set default status to 0
+    ]);
+
+    // Send email notification to the admin with the request details
+    Mail::to('raihandi93@gmail.com')->send(
+        new DownloadRequestNotification($user->email, $cleanedUrl)
+    );
+
+    // Use SweetAlert to show success message for the download process
+    Alert::success('Success', 'File on process, please wait 5-10 minutes, and check your email regularly.');
+
+    // Redirect back to the previous page after showing the alert
+    return redirect()->back();
+}
+
 }

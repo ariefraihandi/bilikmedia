@@ -8713,7 +8713,7 @@ input[type=number] {
     height: 300px;
     width: 100%;
     border-radius: 0;
-    background-image: url(../images/thumbs/cover-photo.png);
+    background-image: url(../images/logo/cover.webp);
 }
 
 @media screen and (max-width: 991px) {
@@ -8766,7 +8766,7 @@ input[type=number] {
     height: 116px;
     position: relative;
     border-radius: 100%;
-    background-image: url(../images/thumbs/profile-info-img.png);
+    /* background-image: url(../images/thumbs/profile-info-img.png); */
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;

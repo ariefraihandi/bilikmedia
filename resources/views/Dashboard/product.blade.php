@@ -161,94 +161,94 @@
 @endsection
   {{-- as --}}
 @push('footer-script')    
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var submitButton = document.getElementById('submitBtn');
-        var productForm = document.getElementById('productForm');
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var submitButton = document.getElementById('submitBtn');
+            var productForm = document.getElementById('productForm');
 
-        // Event listener untuk form submit
-        productForm.addEventListener('submit', function (event) {
-            // Prevent form submission segera
-            event.preventDefault();
-            
-            // Ubah tombol menjadi 'On Process' dan disable tombol
-            submitButton.innerHTML = 'On Process...';
-            submitButton.disabled = true;
+            // Event listener untuk form submit
+            productForm.addEventListener('submit', function (event) {
+                // Prevent form submission segera
+                event.preventDefault();
+                
+                // Ubah tombol menjadi 'On Process' dan disable tombol
+                submitButton.innerHTML = 'On Process...';
+                submitButton.disabled = true;
 
-            // Gunakan timeout kecil agar perubahan tombol terlihat
-            setTimeout(() => {
-                // Submit form secara manual
-                productForm.submit();
-            }, 300); // Delay kecil (0.3 detik) untuk render
-        });
+                // Gunakan timeout kecil agar perubahan tombol terlihat
+                setTimeout(() => {
+                    // Submit form secara manual
+                    productForm.submit();
+                }, 300); // Delay kecil (0.3 detik) untuk render
+            });
 
-        // Event listener untuk menyimpan kategori
-        document.getElementById('saveCategoryBtn').addEventListener('click', function() {
-            var newCategoryName = document.getElementById('newCategory').value;
+            // Event listener untuk menyimpan kategori
+            document.getElementById('saveCategoryBtn').addEventListener('click', function() {
+                var newCategoryName = document.getElementById('newCategory').value;
 
-            // Ambil CSRF token dari meta
-            var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+                // Ambil CSRF token dari meta
+                var csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-            if (newCategoryName) {
-                // Kirim data AJAX ke server
-                fetch('{{ route("store-category") }}', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': csrfToken
-                    },
-                    body: JSON.stringify({
-                        name: newCategoryName
+                if (newCategoryName) {
+                    // Kirim data AJAX ke server
+                    fetch('{{ route("store-category") }}', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({
+                            name: newCategoryName
+                        })
                     })
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        Swal.fire({
-                            title: 'Success!',
-                            text: 'Category has been added successfully!',
-                            icon: 'success',
-                            confirmButtonText: 'OK'
-                        }).then(() => {
-                            var modal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
-                            modal.hide();
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            Swal.fire({
+                                title: 'Success!',
+                                text: 'Category has been added successfully!',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            }).then(() => {
+                                var modal = new bootstrap.Modal(document.getElementById('addCategoryModal'));
+                                modal.hide();
 
-                            document.getElementById('newCategory').value = '';
+                                document.getElementById('newCategory').value = '';
 
-                            // Tambah kategori baru ke select
-                            var select = document.getElementById('category');
-                            var option = document.createElement('option');
-                            option.value = data.category.id;
-                            option.text = data.category.name;
-                            select.add(option);
-                        });
-                    } else {
+                                // Tambah kategori baru ke select
+                                var select = document.getElementById('category');
+                                var option = document.createElement('option');
+                                option.value = data.category.id;
+                                option.text = data.category.name;
+                                select.add(option);
+                            });
+                        } else {
+                            Swal.fire({
+                                title: 'Error!',
+                                text: 'Failed to add category!',
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                        }
+                    })
+                    .catch(error => {
                         Swal.fire({
                             title: 'Error!',
-                            text: 'Failed to add category!',
+                            text: 'An error occurred!',
                             icon: 'error',
                             confirmButtonText: 'OK'
                         });
-                    }
-                })
-                .catch(error => {
+                        console.error('Error:', error);
+                    });
+                } else {
                     Swal.fire({
-                        title: 'Error!',
-                        text: 'An error occurred!',
-                        icon: 'error',
+                        title: 'Warning!',
+                        text: 'Please enter a category name!',
+                        icon: 'warning',
                         confirmButtonText: 'OK'
                     });
-                    console.error('Error:', error);
-                });
-            } else {
-                Swal.fire({
-                    title: 'Warning!',
-                    text: 'Please enter a category name!',
-                    icon: 'warning',
-                    confirmButtonText: 'OK'
-                });
-            }
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endpush

@@ -41,9 +41,9 @@
                     @csrf
                     <div class="row gy-4">
                         <div class="col-12">
-                            <label for="email" class="form-label mb-2 font-18 font-heading fw-600">Email</label>
+                            <label for="identifier" class="form-label mb-2 font-18 font-heading fw-600">Username or Email</label>
                             <div class="position-relative">
-                                <input type="email" class="common-input common-input--bg common-input--withIcon" id="email" name="email" placeholder="infoname@mail.com" required>
+                                <input type="text" class="common-input common-input--bg common-input--withIcon" id="identifier" name="identifier" placeholder="Username or Email" required>
                                 <span class="input-icon"><img src="{{ asset('assets') }}/images/icons/envelope-icon.svg" alt="envelope"></span>
                             </div>
                         </div>
@@ -54,15 +54,7 @@
                                 <span class="input-icon toggle-password cursor-pointer" id="#your-password"><img src="{{ asset('assets') }}/images/icons/lock-icon.svg" alt="lock"></span>
                             </div>
                         </div>
-                        <div class="col-12">
-                            <div class="flx-between gap-1">
-                                <div class="common-check my-2">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="keepMe">
-                                    <label class="form-check-label mb-0 fw-400 font-14 text-body" for="keepMe">Keep me signed in</label>
-                                </div>
-                                <a href="#" class="forgot-password text-decoration-underline text-main text-poppins font-14">Forgot password?</a>
-                            </div>
-                        </div>
+                       
                         <div class="col-12">
                             <button type="submit" class="btn btn-main btn-lg w-100 pill"> Sign In</button>
                         </div>                       

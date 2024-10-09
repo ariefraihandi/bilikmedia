@@ -7,13 +7,7 @@
         <button type="button" class="icon-btn arrow-icon text-heading bg-gray-seven flx-center">
             <img src="{{ asset('assets') }}/images/icons/angle-right.svg" alt="angle">
         </button>
-        <form action="#" class="search-input d-sm-block d-none">
-            <span class="icon">
-                <img src="{{ asset('assets') }}/images/icons/search-dark.svg" alt="search" class="white-version">
-                <img src="{{ asset('assets') }}/images/icons/search-dark-white.svg" alt="search" class="dark-version">
-            </span>
-            <input type="text" class="common-input common-input--md common-input--bg pill w-100" placeholder="Search here...">
-        </form>
+        
     </div>
     <div class="dashboard-nav__right">
         <div class="header-right flx-align">
@@ -35,29 +29,19 @@
                 <div class="user-profile">
                     <button class="user-profile__button flex-align">
                         <span class="user-profile__thumb">
-                            <img src="{{ asset('assets') }}/images/thumbs/user-profile.png" class="cover-img" alt="">
+                            <img id="navAvatar" src="" alt="Avatar" />
                         </span>
                     </button>
                     <ul class="user-profile-dropdown">
                         <li class="sidebar-list__item">
-                            <a href="dashboard-profile.html" class="sidebar-list__link">
+                            <a href="{{ route('user.profile') }}" class="sidebar-list__link">
                                 <span class="sidebar-list__icon">
                                     <img src="{{ asset('assets') }}/images/icons/sidebar-icon2.svg" alt="" class="icon">
                                     <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active2.svg" alt="" class="icon icon-active">
                                 </span>
                                 <span class="text">Profile</span>
                             </a>
-                        </li>
-                        
-                        <li class="sidebar-list__item">
-                            <a href="setting.html" class="sidebar-list__link">
-                                <span class="sidebar-list__icon">
-                                    <img src="{{ asset('assets') }}/images/icons/sidebar-icon10.svg" alt="" class="icon">
-                                    <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active10.svg" alt="" class="icon icon-active">
-                                </span>
-                                <span class="text">Settings</span>
-                            </a>
-                        </li>
+                        </li>                     
                         <li class="sidebar-list__item">
                             <a href="{{ route('logout') }}" class="sidebar-list__link">
                                 <span class="sidebar-list__icon">
@@ -70,18 +54,17 @@
                     </ul>
                 </div>
             
-                <div class="language-select flx-align select-has-icon">
-                    <img src="{{ asset('assets') }}/images/icons/globe.svg" alt="" class="globe-icon white-version">
-                    <img src="{{ asset('assets') }}/images/icons/globe-white.svg" alt="" class="globe-icon dark-version">
-                    <select class="select py-0 ps-2 border-0 fw-500">
-                        <option value="1">Eng</option>
-                        <option value="2">Bn</option>
-                        <option value="3">Eur</option>
-                        <option value="4">Urd</option>
-                    </select>
+                <div class="language-select flx-align">
+                    <strong class="user-credit">Credit: 
+                        @isset($userDetail)
+                            {{ $userDetail->kredit ?? 0 }}
+                        @else
+                            0
+                        @endisset
+                    </strong>                                 
                 </div>
+                
             </div>
         </div>
     </div>
 </div>
-<!-- Dashboard Nav End -->

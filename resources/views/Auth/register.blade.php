@@ -41,9 +41,9 @@
                     @csrf
                     <div class="row gy-4">
                         <div class="col-12">
-                            <label for="name" class="form-label mb-2 font-18 font-heading fw-600">Full Name</label>
+                            <label for="username" class="form-label mb-2 font-18 font-heading fw-600">Username</label>
                             <div class="position-relative">
-                                <input type="text" class="common-input common-input--bg common-input--withIcon" id="name" name="name" placeholder="Your full name" required>
+                                <input type="text" class="common-input common-input--bg common-input--withIcon" id="username" name="username" placeholder="username" required>
                                 <span class="input-icon"><img src="{{ asset('assets') }}/images/icons/user-icon.svg" alt="user"></span>
                             </div>
                         </div>
@@ -70,22 +70,21 @@
                                 <input type="password" class="common-input common-input--bg common-input--withIcon" id="password_confirmation" name="password_confirmation" placeholder="Confirm your password" required>
                                 <span class="input-icon toggle-password cursor-pointer" id="#password_confirmation"><img src="{{ asset('assets') }}/images/icons/lock-icon.svg" alt="lock"></span>
                             </div>
-                        </div>
-                
+                        </div>                                                
                         <div class="col-12">
                             <div class="common-check my-2">
                                 <input class="form-check-input" type="checkbox" name="agree" id="agree" required>
                                 <label class="form-check-label mb-0 fw-400 font-16 text-body" for="agree">I agree to the terms & conditions</label>
                             </div>
                         </div>
-                
+                        <input type="hidden" id="reff" name="reff" value="{{$reff}}">
                         <div class="col-12">
                             <button type="submit" class="btn btn-main btn-lg w-100 pill"> Create An Account</button>
                         </div>                      
                 
                         <div class="col-sm-12 mb-0">
                             <div class="have-account">
-                                <p class="text font-14">Already a member? <a class="link text-main text-decoration-underline fw-500" href="{{ route('showRegisterForm') }}">Login</a></p>
+                                <p class="text font-14">Already a member? <a class="link text-main text-decoration-underline fw-500" href="{{ route('showLoginForm') }}">Login</a></p>
                             </div>
                         </div>
                     </div>

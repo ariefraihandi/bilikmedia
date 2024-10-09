@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Ad;
+use App\Models\Credit; 
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -20,18 +22,37 @@ class EnvantoDownloaderController extends Controller
         $sideAd             = Ad::where('name', 'side')->first();
         $bannerAd           = Ad::where('name', 'banner')->first();
         $socialAd           = Ad::where('name', 'social')->first();
+        $userDetail         = null;
+        
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
         
         $data = [
-            'title' => 'Envato Downloader | Bilik Media',
+            'title' => 'Free Envato Downloader Tool - Download Envato Elements Easily | Bilik Media',
             'description'   => $metaDescription,
             'products'      => $products, 
+            'userDetail'      => $userDetail, 
             'keywords'      => $metaKeywords,
             'sideAd'        => $sideAd,          
             'bannerAd'      => $bannerAd,     
             'socialAd'      => $socialAd, 
         ];
 
-        // Tampilkan view dengan data yang dikirim
         return view('Downloader.envanto', $data);
     }
 }
