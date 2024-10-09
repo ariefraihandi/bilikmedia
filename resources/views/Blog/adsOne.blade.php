@@ -1,5 +1,6 @@
 @extends('Index.app')
 @push('header-script')   
+{!! $monetagAd->code !!}     
     <style>
         .ad-banner {
             position: fixed;
@@ -229,8 +230,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            // window.location.href = "https://zireemilsoude.net/4/6533224";
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/6533199";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>
