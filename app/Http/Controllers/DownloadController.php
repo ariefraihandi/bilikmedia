@@ -172,23 +172,127 @@ class DownloadController extends Controller
 
     public function generateDownloadLink($productId)
     {
-        // Cari produk berdasarkan ID
+        // Cek apakah user sudah login
+        if (!Auth::check()) {
+            // Jika belum login, tampilkan SweetAlert dan arahkan ke halaman login
+            Alert::error('Error', 'Please login first.');
+            return redirect()->route('showLoginForm');
+        }
+
+        // Ambil informasi user yang sedang login
+        $user = Auth::user();
+
+        // Cari product berdasarkan ID
         $product = Product::find($productId);
 
+        // Jika produk tidak ditemukan, kembali ke halaman sebelumnya dengan pesan error
         if (!$product) {
             return redirect()->back()->withErrors('Product not found!');
         }
 
-        // Buat token baru untuk unduhan
+        // Cek apakah email user dan url produk ada di tabel request_download
+        $requestDownload = RequestDownload::where('email', $user->email)
+                            ->where('url', $product->url_source)
+                            ->first();
+
+        if (!$requestDownload) {           
+            Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
+
+            $remainingCreditToDeduct = 2;
+
+            $dailyCredits       = Credit::where('user_id', $user->id)->where('credit_type', 'daily')->where('credit_amount', '>', 0)->sum('credit_amount');
+
+            if ($dailyCredits >= $remainingCreditToDeduct) {
+                // Deduct all from "daily" if sufficient credits are available
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'daily')
+                    ->where('credit_amount', '>', 0)
+                    ->limit($remainingCreditToDeduct)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct = 0;
+            } elseif ($dailyCredits > 0) {
+                // If only partial daily credits are available, deduct what is possible
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'daily')
+                    ->where('credit_amount', '>', 0)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct -= $dailyCredits;
+            }
+
+            if ($remainingCreditToDeduct > 0) {
+                $shareCredits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'share')
+                    ->where('credit_amount', '>', 0)
+                    ->sum('credit_amount');
+
+                if ($shareCredits >= $remainingCreditToDeduct) {
+                    // Deduct all from "share" if sufficient credits are available
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'share')
+                        ->where('credit_amount', '>', 0)
+                        ->limit($remainingCreditToDeduct)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct = 0;
+                } elseif ($shareCredits > 0) {
+                    // If only partial share credits are available, deduct what is possible
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'share')
+                        ->where('credit_amount', '>', 0)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct -= $shareCredits;
+                }
+            }
+        
+            if ($remainingCreditToDeduct > 0) {
+                $adCredits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'ad')
+                    ->where('credit_amount', '>', 0)
+                    ->sum('credit_amount');
+
+                if ($adCredits >= $remainingCreditToDeduct) {
+                    // Deduct all from "ad" if sufficient credits are available
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'ad')
+                        ->where('credit_amount', '>', 0)
+                        ->limit($remainingCreditToDeduct)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct = 0;
+                } elseif ($adCredits > 0) {
+                    // If only partial ad credits are available, deduct what is possible
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'ad')
+                        ->where('credit_amount', '>', 0)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct -= $adCredits;
+                }
+            }
+
+            if ($remainingCreditToDeduct > 0) {
+                Alert::error('Error', 'You do not have enough credits to download this product.');
+                return redirect()->back();
+            }
+
+            $userDetail->kredit -= 2;
+            $userDetail->save();
+
+            RequestDownload::create(['email' => $user->email,'url' => $product->url_source, 'status' => 3,]);
+
+
+            $download = Download::create(['product_id' => $product->id,'token' => Str::random(40),'expires_at' => Carbon::now()->addHours(2)]);
+
+            return redirect()->route('download.file', ['token' => $download->token]);
+        }
+       
         $download = Download::create([
             'product_id' => $product->id,
-            'token' => Str::random(40), // Buat token acak sepanjang 40 karakter
-            'expires_at' => Carbon::now()->addHours(2) // Tautan akan kedaluwarsa dalam 2 jam
+            'token' => Str::random(40),
+            'expires_at' => Carbon::now()->addHours(2) // Link kadaluarsa setelah 2 jam
         ]);
 
-        // Redirect ke URL unduhan dengan token
+        // Redirect ke halaman download dengan token
         return redirect()->route('download.file', ['token' => $download->token]);
     }
+
 
     public function downloadFile($token)
     {
@@ -197,8 +301,7 @@ class DownloadController extends Controller
         if (!$download) {
             return redirect()->back()->withErrors('Download link is invalid.');
         }
-
-        // Periksa apakah token sudah expired
+        
         if (Carbon::now()->greaterThan($download->expires_at)) {
             return redirect()->back()->withErrors('Download link has expired.');
         }
@@ -268,173 +371,172 @@ class DownloadController extends Controller
 
     
     public function requestDownload(Request $request)
-{
-    // Validate the Envato URL input
-    $request->validate([
-        'envanto_url' => [
-            'required',
-            'url', // Standard URL validation
-            function ($attribute, $value, $fail) {
-                // Validate that the URL starts with https://elements.envato.com/
-                if (!str_starts_with($value, 'https://elements.envato.com/')) {
-                    $fail('The URL must start with https://elements.envato.com/');
+    {
+        $request->validate([
+            'envanto_url' => [
+                'required',
+                'url', // Standard URL validation
+                function ($attribute, $value, $fail) {
+                    // Validate that the URL starts with https://elements.envato.com/
+                    if (!str_starts_with($value, 'https://elements.envato.com/')) {
+                        $fail('The URL must start with https://elements.envato.com/');
+                    }
+                },
+            ],
+        ]);
+
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please log in to proceed with the download.');
+        }
+
+        $user = Auth::user();
+        $userDetail = $user->userDetail;
+
+        // Clean up the Envato URL
+        $envantoUrl = $request->input('envanto_url');
+        $cleanedUrl = explode('?', $envantoUrl)[0];
+        $cleanedUrl = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedUrl);
+
+        // Check if the request_download already has the URL with the same email
+        $existingRequest = RequestDownload::where('email', $user->email)
+            ->where('url', $cleanedUrl)
+            ->first();
+
+        if ($existingRequest) {
+            // Use SweetAlert to show the error message
+            Alert::error('Error', 'The file is already in your download history. Please check your download history.');
+
+            // Redirect back to the previous page without deducting credits
+            return redirect()->back();
+        }
+
+        // If no existing request is found, proceed with credit deduction logic
+        if ($userDetail) {
+            // Update expired credits to 0
+            Credit::where('user_id', $user->id)
+                ->where('is_expires', true)
+                ->where('expires_at', '<', now())
+                ->update(['credit_amount' => 0]);
+
+            $remainingCreditToDeduct = 2; // Total credits required for deduction
+
+            // Step 1: Check "daily" credits first
+            $dailyCredits = Credit::where('user_id', $user->id)
+                ->where('credit_type', 'daily')
+                ->where('credit_amount', '>', 0)
+                ->sum('credit_amount');
+
+            if ($dailyCredits >= $remainingCreditToDeduct) {
+                // Deduct all from "daily" if sufficient credits are available
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'daily')
+                    ->where('credit_amount', '>', 0)
+                    ->limit($remainingCreditToDeduct)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct = 0;
+            } elseif ($dailyCredits > 0) {
+                // If only partial daily credits are available, deduct what is possible
+                Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'daily')
+                    ->where('credit_amount', '>', 0)
+                    ->update(['credit_amount' => 0]);
+                $remainingCreditToDeduct -= $dailyCredits;
+            }
+
+            // Step 2: Check "share" credits if more credits are needed
+            if ($remainingCreditToDeduct > 0) {
+                $shareCredits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'share')
+                    ->where('credit_amount', '>', 0)
+                    ->sum('credit_amount');
+
+                if ($shareCredits >= $remainingCreditToDeduct) {
+                    // Deduct all from "share" if sufficient credits are available
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'share')
+                        ->where('credit_amount', '>', 0)
+                        ->limit($remainingCreditToDeduct)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct = 0;
+                } elseif ($shareCredits > 0) {
+                    // If only partial share credits are available, deduct what is possible
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'share')
+                        ->where('credit_amount', '>', 0)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct -= $shareCredits;
                 }
-            },
-        ],
-    ]);
-
-    // Check if the user is authenticated
-    if (!Auth::check()) {
-        return redirect()->route('login')->with('error', 'Please log in to proceed with the download.');
-    }
-
-    $user = Auth::user();
-    $userDetail = $user->userDetail;
-
-    // Clean up the Envato URL
-    $envantoUrl = $request->input('envanto_url');
-    $cleanedUrl = explode('?', $envantoUrl)[0];
-    $cleanedUrl = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedUrl);
-
-    // Check if the request_download already has the URL with the same email
-    $existingRequest = RequestDownload::where('email', $user->email)
-        ->where('url', $cleanedUrl)
-        ->first();
-
-    if ($existingRequest) {
-        // Use SweetAlert to show the error message
-        Alert::error('Error', 'The file is already in your download history. Please check your download history.');
-
-        // Redirect back to the previous page without deducting credits
-        return redirect()->back();
-    }
-
-    // If no existing request is found, proceed with credit deduction logic
-    if ($userDetail) {
-        // Update expired credits to 0
-        Credit::where('user_id', $user->id)
-            ->where('is_expires', true)
-            ->where('expires_at', '<', now())
-            ->update(['credit_amount' => 0]);
-
-        $remainingCreditToDeduct = 2; // Total credits required for deduction
-
-        // Step 1: Check "daily" credits first
-        $dailyCredits = Credit::where('user_id', $user->id)
-            ->where('credit_type', 'daily')
-            ->where('credit_amount', '>', 0)
-            ->sum('credit_amount');
-
-        if ($dailyCredits >= $remainingCreditToDeduct) {
-            // Deduct all from "daily" if sufficient credits are available
-            Credit::where('user_id', $user->id)
-                ->where('credit_type', 'daily')
-                ->where('credit_amount', '>', 0)
-                ->limit($remainingCreditToDeduct)
-                ->update(['credit_amount' => 0]);
-            $remainingCreditToDeduct = 0;
-        } elseif ($dailyCredits > 0) {
-            // If only partial daily credits are available, deduct what is possible
-            Credit::where('user_id', $user->id)
-                ->where('credit_type', 'daily')
-                ->where('credit_amount', '>', 0)
-                ->update(['credit_amount' => 0]);
-            $remainingCreditToDeduct -= $dailyCredits;
-        }
-
-        // Step 2: Check "share" credits if more credits are needed
-        if ($remainingCreditToDeduct > 0) {
-            $shareCredits = Credit::where('user_id', $user->id)
-                ->where('credit_type', 'share')
-                ->where('credit_amount', '>', 0)
-                ->sum('credit_amount');
-
-            if ($shareCredits >= $remainingCreditToDeduct) {
-                // Deduct all from "share" if sufficient credits are available
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'share')
-                    ->where('credit_amount', '>', 0)
-                    ->limit($remainingCreditToDeduct)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct = 0;
-            } elseif ($shareCredits > 0) {
-                // If only partial share credits are available, deduct what is possible
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'share')
-                    ->where('credit_amount', '>', 0)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct -= $shareCredits;
             }
-        }
 
-        // Step 3: Check "ad" credits if more credits are still needed
-        if ($remainingCreditToDeduct > 0) {
-            $adCredits = Credit::where('user_id', $user->id)
-                ->where('credit_type', 'ad')
-                ->where('credit_amount', '>', 0)
-                ->sum('credit_amount');
-
-            if ($adCredits >= $remainingCreditToDeduct) {
-                // Deduct all from "ad" if sufficient credits are available
-                Credit::where('user_id', $user->id)
+            // Step 3: Check "ad" credits if more credits are still needed
+            if ($remainingCreditToDeduct > 0) {
+                $adCredits = Credit::where('user_id', $user->id)
                     ->where('credit_type', 'ad')
                     ->where('credit_amount', '>', 0)
-                    ->limit($remainingCreditToDeduct)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct = 0;
-            } elseif ($adCredits > 0) {
-                // If only partial ad credits are available, deduct what is possible
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'ad')
-                    ->where('credit_amount', '>', 0)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct -= $adCredits;
+                    ->sum('credit_amount');
+
+                if ($adCredits >= $remainingCreditToDeduct) {
+                    // Deduct all from "ad" if sufficient credits are available
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'ad')
+                        ->where('credit_amount', '>', 0)
+                        ->limit($remainingCreditToDeduct)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct = 0;
+                } elseif ($adCredits > 0) {
+                    // If only partial ad credits are available, deduct what is possible
+                    Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'ad')
+                        ->where('credit_amount', '>', 0)
+                        ->update(['credit_amount' => 0]);
+                    $remainingCreditToDeduct -= $adCredits;
+                }
             }
+
+            // Deduct the total of 2 credits from the user's total in userDetail regardless of the source
+            $userDetail->kredit -= 2;
+            $userDetail->save();
         }
 
-        // Deduct the total of 2 credits from the user's total in userDetail regardless of the source
-        $userDetail->kredit -= 2;
-        $userDetail->save();
-    }
+        // Check if the product exists in the database
+        $product = Product::where('url_source', $cleanedUrl)->first();
 
-    // Check if the product exists in the database
-    $product = Product::where('url_source', $cleanedUrl)->first();
+        if ($product) {
+            // Create a new download request entry for the existing product
+            RequestDownload::create([
+                'email' => $user->email,
+                'url' => $cleanedUrl, // Save the cleaned URL
+                'status' => 3,
+            ]);
 
-    if ($product) {
-        // Create a new download request entry for the existing product
+            $download = Download::create([
+                'product_id' => $product->id,
+                'token' => Str::random(40),
+                'expires_at' => Carbon::now()->addHours(2), 
+            ]);
+
+            sleep(rand(2, 5));
+            return redirect()->route('download.file', ['token' => $download->token]);
+        }
+
+        // If the product is not found, create a download request using the user's email and show SweetAlert
         RequestDownload::create([
             'email' => $user->email,
             'url' => $cleanedUrl, // Save the cleaned URL
-            'status' => 3,
+            'status' => 0, // Set default status to 0
         ]);
 
-        $download = Download::create([
-            'product_id' => $product->id,
-            'token' => Str::random(40),
-            'expires_at' => Carbon::now()->addHours(2), 
-        ]);
+        // Send email notification to the admin with the request details
+        Mail::to('raihandi93@gmail.com')->send(
+            new DownloadRequestNotification($user->email, $cleanedUrl)
+        );
 
-        sleep(rand(2, 5));
-        return redirect()->route('download.file', ['token' => $download->token]);
+        // Use SweetAlert to show success message for the download process
+        Alert::success('Success', 'File on process, please wait 5-10 minutes, and check your email regularly.');
+
+        // Redirect back to the previous page after showing the alert
+        return redirect()->back();
     }
-
-    // If the product is not found, create a download request using the user's email and show SweetAlert
-    RequestDownload::create([
-        'email' => $user->email,
-        'url' => $cleanedUrl, // Save the cleaned URL
-        'status' => 0, // Set default status to 0
-    ]);
-
-    // Send email notification to the admin with the request details
-    Mail::to('raihandi93@gmail.com')->send(
-        new DownloadRequestNotification($user->email, $cleanedUrl)
-    );
-
-    // Use SweetAlert to show success message for the download process
-    Alert::success('Success', 'File on process, please wait 5-10 minutes, and check your email regularly.');
-
-    // Redirect back to the previous page after showing the alert
-    return redirect()->back();
-}
 
 }

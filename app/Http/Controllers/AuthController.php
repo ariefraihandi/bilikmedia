@@ -49,7 +49,6 @@ class AuthController extends Controller
     
     public function register(Request $request)
     {
-        // Validasi input pengguna
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
@@ -131,7 +130,7 @@ class AuthController extends Controller
     {
         // Validasi input pengguna
         $credentials = $request->validate([
-            'identifier' => 'required|string', // Bisa berupa username atau email
+            'identifier' => 'required|string',
             'password' => 'required|string',
         ]);
 
@@ -140,10 +139,8 @@ class AuthController extends Controller
 
         // Coba login berdasarkan email atau username
         if (Auth::attempt([$fieldType => $request->identifier, 'password' => $request->password], $request->remember)) {
-            // Ambil user yang sedang login
             $user = Auth::user();
 
-            // Cek apakah status user 0 (belum verifikasi email)
             if ($user->status == 0) {
                 // Logout user karena akun belum diverifikasi
                 Auth::logout();
