@@ -60,6 +60,7 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::get('/get-product-list-data',            [ProductController::class, 'getProductListData'])->name('get.product.list.data');
     
     Route::get('/profile',                          [UserController::class, 'index'])->name('user.profile');
+    Route::get('/user-list',                        [UserController::class, 'showUserList'])->name('user.list');
     Route::post('/update-profile',                  [UserController::class, 'updateProfile'])->name('update.profile');
     Route::get('/credit',                           [CreditController::class, 'showCredit'])->name('credit.dashboard');
     Route::get('/credit-redemption',                [CreditController::class, 'showCreditRedemtion'])->name('credit.redemption');
@@ -84,4 +85,6 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
 
 
     Route::post('/ads-store',                       [AdController::class, 'adsStore'])->name('ads.store');
+    Route::get('/user-list-datatables',             [UserController::class, 'getUsersForDataTables'])->name('user.list.datatables');
+
 });

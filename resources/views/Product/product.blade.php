@@ -339,7 +339,7 @@
         </div>
     </div>
 </section>
-<!-- ======================== Brand Section End ========================= -->
+
 @endsection
 
 @push('footer-script')

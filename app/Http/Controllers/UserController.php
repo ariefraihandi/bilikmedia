@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use Carbon\Carbon;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -21,14 +23,12 @@ class UserController extends Controller
         $user = Auth::user();        
         $userDetail = $user->userDetail;
 
-        // Perform credit operations only if userDetail exists
         if ($userDetail) {
             Credit::where('user_id', $user->id)
                 ->where('is_expires', true)
                 ->where('expires_at', '<', now())
                 ->update(['credit_amount' => 0]);
 
-            // Recalculate the total credit after updates
             $totalCredit = Credit::where('user_id', $user->id)
                 ->sum('credit_amount');
 
@@ -47,6 +47,44 @@ class UserController extends Controller
         ];
 
         return view('Dashboard.User.profile', $data);
+    }
+
+    public function showUserList()
+    {        
+        $users = User::all();
+        $user = Auth::user();        
+        $userDetail = $user->userDetail;
+
+        // Perform credit operations only if userDetail exists
+        if ($userDetail) {
+            Credit::where('user_id', $user->id)
+                ->where('is_expires', true)
+                ->where('expires_at', '<', now())
+                ->update(['credit_amount' => 0]);
+
+            // Recalculate the total credit after updates
+            $totalCredit = Credit::where('user_id', $user->id)
+                ->sum('credit_amount');
+
+            // Update the credit amount in userDetail
+            $userDetail->kredit = $totalCredit;
+            $userDetail->save();
+        }
+
+        $countUsersToday        = User::whereDate('created_at', Carbon::today())->count();
+        $countUsersThisWeek     = User::whereBetween('created_at', [Carbon::now()->startOfWeek(), Carbon::now()->endOfWeek()])->count();
+        $countUsersThisMonth    = User::whereMonth('created_at', Carbon::now()->month)->whereYear('created_at', Carbon::now()->year)->count();
+        
+        $data = [
+            'title'             => 'User List | Bilik Media',
+            'user'              => $user,
+            'userDetail'        => $userDetail,         
+            'usersToday'        => $countUsersToday,
+            'usersThisWeek'     => $countUsersThisWeek,
+            'usersThisMonth'    => $countUsersThisMonth,   
+        ];
+
+        return view('Dashboard.User.userList', $data);
     }
     
     public function updateProfile(Request $request)
@@ -100,5 +138,47 @@ class UserController extends Controller
         }
     
         return redirect()->back();
+    }
+
+    public function getUsersForDataTables(Request $request)
+    {
+        // Query untuk mendapatkan data user dan userDetail dengan eager loading
+        $users = User::with('userDetail');
+
+        return DataTables::of($users)
+            ->addColumn('user', function($user) {
+                // Gabungkan name, phone, dan email dalam satu kolom
+                $name = $user->userDetail->name ?? 'No Name';
+                $phone = $user->userDetail->phone ?? 'No Phone';
+                $email = $user->email;
+                return "{$name}<br>{$phone}<br>{$email}";
+            })
+            ->addColumn('status', function($user) {
+                // Tambahkan badge tambahan untuk status "Complete" atau "Incomplete"
+                $statusBadge = $user->status == 1 
+                    ? '<span class="badge bg-success">Aktif</span>' 
+                    : '<span class="badge bg-warning">Inactive</span>';
+
+                // Cek apakah userDetail tersedia (Complete/Incomplete)
+                $completionBadge = $user->userDetail 
+                    ? '<span class="badge bg-success">Complete</span>' 
+                    : '<span class="badge bg-warning">Incomplete</span>';
+
+                // Gabungkan kedua badge
+                return $statusBadge . ' ' . $completionBadge;
+            })
+            ->addColumn('kredit', function($user) {
+                return $user->userDetail->kredit ?? 'No Credit'; // Menampilkan kredit user
+            })
+            ->addColumn('download_count', function($user) {
+                // Hitung jumlah request download berdasarkan email user
+                return RequestDownload::where('email', $user->email)->count();
+            })
+            ->addColumn('since', function($user) {
+                // Menampilkan created_at dalam format readable
+                return Carbon::parse($user->created_at)->format('d M Y');
+            })
+            ->rawColumns(['user', 'status']) // Agar HTML badge dan br bisa diproses
+            ->make(true);
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         // Tabel Users
         Schema::create('users', function (Blueprint $table) {
-            $table->uuid('id')->primary(); // Menggunakan UUID untuk primary key
+            $table->uuid('id')->primary();
             $table->string('username'); // Nama pengguna
             $table->string('email')->unique(); // Email harus unik
             $table->timestamp('email_verified_at')->nullable(); // Timestamp untuk verifikasi email

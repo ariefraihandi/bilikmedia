@@ -70,9 +70,9 @@
                     </a>
                 </li>
                 <li class="sidebar-list__item">
-                    <a href="{{ route('showDownloadRequestlist') }}" class="sidebar-list__link">
+                    <a href="{{ route('user.list') }}" class="sidebar-list__link">
                         <span class="sidebar-list__icon">
-                            @if(Route::currentRouteName() == 'showDownloadRequestlist')
+                            @if(Route::currentRouteName() == 'user.list')
                             <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active4.svg" alt="" class="icon">
                             <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active4.svg" alt="" class="icon icon-active">
                             @else
