@@ -70,8 +70,10 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::get('/download/request/list',            [DownloadController::class, 'showDownloadRequestlist'])->name('showDownloadRequestlist');
     Route::get('/user/download/history',            [DownloadController::class, 'showDownloadHistory'])->name('show.downloadHistory');
     Route::post('/send-download-notification',      [DownloadController::class, 'sendDownloadNotification'])->name('sendDownloadNotification');
+    Route::post('/send-invalid-notification',       [DownloadController::class, 'sendInvalidNotification'])->name('sendInvalidNotification');
     Route::delete('/delete-download-request/{id}',  [DownloadController::class, 'deleteDownloadRequest']);
     Route::post('/fix-url',                         [DownloadController::class, 'fixUrl'])->name('fix.url');
+
     Route::post('/store-ad-tokens',                 [CreditController::class, 'storeAdTokens'])->name('storeAdTokens');
 
     Route::get('/blog/bilikmedia/{token}',          [BlogController::class, 'showAdOne'])->name('blog.adsOne');

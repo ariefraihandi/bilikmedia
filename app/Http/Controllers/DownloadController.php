@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\DownloadRequestNotification;
 use App\Mail\FixUrlNotification;
 use App\Mail\DownloadNotification;
+use App\Mail\InvalidUrlNotification;
 use DataTables;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
@@ -32,11 +33,30 @@ class DownloadController extends Controller
     
             return DataTables::of($data)
                 ->addColumn('action', function($data) {
-                    return '
-                        <button class="btn btn-sm btn-primary notify-btn" data-id="'.$data->id.'">Notify</button>
-                        <button class="btn btn-sm btn-danger delete-btn" data-id="'.$data->id.'">Delete</button>
-                    ';
+                    // Tombol notify (untuk URL valid)
+                    $notifyButton = '
+                        <button class="btn btn-sm btn-primary small-btn notify-btn mb-1" data-id="'.$data->id.'" title="Notify">
+                            <i class="fas fa-bell"></i>
+                        </button>';
+                    
+                    // Tombol delete
+                    $deleteButton = '
+                        <button class="btn btn-sm btn-danger small-btn delete-btn mb-1" data-id="'.$data->id.'" title="Delete">
+                            <i class="fas fa-trash"></i>
+                        </button>';
+                
+                    // Tombol invalid notify (untuk URL tidak valid)
+                    $invalidUrlButton = '
+                    <button class="btn btn-sm btn-warning small-btn invalid-notify-btn mb-1" data-id="'.$data->id.'" title="Invalid Notify">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </button>';
+                
+                    
+                    // Munculkan ketiga tombol
+                    return $notifyButton . ' ' . $invalidUrlButton . ' ' . $deleteButton;
                 })
+
+            
                 ->addColumn('url_exists', function($data) {
                     return $data->product_url ? 'exists' : 'not-exists';
                 })
@@ -51,6 +71,10 @@ class DownloadController extends Controller
                             return '<span class="badge bg-danger">Unsent</span>';
                         case 3:
                             return '<span class="badge bg-success">Completed</span>';
+                        case 4:
+                            return '<span class="badge bg-danger">Invalid</span>';
+                        case 5:
+                            return '<span class="badge bg-info">Fixed</span>';
                         default:
                             return '<span class="badge bg-secondary">Unknown</span>';
                     }
@@ -134,6 +158,42 @@ class DownloadController extends Controller
         // Jika request download tidak ditemukan
         return response()->json(['error' => 'Download request not found']);
     }
+    
+    public function sendInvalidNotification(Request $request)
+    {
+        // Temukan data request download berdasarkan ID
+        $downloadRequest = RequestDownload::find($request->id);
+
+        if ($downloadRequest) {
+            // Ambil email dan URL dari request download
+            $email = $downloadRequest->email;
+            $url = $downloadRequest->url;
+
+            try {
+                // Kirim email dengan template 'InvalidUrlNotification' dan sertakan URL yang bermasalah
+                Mail::to($email)->send(new InvalidUrlNotification($email, $url));
+
+                // Ubah status menjadi 4 (untuk menandai bahwa URL perlu diperbaiki)
+                $downloadRequest->status = 4;
+                $downloadRequest->save();
+
+                // Kembalikan respon JSON untuk AJAX jika sukses
+                return response()->json(['success' => 'Invalid URL notification sent and status updated to 4']);
+            } catch (\Exception $e) {
+                // Jika gagal mengirim email, kembalikan pesan error yang lebih rinci
+                return response()->json([
+                    'error' => 'Failed to send email: ' . $e->getMessage(),
+                    'trace' => $e->getTraceAsString() // Menambahkan stack trace untuk debugging
+                ]);
+            }
+        }
+
+        // Jika request download tidak ditemukan
+        return response()->json(['error' => 'Download request not found']);
+    }
+
+
+
     
     public function fixUrl(Request $request)
     {

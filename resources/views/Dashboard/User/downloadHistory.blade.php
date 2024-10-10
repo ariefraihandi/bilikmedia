@@ -64,13 +64,11 @@
                                             <a href="{{ route('product.details', ['slug' => $download->product->slug]) }}" class="btn btn-main" target="_blank">
                                                 <i class="far fa-eye"></i>
                                             </a>
-                                        @elseif ($download->status == 0)
-                                            <!-- Jika status sama dengan 0, munculkan badge "On Process" -->
+                                        @elseif ($download->status == 0)                                            
                                             <span class="badge bg-warning">On Process</span>
                                         @elseif ($download->status == 5)
                                             <span class="badge bg-warning">On Process</span>
-                                        @elseif ($download->status == 4)
-                                            <!-- Jika status sama dengan 4, munculkan tombol Fix Your URL -->
+                                        @elseif ($download->status == 4)                                            
                                             @if (Str::startsWith($download->url, 'https://elements.envato.com/'))
                                                 <button class="btn btn-danger fix-url-btn" data-platform="Envato" data-id="{{ $download->id }}" data-url="{{ $download->url }}">Fix Your Envato URL</button>
                                             @elseif (Str::startsWith($download->url, 'https://www.freepik.com/'))

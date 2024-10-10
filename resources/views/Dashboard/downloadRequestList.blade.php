@@ -10,6 +10,12 @@
         table-layout: fixed; /* Fix column widths to match thead and tbody */
         width: 100%;
     }
+    .small-btn {
+    padding: 1px 3px;    /* Kurangi padding */
+    font-size: 12px;     /* Ukuran teks lebih kecil */
+    margin: 0 2px;       /* Kurangi jarak antar tombol */
+}
+
 </style>
 @endpush
 
@@ -29,7 +35,7 @@
                     <thead>
                         <tr>
                             <th style="width: 5%;">#</th>
-                            <th style="width: 25%;">Product_url</th>
+                            <th style="width: 25%;">Product</th>
                             <th style="width: 30%;">Email</th>
                             <th style="width: 15%;">Status</th>
                             <th style="width: 10%;">Action</th>                          
@@ -89,7 +95,7 @@
 @endsection
 @push('footer-script')
 
-<script type="text/javascript">
+<script type="text/javascript">   
     $(document).ready(function() {
         $('#request-table').DataTable({
             processing: true,
@@ -112,7 +118,21 @@
                         return meta.row + 1; // Numbering
                     }
                 },
-                { data: 'url', name: 'url' },
+                { 
+                    data: 'url', 
+                    name: 'url',
+                    orderable: false, 
+                    searchable: false,
+                    render: function(data, type, row, meta) {
+                        return `
+                            <button class="btn btn-sm btn-primary open-url-btn" data-url="${data}" title="Open URL" target="_blank">
+                                <i class="fas fa-external-link-alt"></i>
+                            </button>
+                            <button class="btn btn-sm btn-secondary copy-url-btn" data-url="${data}" title="Copy URL">
+                                <i class="fas fa-copy"></i>
+                            </button>`;
+                    }
+                },
                 { data: 'email', name: 'email' },
                 { data: 'status', name: 'status' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
@@ -166,6 +186,61 @@
             });
         });
 
+        $('#request-table').on('click', '.invalid-notify-btn', function() {
+    var requestId = $(this).data('id');
+
+    // Tampilkan SweetAlert "Processing"
+    Swal.fire({
+        title: 'Processing...',
+        text: 'Please wait while the notification is being sent.',
+        allowOutsideClick: false, // Mencegah pengguna menutup alert
+        didOpen: () => {
+            Swal.showLoading(); // Menampilkan spinner loading
+        }
+    });
+
+    $.ajax({
+        url: '/send-invalid-notification',
+        type: 'POST',
+        data: {
+            id: requestId,
+            _token: '{{ csrf_token() }}'
+        },
+        success: function(response) {
+            // Tutup SweetAlert "Processing"
+            Swal.close();
+
+            if (response.success) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: response.message || 'Invalid URL notification sent successfully!'
+                });
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: response.message || 'Failed to send invalid URL notification.'
+                });
+            }
+        },
+        error: function(xhr, status, error) {
+            // Tutup SweetAlert "Processing"
+            Swal.close();
+
+            // Menangkap pesan error dari response JSON
+            var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : 'An error occurred while sending the invalid URL notification.';
+
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: errorMessage // Menampilkan pesan error yang diterima dari server
+            });
+        }
+    });
+});
+
+
         // Event listener for Delete button
         $('#request-table').on('click', '.delete-btn', function() {
             var requestId = $(this).data('id');
@@ -212,6 +287,28 @@
                         }
                     });
                 }
+            });
+        });
+
+        $('#request-table').on('click', '.open-url-btn', function() {
+            var url = $(this).data('url');
+            window.open(url, '_blank');  // Buka URL di tab baru
+        });
+
+        // Event listener for Copy URL button
+        $('#request-table').on('click', '.copy-url-btn', function() {
+            var url = $(this).data('url');
+            var tempInput = $("<input>");
+            $("body").append(tempInput);
+            tempInput.val(url).select();
+            document.execCommand("copy");
+            tempInput.remove();
+
+            // Show SweetAlert
+            Swal.fire({
+                icon: 'success',
+                title: 'URL Copied!',
+                text: 'The URL has been copied to your clipboard.'
             });
         });
     });
