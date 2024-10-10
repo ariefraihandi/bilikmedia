@@ -7,9 +7,10 @@ use App\Models\RequestDownload;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Ad;
+use App\Models\Credit;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB; // Import DB untuk transaksi
+use Illuminate\Support\Facades\DB;
 use RealRashid\SweetAlert\Facades\Alert;
 use DataTables;
 
@@ -233,13 +234,23 @@ class ProductController extends Controller
 
     public function showProduct()
     {
-        $user = Auth::user(); 
+        $user           = Auth::user(); 
+        $userDetail     = $user->userDetail;
+
+        if ($user->role != 1) {
+            Alert::error('Error', 'Forbidden Access.');           
+            return redirect()->route('user.profile');
+        }
+
+        Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
+
         $categories = ProductCategory::all();
     
         // Data yang ingin dikirim ke view dashboard
         $data = [
-            'title' => 'Product',
+            'title' => 'Add Product | Bilik Media',
             'user' => $user,
+            'userDetail' => $userDetail,
             'categories' => $categories,
         ];
     
@@ -249,11 +260,21 @@ class ProductController extends Controller
 
     public function showProductlist()
     {
-        $user = Auth::user(); 
+        $user           = Auth::user(); 
+        $userDetail     = $user->userDetail;
+
+        if ($user->role != 1) {
+            Alert::error('Error', 'Forbidden Access.');           
+            return redirect()->route('user.profile');
+        }
+
+        Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
+
 
         $data = [
-            'title' => 'Product List',
+            'title' => 'Product List | Bilik Media',
             'user' => $user,
+            'userDetail' => $userDetail,
         ];
         return view('Dashboard.productList', $data);
     }

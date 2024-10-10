@@ -154,6 +154,16 @@
         $('#request-table').on('click', '.notify-btn', function() {
             var requestId = $(this).data('id');
 
+            // Tampilkan SweetAlert "Processing"
+            Swal.fire({
+                title: 'Processing...',
+                text: 'Please wait while the notification is being sent.',
+                allowOutsideClick: false, // Mencegah pengguna menutup alert
+                didOpen: () => {
+                    Swal.showLoading(); // Menampilkan spinner loading
+                }
+            });
+
             $.ajax({
                 url: '/send-download-notification',
                 type: 'POST',
@@ -162,6 +172,9 @@
                     _token: '{{ csrf_token() }}'
                 },
                 success: function(response) {
+                    // Tutup SweetAlert "Processing"
+                    Swal.close();
+
                     if (response.success) {
                         Swal.fire({
                             icon: 'success',
@@ -177,6 +190,9 @@
                     }
                 },
                 error: function(xhr, status, error) {
+                    // Tutup SweetAlert "Processing"
+                    Swal.close();
+
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
@@ -186,59 +202,60 @@
             });
         });
 
+
         $('#request-table').on('click', '.invalid-notify-btn', function() {
-    var requestId = $(this).data('id');
+            var requestId = $(this).data('id');
 
-    // Tampilkan SweetAlert "Processing"
-    Swal.fire({
-        title: 'Processing...',
-        text: 'Please wait while the notification is being sent.',
-        allowOutsideClick: false, // Mencegah pengguna menutup alert
-        didOpen: () => {
-            Swal.showLoading(); // Menampilkan spinner loading
-        }
-    });
-
-    $.ajax({
-        url: '/send-invalid-notification',
-        type: 'POST',
-        data: {
-            id: requestId,
-            _token: '{{ csrf_token() }}'
-        },
-        success: function(response) {
-            // Tutup SweetAlert "Processing"
-            Swal.close();
-
-            if (response.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success',
-                    text: response.message || 'Invalid URL notification sent successfully!'
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: response.message || 'Failed to send invalid URL notification.'
-                });
-            }
-        },
-        error: function(xhr, status, error) {
-            // Tutup SweetAlert "Processing"
-            Swal.close();
-
-            // Menangkap pesan error dari response JSON
-            var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : 'An error occurred while sending the invalid URL notification.';
-
+            // Tampilkan SweetAlert "Processing"
             Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: errorMessage // Menampilkan pesan error yang diterima dari server
+                title: 'Processing...',
+                text: 'Please wait while the notification is being sent.',
+                allowOutsideClick: false, // Mencegah pengguna menutup alert
+                didOpen: () => {
+                    Swal.showLoading(); // Menampilkan spinner loading
+                }
             });
-        }
-    });
-});
+
+            $.ajax({
+                url: '/send-invalid-notification',
+                type: 'POST',
+                data: {
+                    id: requestId,
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    // Tutup SweetAlert "Processing"
+                    Swal.close();
+
+                    if (response.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Success',
+                            text: response.message || 'Invalid URL notification sent successfully!'
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops...',
+                            text: response.message || 'Failed to send invalid URL notification.'
+                        });
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Tutup SweetAlert "Processing"
+                    Swal.close();
+
+                    // Menangkap pesan error dari response JSON
+                    var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : 'An error occurred while sending the invalid URL notification.';
+
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: errorMessage // Menampilkan pesan error yang diterima dari server
+                    });
+                }
+            });
+        });
 
 
         // Event listener for Delete button

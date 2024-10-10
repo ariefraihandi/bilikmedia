@@ -24,16 +24,25 @@ class DownloadController extends Controller
 {
     public function showDownloadRequestlist(Request $request)
     {
-        if ($request->ajax()) {
-            // Ambil data dari tabel request_download dan produk, urutkan berdasarkan kolom created_at secara descending (terbaru di atas)
+
+        $user           = Auth::user();
+        $userDetail     = $user->userDetail;
+
+        if ($user->role != 1) {
+            Alert::error('Error', 'Forbidden Access.');           
+            return redirect()->route('user.profile');
+        }
+
+        Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
+
+        if ($request->ajax()) {        
             $data = RequestDownload::leftJoin('products', 'request_download.url', '=', 'products.url_source')
                 ->select('request_download.*', 'products.url_source as product_url')
-                ->orderBy('request_download.created_at', 'DESC')  // Mengurutkan berdasarkan kolom created_at
+                ->orderBy('request_download.created_at', 'DESC') 
                 ->get();
     
             return DataTables::of($data)
                 ->addColumn('action', function($data) {
-                    // Tombol notify (untuk URL valid)
                     $notifyButton = '
                         <button class="btn btn-sm btn-primary small-btn notify-btn mb-1" data-id="'.$data->id.'" title="Notify">
                             <i class="fas fa-bell"></i>
@@ -55,7 +64,6 @@ class DownloadController extends Controller
                     // Munculkan ketiga tombol
                     return $notifyButton . ' ' . $invalidUrlButton . ' ' . $deleteButton;
                 })
-
             
                 ->addColumn('url_exists', function($data) {
                     return $data->product_url ? 'exists' : 'not-exists';
@@ -86,8 +94,9 @@ class DownloadController extends Controller
         $user = Auth::user(); 
 
         $data = [
-            'title' => 'Download Request List | Bilik Media',
-            'user' => $user,           
+            'title'         => 'Download Request List | Bilik Media',
+            'user'          => $user,           
+            'userDetail'    => $userDetail,           
         ];
     
         return view('Dashboard.downloadRequestList', $data);
@@ -367,6 +376,7 @@ class DownloadController extends Controller
         }
 
         $product = $download->product;
+      
         $sideAd = Ad::where('name', 'side')->first();
         $bannerAd = Ad::where('name', 'banner')->first();
         $socialAd = Ad::where('name', 'social')->first();
@@ -384,51 +394,53 @@ class DownloadController extends Controller
             'sideAd' => $sideAd,          
             'bannerAd' => $bannerAd,     
             'socialAd' => $socialAd,     
+            'url' => $product->url_download,     
         ];
 
         return view('Download.download', $data);
     }
 
-    public function showRating($token)
-    {        
-        $download = Download::where('token', $token)->first();
-        if (!$download) {
-            return redirect()->back()->withErrors('Invalid token.');
+    //unsued
+        public function showRating($token)
+        {        
+            $download = Download::where('token', $token)->first();
+            if (!$download) {
+                return redirect()->back()->withErrors('Invalid token.');
+            }
+        
+            $product = Product::find($download->product_id);
+                
+            if (!$product) {
+                return redirect()->back()->withErrors('Product not found.');
+            }
+        
+            $data = [
+                'title' => 'Rating ' . $product->title,  // Gabungkan string "Rating" dengan title produk
+                'product' => $product,                   // Mengirim informasi produk ke view
+                'download' => $download,                 // Mengirim informasi download ke view
+            ];
+                
+            return view('Download.rating', $data);
         }
-    
-        $product = Product::find($download->product_id);
-            
-        if (!$product) {
-            return redirect()->back()->withErrors('Product not found.');
+
+        public function submitRating(Request $request)
+        {
+            // Validasi input
+            $request->validate([
+                'product_id' => 'required|exists:products,id',
+                'rating' => 'required|integer|min:1|max:5',
+            ]);
+        
+            // Simpan rating tanpa user_id
+            Rating::create([
+                'product_id' => $request->input('product_id'),
+                'rating' => $request->input('rating'),
+            ]);
+        
+            // Redirect ke halaman envanto downloader dengan pesan sukses
+            return redirect()->route('envanto.downloader')->with('success', 'Thank you for your rating!');
         }
-    
-        $data = [
-            'title' => 'Rating ' . $product->title,  // Gabungkan string "Rating" dengan title produk
-            'product' => $product,                   // Mengirim informasi produk ke view
-            'download' => $download,                 // Mengirim informasi download ke view
-        ];
-            
-        return view('Download.rating', $data);
-    }
-
-    public function submitRating(Request $request)
-    {
-        // Validasi input
-        $request->validate([
-            'product_id' => 'required|exists:products,id',
-            'rating' => 'required|integer|min:1|max:5',
-        ]);
-    
-        // Simpan rating tanpa user_id
-        Rating::create([
-            'product_id' => $request->input('product_id'),
-            'rating' => $request->input('rating'),
-        ]);
-    
-        // Redirect ke halaman envanto downloader dengan pesan sukses
-        return redirect()->route('envanto.downloader')->with('success', 'Thank you for your rating!');
-    }
-
+    //unsued
     
     public function requestDownload(Request $request)
     {

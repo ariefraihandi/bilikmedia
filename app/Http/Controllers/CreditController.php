@@ -110,7 +110,7 @@ class CreditController extends Controller
         $user = Auth::user();
 
         // Delay the process to simulate waiting for the user to complete sharing (random between 15 to 25 seconds)
-        sleep(rand(15, 25));
+        sleep(rand(10, 15));
 
         // Randomly determine if the sharing is detected or not (50% chance)
         $isShareDetected = rand(0, 1) === 1;

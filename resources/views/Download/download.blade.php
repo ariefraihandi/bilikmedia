@@ -116,10 +116,9 @@
                         event.preventDefault();
 
                         
-                        window.open("{{ route('blog.websiteTemp') }}?data={{ $download->token }}", '_blank');
+                        window.open("{{ $product->url_download }}", '_blank');
 
-
-                        window.location.href = "{{ route('rating.show', $download->token) }}";
+                        window.location.href = "https://luglawhaulsano.net/4/6533199";
                     });
                 }
             }, 1000);
