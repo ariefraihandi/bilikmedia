@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use RealRashid\SweetAlert\Facades\Alert;
+use App\Mail\IncompleteProfileNotification;
+use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use DataTables;
 
@@ -163,9 +165,7 @@ class UserController extends Controller
                 $completionBadge = $user->userDetail 
                     ? '<span class="badge bg-success">Complete</span>' 
                     : '<span class="badge bg-warning">Incomplete</span>';
-
-                // Gabungkan kedua badge
-                return $statusBadge . ' ' . $completionBadge;
+                return "{$statusBadge}<br><br>{$completionBadge}";
             })
             ->addColumn('kredit', function($user) {
                 return $user->userDetail->kredit ?? 'No Credit'; // Menampilkan kredit user
@@ -180,5 +180,25 @@ class UserController extends Controller
             })
             ->rawColumns(['user', 'status']) // Agar HTML badge dan br bisa diproses
             ->make(true);
+    }
+
+    public function notifyIncomplete(Request $request)
+    {
+        // Proses notifikasi berdasarkan user_id
+        $user = User::find($request->user_id);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        // Kirim email menggunakan Mailable class
+        try {
+            Mail::to($user->email)->send(new IncompleteProfileNotification($user));
+
+            return response()->json(['message' => 'Notification sent successfully and email has been sent.']);
+        } catch (\Exception $e) {
+            // Kirimkan pesan error spesifik dari exception
+            return response()->json(['error' => 'Failed to send email: ' . $e->getMessage()], 500);
+        }
     }
 }

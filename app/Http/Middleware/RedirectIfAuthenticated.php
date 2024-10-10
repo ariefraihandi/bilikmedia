@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
             Alert::info('You Are Already Logged In', 'You are already logged in. Redirecting to dashboard.');
 
             // Redirect ke halaman dashboard
-            return redirect('/dashboard');
+            return redirect('/profile');
         }
 
         // Jika belum login, izinkan akses ke halaman

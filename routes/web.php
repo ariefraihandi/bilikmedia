@@ -86,5 +86,8 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
 
     Route::post('/ads-store',                       [AdController::class, 'adsStore'])->name('ads.store');
     Route::get('/user-list-datatables',             [UserController::class, 'getUsersForDataTables'])->name('user.list.datatables');
+    
+    Route::post('/notify-incomplete',               [UserController::class, 'notifyIncomplete'])->name('notify.incomplete');
+
 
 });
