@@ -207,9 +207,10 @@ class UserController extends Controller
 
     public function getUsersForDataTables(Request $request)
     {
-        // Query untuk mendapatkan data user dan userDetail dengan eager loading
-        $users = User::with('userDetail');
-
+        
+        $users = User::with('userDetail')
+            ->orderBy('created_at', 'desc');  // Mengurutkan data berdasarkan waktu pembuatan (terbaru terlebih dahulu)
+    
         return DataTables::of($users)
             ->addColumn('user', function($user) {
                 // Gabungkan name, phone, dan email dalam satu kolom
@@ -223,7 +224,7 @@ class UserController extends Controller
                 $statusBadge = $user->status == 1 
                     ? '<span class="badge bg-success">Aktif</span>' 
                     : '<span class="badge bg-warning">Inactive</span>';
-
+    
                 // Cek apakah userDetail tersedia (Complete/Incomplete)
                 $completionBadge = $user->userDetail 
                     ? '<span class="badge bg-success">Complete</span>' 
@@ -237,13 +238,26 @@ class UserController extends Controller
                 // Hitung jumlah request download berdasarkan email user
                 return RequestDownload::where('email', $user->email)->count();
             })
-            ->addColumn('since', function($user) {
-                // Menampilkan created_at dalam format readable
-                return Carbon::parse($user->created_at)->format('d M Y');
+            ->addColumn('referred', function($user) {
+                // Cari refferal code dari user_id
+                $refferal = Refferal::where('user_id', $user->id)->first();
+    
+                // Jika user tidak memiliki refferal code, kembalikan '0 User'
+                if (!$refferal) {
+                    return '0 User';
+                }
+    
+                // Ambil kode refferal dan cari jumlah user yang direferensikan oleh user ini
+                $refferalCode = $refferal->refferal_code;
+                $referredUsersCount = User::where('reffered_by', $refferalCode)->count();
+    
+                // Jika user memiliki referensi, kembalikan jumlah user yang direferensikan
+                return "{$referredUsersCount} User";
             })
-            ->rawColumns(['user', 'status']) // Agar HTML badge dan br bisa diproses
+            ->rawColumns(['user', 'status', 'referred']) // Agar HTML badge dan br bisa diproses
             ->make(true);
     }
+    
 
     public function notifyIncomplete(Request $request)
     {

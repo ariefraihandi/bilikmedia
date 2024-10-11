@@ -158,7 +158,7 @@
                 { data: 'status', name: 'status', orderable: false, searchable: false, className: "text-center" },
                 { data: 'kredit', name: 'kredit', className: "text-center" },
                 { data: 'download_count', name: 'download_count', className: "text-center" },
-                { data: 'since', name: 'since', className: "text-center" },
+                { data: 'referred', name: 'referred', className: "text-center" },
                 { 
                     data: 'action', 
                     name: 'action', 
