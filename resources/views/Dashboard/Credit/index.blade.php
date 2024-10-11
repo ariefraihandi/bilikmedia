@@ -54,7 +54,7 @@
                         </div>
                         <div>
                             <h5 class="earning-card__amount ads-credit-amount mb-1 mt-3 pt-3 border-top text-white">
-                                {{ $adCredits->sum('credit_amount') }} Credits
+                                {{ $adCredits->sum('credit_amount') }} Credits                                
                             </h5>
                             <p class="earning-card__text font-14 text-white fw-200">
                                 This is your total ad-watching credit balance
@@ -62,23 +62,32 @@
                         </div>
                     </div>
                 </div>
-                
-                
-               
-                
+                                    
                 <div class="col-lg-3 col-sm-6">
                     <div class="earning-card position-relative z-index-1">
                         <img src="{{ asset('assets') }}/images/gradients/testimonial-bg.png" alt="" class="hover-bg visible opacity-100">
                         <div>
-                            <h6 class="earning-card__title font-body font-16 mb-2 text-white fw-600">Credits by Referring Your Friend</h6>
-                            <p class="earning-card__text font-14 text-white fw-200">Earn credits by inviting your friends:</p>
+                            <h6 class="earning-card__title font-body font-16 mb-2 text-white fw-600">Referral Credit</h6>
+                
+                            @if(!$isReferred)                              
+                                <!-- Tombol Generate dengan ID -->
+                                <button id="generate-btn" class="btn btn-primary pill btn-sm mt-2" onclick="generateReffCode()">Generate</button>
+                
+                                <!-- Tombol Share, disembunyikan dulu -->
+                                <button id="share-btn" class="btn btn-primary pill btn-sm mt-2" style="display: none;" onclick="shareReffCode()">Share</button>
+                            @else
+                                <!-- Jika user sudah memiliki refferal, tampilkan tombol Share -->
+                                <button id="share-btn" class="btn btn-primary pill btn-sm mt-2" onclick="shareReffCode()">Share</button>
+                            @endif
                         </div>
                         <div>
-                            <h5 class="earning-card__amount mb-1 mt-3 pt-3 border-top text-white">Coming Soon</h5>
-                            <p class="earning-card__text font-14 text-white fw-200">Referral program will be available soon</p>
+                          
+                            <h5 class="earning-card__amount mb-1 mt-3 pt-3 border-top text-white">{{ $totalReffCredits}} Credits</h5>
+                            <p class="earning-card__text font-14 text-white fw-200">Share the Happiness, and Get Even More</p>
                         </div>
                     </div>
                 </div>
+                
                      
 
                 <div class="col-lg-12">
@@ -101,7 +110,7 @@
                                             <td>{{ $index + 1 }}</td> <!-- Nomor urut -->
                                             <td>{{ $credit->created_at->format('d-m-Y') }}</td>
                                             <td>
-                                                @if ($credit->credit_amount === 0)
+                                                @if ($credit->credit_amount == 0)
                                                     expired / used
                                                 @elseif (empty($credit->credit_amount))
                                                     +
@@ -463,6 +472,120 @@
             tokens.push(generateRandomCode(10)); // Generate a 10-character token
         }
         return tokens;
+    }
+</script>
+
+<script>
+    function generateReffCode() {
+        // Tampilkan SweetAlert untuk instruksi
+        Swal.fire({
+            title: 'Generate Refferal Link?',
+            text: "You will earn 5 credits after your referral uses 10 credits.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, generate it!',
+            cancelButtonText: 'No, cancel',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Tampilkan SweetAlert untuk proses sedang berjalan
+                Swal.fire({
+                    title: 'Processing...',
+                    text: 'Please wait while we generate your referral link.',
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading() // Menampilkan loading saat proses berjalan
+                    }
+                });
+
+                // Kirim POST request jika user setuju
+                fetch('{{ route('generate-reff') }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Ambil CSRF token
+                    },
+                    body: JSON.stringify({
+                        user_id: '{{ Auth::user()->id }}' // Kirim user_id
+                    })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                }).then(data => {
+                    if (data.success) {
+                        Swal.fire(
+                            'Generated!',
+                            'Your referral link has been generated: ' + data.refferal_code,
+                            'success'
+                        );
+
+                        // Hapus tombol Generate dan tampilkan tombol Share tanpa reload
+                        document.getElementById('generate-btn').style.display = 'none';
+                        document.getElementById('share-btn').style.display = 'block';
+                    } else {
+                        Swal.fire(
+                            'Error!',
+                            data.message || 'There was a problem generating your referral link.',
+                            'error'
+                        );
+                    }
+                }).catch((error) => {
+                    console.error('There was a problem with the fetch operation:', error);
+                    Swal.fire(
+                        'Error!',
+                        'There was a problem processing your request.',
+                        'error'
+                    );
+                });
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                Swal.fire(
+                    'Cancelled',
+                    'Referral generation was cancelled.',
+                    'error'
+                );
+            }
+        });
+    }
+</script>
+
+<script>
+    function shareReffCode() {
+        // Tampilkan SweetAlert untuk berbagi
+        Swal.fire({
+            title: 'Share Your Referral Link',
+            html: `
+                <div style="display: flex; justify-content: space-around; margin-bottom: 15px;">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ url('/auth/register?reff=' . $reffCode) }}" target="_blank">
+                        <i class="fab fa-facebook fa-2x"></i>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=Get+FREE+access+to+Canva+Pro,+Envato+Elements,+Freepik,+Motion+Array,+and+more!+Unlock+your+creativity+with+this+exclusive+referral+link:+{{ url('/auth/register?reff=' . $reffCode) }}" target="_blank">
+                        <i class="fab fa-twitter fa-2x"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ url('/auth/register?reff=' . $reffCode) }}" target="_blank">
+                        <i class="fab fa-linkedin fa-2x"></i>
+                    </a>
+                </div>
+                <button id="copy-link" class="btn btn-primary">
+                    <i class="fas fa-copy"></i> Copy Link
+                </button>
+            `,
+            showCloseButton: true,
+            showConfirmButton: false,
+        });
+
+        // Fungsi untuk menyalin link ke clipboard
+        document.addEventListener('click', function(event) {
+            if (event.target && event.target.id === 'copy-link') {
+                var referralLink = '{{ url('/auth/register?reff=' . $reffCode) }}';
+                navigator.clipboard.writeText(referralLink).then(function() {
+                    Swal.fire('Copied!', 'Your referral link has been copied to clipboard.', 'success');
+                }, function(err) {
+                    Swal.fire('Error', 'Failed to copy the link.', 'error');
+                });
+            }
+        });
     }
 </script>
 

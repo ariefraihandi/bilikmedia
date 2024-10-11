@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\UserDetail;
 use App\Models\Credit;
 use App\Models\RequestDownload;
+use App\Models\Refferal;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -38,14 +39,27 @@ class UserController extends Controller
             $userDetail->kredit = $totalCredit;
             $userDetail->save();
         }
-        
+
+        // Ambil referral code dari tabel Refferal
+        $refferalCode = Refferal::where('user_id', $user->id)->value('refferal_code');
+
+        // Hitung jumlah user yang direferensikan berdasarkan refcode
+        $reffCount = 0; // Default value
+
+        if ($refferalCode) {
+            $reffCount = User::where('reffered_by', $refferalCode)->count();
+        }
+
+        // Hitung jumlah email download requests
         $emailCount = RequestDownload::where('email', $user->email)->count();
-        // Prepare data to be sent to the view
+
+        // Siapkan data untuk dikirim ke view
         $data = [
-            'title' => 'Profile | Bilik Media',
-            'user' => $user,
-            'userDetail' => $userDetail,
-            'emailCount' => $emailCount,
+            'title'         => 'Profile | Bilik Media',
+            'user'          => $user,
+            'userDetail'    => $userDetail,
+            'emailCount'    => $emailCount,
+            'reffCount'     => $reffCount, // Kirim jumlah referral ke view
         ];
 
         return view('Dashboard.User.profile', $data);
@@ -88,6 +102,55 @@ class UserController extends Controller
 
         return view('Dashboard.User.userList', $data);
     }
+
+    
+    public function showReffList()
+    {
+        $user = Auth::user();        
+        $userDetail = $user->userDetail;
+    
+        // Jika ada userDetail, hitung dan update kredit
+        if ($userDetail) {
+            Credit::where('user_id', $user->id)
+                ->where('is_expires', true)
+                ->where('expires_at', '<', now())
+                ->update(['credit_amount' => 0]);
+    
+            $totalCredit = Credit::where('user_id', $user->id)
+                ->sum('credit_amount');
+    
+            // Update jumlah kredit di userDetail
+            $userDetail->kredit = $totalCredit;
+            $userDetail->save();
+        }
+    
+        $refferalCode = null;
+        
+        // Pastikan $referredUsers didefinisikan sebagai koleksi kosong
+        $referredUsers = collect();
+    
+        // Cek apakah user memiliki refferal
+        $isReferred = Refferal::where('user_id', $user->id)->exists();
+        if ($isReferred) {
+            $refferalCode = Refferal::where('user_id', $user->id)->value('refferal_code');
+            
+            // Ambil data referredUsers hanya jika ada referral code
+            if ($refferalCode) {
+                $referredUsers = User::where('reffered_by', $refferalCode)->paginate(10); 
+            }
+        }
+    
+        $data = [
+            'title'         => 'Referral List',
+            'user'          => $user,
+            'userDetail'    => $userDetail,
+            'referredUsers' => $referredUsers,
+        ];
+    
+        return view('Dashboard.User.refferalList', $data);
+    }
+    
+
     
     public function updateProfile(Request $request)
     {

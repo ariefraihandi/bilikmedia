@@ -43,6 +43,7 @@ class UserDetail extends Model
         'name',
         'phone',
         'kredit',
+        'is_claimed',
     ];
 
     /**

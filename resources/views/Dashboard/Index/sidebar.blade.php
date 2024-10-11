@@ -83,20 +83,7 @@
                         <span class="text">User List</span>
                     </a>
                 </li>
-                <li class="sidebar-list__item">
-                    <a href="{{ route('showDownloadRequestlist') }}" class="sidebar-list__link">
-                        <span class="sidebar-list__icon">
-                            @if(Route::currentRouteName() == 'showDownloadRequestlist')
-                            <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active5.svg" alt="" class="icon">
-                            <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active5.svg" alt="" class="icon icon-active">
-                            @else
-                            <img src="{{ asset('assets') }}/images/icons/sidebar-icon5.svg" alt="" class="icon">
-                            <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active5.svg" alt="" class="icon icon-active">
-                            @endif
-                        </span>
-                        <span class="text">Refferal</span>
-                    </a>
-                </li>  
+                
                 <li class="sidebar-list__item">
                     <a href="setting.html" class="sidebar-list__link">
                         <span class="sidebar-list__icon">
@@ -121,6 +108,20 @@
                     <span class="text">Profile</span>
                 </a>
             </li>
+            <li class="sidebar-list__item">
+                <a href="{{ route('refferal.list') }}" class="sidebar-list__link">
+                    <span class="sidebar-list__icon">
+                        @if(Route::currentRouteName() == 'refferal.list')
+                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active5.svg" alt="" class="icon">
+                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active5.svg" alt="" class="icon icon-active">
+                        @else
+                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon5.svg" alt="" class="icon">
+                        <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active5.svg" alt="" class="icon icon-active">
+                        @endif
+                    </span>
+                    <span class="text">Refferal</span>
+                </a>
+            </li>  
             <li class="sidebar-list__item">
                 <a href="{{ route('show.downloadHistory') }}" class="sidebar-list__link">
                     <span class="sidebar-list__icon">

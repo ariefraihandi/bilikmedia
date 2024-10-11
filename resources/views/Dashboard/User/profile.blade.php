@@ -74,17 +74,28 @@
                                                 <a href="{{ route('credit.dashboard') }}" style="text-decoration: none; color: inherit;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| + Get Credit</a>
                                             </span>
                                         </li>
+                                        <li class="profile-info-list__item">
+                                            <span class="profile-info-list__content flx-align flex-nowrap gap-2">
+                                                <img src="{{ asset('assets') }}/images/icons/sidebar-icon5.svg" alt="" class="icon">
+                                                <span class="text text-heading fw-500">Refferal</span>
+                                            </span>
+                                            <span class="profile-info-list__info">
+                                                <a href="{{ route('show.downloadHistory') }}" style="text-decoration: none; color: inherit;">
+                                                    {{ $reffCount }} User
+                                                </a>
+                                            </span>
+                                        </li>
                                         
                                         <li class="profile-info-list__item">
                                             <span class="profile-info-list__content flx-align flex-nowrap gap-2">
                                                 <img src="{{ asset('assets') }}/images/icons/download.svg" alt="" class="icon">
                                                 <!-- Ubah span menjadi anchor tag (link) -->
-                                                <a href="{{ route('user.profile') }}" class="text text-heading fw-500" style="text-decoration: none; color: inherit;">
-                                                    Purchased
+                                                <a href="{{ route('show.downloadHistory') }}" class="text text-heading fw-500" style="text-decoration: none; color: inherit;">
+                                                    Download
                                                 </a>
                                             </span>
                                             <span class="profile-info-list__info">
-                                                <a href="{{ route('user.profile') }}" style="text-decoration: none; color: inherit;">
+                                                <a href="{{ route('show.downloadHistory') }}" style="text-decoration: none; color: inherit;">
                                                     {{ $emailCount }} items
                                                 </a>
                                             </span>
@@ -115,9 +126,9 @@
                                         <button class="nav-link font-18 font-heading active" id="pills-personalInfo-tab" data-bs-toggle="pill" data-bs-target="#pills-personalInfo" type="button" role="tab" aria-controls="pills-personalInfo" aria-selected="true">Personal Info</button>
                                         </li>
                                        
-                                        <li class="nav-item" role="presentation">
+                                        {{-- <li class="nav-item" role="presentation">
                                         <button class="nav-link font-18 font-heading" id="pills-changePassword-tab" data-bs-toggle="pill" data-bs-target="#pills-changePassword" type="button" role="tab" aria-controls="pills-changePassword" aria-selected="false">Change Password</button>
-                                        </li>
+                                        </li> --}}
                                     </ul>
                                 </div>
 

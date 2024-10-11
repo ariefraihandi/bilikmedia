@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Credit; 
 use App\Models\UserDetail;
+use App\Models\User;
+use App\Models\Refferal;
 use App\Models\AdCredit;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
@@ -16,29 +18,63 @@ class CreditController extends Controller
 
     public function showCredit()
     {
-        $user           = Auth::user();
-        $userDetail     = $user->userDetail;
+        $user = Auth::user();
+        $userDetail = $user->userDetail;
 
-        Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
-       
-        $dailyCredits       = Credit::where('user_id', $user->id)->where('credit_type', 'daily')->get();
-        $shareCredits       = Credit::where('user_id', $user->id)->where('credit_type', 'share')->get();
-        $adCredits          = Credit::where('user_id', $user->id)->where('credit_type', 'ad')->get();
-        $credits            = Credit::where('user_id', $user->id)->orderBy('created_at', 'desc')->take(100)->paginate(10);
+        // Cek apakah user memiliki referral
+        $isReferred = Refferal::where('user_id', $user->id)->exists();
 
+        // Inisialisasi referral code dengan null
+        $reffCode = null;
 
+        // Jika user memiliki referral, ambil referral code
+        if ($isReferred) {
+            $reffCode = Refferal::where('user_id', $user->id)->value('refferal_code');
+        }
+
+        // Update credit yang telah expired
+        Credit::where('user_id', $user->id)
+            ->where('is_expires', true)
+            ->where('expires_at', '<', now())
+            ->update(['credit_amount' => 0]);
+
+        // Ambil data credit
+        $dailyCredits = Credit::where('user_id', $user->id)
+            ->where('credit_type', 'daily')
+            ->get();
+        $shareCredits = Credit::where('user_id', $user->id)
+            ->where('credit_type', 'share')
+            ->get();
+        $adCredits = Credit::where('user_id', $user->id)
+            ->where('credit_type', 'ad')
+            ->get();
+        $credits = Credit::where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->take(100)
+            ->paginate(10);
+
+        // Hitung total kredit reff
+        $totalReffCredits = Credit::where('user_id', $user->id)
+            ->where('credit_type', 'reff')
+            ->sum('credit_amount'); // Menghitung total jumlah kredit dari tipe reff
+
+        // Data untuk dikirim ke view
         $data = [
-            'title'         => 'Credit | Bilik Media',
-            'user'          => $user,
-            'userDetail'    => $userDetail,
-            'dailyCredits'  => $dailyCredits,
-            'shareCredits'  => $shareCredits,
-            'adCredits'     => $adCredits,
-            'credits'       => $credits,
+            'title' => 'Credit | Bilik Media',
+            'user' => $user,
+            'userDetail' => $userDetail,
+            'dailyCredits' => $dailyCredits,
+            'shareCredits' => $shareCredits,
+            'adCredits' => $adCredits,
+            'credits' => $credits,
+            'isReferred' => $isReferred,
+            'reffCode' => $reffCode,  // Mengirim referral code ke view jika ada
+            'totalReffCredits' => $totalReffCredits,  // Mengirim total kredit reff ke view
         ];
 
         return view('Dashboard.Credit.index', $data);
     }
+
 
     public function showCreditRedemtion()
     {
@@ -104,15 +140,12 @@ class CreditController extends Controller
         ], 200);
     }
 
-    
     public function claimSharingCredit(Request $request)
     {
         $user = Auth::user();
 
-        // Delay the process to simulate waiting for the user to complete sharing (random between 15 to 25 seconds)
         sleep(rand(10, 15));
 
-        // Randomly determine if the sharing is detected or not (50% chance)
         $isShareDetected = rand(0, 1) === 1;
 
         if (!$isShareDetected) {
@@ -214,7 +247,108 @@ class CreditController extends Controller
         ], 200);
     }
 
+    public function claimRefferal(Request $request)
+    {
+        // Validasi data yang diterima
+        $request->validate([
+            'user_id' => 'required|exists:users,id',
+        ]);
+
+        // Temukan user berdasarkan ID yang diterima (user yang dirujuk)
+        $user = User::find($request->user_id);
+
+        if (!$user) {
+            return response()->json([
+                'success' => false,
+                'message' => 'User not found.',
+            ], 404);
+        }
+
+        // Hitung jumlah kredit yang sudah digunakan oleh user yang dirujuk
+        $creditCount = Credit::where('user_id', $user->id)
+            ->where('credit_amount', 0)
+            ->count();
+        
+        // Jika kredit yang digunakan >= 10, proses klaim
+        if ($creditCount >= 10) {
+            // Tambahkan 5 kredit baru untuk user yang dirujuk
+           
+
+            $userDetail = $user->userDetail;  // Ambil user detail dari user yang dirujuk
+            if ($userDetail) {
+                $userDetail->is_claimed = 1;  // Ubah kolom is_claimed menjadi 1
+                $userDetail->save();  // Simpan perubahan ke database
+            }
+
+            // Untuk Auth user (user yang sedang login), hitung total kredit
+            $authUser = Auth::user();
+            $authUserDetail = $authUser->userDetail;  // Ambil user detail dari Auth user
+            
+            if ($authUserDetail) {              
+                Credit::create([
+                    'uuid' => (string) Str::uuid(),       // Generate UUID baru
+                    'user_id' => $authUserDetail->user_id,               // ID user yang dirujuk
+                    'credit_amount' => 5,                 // Menambahkan 5 kredit
+                    'credit_type' => 'reff',              // Jenis kredit dari referral
+                    'is_expires' => false,                // Kredit tidak memiliki waktu expired
+                    'expires_at' => null,                 // Tidak ada expired date
+                ]);  
+                $totalCredits = Credit::where('user_id', $authUser->id)->sum('credit_amount');
+                
+                $authUserDetail->kredit = $totalCredits;
+                $authUserDetail->save(); 
+            }
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Referral claim successfully processed. 5 credits added for referred user, total credits updated for authenticated user.',
+            ]);
+        }
+
+        // Jika kurang dari 10 credit dengan amount = 0, klaim gagal
+        return response()->json([
+            'success' => false,
+            'message' => 'The user has not used 10 credits yet.',
+        ], 400);
+    }
+
+
+
+    public function generateReff(Request $request)
+    {
+        // Ambil user yang sedang login
+        $user = Auth::user();  // Pastikan ini adalah ID integer dari tabel users
     
+        // Generate referral code dan UUID di controller
+        $uuid = (string) Str::uuid();  // Generate UUID
+        $referralCode = strtoupper(Str::random(10));  // Generate referral code acak
+        $existingReferral = Refferal::where('user_id', $user->id)->first();
+        
+        if ($existingReferral) {
+            return response()->json([
+                'success' => false,
+                'message' => 'You have already generated a referral code.',
+                'refferal_code' => $existingReferral->refferal_code
+            ], 400);  // Mengembalikan pesan bahwa referral code sudah ada
+        }
+        
+        // Simpan ke database
+        $referral = new Refferal();
+        $referral->user_id = $user->id;  // Menggunakan ID integer dari user yang sedang login
+        $referral->refferal_code = $referralCode;  // Referral code yang di-generate
+        $referral->uuid = $uuid;  // UUID yang dihasilkan di controller
+        $referral->save();
+    
+        // Return response
+        return response()->json([
+            'success' => true,
+            'message' => 'Referral code successfully generated.',
+            'refferal_code' => $referral->refferal_code,
+            'uuid' => $referral->uuid  // Mengembalikan UUID juga jika diperlukan
+        ]);
+    }
+        
+
     public function storeAdTokens(Request $request)
     {
         $user = Auth::user();
@@ -246,7 +380,7 @@ class CreditController extends Controller
             $differenceInMinutes = $lastAdWatchTime->diffInMinutes($currentTime);
 
             // Jika selisih waktunya kurang dari 5 menit, kembalikan respon menunggu
-            if ($differenceInMinutes < 5) {
+            if ($differenceInMinutes < 0) {
                 return response()->json([
                     'status' => 'attention',
                     'message' => 'Please wait ' . ceil(5 - $differenceInMinutes) . ' more minutes to claim your next reward with ads.'

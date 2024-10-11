@@ -18,6 +18,25 @@ class ProductController extends Controller
 {
     public function showAllProduct()
     {
+        $userDetail = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
         $categories = ProductCategory::withCount('products')
             ->orderBy('products_count', 'desc')
             ->take(10)
@@ -51,6 +70,7 @@ class ProductController extends Controller
             'products' => $products,
             'categories' => $categories,
             'ratingCounts' => $ratingCounts, 
+            'userDetail' => $userDetail,
         ];
 
         return view('Product.product', $data);
@@ -58,6 +78,25 @@ class ProductController extends Controller
 
     public function showProductByCategory($slug)
     {
+        $userDetail = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
         $category = ProductCategory::where('slug', $slug)->firstOrFail();
     
         $products = Product::whereHas('categories', function($query) use ($category) {$query->where('product_category.id', $category->id);})
@@ -95,6 +134,7 @@ class ProductController extends Controller
             'categories' => $categories,
             'currentCategory' => $category,
             'ratingCounts' => $ratingCounts, 
+            'userDetail' => $userDetail,
         ];
     
         // Menampilkan view dengan data yang dikirim
@@ -103,6 +143,25 @@ class ProductController extends Controller
 
     public function filterByRating($rating)
     {
+        $userDetail = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
         // Ambil 10 kategori dengan jumlah produk terbanyak
         $categories = ProductCategory::withCount('products')
             ->orderBy('products_count', 'desc')
@@ -143,6 +202,7 @@ class ProductController extends Controller
             'products' => $products, // Data produk yang difilter berdasarkan rating
             'categories' => $categories, // Data kategori
             'ratingCounts' => $ratingCounts, // Jumlah produk untuk setiap rating
+            'userDetail' => $userDetail,
         ];
 
         // Mengirim data ke view 'Product.product'
@@ -151,6 +211,25 @@ class ProductController extends Controller
     
     public function showProductDetails($slug)
     {
+        $userDetail = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+        
         // Cari produk berdasarkan slug di database
         $product = Product::where('slug', $slug)->firstOrFail();
     
@@ -191,6 +270,7 @@ class ProductController extends Controller
             'smallAd'      => $smallAd, 
             'petakAd'      => $petakAd, 
             'besarAd'      => $besarAd, 
+            'userDetail' => $userDetail,
         ];
     
         // Return view dan kirim data

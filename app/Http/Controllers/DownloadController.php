@@ -200,9 +200,6 @@ class DownloadController extends Controller
         // Jika request download tidak ditemukan
         return response()->json(['error' => 'Download request not found']);
     }
-
-
-
     
     public function fixUrl(Request $request)
     {
@@ -247,124 +244,144 @@ class DownloadController extends Controller
             Alert::error('Error', 'Please login first.');
             return redirect()->route('showLoginForm');
         }
-
+    
         // Ambil informasi user yang sedang login
         $user = Auth::user();
-
+        $userDetail = $user->userDetail;
+    
         // Cari product berdasarkan ID
         $product = Product::find($productId);
-
+    
         // Jika produk tidak ditemukan, kembali ke halaman sebelumnya dengan pesan error
         if (!$product) {
             return redirect()->back()->withErrors('Product not found!');
         }
-
+    
         // Cek apakah email user dan url produk ada di tabel request_download
         $requestDownload = RequestDownload::where('email', $user->email)
-                            ->where('url', $product->url_source)
-                            ->first();
-
-        if (!$requestDownload) {           
-            Credit::where('user_id', $user->id)->where('is_expires', true)->where('expires_at', '<', now())->update(['credit_amount' => 0]);
-
-            $remainingCreditToDeduct = 2;
-
-            $dailyCredits       = Credit::where('user_id', $user->id)->where('credit_type', 'daily')->where('credit_amount', '>', 0)->sum('credit_amount');
-
-            if ($dailyCredits >= $remainingCreditToDeduct) {
-                // Deduct all from "daily" if sufficient credits are available
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'daily')
-                    ->where('credit_amount', '>', 0)
-                    ->limit($remainingCreditToDeduct)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct = 0;
-            } elseif ($dailyCredits > 0) {
-                // If only partial daily credits are available, deduct what is possible
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'daily')
-                    ->where('credit_amount', '>', 0)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct -= $dailyCredits;
-            }
-
-            if ($remainingCreditToDeduct > 0) {
-                $shareCredits = Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'share')
-                    ->where('credit_amount', '>', 0)
-                    ->sum('credit_amount');
-
-                if ($shareCredits >= $remainingCreditToDeduct) {
-                    // Deduct all from "share" if sufficient credits are available
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'share')
-                        ->where('credit_amount', '>', 0)
-                        ->limit($remainingCreditToDeduct)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct = 0;
-                } elseif ($shareCredits > 0) {
-                    // If only partial share credits are available, deduct what is possible
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'share')
-                        ->where('credit_amount', '>', 0)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct -= $shareCredits;
-                }
-            }
-        
-            if ($remainingCreditToDeduct > 0) {
-                $adCredits = Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'ad')
-                    ->where('credit_amount', '>', 0)
-                    ->sum('credit_amount');
-
-                if ($adCredits >= $remainingCreditToDeduct) {
-                    // Deduct all from "ad" if sufficient credits are available
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'ad')
-                        ->where('credit_amount', '>', 0)
-                        ->limit($remainingCreditToDeduct)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct = 0;
-                } elseif ($adCredits > 0) {
-                    // If only partial ad credits are available, deduct what is possible
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'ad')
-                        ->where('credit_amount', '>', 0)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct -= $adCredits;
-                }
-            }
-
-            if ($remainingCreditToDeduct > 0) {
+            ->where('url', $product->url_source)
+            ->first();
+    
+        if (!$requestDownload) {
+            // Update expired credits to 0
+            Credit::where('user_id', $user->id)
+                ->where('is_expires', true)
+                ->where('expires_at', '<', now())
+                ->update(['credit_amount' => 0]);
+    
+            $neededCredit = 2; // Total kredit yang dibutuhkan
+    
+            // Hitung total kredit yang tersedia
+            $totalAvailableCredits = Credit::where('user_id', $user->id)
+                ->where('credit_amount', '>', 0)
+                ->sum('credit_amount');
+    
+            // Jika total kredit yang tersedia kurang dari yang dibutuhkan, kembalikan error
+            if ($totalAvailableCredits < $neededCredit) {
                 Alert::error('Error', 'You do not have enough credits to download this product.');
                 return redirect()->back();
             }
-
-            $userDetail->kredit -= 2;
+    
+            $remainingCreditToDeduct = $neededCredit; // Total kredit yang harus dipotong
+    
+            // Step 1: Prioritaskan daily, share, dan ad credits
+            $creditTypes = ['daily', 'share', 'ad']; // Non-reff credits
+    
+            foreach ($creditTypes as $creditType) {
+                $credits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', $creditType)
+                    ->where('credit_amount', '>', 0)
+                    ->get();
+    
+                foreach ($credits as $credit) {
+                    if ($remainingCreditToDeduct <= 0) {
+                        break;  // Jika sudah cukup kredit terpotong
+                    }
+    
+                    if ($credit->credit_amount >= $remainingCreditToDeduct) {
+                        // Jika kredit yang tersedia lebih dari cukup, kurangi dan set sisa kebutuhan menjadi 0
+                        $credit->decrement('credit_amount', $remainingCreditToDeduct);
+                        $remainingCreditToDeduct = 0;
+                    } else {
+                        // Jika kredit yang tersedia kurang dari yang dibutuhkan, potong semuanya dan lanjutkan
+                        $remainingCreditToDeduct -= $credit->credit_amount;
+                        $credit->update(['credit_amount' => 0]); // Set credit_amount ke 0
+                    }
+                }
+    
+                // Jika sudah cukup kredit terpotong, hentikan loop
+                if ($remainingCreditToDeduct <= 0) {
+                    break;
+                }
+            }
+    
+            // Step 2: Jika masih butuh kredit, gunakan dari reff jika cukup
+            if ($remainingCreditToDeduct > 0) {
+                $reffCredits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'reff')
+                    ->where('credit_amount', '>', 0)
+                    ->first();
+    
+                if ($reffCredits && $reffCredits->credit_amount >= $remainingCreditToDeduct) {
+                    // Jika kredit reff cukup, kurangi sesuai kebutuhan
+                    $reffCredits->decrement('credit_amount', $remainingCreditToDeduct);
+                    $remainingCreditToDeduct = 0;
+                } else {
+                    // Jika kredit reff tidak cukup, kembalikan error dan jangan lakukan pemotongan
+                    Alert::error('Error', 'Your referral credits are not enough to complete this download.');
+                    return redirect()->back();
+                }
+            }
+    
+            // Hitung total kredit terbaru setelah pemotongan
+            $totalCredits = Credit::where('user_id', $user->id)->sum('credit_amount');
+    
+            // Update total kredit di userDetail
+            $userDetail->kredit = $totalCredits;
             $userDetail->save();
-
-            RequestDownload::create(['email' => $user->email,'url' => $product->url_source, 'status' => 3,]);
-
-
-            $download = Download::create(['product_id' => $product->id,'token' => Str::random(40),'expires_at' => Carbon::now()->addHours(2)]);
-
+    
+            // Buat request download baru
+            RequestDownload::create(['email' => $user->email, 'url' => $product->url_source, 'status' => 3]);
+    
+            // Buat token download baru
+            $download = Download::create(['product_id' => $product->id, 'token' => Str::random(40), 'expires_at' => Carbon::now()->addHours(2)]);
+    
             return redirect()->route('download.file', ['token' => $download->token]);
         }
-       
+    
+        // Jika sudah ada request download, buat token download baru
         $download = Download::create([
             'product_id' => $product->id,
             'token' => Str::random(40),
             'expires_at' => Carbon::now()->addHours(2) // Link kadaluarsa setelah 2 jam
         ]);
-
-        // Redirect ke halaman download dengan token
+    
         return redirect()->route('download.file', ['token' => $download->token]);
     }
-
-
+    
+    
     public function downloadFile($token)
     {
+
+        $userDetail = null;
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
         $download = Download::where('token', $token)->first();
     
         if (!$download) {
@@ -394,7 +411,8 @@ class DownloadController extends Controller
             'sideAd' => $sideAd,          
             'bannerAd' => $bannerAd,     
             'socialAd' => $socialAd,     
-            'url' => $product->url_download,     
+            'url' => $product->url_download,   
+            'userDetail' => $userDetail,  
         ];
 
         return view('Download.download', $data);
@@ -478,12 +496,10 @@ class DownloadController extends Controller
         if ($existingRequest) {
             // Use SweetAlert to show the error message
             Alert::error('Error', 'The file is already in your download history. Please check your download history.');
-
-            // Redirect back to the previous page without deducting credits
             return redirect()->back();
         }
 
-        // If no existing request is found, proceed with credit deduction logic
+        // Proceed with credit deduction logic
         if ($userDetail) {
             // Update expired credits to 0
             Credit::where('user_id', $user->id)
@@ -492,81 +508,81 @@ class DownloadController extends Controller
                 ->update(['credit_amount' => 0]);
 
             $remainingCreditToDeduct = 2; // Total credits required for deduction
+            $creditTypes = ['daily', 'share', 'ad']; // Non-reff types of credits
 
-            // Step 1: Check "daily" credits first
-            $dailyCredits = Credit::where('user_id', $user->id)
-                ->where('credit_type', 'daily')
-                ->where('credit_amount', '>', 0)
-                ->sum('credit_amount');
-
-            if ($dailyCredits >= $remainingCreditToDeduct) {
-                // Deduct all from "daily" if sufficient credits are available
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'daily')
+            // Step 1: Loop through each non-reff credit type and deduct the required credits
+            foreach ($creditTypes as $type) {
+                $credits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', $type)
                     ->where('credit_amount', '>', 0)
-                    ->limit($remainingCreditToDeduct)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct = 0;
-            } elseif ($dailyCredits > 0) {
-                // If only partial daily credits are available, deduct what is possible
-                Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'daily')
-                    ->where('credit_amount', '>', 0)
-                    ->update(['credit_amount' => 0]);
-                $remainingCreditToDeduct -= $dailyCredits;
-            }
+                    ->get();
 
-            // Step 2: Check "share" credits if more credits are needed
-            if ($remainingCreditToDeduct > 0) {
-                $shareCredits = Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'share')
-                    ->where('credit_amount', '>', 0)
-                    ->sum('credit_amount');
+                foreach ($credits as $credit) {
+                    if ($remainingCreditToDeduct <= 0) {
+                        break; // Stop the loop if we have deducted all required credits
+                    }
 
-                if ($shareCredits >= $remainingCreditToDeduct) {
-                    // Deduct all from "share" if sufficient credits are available
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'share')
-                        ->where('credit_amount', '>', 0)
-                        ->limit($remainingCreditToDeduct)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct = 0;
-                } elseif ($shareCredits > 0) {
-                    // If only partial share credits are available, deduct what is possible
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'share')
-                        ->where('credit_amount', '>', 0)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct -= $shareCredits;
+                    if ($credit->credit_amount >= $remainingCreditToDeduct) {
+                        // Deduct only the amount needed and set credit_amount to 0
+                        $credit->update(['credit_amount' => 0]);
+                        $remainingCreditToDeduct = 0;
+                    } else {
+                        // Deduct all available credits and continue
+                        $remainingCreditToDeduct -= $credit->credit_amount;
+                        $credit->update(['credit_amount' => 0]);
+                    }
+                }
+
+                // Stop if enough credits have been deducted
+                if ($remainingCreditToDeduct <= 0) {
+                    break;
                 }
             }
 
-            // Step 3: Check "ad" credits if more credits are still needed
+            // Step 2: Check and deduct from reff credits
             if ($remainingCreditToDeduct > 0) {
-                $adCredits = Credit::where('user_id', $user->id)
-                    ->where('credit_type', 'ad')
+                $reffCredits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'reff')
                     ->where('credit_amount', '>', 0)
                     ->sum('credit_amount');
 
-                if ($adCredits >= $remainingCreditToDeduct) {
-                    // Deduct all from "ad" if sufficient credits are available
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'ad')
+                if ($reffCredits >= $remainingCreditToDeduct) {
+                    // Ambil credit "reff" pertama yang memiliki credit_amount > 0
+                    $reffCredit = Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'reff')
                         ->where('credit_amount', '>', 0)
-                        ->limit($remainingCreditToDeduct)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct = 0;
-                } elseif ($adCredits > 0) {
-                    // If only partial ad credits are available, deduct what is possible
-                    Credit::where('user_id', $user->id)
-                        ->where('credit_type', 'ad')
+                        ->first();
+
+                    if ($reffCredit) {
+                        // Kurangi jumlah kredit yang ada dengan $remainingCreditToDeduct
+                        $reffCredit->credit_amount -= $remainingCreditToDeduct;
+                        // Simpan perubahan pada kredit reff
+                        $reffCredit->save();
+                        // Set remainingCreditToDeduct menjadi 0 karena sudah terpotong
+                        $remainingCreditToDeduct = 0;
+                    }
+                } elseif ($reffCredits > 0) {
+                    // Jika ada kredit "reff" yang tersisa tetapi kurang dari yang diperlukan
+                    $reffCredit = Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'reff')
                         ->where('credit_amount', '>', 0)
-                        ->update(['credit_amount' => 0]);
-                    $remainingCreditToDeduct -= $adCredits;
+                        ->first();
+
+                    if ($reffCredit) {
+                        // Kurangi sebanyak yang tersisa dari "reff"
+                        $remainingCreditToDeduct -= $reffCredit->credit_amount;
+                        $reffCredit->update(['credit_amount' => 0]); // Ubah "reff" ke 0 karena sudah digunakan semua
+                    }
                 }
             }
 
-            // Deduct the total of 2 credits from the user's total in userDetail regardless of the source
+            // After deducting credits, check if there's still credit left to deduct
+            if ($remainingCreditToDeduct > 0) {
+                Alert::error('Error', 'You do not have enough credits to complete this download.');
+                return redirect()->back();
+            }
+
+            // Deduct total 2 credits from the user's total in userDetail
             $userDetail->kredit -= 2;
             $userDetail->save();
         }
@@ -588,7 +604,7 @@ class DownloadController extends Controller
                 'expires_at' => Carbon::now()->addHours(2), 
             ]);
 
-            sleep(rand(2, 5));
+            sleep(rand(2, 5)); // Simulasi jeda waktu proses download
             return redirect()->route('download.file', ['token' => $download->token]);
         }
 
@@ -610,5 +626,7 @@ class DownloadController extends Controller
         // Redirect back to the previous page after showing the alert
         return redirect()->back();
     }
+
+
 
 }

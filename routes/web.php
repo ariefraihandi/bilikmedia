@@ -61,12 +61,15 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     
     Route::get('/profile',                          [UserController::class, 'index'])->name('user.profile');
     Route::get('/user-list',                        [UserController::class, 'showUserList'])->name('user.list');
+    Route::get('/refferal-list',                    [UserController::class, 'showReffList'])->name('refferal.list');
+
     Route::post('/update-profile',                  [UserController::class, 'updateProfile'])->name('update.profile');
     Route::get('/credit',                           [CreditController::class, 'showCredit'])->name('credit.dashboard');
     Route::get('/credit-redemption',                [CreditController::class, 'showCreditRedemtion'])->name('credit.redemption');
     Route::post('/claim-daily-credit',              [CreditController::class, 'claimDailyCredit'])->name('claim.daily.credit');
     Route::post('/claim-sharing-credit',            [CreditController::class, 'claimSharingCredit'])->name('claimSharingCredit');
     Route::post('/redeemAdCode',                    [CreditController::class, 'claimCodeCredit'])->name('redeemAdCode');
+    Route::post('/claim-refferal',                  [CreditController::class, 'claimRefferal'])->name('claimRefferal');
 
     Route::get('/download/request/list',            [DownloadController::class, 'showDownloadRequestlist'])->name('showDownloadRequestlist');
     Route::get('/user/download/history',            [DownloadController::class, 'showDownloadHistory'])->name('show.downloadHistory');
@@ -76,6 +79,7 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::post('/fix-url',                         [DownloadController::class, 'fixUrl'])->name('fix.url');
 
     Route::post('/store-ad-tokens',                 [CreditController::class, 'storeAdTokens'])->name('storeAdTokens');
+    Route::post('/generate-reff',                   [CreditController::class, 'generateReff'])->name('generate-reff');
 
     Route::get('/blog/bilikmedia/{token}',          [BlogController::class, 'showAdOne'])->name('blog.adsOne');
     Route::get('/blog/envato-downloader/{token}',   [BlogController::class, 'showAdTwo'])->name('blog.adsTwo');
