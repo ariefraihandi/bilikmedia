@@ -80,7 +80,7 @@
                                                 <span class="text text-heading fw-500">Refferal</span>
                                             </span>
                                             <span class="profile-info-list__info">
-                                                <a href="{{ route('show.downloadHistory') }}" style="text-decoration: none; color: inherit;">
+                                                <a href="{{ route('refferal.list') }}" style="text-decoration: none; color: inherit;">
                                                     {{ $reffCount }} User
                                                 </a>
                                             </span>
