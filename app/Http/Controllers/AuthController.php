@@ -48,94 +48,90 @@ class AuthController extends Controller
     }
     
     public function register(Request $request)
-{
-    // Validasi input
-    $validator = Validator::make($request->all(), [
-        'username' => 'required|string|max:255|unique:users',
-        'email' => 'required|string|email|max:255|unique:users',
-        'password' => 'required|string|min:6|confirmed',
-        'reff' => 'nullable|string|max:255', // Reff adalah opsional
-    ]);
-
-    // Jika validasi gagal
-    if ($validator->fails()) {
-        $errors = $validator->errors()->all();
-        $errorMessage = implode('& ', $errors);
-        Alert::error('Registration Failed', $errorMessage);
-        return redirect()->back()->withInput();
-    }
-
-    // Mulai transaksi database
-    DB::beginTransaction();
-
-    try {
-        // Cek apakah ada reff di request atau session
-        $refferedBy = $request->input('reff', session('reff', null));
-        // Debug apakah reff masuk atau null
-
-
-        // Buat user baru jika validasi sukses
-        $user = User::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'role' => 2, 
-            'status' => 0, // Set status menjadi 0
-            'reffered_by' => $refferedBy, // Simpan reff ke kolom reffered_by
+    {
+        // Validasi input
+        $validator = Validator::make($request->all(), [
+            'username'  => 'required|string|max:255|unique:users',
+            'email'     => 'required|string|email|max:255|unique:users',
+            'password'  => 'required|string|min:6|confirmed',
+            'reff'      => 'nullable|string|max:255', // Reff adalah opsional
         ]);
-      
 
-        // Generate token verifikasi
-        $verificationToken = Str::random(60);
-
-        // Simpan email dan token ke tabel email_verified_tokens
-        EmailVerifiedToken::create([
-            'email' => $user->email,
-            'token' => $verificationToken,
-        ]);      
-
-        // Enkripsi email dan token
-        $encryptedData = Crypt::encryptString("email={$user->email}&token={$verificationToken}");
-
-        // Generate link verifikasi
-        $verificationUrl = route('verify-email', ['data' => $encryptedData]);
-
-
-        // Kirim email verifikasi
-        Mail::send('emails.verify', [
-            'username' => $user->username,
-            'verificationUrl' => $verificationUrl,
-        ], function ($message) use ($user) {
-            $message->to($user->email);
-            $message->subject('Verify Your Email Address');
-        });
-
-        // Jika pengiriman email berhasil, komit perubahan
-        DB::commit();
-
-        // Tampilkan SweetAlert sukses
-        Alert::success('Registration Successful', 'Check your email to verify your account.');
-
-        // Redirect ke form login
-        return redirect()->route('showLoginForm');
-
-    } catch (\Exception $e) {
-        // Jika ada kesalahan (termasuk gagal kirim email), rollback semua perubahan
-        DB::rollBack();
-
-        // Ambil pesan error spesifik
-        $errorMessage = $e->getMessage();
+        // Jika validasi gagal
+        if ($validator->fails()) {
+            $errors = $validator->errors()->all();
+            $errorMessage = implode('& ', $errors);
+            Alert::error('Registration Failed', $errorMessage);
+            return redirect()->back()->withInput();
+        }
         
-        // Tampilkan pesan error beserta detail errornya
-        Alert::error('Registration Failed', "An error occurred: $errorMessage");
 
-        // Log the error for debugging
-        \Log::error('Registration failed: ', ['error' => $e]);
+        DB::beginTransaction();
 
-        // Kembalikan ke form register dengan input lama
-        return redirect()->back()->withInput();
+        try {
+            
+            $refferedBy = $request->input('reff');
+        
+            if (empty($refferedBy)) {
+                $refferedBy = session('reff', 'AJO9KSKKXH'); 
+            }
+
+            $user = User::create([
+                'username' => $request->username,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'role' => 2, 
+                'status' => 0,
+                'reffered_by' => $refferedBy,
+            ]);
+        
+            $verificationToken = Str::random(60);
+
+            EmailVerifiedToken::create([
+                'email' => $user->email,
+                'token' => $verificationToken,
+            ]);      
+
+            $encryptedData = Crypt::encryptString("email={$user->email}&token={$verificationToken}");
+
+            // Generate link verifikasi
+            $verificationUrl = route('verify-email', ['data' => $encryptedData]);
+
+            // Kirim email verifikasi
+            Mail::send('emails.verify', [
+                'username' => $user->username,
+                'verificationUrl' => $verificationUrl,
+            ], function ($message) use ($user) {
+                $message->to($user->email);
+                $message->subject('Verify Your Email Address');
+            });
+
+            // Jika pengiriman email berhasil, komit perubahan
+            DB::commit();
+
+            // Tampilkan SweetAlert sukses
+            Alert::success('Registration Successful', 'Check your email to verify your account.');
+
+            // Redirect ke form login
+            return redirect()->route('showLoginForm');
+
+        } catch (\Exception $e) {
+            // Jika ada kesalahan (termasuk gagal kirim email), rollback semua perubahan
+            DB::rollBack();
+
+            // Ambil pesan error spesifik
+            $errorMessage = $e->getMessage();
+            
+            // Tampilkan pesan error beserta detail errornya
+            Alert::error('Registration Failed', "An error occurred: $errorMessage");
+
+            // Log the error for debugging
+            \Log::error('Registration failed: ', ['error' => $e]);
+
+            // Kembalikan ke form register dengan input lama
+            return redirect()->back()->withInput();
+        }
     }
-}
 
     
 
