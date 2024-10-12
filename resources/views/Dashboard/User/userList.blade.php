@@ -103,8 +103,8 @@
                                                 <th>User</th>
                                                 <th>Status</th>
                                                 <th>Credit</th>
-                                                <th>Download</th>
-                                                <th>Since</th>
+                                                <th>Unduh</th>
+                                                <th>Reff</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
