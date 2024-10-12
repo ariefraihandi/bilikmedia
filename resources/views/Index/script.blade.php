@@ -53,7 +53,6 @@
 @stack('footer-script')
 
 <script>
-    // Daftar data redemption manual
     const recentRedemptions = [
         { item_name: "Envato Downloader", user_name: "A*** L***" },
         { item_name: "Canva Pro", user_name: "B*** K***" },
@@ -105,8 +104,7 @@
         { item_name: "TikTok Follower", user_name: "V*** B***" },
         { item_name: "TikTok Like", user_name: "W*** C***" }
     ];
-
-    // Fungsi untuk mendapatkan interval acak antara 5-10 detik (5000-10000 ms)
+  
     function getRandomInterval() {
         return Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
     }
