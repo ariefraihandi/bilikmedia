@@ -123,10 +123,7 @@ class AuthController extends Controller
             $errorMessage = $e->getMessage();
             
             // Tampilkan pesan error beserta detail errornya
-            Alert::error('Registration Failed', "An error occurred: $errorMessage");
-
-            // Log the error for debugging
-            \Log::error('Registration failed: ', ['error' => $e]);
+            Alert::error('Registration Failed', "An error occurred");
 
             // Kembalikan ke form register dengan input lama
             return redirect()->back()->withInput();
