@@ -43,11 +43,13 @@ class DownloadController extends Controller
     
             return DataTables::of($data)
                 ->addColumn('action', function($data) {
-                    $notifyButton = '
-                        <button class="btn btn-sm btn-primary small-btn notify-btn mb-1" data-id="'.$data->id.'" title="Notify">
-                            <i class="fas fa-bell"></i>
-                        </button>';
-                    
+                    $notifyButton = '';
+                    if ($data->status != 3) {
+                        $notifyButton = '
+                            <button class="btn btn-sm btn-primary small-btn notify-btn mb-1" data-id="'.$data->id.'" title="Notify">
+                                <i class="fas fa-bell"></i>
+                            </button>';
+                    }
                     // Tombol delete
                     $deleteButton = '
                         <button class="btn btn-sm btn-danger small-btn delete-btn mb-1" data-id="'.$data->id.'" title="Delete">
@@ -63,8 +65,7 @@ class DownloadController extends Controller
                     
                     // Munculkan ketiga tombol
                     return $notifyButton . ' ' . $invalidUrlButton . ' ' . $deleteButton;
-                })
-            
+                })            
                 ->addColumn('url_exists', function($data) {
                     return $data->product_url ? 'exists' : 'not-exists';
                 })

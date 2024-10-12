@@ -95,241 +95,241 @@
 @endsection
 @push('footer-script')
 
-<script type="text/javascript">   
-    $(document).ready(function() {
-        $('#request-table').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: '{{ route("showDownloadRequestlist") }}',
-                type: 'GET',
-                error: function(xhr, status, error) {
-                    console.log('Error in DataTables AJAX request:', error);
-                    console.log(xhr.responseText); // Debug response
-                }
-            },
-            columns: [
-                { 
-                    data: 'DT_RowIndex', 
-                    name: 'DT_RowIndex', 
-                    orderable: false, 
-                    searchable: false,
-                    render: function (data, type, row, meta) {
-                        return meta.row + 1; // Numbering
+
+    <script type="text/javascript">   
+        $(document).ready(function() {
+            $('#request-table').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '{{ route("showDownloadRequestlist") }}',
+                    type: 'GET',
+                    error: function(xhr, status, error) {
+                        console.log('Error in DataTables AJAX request:', error);
+                        console.log(xhr.responseText); // Debug response
                     }
                 },
-                { 
-                    data: 'url', 
-                    name: 'url',
-                    orderable: false, 
-                    searchable: false,
-                    render: function(data, type, row, meta) {
-                        return `
-                            <button class="btn btn-sm btn-primary open-url-btn" data-url="${data}" title="Open URL" target="_blank">
-                                <i class="fas fa-external-link-alt"></i>
-                            </button>
-                            <button class="btn btn-sm btn-secondary copy-url-btn" data-url="${data}" title="Copy URL">
-                                <i class="fas fa-copy"></i>
-                            </button>`;
+                columns: [
+                    { 
+                        data: 'DT_RowIndex', 
+                        name: 'DT_RowIndex', 
+                        orderable: false, 
+                        searchable: false,
+                        render: function (data, type, row, meta) {
+                            return meta.row + 1; // Numbering
+                        }
+                    },
+                    { 
+                        data: 'url', 
+                        name: 'url',
+                        orderable: false, 
+                        searchable: false,
+                        render: function(data, type, row, meta) {
+                            return `
+                                <button class="btn btn-sm btn-primary open-url-btn" data-url="${data}" title="Open URL" target="_blank">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                                <button class="btn btn-sm btn-secondary copy-url-btn" data-url="${data}" title="Copy URL">
+                                    <i class="fas fa-copy"></i>
+                                </button>`;
+                        }
+                    },
+                    { data: 'email', name: 'email' },
+                    { data: 'status', name: 'status' },
+                    { data: 'action', name: 'action', orderable: false, searchable: false }
+                ],
+                rowCallback: function(row, data, index) {
+                    if (data.product_url) {  
+                        $(row).addClass('table-success');  // Green for exists
+                    } else {
+                        $(row).addClass('table-danger');  // Red for not exists
                     }
                 },
-                { data: 'email', name: 'email' },
-                { data: 'status', name: 'status' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
-            ],
-            rowCallback: function(row, data, index) {
-                if (data.product_url) {  
-                    $(row).addClass('table-success');  // Green for exists
-                } else {
-                    $(row).addClass('table-danger');  // Red for not exists
-                }
-            },
-            autoWidth: false,
-            language: {
-                emptyTable: "No requests available"
-            }
-        });
-
-        // Event listener for Notify button
-        $('#request-table').on('click', '.notify-btn', function() {
-            var requestId = $(this).data('id');
-
-            // Tampilkan SweetAlert "Processing"
-            Swal.fire({
-                title: 'Processing...',
-                text: 'Please wait while the notification is being sent.',
-                allowOutsideClick: false, // Mencegah pengguna menutup alert
-                didOpen: () => {
-                    Swal.showLoading(); // Menampilkan spinner loading
+                autoWidth: false,
+                language: {
+                    emptyTable: "No requests available"
                 }
             });
 
-            $.ajax({
-                url: '/send-download-notification',
-                type: 'POST',
-                data: {
-                    id: requestId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    // Tutup SweetAlert "Processing"
-                    Swal.close();
+            // Event listener for Notify button
+            $('#request-table').on('click', '.notify-btn', function() {
+                var requestId = $(this).data('id');
 
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: 'Notification email sent successfully!'
-                        });
-                    } else {
+                // Tampilkan SweetAlert "Processing"
+                Swal.fire({
+                    title: 'Processing...',
+                    text: 'Please wait while the notification is being sent.',
+                    allowOutsideClick: false, // Mencegah pengguna menutup alert
+                    didOpen: () => {
+                        Swal.showLoading(); // Menampilkan spinner loading
+                    }
+                });
+
+                $.ajax({
+                    url: '/send-download-notification',
+                    type: 'POST',
+                    data: {
+                        id: requestId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        // Tutup SweetAlert "Processing"
+                        Swal.close();
+
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: 'Notification email sent successfully!'
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Failed to send notification email.'
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Tutup SweetAlert "Processing"
+                        Swal.close();
+
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: 'Failed to send notification email.'
+                            text: 'An error occurred while sending the notification.'
                         });
                     }
-                },
-                error: function(xhr, status, error) {
-                    // Tutup SweetAlert "Processing"
-                    Swal.close();
-
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'An error occurred while sending the notification.'
-                    });
-                }
-            });
-        });
-
-
-        $('#request-table').on('click', '.invalid-notify-btn', function() {
-            var requestId = $(this).data('id');
-
-            // Tampilkan SweetAlert "Processing"
-            Swal.fire({
-                title: 'Processing...',
-                text: 'Please wait while the notification is being sent.',
-                allowOutsideClick: false, // Mencegah pengguna menutup alert
-                didOpen: () => {
-                    Swal.showLoading(); // Menampilkan spinner loading
-                }
+                });
             });
 
-            $.ajax({
-                url: '/send-invalid-notification',
-                type: 'POST',
-                data: {
-                    id: requestId,
-                    _token: '{{ csrf_token() }}'
-                },
-                success: function(response) {
-                    // Tutup SweetAlert "Processing"
-                    Swal.close();
 
-                    if (response.success) {
-                        Swal.fire({
-                            icon: 'success',
-                            title: 'Success',
-                            text: response.message || 'Invalid URL notification sent successfully!'
-                        });
-                    } else {
+            $('#request-table').on('click', '.invalid-notify-btn', function() {
+                var requestId = $(this).data('id');
+
+                // Tampilkan SweetAlert "Processing"
+                Swal.fire({
+                    title: 'Processing...',
+                    text: 'Please wait while the notification is being sent.',
+                    allowOutsideClick: false, // Mencegah pengguna menutup alert
+                    didOpen: () => {
+                        Swal.showLoading(); // Menampilkan spinner loading
+                    }
+                });
+
+                $.ajax({
+                    url: '/send-invalid-notification',
+                    type: 'POST',
+                    data: {
+                        id: requestId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        // Tutup SweetAlert "Processing"
+                        Swal.close();
+
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: response.message || 'Invalid URL notification sent successfully!'
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: response.message || 'Failed to send invalid URL notification.'
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        // Tutup SweetAlert "Processing"
+                        Swal.close();
+
+                        // Menangkap pesan error dari response JSON
+                        var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : 'An error occurred while sending the invalid URL notification.';
+
                         Swal.fire({
                             icon: 'error',
                             title: 'Oops...',
-                            text: response.message || 'Failed to send invalid URL notification.'
+                            text: errorMessage // Menampilkan pesan error yang diterima dari server
                         });
                     }
-                },
-                error: function(xhr, status, error) {
-                    // Tutup SweetAlert "Processing"
-                    Swal.close();
-
-                    // Menangkap pesan error dari response JSON
-                    var errorMessage = xhr.responseJSON && xhr.responseJSON.error ? xhr.responseJSON.error : 'An error occurred while sending the invalid URL notification.';
-
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: errorMessage // Menampilkan pesan error yang diterima dari server
-                    });
-                }
+                });
             });
-        });
 
 
-        // Event listener for Delete button
-        $('#request-table').on('click', '.delete-btn', function() {
-            var requestId = $(this).data('id');
+            // Event listener for Delete button
+            $('#request-table').on('click', '.delete-btn', function() {
+                var requestId = $(this).data('id');
 
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Send AJAX request to delete the record
-                    $.ajax({
-                        url: '/delete-download-request/' + requestId, // Ganti dengan route yang sesuai
-                        type: 'DELETE',
-                        data: {
-                            _token: '{{ csrf_token() }}'
-                        },
-                        success: function(response) {
-                            if (response.success) {
-                                Swal.fire(
-                                    'Deleted!',
-                                    'The request has been deleted.',
-                                    'success'
-                                );
-                                $('#request-table').DataTable().ajax.reload();  // Reload DataTables
-                            } else {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Send AJAX request to delete the record
+                        $.ajax({
+                            url: '/delete-download-request/' + requestId, // Ganti dengan route yang sesuai
+                            type: 'DELETE',
+                            data: {
+                                _token: '{{ csrf_token() }}'
+                            },
+                            success: function(response) {
+                                if (response.success) {
+                                    Swal.fire(
+                                        'Deleted!',
+                                        'The request has been deleted.',
+                                        'success'
+                                    );
+                                    $('#request-table').DataTable().ajax.reload();  // Reload DataTables
+                                } else {
+                                    Swal.fire(
+                                        'Error!',
+                                        'Failed to delete the request.',
+                                        'error'
+                                    );
+                                }
+                            },
+                            error: function(xhr, status, error) {
                                 Swal.fire(
                                     'Error!',
-                                    'Failed to delete the request.',
+                                    'An error occurred while deleting the request.',
                                     'error'
                                 );
                             }
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire(
-                                'Error!',
-                                'An error occurred while deleting the request.',
-                                'error'
-                            );
-                        }
-                    });
-                }
+                        });
+                    }
+                });
+            });
+
+            $('#request-table').on('click', '.open-url-btn', function() {
+                var url = $(this).data('url');
+                window.open(url, '_blank');  // Buka URL di tab baru
+            });
+
+            // Event listener for Copy URL button
+            $('#request-table').on('click', '.copy-url-btn', function() {
+                var url = $(this).data('url');
+                var tempInput = $("<input>");
+                $("body").append(tempInput);
+                tempInput.val(url).select();
+                document.execCommand("copy");
+                tempInput.remove();
+
+                // Show SweetAlert
+                Swal.fire({
+                    icon: 'success',
+                    title: 'URL Copied!',
+                    text: 'The URL has been copied to your clipboard.'
+                });
             });
         });
-
-        $('#request-table').on('click', '.open-url-btn', function() {
-            var url = $(this).data('url');
-            window.open(url, '_blank');  // Buka URL di tab baru
-        });
-
-        // Event listener for Copy URL button
-        $('#request-table').on('click', '.copy-url-btn', function() {
-            var url = $(this).data('url');
-            var tempInput = $("<input>");
-            $("body").append(tempInput);
-            tempInput.val(url).select();
-            document.execCommand("copy");
-            tempInput.remove();
-
-            // Show SweetAlert
-            Swal.fire({
-                icon: 'success',
-                title: 'URL Copied!',
-                text: 'The URL has been copied to your clipboard.'
-            });
-        });
-    });
-</script>
-
+    </script>
 @endpush
 
