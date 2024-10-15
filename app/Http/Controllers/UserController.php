@@ -136,7 +136,9 @@ class UserController extends Controller
             
             // Ambil data referredUsers hanya jika ada referral code
             if ($refferalCode) {
-                $referredUsers = User::where('reffered_by', $refferalCode)->paginate(10); 
+                $referredUsers = User::where('reffered_by', $refferalCode)
+                ->orderBy('created_at', 'desc') // Urutkan dari yang terbaru
+                ->paginate(10); 
             }
         }
     
