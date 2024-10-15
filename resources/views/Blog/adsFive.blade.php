@@ -238,7 +238,7 @@
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
             // Redirect to your desired URL
-            window.location.href = "https://luglawhaulsano.net/4/6533199";
+            window.location.href = "https://luglawhaulsano.net/4/6533224";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>
@@ -266,7 +266,7 @@
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Redirect to Google or any desired URL
-                            window.location.href = "https://luglawhaulsano.net/4/6533199";
+                            window.location.href = "https://luglawhaulsano.net/4/6533224";
                         }
                     });
                 }).catch(() => {

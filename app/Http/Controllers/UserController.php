@@ -209,11 +209,24 @@ class UserController extends Controller
 
     public function getUsersForDataTables(Request $request)
     {
-        
         $users = User::with('userDetail')
             ->orderBy('created_at', 'desc');  // Mengurutkan data berdasarkan waktu pembuatan (terbaru terlebih dahulu)
     
         return DataTables::of($users)
+            ->filter(function ($query) use ($request) {
+                // Menangani pencarian global
+                if ($request->has('search') && !empty($request->search['value'])) {
+                    $searchTerm = $request->search['value'];
+                    $query->where(function($q) use ($searchTerm) {
+                        $q->where('email', 'like', "%{$searchTerm}%")
+                          ->orWhere('username', 'like', "%{$searchTerm}%")
+                          ->orWhereHas('userDetail', function($subQuery) use ($searchTerm) {
+                              $subQuery->where('name', 'like', "%{$searchTerm}%")
+                                       ->orWhere('phone', 'like', "%{$searchTerm}%");
+                          });
+                    });
+                }
+            })
             ->addColumn('user', function($user) {
                 // Gabungkan name, phone, dan email dalam satu kolom
                 $name = $user->userDetail->name ?? 'No Name';
@@ -260,6 +273,7 @@ class UserController extends Controller
             ->rawColumns(['user', 'status', 'referred']) // Agar HTML badge dan br bisa diproses
             ->make(true);
     }
+    
     
 
     public function notifyIncomplete(Request $request)

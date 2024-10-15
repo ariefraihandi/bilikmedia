@@ -229,7 +229,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://luglawhaulsano.net/4/6533199";
+            window.location.href = "https://luglawhaulsano.net/4/6533224";
         }, 500); 
     }
 </script>

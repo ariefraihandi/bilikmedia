@@ -64,45 +64,16 @@
 
             <div class="col-xl-6 d-flex justify-content-center align-items-center flex-column">
                 <div class="banner-two__content text-center">
-                    <h2 class="banner-two__title mb-3">Envato Downloader</h2>
+                    <h2 class="banner-two__title mb-3">Freepik Downloader</h2>
                     <p class="banner-two__desc">
-                        Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
+                        Get Freepik files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     <!-- Banner Ad -->
-                    {!! $bannerAd->code !!}                 
-                    @if (session('success'))
-                        <div class="alert alert-success" id="alertSuccess">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    @if (request('success'))
-                        <div class="alert alert-success">
-                            {{ request('success') }}
-                        </div>
-                    @endif                  
-                        
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif                    
+                    {!! $bannerAd->code !!}                                         
                 
-                    <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
+                    <form action="{{ route('request.download.freepik') }}" method="POST" class="search-box" id="freepikFrom">
                         @csrf
-                        <input 
-                            type="text" 
-                            class="common-input common-input--lg pill shadow-sm" 
-                            placeholder="Enter Envato URL: exp. https://elements.envato.com/iphone-mockup-2UC6ZLK" 
-                            id="envantoInput"
-                            name="envanto_url"
-                        >
-                    
-                        <!-- Button download yang akan disembunyikan jika URL tidak ditemukan -->
+                        <input type="text" class="common-input common-input--lg pill shadow-sm" placeholder="Enter Freepik URL: exp. https://www.freepik.com/premium-psd/kitten-with-pink-nose-sits-white-background_232797854.htm" id="freepikInput"name="freepik_url">
                         <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
                             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download">
                         </button>
@@ -232,66 +203,7 @@
 @endsection
 
 @push('footer-script')
-{{-- <script>
-    const requestDownloadUrl = "{{ route('request.download') }}";
 
-    document.getElementById('downloadButton').addEventListener('click', function() {
-        let input = document.getElementById('envantoInput').value;
-
-        fetch(`/search-products?search=${input}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.products.length > 0) {
-                    document.getElementById('envantoForm').submit();
-                } else {
-                    document.getElementById('downloadButton').style.display = 'none';
-                    document.getElementById('emailContainer').style.display = 'block';
-
-                    let alertSuccess = document.getElementById('alertSuccess');
-                    if (!alertSuccess) {
-                        let alertDiv = document.createElement('div');
-                        alertDiv.classList.add('alert', 'alert-success');
-                        alertDiv.id = 'alertSuccess';
-                        alertDiv.innerHTML = 'The element is not yet available in our database. Please enter your email address and wait 5-15 minutes for notification.';
-                                                
-                        document.getElementById('envantoForm').insertAdjacentElement('beforebegin', alertDiv);
-                    }
-                }
-            })
-            .catch(error => {
-                console.error('Error during fetch:', error);
-            });
-    });
-
-    // Handle form submit when "Request Download" button is clicked
-    document.getElementById('requestDownloadButton').addEventListener('click', function() {
-        let email = document.getElementById('emailInput').value;
-        let url = document.getElementById('envantoInput').value;
-
-        if (email && url) {
-            // Simulate form submission or send request via AJAX (if needed)
-            alert('Your download request has been submitted with email: ' + email);
-        } else {
-            alert('Please enter a valid email and URL.');
-        }
-    });
-
-    document.getElementById('requestDownloadButton').addEventListener('click', function(event) {
-        let requestDownloadButton = document.getElementById('requestDownloadButton');
-        let form = document.getElementById('envantoForm');
-
-        // Prevent default form submission to ensure button change happens first
-        event.preventDefault();
-
-        // Change text to "On Process..." and disable the button
-        requestDownloadButton.disabled = true;
-        requestDownloadButton.textContent = 'On Process...';
-
-        // Trigger form submission after the button is disabled and text is changed
-        form.submit();
-    });
-
-</script> --}}
 
 <script>
     const userCredit = {{ $userDetail ? $userDetail->kredit : 0 }};
@@ -306,56 +218,19 @@
         // Check if the user has enough credit
         if (userCredit >= 2) {
             // If the user has enough credits, proceed to check the product availability
-            let input = document.getElementById('envantoInput').value;
-
-            fetch(`/search-products?search=${input}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data.products.length > 0) {
-                        // Show the SweetAlert for processing
-                        Swal.fire({
-                            title: 'Processing',
-                            text: 'Please wait while we process your request...',
-                            icon: 'info',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            didOpen: () => {
-                                Swal.showLoading(); // Show a loading spinner
-                            }
-                        });
-
-                        // Submit the form after showing the alert
-                        document.getElementById('envantoForm').submit();
-                    } else {
-                        // Show the SweetAlert for processing
-                        Swal.fire({
-                            title: 'Processing',
-                            text: 'Please wait while we process your request...',
-                            icon: 'info',
-                            allowOutsideClick: false,
-                            showConfirmButton: false,
-                            didOpen: () => {
-                                Swal.showLoading(); // Show a loading spinner
-                            }
-                        });
-
-                        // Submit the form after showing the alert
-                        document.getElementById('envantoForm').submit();
-                    }
-                })
-                .catch(error => {
-                    console.error('Error during fetch:', error);
-                    Swal.fire({
-                        title: 'Error',
-                        text: 'An error occurred while checking the product. Please try again later.',
-                        icon: 'error',
-                        confirmButtonText: 'OK'
-                    });
-
-                    // Re-enable the button in case of an error
-                    downloadButton.disabled = false;
-                    downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">'; // Reset button text/icon
-                });
+            let input = document.getElementById('freepikInput').value;
+            Swal.fire({
+                title: 'Processing',
+                text: 'Please wait while we process your request...',
+                icon: 'info',
+                allowOutsideClick: false,
+                showConfirmButton: false,
+                didOpen: () => {
+                    Swal.showLoading(); // Show a loading spinner
+                }
+            });
+            document.getElementById('freepikFrom').submit();            
+               
         } else {
             // If the user does not have enough credits, show a SweetAlert with different messages based on login status
             if (isUserLoggedIn === 'false') {
@@ -389,6 +264,4 @@
         }
     });
 </script>
-
-
 @endpush

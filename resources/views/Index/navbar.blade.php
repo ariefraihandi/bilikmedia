@@ -27,10 +27,10 @@
                             <li class="nav-submenu__item">
                                 <a href="{{ route('envanto.downloader') }}" class="nav-submenu__link">Envato Downloader</a>
                             </li>                            
-                            {{-- <li class="nav-submenu__item">
-                                <a href="product-details.html" class="nav-submenu__link"> Freepik Downloader</a>
-                            </li>
                             <li class="nav-submenu__item">
+                                <a href="{{ route('freepik.downloader') }}" class="nav-submenu__link"> Freepik Downloader</a>
+                            </li>
+                            {{-- <li class="nav-submenu__item">
                                 <a href="all-product.html" class="nav-submenu__link"> Motionarray Downloader</a>
                             </li>                                                --}}
                         </ul>

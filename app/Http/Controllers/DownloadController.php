@@ -627,6 +627,162 @@ class DownloadController extends Controller
         // Redirect back to the previous page after showing the alert
         return redirect()->back();
     }
+    
+    public function requestDownloadFreepik(Request $request)
+    {
+
+        $request->validate([
+            'freepik_url' => [
+                'required',
+                'url', // Standard URL validation
+                function ($attribute, $value, $fail) {
+                    // Validasi apakah URL mengandung kata 'freepik'
+                    if (!str_starts_with($value, 'https://www.freepik.com/')) {
+                        $fail('Freepik URL Is Not Valid');
+                    }
+                },
+            ],
+        ]);
+      
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('error', 'Please log in to proceed with the download.');
+        }
+
+        $user = Auth::user();
+        $userDetail = $user->userDetail;
+
+        // Clean up the Envato URL
+        $freepikUrl = $request->input('freepik_url');
+        $cleanedUrl = preg_replace('/#.*$/', '', $freepikUrl); // Hapus semua yang ada setelah '#'
+        $cleanedUrl = strtok($cleanedUrl, '?'); // Hapus semua yang ada setelah '?'      
+    
+        $existingRequest = RequestDownload::where('email', $user->email)
+            ->where('url', $cleanedUrl)
+            ->first();
+
+        if ($existingRequest) {
+            // Use SweetAlert to show the error message
+            Alert::error('Error', 'The file is already in your download history. Please check your download history.');
+            return redirect()->back();
+        }
+       
+        if ($userDetail) {
+            // Update expired credits to 0
+            Credit::where('user_id', $user->id)
+                ->where('is_expires', true)
+                ->where('expires_at', '<', now())
+                ->update(['credit_amount' => 0]);
+
+            $remainingCreditToDeduct = 2;
+            $creditTypes = ['daily', 'share', 'ad'];
+            
+            foreach ($creditTypes as $type) {
+                $credits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', $type)
+                    ->where('credit_amount', '>', 0)
+                    ->get();
+
+                foreach ($credits as $credit) {
+                    if ($remainingCreditToDeduct <= 0) {
+                        break; // Stop the loop if we have deducted all required credits
+                    }
+
+                    if ($credit->credit_amount >= $remainingCreditToDeduct) {
+                        // Deduct only the amount needed and set credit_amount to 0
+                        $credit->update(['credit_amount' => 0]);
+                        $remainingCreditToDeduct = 0;
+                    } else {
+                        // Deduct all available credits and continue
+                        $remainingCreditToDeduct -= $credit->credit_amount;
+                        $credit->update(['credit_amount' => 0]);
+                    }
+                }
+
+                // Stop if enough credits have been deducted
+                if ($remainingCreditToDeduct <= 0) {
+                    break;
+                }
+            }
+            
+            if ($remainingCreditToDeduct > 0) {
+                $reffCredits = Credit::where('user_id', $user->id)
+                    ->where('credit_type', 'reff')
+                    ->where('credit_amount', '>', 0)
+                    ->sum('credit_amount');
+
+                if ($reffCredits >= $remainingCreditToDeduct) {
+                    // Ambil credit "reff" pertama yang memiliki credit_amount > 0
+                    $reffCredit = Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'reff')
+                        ->where('credit_amount', '>', 0)
+                        ->first();
+
+                    if ($reffCredit) {
+                        // Kurangi jumlah kredit yang ada dengan $remainingCreditToDeduct
+                        $reffCredit->credit_amount -= $remainingCreditToDeduct;
+                        // Simpan perubahan pada kredit reff
+                        $reffCredit->save();
+                        // Set remainingCreditToDeduct menjadi 0 karena sudah terpotong
+                        $remainingCreditToDeduct = 0;
+                    }
+                } elseif ($reffCredits > 0) {
+                    // Jika ada kredit "reff" yang tersisa tetapi kurang dari yang diperlukan
+                    $reffCredit = Credit::where('user_id', $user->id)
+                        ->where('credit_type', 'reff')
+                        ->where('credit_amount', '>', 0)
+                        ->first();
+
+                    if ($reffCredit) {
+                        // Kurangi sebanyak yang tersisa dari "reff"
+                        $remainingCreditToDeduct -= $reffCredit->credit_amount;
+                        $reffCredit->update(['credit_amount' => 0]); // Ubah "reff" ke 0 karena sudah digunakan semua
+                    }
+                }
+            }
+            
+            if ($remainingCreditToDeduct > 0) {
+                Alert::error('Error', 'You do not have enough credits to complete this download.');
+                return redirect()->back();
+            }
+            
+            $userDetail->kredit -= 2;
+            $userDetail->save();
+        }
+        
+        $product = Product::where('url_source', $cleanedUrl)->first();
+
+        if ($product) {            
+            RequestDownload::create([
+                'email' => $user->email,
+                'url' => $cleanedUrl,
+                'status' => 3,
+            ]);
+
+            $download = Download::create([
+                'product_id' => $product->id,
+                'token' => Str::random(40),
+                'expires_at' => Carbon::now()->addHours(2), 
+            ]);
+
+            sleep(rand(2, 5));
+            return redirect()->route('download.file', ['token' => $download->token]);
+        }
+        
+        RequestDownload::create([
+            'email' => $user->email,
+            'url' => $cleanedUrl,
+            'status' => 0,
+        ]);
+        
+        Mail::to('raihandi93@gmail.com')->send(
+            new DownloadRequestNotification($user->email, $cleanedUrl)
+        );
+
+        Alert::success('Success', 'File on process, please wait 5-10 minutes, and check your email regularly.');
+
+        // Redirect back to the previous page after showing the alert
+        return redirect()->back();
+    }
 
 
 

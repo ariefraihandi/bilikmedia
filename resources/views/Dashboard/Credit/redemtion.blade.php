@@ -3,8 +3,7 @@
 @section('content')           
 <div class="dashboard-body__content">
     <div class="card common-card">
-        <div class="card-body">
-                        <!-- ========================= Earning Section Start ============================= -->
+        <div class="card-body">                       
             <div class="row gy-4">
                 <div class="col-lg-6 col-sm-6">
                     <div class="earning-card position-relative z-index-1">
@@ -57,14 +56,16 @@
                         <img src="{{ asset('assets/images/gradients/testimonial-bg.png') }}" alt="" class="hover-bg visible opacity-100">
                         <div>
                             <h6 class="earning-card__title font-body font-16 text-white fw-600">Freepik Downloader</h6>                          
-                            <p class="earning-card__text font-14 text-white fw-200">Coming Soon</p>
+                            <form id="claim-credit-form" action="{{ route('freepik.downloader') }}" method="GET" target="_blank">                               
+                                <button type="submit" class="btn btn-primary pill btn-sm mt-2">Open Bot</button>
+                            </form>
                         </div>
                         <div>
                             <p class="earning-card__text font-14 mt-3 text-white fw-200">
                                 Cost
                             </p>
                             <h5 class="earning-card__amount daily-credit-amount mb-1 text-white">
-                                Coming Soon
+                                2 Credits
                             </h5>
                         </div>
                     </div>
