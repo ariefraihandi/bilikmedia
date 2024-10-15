@@ -14,8 +14,7 @@
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Name</th>
-                                            <th>Email</th>
+                                            <th>Name</th>                                           
                                             <th>Status</th>
                                             <th>Credit Used</th>
                                             <th>Claim</th>
