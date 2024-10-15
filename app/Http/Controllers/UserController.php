@@ -218,8 +218,9 @@ class UserController extends Controller
                 // Gabungkan name, phone, dan email dalam satu kolom
                 $name = $user->userDetail->name ?? 'No Name';
                 $phone = $user->userDetail->phone ?? 'No Phone';
+                $username = $user->username;
                 $email = $user->email;
-                return "{$name}<br>{$phone}<br>{$email}";
+                return "{$name}<br>{$phone}<br>{$username}<br>{$email}";
             })
             ->addColumn('status', function($user) {
                 // Tambahkan badge tambahan untuk status "Complete" atau "Incomplete"

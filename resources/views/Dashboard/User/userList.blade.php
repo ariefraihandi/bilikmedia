@@ -108,34 +108,7 @@
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-                                    </table>                             
-                                {{-- <div class="flx-between gap-2">
-                                    <div class="paginate-content flx-align flex-nowrap gap-3">
-                                        <span class="paginate-content__text fs-14">
-                                            Showing {{ $credits->firstItem() }} - {{ $credits->lastItem() }} of {{ $credits->total() }}
-                                        </span>
-                                    </div>
-                                    <nav aria-label="Page navigation example">
-                                        <ul class="pagination common-pagination mt-0">
-                                            <li class="page-item {{ $credits->onFirstPage() ? 'disabled' : '' }}">                                                
-                                                <a class="page-link flx-align gap-2 flex-nowrap" href="{{ $credits->previousPageUrl() }}">
-                                                    <span class="icon line-height-1 font-20"><i class="las la-arrow-left"></i></span>
-                                                </a>
-                                            </li>
-                                            @for ($i = 1; $i <= $credits->lastPage(); $i++)
-                                                <li class="page-item {{ $i == $credits->currentPage() ? 'active' : '' }}">
-                                                    <a class="page-link" href="{{ $credits->url($i) }}">{{ $i }}</a>
-                                                </li>
-                                            @endfor
-                                            <li class="page-item {{ $credits->hasMorePages() ? '' : 'disabled' }}">
-                                                <a class="page-link flx-align gap-2 flex-nowrap" href="{{ $credits->nextPageUrl() }}">
-                                                    Next
-                                                    <span class="icon line-height-1 font-20"><i class="las la-arrow-right"></i></span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div> --}}
+                                    </table>                                                           
                             </div>
                         </div>
                     </div>
@@ -154,7 +127,7 @@
             serverSide: true,
             ajax: '{{ route('user.list.datatables') }}',
             columns: [
-                { data: 'user', name: 'user', className: "text-left" }, // User gabungan name, phone, email
+                { data: 'user', name: 'user', searchable: true, className: "text-left" }, // User gabungan name, phone, email
                 { data: 'status', name: 'status', orderable: false, searchable: false, className: "text-center" },
                 { data: 'kredit', name: 'kredit', className: "text-center" },
                 { data: 'download_count', name: 'download_count', className: "text-center" },
