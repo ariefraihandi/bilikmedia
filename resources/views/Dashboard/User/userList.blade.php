@@ -127,7 +127,7 @@
             serverSide: true,
             ajax: '{{ route('user.list.datatables') }}',
             columns: [
-                { data: 'user', name: 'user', searchable: true, className: "text-left" }, // User gabungan name, phone, email
+                { data: 'user', name: 'user',  className: "text-left" }, // User gabungan name, phone, email
                 { data: 'status', name: 'status', orderable: false, searchable: false, className: "text-center" },
                 { data: 'kredit', name: 'kredit', className: "text-center" },
                 { data: 'download_count', name: 'download_count', className: "text-center" },
@@ -136,7 +136,7 @@
                     data: 'action', 
                     name: 'action', 
                     orderable: false, 
-                    searchable: false, 
+                    searchable: true, 
                     className: "text-center",
                     render: function(data, type, row) {
                         // Jika status user Incomplete, tampilkan tombol notifikasi
