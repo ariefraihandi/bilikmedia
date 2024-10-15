@@ -29,42 +29,8 @@
                                         @else
                                             @foreach($referredUsers as $index => $reff)
                                             <tr>
-                                                <td>{{ $index + 1 }}</td>
-                                                @php
-                                                    if (!function_exists('censorUsername')) {
-                                                        function censorUsername($username) {
-                                                            // Cek jika username null atau kosong
-                                                            if (!$username) {
-                                                                return 'Unknown';
-                                                            }
-
-                                                            // Sensor sebagian username: tampilkan karakter pertama, sisanya diganti dengan bintang
-                                                            return substr($username, 0, 1) . str_repeat('*', strlen($username) - 1);
-                                                        }
-                                                    }
-
-                                                    if (!function_exists('censorEmail')) {
-                                                        function censorEmail($email) {
-                                                            // Cek jika email null atau kosong
-                                                            if (!$email) {
-                                                                return 'Unknown';
-                                                            }
-
-                                                            // Pisahkan bagian sebelum dan sesudah @
-                                                            $emailParts = explode('@', $email);
-
-                                                            // Censor bagian sebelum @
-                                                            $emailLocalPart = substr($emailParts[0], 0, 1) . str_repeat('*', strlen($emailParts[0]) - 1);
-
-                                                            // Gabungkan dengan domain (bagian setelah @)
-                                                            return $emailLocalPart . '@' . $emailParts[1];
-                                                        }
-                                                    }
-                                                @endphp
-
-                                                <td>{{ censorUsername($reff->username) }}</td>
-                                                <td>{{ censorEmail($reff->email) }}</td>       
-                                    
+                                                <td>{{ $index + 1 }}</td>                                               
+                                                <td>{{ $reff->username }}</td>  
                                                 <!-- Status -->
                                                 <td>
                                                     @if ($reff->status == 0)
