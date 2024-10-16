@@ -16,6 +16,7 @@
     use App\Http\Controllers\SitemapController;
     use App\Http\Controllers\EnvantoDownloaderController;
     use App\Http\Controllers\FreepikDownloaderController;
+    use App\Http\Controllers\TikTokDownloaderController;
 //!Controller
 
 //Index
@@ -26,7 +27,11 @@
 Route::get('/blog/website-template',        [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
 Route::get('/blog/adobe-photoshop',         [BlogController::class, 'showAdobePhotoshop'])->name('blog.adobePhotoshop');
 
+Route::get('/tiktok-downloader', function () {
+    return view('Downloader.tiktok');
+});
 
+Route::post('/tiktok-download', [TikTokDownloaderController::class, 'download']);
 
 Route::get('/',                             [HomeController::class, 'index'])->name('index');
 
