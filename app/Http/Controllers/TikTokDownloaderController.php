@@ -16,20 +16,20 @@ class TikTokDownloaderController extends Controller
             return response()->json(['error' => 'URL TikTok diperlukan'], 400);
         }
 
-        // API endpoint for the TikTok downloader (this is a locally hosted service from the TikTok-Downloader project)
-        $apiUrl = "http://localhost:3000/api/tiktok"; // Assuming TikTok-Downloader runs on localhost:3000
-
-        // Konfigurasi cURL untuk memanggil API TikTok Downloader lokal
+        // API endpoint for the TikTok downloader (godownloader)
+        
+        $apiUrl = "https://godownloader.com/api/tiktok-no-watermark-free?key=godownloader.com&url=" . urlencode($url) ;
+        
         $curl = curl_init();
 
         curl_setopt_array($curl, [
             CURLOPT_URL => $apiUrl,
             CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => http_build_query(['url' => $url]),
-            CURLOPT_HTTPHEADER => [
-                'Content-Type: application/x-www-form-urlencoded',
-            ],
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
         ]);
 
         // Execute cURL request

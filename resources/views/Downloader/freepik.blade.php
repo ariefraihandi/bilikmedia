@@ -69,7 +69,7 @@
                         Get Freepik files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     <!-- Banner Ad -->
-                    {!! $bannerAd->code !!}                                         
+                    {{-- {!! $bannerAd->code !!}                                          --}}
                 
                     <form action="{{ route('request.download.freepik') }}" method="POST" class="search-box" id="freepikFrom">
                         @csrf
@@ -193,13 +193,13 @@
     </div>
 </section>
 
-<div class="ad-banner left">
+{{-- <div class="ad-banner left">
     {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
     {!! $sideAd->code !!}
-</div>
+</div> --}}
 @endsection
 
 @push('footer-script')

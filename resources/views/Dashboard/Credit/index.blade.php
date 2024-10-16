@@ -287,8 +287,8 @@
     function shareToTwitter() {
         showProcessingAlert();
         const url = encodeURIComponent('https://bilikmedia.com/envato-downloader');
-        const text = encodeURIComponent('Discover an amazing tool for your creative needs! Use the Envato Downloader from Bilik Media for unlimited and premium downloads—all for free.\n\nCheck it out here: ');
-        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}%0A%0A#bilikmedia #envato #downloader`, '_blank');
+        const text = encodeURIComponent('Discover an amazing tool for your creative needs! Use the Envato Downloader from Bilik Media for unlimited and premium downloads—all for free.\n\n#bilikmedia #envato #downloader @bilikmedia_\n\nCheck it out here: ');
+        window.open(`https://twitter.com/intent/tweet?url=${url}&text=${text}%0A%0A`, '_blank');
         claimSharingCredit();
     }
 

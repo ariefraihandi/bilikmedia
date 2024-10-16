@@ -69,7 +69,7 @@
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     <!-- Banner Ad -->
-                    {!! $bannerAd->code !!}                 
+                    {{-- {!! $bannerAd->code !!}                  --}}
                     @if (session('success'))
                         <div class="alert alert-success" id="alertSuccess">
                             {{ session('success') }}
@@ -222,13 +222,13 @@
     </div>
 </section>
 
-<div class="ad-banner left">
+{{-- <div class="ad-banner left">
     {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
     {!! $sideAd->code !!}
-</div>
+</div> --}}
 @endsection
 
 @push('footer-script')
