@@ -237,14 +237,13 @@
                     countdown--;
                 } else {
                     clearInterval(timer); // Stop the timer
-                    verifyBtn.innerHTML = "Scroll down to continue download"; // Update the verify button text
-                    continueDownloadBtn.style.display = 'block'; // Show "Continue Download" button
+                    verifyBtn.innerHTML = "Scroll down to continue download";
+                    continueDownloadBtn.style.display = 'block';
                 }
-            }, 1000); // Countdown interval set to 1 second (1000 ms)
+            }, 1000);
         });
     }
 
-    // Event listener for the "Continue Download" button
     continueDownloadBtn.addEventListener('click', function(e) {
         // Open the download link in a new tab
         e.preventDefault();
