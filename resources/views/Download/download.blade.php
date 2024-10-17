@@ -118,7 +118,7 @@
                         
                         window.open("{{ $product->url_download }}", '_blank');
 
-                        window.location.href = "https://luglawhaulsano.net/4/6533224";
+                        window.location.href = "https://zireemilsoude.net/4/6533224";
                     });
                 }
             }, 1000);
