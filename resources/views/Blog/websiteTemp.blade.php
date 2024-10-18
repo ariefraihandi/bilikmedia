@@ -245,12 +245,11 @@
     }
 
     continueDownloadBtn.addEventListener('click', function(e) {
-        // Open the download link in a new tab
         e.preventDefault();
         window.open(this.href, '_blank');
 
         // Redirect the current page to the desired URL
-        window.location.href = "https://zireemilsoude.net/4/6533224";
+        window.location.href = "https://luglawhaulsano.net/4/6533224";
     });
 
     // AdBlock detection (optional)

@@ -230,7 +230,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://zireemilsoude.net/4/6533224";
+            window.location.href = "https://luglawhaulsano.net/4/6533224";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>
