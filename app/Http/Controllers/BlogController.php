@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Ad;
+use App\Models\Credit;
 use App\Models\AdCredit;
+use App\Models\DownloadsFree;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Download;
 use App\Models\ProductCategory;
@@ -297,5 +299,390 @@ class BlogController extends Controller
         return view('Blog.adsFive', $data);
     }
 
+
+    public function showOne($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_satu', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }                
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title'         => 'Why Choose Bilik Media for Downloading Envato Products | Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+        ];
+
+        return view('Blog.adsBlog_a', $data);
+    }
+    
+    public function showTwo($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_dua', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }                
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title' => 'What is Envato Downloader? | Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+        ];
+
+        return view('Blog.adsBlog_b', $data);
+    }
+    
+    public function showThree($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_tiga', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }                
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title' => 'Become Bilik Media Member | Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+        ];
+
+        return view('Blog.adsBlog_c', $data);
+    }
+
+    public function showFour($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_empat', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }                
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title'         => 'What is Freepik Downloader? | Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+        ];
+
+        return view('Blog.adsBlog_d', $data);
+    }
+    
+    public function showFive($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_lima', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }                
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title'         => 'What is Mixkit Downloader ?| Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+        ];
+
+        return view('Blog.adsBlog_e', $data);
+    }
+    
+    public function showSix($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_tujuh', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }                
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title'         => 'Why Choose Bilik Media for Downloading Envato Products | Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+        ];
+
+        return view('Blog.adsBlog_f', $data);
+    }
+    
+    public function showSeven($token)
+    {
+        $userDetail = null;
+
+        if (Auth::check()) {
+            $user = Auth::user();
+            $userDetail = $user->userDetail;
+
+            if ($userDetail) {
+                Credit::where('user_id', $user->id)
+                    ->where('is_expires', true)
+                    ->where('expires_at', '<', now())
+                    ->update(['credit_amount' => 0]);
+
+                $totalCredit = Credit::where('user_id', $user->id)
+                                    ->sum('credit_amount');
+
+                $userDetail->kredit = $totalCredit;
+                $userDetail->save();
+            }
+        }
+
+        $token = DownloadsFree::where('token_tujuh', $token)->first();                      
+
+        if (!$token) {
+            return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
+        }              
+        
+        $productId = $token->product_id;
+
+        // Cari produk berdasarkan 'product_id' dan ambil 'url_download'
+        $product = Product::where('id', $productId)->first();
+        $urlDownload = $product->url_download;        
+
+        $bannerAd         = Ad::where('name', 'banner')->first();
+        $sideAd           = Ad::where('name', 'side')->first();
+        $smallAd          = Ad::where('name', 'small')->first();
+        $petakAd          = Ad::where('name', 'petak')->first();
+        $besarAd          = Ad::where('name', 'besar')->first();
+        $nativeAd         = Ad::where('name', 'native')->first();
+        $monetagAd        = Ad::where('name', 'monetag')->first();
+        $popAd            = Ad::where('name', 'pop')->first();
+
+        $data = [
+            'title' => 'What is Envato Downloader? | Bilik Media',
+            'token'         => $token,
+            'userDetail'    => $userDetail,
+            'bannerAd'      => $bannerAd,     
+            'monetagAd'     => $monetagAd, 
+            'smallAd'       => $smallAd, 
+            'petakAd'       => $petakAd, 
+            'besarAd'       => $besarAd, 
+            'nativeAd'      => $nativeAd, 
+            'popAd'         => $popAd, 
+            'sideAd'        => $sideAd, 
+            'urlDownload'        => $urlDownload, 
+        ];
+
+        return view('Blog.adsBlog_g', $data);
+    }
 
 }

@@ -139,8 +139,7 @@ class AuthController extends Controller
             'identifier' => 'required|string',
             'password' => 'required|string',
         ]);
-
-        // Cek apakah input berupa email atau username
+        
         $fieldType = filter_var($request->identifier, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         // Coba login berdasarkan email atau username
@@ -177,6 +176,48 @@ class AuthController extends Controller
             return redirect()->back()->withInput();
         }
     }
+
+    public function loginModal(Request $request)
+    {
+        // Validasi input pengguna
+        $credentials = $request->validate([
+            'identifier' => 'required|string',
+            'password' => 'required|string',
+        ]);
+
+        // Tentukan apakah yang digunakan untuk login adalah email atau username
+        $fieldType = filter_var($request->identifier, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        // Coba login berdasarkan email atau username
+        if (Auth::attempt([$fieldType => $request->identifier, 'password' => $request->password], $request->remember)) {
+            $user = Auth::user();
+
+            // Cek status user, misalnya jika akun belum diverifikasi
+            if ($user->status == 0) {
+                // Logout user karena akun belum diverifikasi
+                Auth::logout();
+
+                // Kembalikan JSON error dengan pesan akun belum diverifikasi
+                return response()->json([
+                    'status' => 'error',
+                    'message' => 'Your account has not been verified yet. Please check your email for verification instructions.'
+                ]);
+            }
+
+            // Jika login berhasil dan akun terverifikasi
+            return response()->json([
+                'status' => 'success',
+                'message' => 'You have successfully logged in!',
+            ]);
+        }
+
+        // Jika login gagal (username/email atau password salah)
+        return response()->json([
+            'status' => 'error',
+            'message' => 'Invalid login credentials. Please try again.',
+        ]);
+    }
+
 
 
     public function verify(Request $request)

@@ -69,28 +69,7 @@
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     <!-- Banner Ad -->
-                    {{-- {!! $bannerAd->code !!}                  --}}
-                    @if (session('success'))
-                        <div class="alert alert-success" id="alertSuccess">
-                            {{ session('success') }}
-                        </div>
-                    @endif
-
-                    @if (request('success'))
-                        <div class="alert alert-success">
-                            {{ request('success') }}
-                        </div>
-                    @endif                  
-                        
-                        @if ($errors->any())
-                            <div class="alert alert-danger">
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif                    
+                    {{-- {!! $bannerAd->code !!}     --}}
                 
                     <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
                         @csrf
@@ -123,104 +102,6 @@
     </div>
 </section>
 
-<section class="popular-item-card-section padding-y-120 overflow-hidden">
-
-  <img src="{{ asset('assets') }}/images/shapes/brush.png" alt="" class="element-brush">
-  
-    <div class="container container-two">
-        <div class="section-heading">
-            <h3 class="section-heading__title">Most Downloaded Items</h3>
-        </div>
-
-       
-        <div class="tab-content" id="pills-tab-popularContent">
-            <div class="tab-pane fade show active" id="pills-all-two" role="tabpanel" aria-labelledby="pills-all-two-tab" tabindex="0">
-                <div class="row gy-4">
-                    @foreach($products as $product)
-                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-6">
-                            <div class="popular-item-card">
-                                <div class="popular-item-card__thumb">
-                                    <a href="{{ route('product.details', $product->slug) }}" class="link w-100"> 
-                                        <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->title }}">
-                                    </a>
-                                    <div class="product-item__bottom flx-between gap-2">
-                                        <div>
-                                            <span class="product-item__sales font-14 mb-0 text-white">{{ $product->downloads_count }} Downloads</span>
-                                            
-                                            <!-- Menampilkan rating bintang -->
-                                            <div class="d-flex align-items-center gap-1">
-                                                <ul class="star-rating">
-                                                    @php
-                                                        $avgRating = $product->ratings_avg_rating ?? 0; // Rata-rata rating
-                                                        $filledStars = floor($avgRating); // Bintang penuh
-                                                        $emptyStars = 5 - $filledStars; // Bintang kosong
-                                                    @endphp
-        
-                                                    <!-- Bintang terisi penuh -->
-                                                    @for ($i = 0; $i < $filledStars; $i++)
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                    @endfor
-        
-                                                    <!-- Bintang kosong -->
-                                                    @for ($i = 0; $i < $emptyStars; $i++)
-                                                        <li class="star-rating__item font-11"><i class="far fa-star"></i></li>
-                                                    @endfor
-                                                </ul>                                                                                              
-                                            </div>
-                                        </div>
-                                        <span class="product-item__author">
-                                            by
-                                            <a href="#" class="link text-decoration-underline"> {{ $product->author }}</a>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="popular-item-card__content d-flex align-items-center justify-content-between gap-2 text-start">
-                                    <h6 class="popular-item-card__title mb-0">
-                                        <a href="{{ route('product.details', $product->slug) }}" class="link"> {{ $product->title }}</a>
-                                    </h6>
-                                    <a href="{{ route('product.details', $product->slug) }}" class="btn-link line-height-1 flex-shrink-0">
-                                        <img src="{{ asset('assets/images/icons/link.svg') }}" alt="" class="white-version">
-                                        <img src="{{ asset('assets/images/icons/link-light.svg') }}" alt="" class="dark-version">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach            
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-<section class="newsletter position-relative z-index-1 overflow-hidden">
-    <img src="{{ asset('assets') }}/images/gradients/newsletter-gradient-bg.png" alt="" class="bg--gradient">
-
-    <img src="{{ asset('assets') }}/images/shapes/element1.png" alt="" class="element two">
-    <img src="{{ asset('assets') }}/images/shapes/element2.png" alt="" class="element one">
-
-    <img src="{{ asset('assets') }}/images/shapes/line-vector-one.png" alt="" class="line-vector one">
-    <img src="{{ asset('assets') }}/images/shapes/line-vector-two.png" alt="" class="line-vector two">
-
-    <img src="{{ asset('assets') }}/images/thumbs/newsletter-man.png" alt="" class="newsletter-man">
-    
-    <div class="container container-two">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-8 col-md-10">
-                <div class="newsletter-content">
-                    <h3 class="newsletter-content__title text-white mb-2 text-center">Get update Newsletter</h3>
-                    <p class="newsletter-content__desc pb-2 text-white text-center font-18 fw-300">Subscribe our newsletter to get the latest news</p>
-
-                    <form action="#" class="mt-4 newsletter-box position-relative">
-                        <input type="text" class="form-control common-input common-input--lg pill text-white" placeholder="Enter Mail">
-                        <button type="submit" class="btn btn-main btn-lg pill flx-align gap-1">Subscribe <span class="text d-sm-flex d-none">Now</span> </button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 {{-- <div class="ad-banner left">
     {!! $sideAd->code !!}    
@@ -390,5 +271,152 @@
     });
 </script>
 
+<script>    
+    const isUserLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
 
+    document.getElementById('downloadButton').addEventListener('click', function () {
+        const downloadButton = this;
+        downloadButton.disabled = true;
+        downloadButton.innerHTML = '...'; // Tampilkan loading state
+
+        const input = document.getElementById('envantoInput').value;
+
+        // Tampilkan SweetAlert Processing saat fetch berjalan
+        Swal.fire({
+            title: 'Processing',
+            text: 'Please wait while we process your request...',
+            icon: 'info',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading(); // Tampilkan spinner saat proses berjalan
+            }
+        });
+
+        fetch(`/search-products?search=${encodeURIComponent(input)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.products.length > 0) {
+                    // Ambil productId dari hasil pencarian
+                    const productId = data.products[0].id;
+
+                    // Redirect ke route download
+                    Swal.fire({
+                        title: 'Processing',
+                        text: 'Product found, redirecting to download...',
+                        icon: 'info',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+
+                    setTimeout(() => {
+                        window.location.href = `/download/${productId}`;
+                    }, 2000); // Simulasi delay sebelum redirect
+                } else {
+                    if (isUserLoggedIn) {                        
+                        submitEmailAndUrl(input);
+                    } else {
+                        // Jika pengguna belum login, tampilkan prompt untuk memasukkan email
+                        showEmailPrompt(input);
+                    }
+                }
+            })
+            .catch(error => handleError(error));
+    });
+
+    function showEmailPrompt(envantoUrl) {
+        Swal.fire({
+            title: 'Attention',
+            text: 'The Envato file you are looking for is not available in our database. Leave your email, and we will notify you when it becomes available.',
+            input: 'email',
+            inputPlaceholder: 'Enter your email',
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel'
+        }).then(result => {
+            if (result.isConfirmed && result.value) {
+                submitEmailAndUrl(envantoUrl, result.value);
+            } else {
+                resetButton();
+            }
+        });
+    }
+
+    function submitEmailAndUrl(envantoUrl, email = null) {
+        // Tampilkan SweetAlert saat request berjalan
+        Swal.fire({
+            title: 'Processing',
+            text: 'Submitting your request...',
+            icon: 'info',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading(); // Tampilkan spinner
+            }
+        });
+
+        // Jika pengguna sudah login, email tidak perlu diambil dari prompt
+        let requestData = { envanto_url: envantoUrl };
+        if (!isUserLoggedIn && email) {
+            requestData.email = email;
+        }
+
+        fetch('{{ route('request.download') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message || 'Failed to submit your request.');
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            Swal.fire({
+                title: 'Success',
+                text: data.message,
+                icon: 'success',
+                confirmButtonText: 'OK'
+            });
+
+            resetInputAndButton();
+        })
+        .catch(error => handleError(error));
+    }
+
+    function handleError(error) {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error',
+            text: error.message || 'An error occurred. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+
+        resetButton();
+    }
+
+    function resetInputAndButton() {
+        const downloadButton = document.getElementById('downloadButton');
+        const envantoInput = document.getElementById('envantoInput');
+
+        downloadButton.disabled = false;
+        downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">';
+        envantoInput.value = ''; // Reset input field
+    }
+
+    function resetButton() {
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.disabled = false;
+        downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">';
+    }
+
+</script>
 @endpush

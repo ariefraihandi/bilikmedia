@@ -16,7 +16,6 @@
     use App\Http\Controllers\SitemapController;
     use App\Http\Controllers\EnvantoDownloaderController;
     use App\Http\Controllers\FreepikDownloaderController;
-    use App\Http\Controllers\TikTokDownloaderController;
 //!Controller
 
 //Index
@@ -27,12 +26,6 @@
 Route::get('/blog/website-template',        [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
 Route::get('/blog/adobe-photoshop',         [BlogController::class, 'showAdobePhotoshop'])->name('blog.adobePhotoshop');
 
-Route::get('/tiktok-downloader', function () {
-    return view('Downloader.tiktok');
-});
-
-Route::post('/tiktok-download', [TikTokDownloaderController::class, 'download']);
-
 Route::get('/',                             [HomeController::class, 'index'])->name('index');
 
 Route::get('/auth/register',                [AuthController::class, 'showRegisterForm'])->name('showRegisterForm')->middleware(RedirectIfAuthenticated::class);
@@ -40,6 +33,7 @@ Route::get('/auth/login',                   [AuthController::class, 'showLoginFo
 Route::get('/logout',                       [AuthController::class, 'logout'])->name('logout');
 Route::post('register',                     [AuthController::class, 'register'])->name('register');
 Route::post('login',                        [AuthController::class, 'login'])->name('login');
+Route::post('login/modal',                        [AuthController::class, 'loginModal'])->name('login.modal');
 Route::get('verify-email',                  [AuthController::class, 'verify'])->name('verify-email');
 
 Route::get('/envato-downloader',            [EnvantoDownloaderController::class, 'showEnvantoDownloader'])->name('envanto.downloader');
@@ -48,7 +42,7 @@ Route::get('/freepik-downloader',           [FreepikDownloaderController::class,
 Route::get('/product',                      [ProductController::class, 'showAllProduct'])->name('showAllProduct');
 Route::get('/product/category/{slug}',      [ProductController::class, 'showProductByCategory'])->name('showProductByCategory');
 Route::get('/product/rating/{rating}',      [ProductController::class, 'filterByRating'])->name('filterByRating');
-Route::get('/product-details/{slug}',       [ProductController::class, 'showProductDetails'])->name('product.details');
+Route::get('/product-details/{slug}',       [ProductController::class, 'showProductDetails'])->name('product.details');//am
 Route::get('/search-products',              [ProductController::class, 'searchProducts'])->name('search.products');
 
 Route::get('/download/{productId}',         [DownloadController::class, 'generateDownloadLink'])->name('generate.download.link');
@@ -56,8 +50,17 @@ Route::get('/download-file/{token}',        [DownloadController::class, 'downloa
 Route::get('/rating/{token}',               [DownloadController::class, 'showRating'])->name('rating.show');
 Route::post('/request-download',            [DownloadController::class, 'requestDownload'])->name('request.download');
 Route::post('/request-download-freepik',    [DownloadController::class, 'requestDownloadFreepik'])->name('request.download.freepik');
-// Route::post('/submit-download',             [DownloadController::class, 'submitDownload'])->name('submit.download');
+Route::post('/generate-tokens',             [DownloadController::class, 'generateTokens']);
 Route::post('/rating',                      [DownloadController::class, 'submitRating'])->name('rating.submit');
+
+Route::get('/blog/whats-is-bilikmedia/{token}',             [BlogController::class, 'showOne'])->name('blog.One');
+Route::get('/blog/whats-is-envato-downloader/{token}',      [BlogController::class, 'showTwo'])->name('blog.Two');
+Route::get('/blog/how-tobecome-a-member/{token}',           [BlogController::class, 'showThree'])->name('blog.Three');
+Route::get('/blog/whats-is-freepik-downloader/{token}',     [BlogController::class, 'showFour'])->name('blog.Four');
+Route::get('/blog/whats-is-mixkit-downloader/{token}',      [BlogController::class, 'showFive'])->name('blog.Five');
+Route::get('/blog/why-bilikmedia/{token}',                  [BlogController::class, 'showSix'])->name('blog.Six');
+Route::get('/blog/why-envato-downloader/{token}',           [BlogController::class, 'showSeven'])->name('blog.Seven');
+
 
 Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::get('/dashboard',                        [DashboardController::class, 'showDashboard'])->name('showDashboard');
@@ -85,6 +88,7 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::post('/send-invalid-notification',       [DownloadController::class, 'sendInvalidNotification'])->name('sendInvalidNotification');
     Route::delete('/delete-download-request/{id}',  [DownloadController::class, 'deleteDownloadRequest']);
     Route::post('/fix-url',                         [DownloadController::class, 'fixUrl'])->name('fix.url');
+    Route::post('/download/premium',                [DownloadController::class, 'premiumDownload'])->name('download.premium');
 
     Route::post('/store-ad-tokens',                 [CreditController::class, 'storeAdTokens'])->name('storeAdTokens');
     Route::post('/generate-reff',                   [CreditController::class, 'generateReff'])->name('generate-reff');

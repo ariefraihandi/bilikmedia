@@ -52,7 +52,7 @@
 
 @stack('footer-script')
 
-<script>
+{{-- <script>
     const recentRedemptions = [
         { item_name: "Envato Downloader", user_name: "A*** L***" },
         { item_name: "Canva Pro", user_name: "B*** K***" },
@@ -146,4 +146,4 @@
 
     // Panggil fungsi untuk menampilkan toaster
     showRandomRedemptions();
-</script>
+</script> --}}
