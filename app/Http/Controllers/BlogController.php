@@ -592,7 +592,7 @@ class BlogController extends Controller
             }
         }
 
-        $token = DownloadsFree::where('token_tujuh', $token)->first();                      
+        $token = DownloadsFree::where('token_enam', $token)->first();                      
 
         if (!$token) {
             return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
