@@ -1,6 +1,6 @@
 @extends('Index.app')
 @push('header-script')   
-{!! $monetagAd->coda !!}     
+{!! $monetagAd->code !!}     
     <style>
         .ad-banner {
             position: fixed;
@@ -54,7 +54,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->coda !!}
+                {!! $bannerAd->code !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -63,7 +63,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->coda !!}
+                {!! $smallAd->code !!}
             </div>    
             
 
@@ -84,7 +84,7 @@
                     Joining Bilik Media is a step towards unlocking exclusive access to premium digital content, valuable tools, and a supportive community. Whether you're a designer, developer, or a digital content creator, Bilik Media offers a variety of benefits that cater to your professional needs.
                 </p>
             </div>
-            {!! $bannerAd->coda !!}
+            {!! $bannerAd->code !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -102,7 +102,7 @@
                             <li class="product-list__item font-18 fw-500 text-heading">Start Exploring: Once verified, you can start browsing through the extensive selection of premium digital assets and tools.</li>                            
                         </ul>
                     </div>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
 
                     <h5 class="blog-details-content__title mb-3">Benefits of Joining Bilik Media</h5>
                     <p class="blog-details-content__desc mb-40">
@@ -133,13 +133,13 @@
                     <p class="blog-details-content__desc mb-40">
                         With all these benefits and more, Bilik Media is the ideal platform for professionals looking to streamline their workflow and access high-quality digital products. Becoming a member opens up opportunities to take advantage of exclusive content, offers, and top-tier customer support. Don’t miss out—join today!
                     </p>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{ route('blog.Four', ['token' => $token->token_empat]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
                             Next Step 3/7 >>                            
                         </a>
                     </div>
-                    {!! $nativeAd->coda !!}
+                    {!! $nativeAd->code !!}
                 </div>
 
                 <!-- Sidebar for Additional Content or Ads -->
@@ -147,17 +147,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->coda !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->coda !!}            
+                            {!! $besarAd->code !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->coda !!}
+                            {!! $petakAd->code !!}
                         </div>
                     </div>
                 </div>
@@ -165,11 +165,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->coda !!}    
+        {!! $sideAd->code !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->coda !!}
+        {!! $sideAd->code !!}
     </div>
 @endsection
 
@@ -230,7 +230,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/6533224";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>

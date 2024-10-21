@@ -75,14 +75,14 @@
                     <p class="text-muted mb-4">
                         Author: <a href="{{ $product->author_url }}" target="_blank">{{ $product->author }}</a>
                     </p>
-                    {{-- <div class="ad-container large-ad">
+                    <div class="ad-container large-ad">
                         {!! $bannerAd->code !!}
                     </div>
             
                     <div class="ad-container small-ad">
                         {!! $smallAd->code !!}
                     </div>           
-             --}}
+            
                     <div class="cart-payment-card">
                         <div class="row gy-4">
                             <div class="col-lg-12">
@@ -95,7 +95,7 @@
                                     Free Download<br>(Watch 7 Step Ads)
                                 </button>         
                                 <div class="ad-container large-ad">
-                                    {{-- {!! $bannerAd->code !!} --}}
+                                    {!! $bannerAd->code !!}
                                 </div>                  
                                 <button id="premiumDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mt-3">
                                     Premium Download<br>(Use 2 Credits)
@@ -105,12 +105,12 @@
                     </div>
                     <br>
                     <div class="ad-container large-ad">
-                        {{-- {!! $bannerAd->code !!} --}}
+                        {!! $bannerAd->code !!}
                     </div>
             
                     <!-- Iklan kecil untuk mobile -->
                     <div class="ad-container small-ad">
-                        {{-- {!! $smallAd->code !!} --}}
+                        {!! $smallAd->code !!}
                     </div>
                 </div>
             </div>
@@ -118,13 +118,13 @@
         </div>        
     </div>   
 </section>
-{{-- <div class="ad-banner left">
+<div class="ad-banner left">
     {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
     {!! $sideAd->code !!}
-</div> --}}
+</div>
 
 <div class="modal fade" id="loginModal" data-bs-backdrop="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">

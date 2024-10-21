@@ -1,6 +1,6 @@
 @extends('Index.app')
 @push('header-script')   
-{!! $monetagAd->coda !!}     
+{!! $monetagAd->code !!}     
     <style>
         .ad-banner {
             position: fixed;
@@ -54,7 +54,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->coda !!}
+                {!! $bannerAd->code !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -63,7 +63,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->coda !!}
+                {!! $smallAd->code !!}
             </div>
 
             <!-- Blog Details Top Section Start -->
@@ -83,7 +83,7 @@
                     Mixkit Downloader by Bilik Media is a platform designed to make accessing and downloading free, high-quality digital assets from Mixkit easier and more efficient. With a user-friendly interface and fast, secure processes, Bilik Media ensures a seamless experience for downloading Mixkit products. Here, we explain why Bilik Media is the best solution for all your Mixkit downloading needs.
                 </p>
             </div>
-            {!! $bannerAd->coda !!}
+            {!! $bannerAd->code !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -114,7 +114,7 @@
                     <p class="blog-details-content__desc mb-40">
                         Getting started with Mixkit Downloader by Bilik Media is simple. Follow these steps to access free Mixkit products in just a few clicks:
                     </p>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
                     <ol class="product-list mb-40">
                         <li class="product-list__item font-18 fw-500 text-heading">Create a free account on Bilik Media.</li>
                         <li class="product-list__item font-18 fw-500 text-heading">Browse through the wide selection of Mixkit products available on the platform.</li>
@@ -131,13 +131,13 @@
                     <p class="blog-details-content__desc mb-40">
                         Ready to enhance your digital projects with free, high-quality Mixkit products? Join thousands of satisfied users who rely on Mixkit Downloader by Bilik Media for their downloading needs. Click the button below to verify your account and start exploring our extensive collection today!
                     </p>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{ route('blog.Six', ['token' => $token->token_enam]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
                             Next Step 5/7 >>                            
                         </a>
                     </div>
-                    {!! $nativeAd->coda !!}
+                    {!! $nativeAd->code !!}
                 </div>
 
                 <!-- Sidebar for Additional Content or Ads -->
@@ -145,17 +145,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->coda !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->coda !!}            
+                            {!! $besarAd->code !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->coda !!}
+                            {!! $petakAd->code !!}
                         </div>
                     </div>
                 </div>
@@ -163,11 +163,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->coda !!}    
+        {!! $sideAd->code !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->coda !!}
+        {!! $sideAd->code !!}
     </div>
     
 @endsection
@@ -229,7 +229,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/6533224";
         }, 500); 
     }
 </script>

@@ -1,6 +1,6 @@
 @extends('Index.app')
 @push('header-script')   
-{!! $monetagAd->coda !!}     
+{!! $monetagAd->code !!}     
     <style>
         .ad-banner {
             position: fixed;
@@ -54,7 +54,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->coda !!}
+                {!! $bannerAd->code !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -63,7 +63,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->coda !!}
+                {!! $smallAd->code !!}
             </div>
 
             <!-- Blog Details Top Section Start -->
@@ -83,7 +83,7 @@
                     When it comes to downloading Envato products, choosing the right platform can make all the difference. Bilik Media offers a seamless and user-friendly experience, making it the best choice for accessing high-quality digital assets from Envato. Here, we explore the top reasons why Bilik Media is the preferred platform for downloading Envato products.
                 </p>
             </div>
-            {!! $bannerAd->coda !!}
+            {!! $bannerAd->code !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -102,7 +102,7 @@
                             <li class="product-list__item font-18 fw-500 text-heading">Reliable Support: Get dedicated assistance from our support team to help you with any issues or queries about your downloads.</li>
                         </ul>
                     </div>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
                     <!-- Customer Testimonials Section -->
                     <div class="quote-text mb-40">
                         <img src="{{ asset('assets/images/icons/quote-icon.svg') }}" alt="quote-icon" class="quote-text__icon">
@@ -115,7 +115,7 @@
                     <p class="blog-details-content__desc mb-40">
                         Getting started with Bilik Media is simple and straightforward. Just follow these steps to begin downloading your favorite Envato products:
                     </p>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
                     <ol class="product-list mb-40">
                         <li class="product-list__item font-18 fw-500 text-heading">Sign up for a free account on Bilik Media.</li>
                         <li class="product-list__item font-18 fw-500 text-heading">Browse through the wide selection of Envato products available.</li>
@@ -132,13 +132,13 @@
                     <p class="blog-details-content__desc mb-40">
                         Ready to enhance your digital projects with premium Envato products? Join thousands of satisfied users who trust Bilik Media for their downloading needs. Click the button below to verify your account and start exploring our full collection today!
                     </p>
-                    {!! $bannerAd->coda !!}
+                    {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{ route('blog.Two', ['token' => $token->token_dua]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
                             Next Step 1/7 >>                            
                         </a>
                     </div>
-                    {!! $nativeAd->coda !!}
+                    {!! $nativeAd->code !!}
                     
                 </div>
 
@@ -147,17 +147,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->coda !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->coda !!}            
+                            {!! $besarAd->code !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->coda !!}
+                            {!! $petakAd->code !!}
                         </div>
                     </div>
                 </div>
@@ -165,11 +165,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->coda !!}    
+        {!! $sideAd->code !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->coda !!}
+        {!! $sideAd->code !!}
     </div>
 @endsection
 
@@ -230,7 +230,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/6533224";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>
