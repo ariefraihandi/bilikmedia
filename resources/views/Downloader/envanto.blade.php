@@ -310,9 +310,18 @@
                         didOpen: () => Swal.showLoading()
                     });
 
-                    setTimeout(() => {
-                        window.location.href = `/download/${productId}`;
-                    }, 2000); // Simulasi delay sebelum redirect
+                    const baseUrl = "{{ route('generate.download.link', ['productId' => '__PRODUCT_ID__']) }}";
+
+                    // Set delay dengan setTimeout untuk menjalankan fungsi setelah 2 detik
+                    setTimeout(() => {                                               
+                        const url = baseUrl.replace('__PRODUCT_ID__', productId);
+
+                        // Membuka URL di tab baru
+                        window.open(url, '_blank');
+
+                        // Mengarahkan halaman saat ini ke URL lain (reload halaman)
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Ganti dengan URL yang Anda inginkan
+                    }, 2000);
                 } else {
                     if (isUserLoggedIn) {                        
                         submitEmailAndUrl(input);

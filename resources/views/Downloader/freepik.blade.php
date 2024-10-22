@@ -69,17 +69,24 @@
                         Get Freepik files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     <!-- Banner Ad -->
-                    {{-- {!! $bannerAd->code !!}                                          --}}
+                    {{-- {!! $bannerAd->code !!}     --}}
                 
-                    <form action="{{ route('request.download.freepik') }}" method="POST" class="search-box" id="freepikFrom">
+                    <form action="{{ route('request.download.freepik') }}" method="POST" class="search-box" id="envantoForm">
                         @csrf
-                        <input type="text" class="common-input common-input--lg pill shadow-sm" placeholder="Enter Freepik URL: exp. https://www.freepik.com/premium-psd/kitten-with-pink-nose-sits-white-background_232797854.htm" id="freepikInput"name="freepik_url">
+                        <input 
+                            type="text" 
+                            class="common-input common-input--lg pill shadow-sm" 
+                            placeholder="Enter Freepik URL: exp. https://www.freepik.com/premium-psd/kitten-with-pink-nose-sits-white-background_232797854.htm"
+                            id="envantoInput"
+                            name="envanto_url"
+                        >
+                    
                         <button type="button" class="btn btn-main btn-icon icon border-0" id="downloadButton">
                             <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="Download">
                         </button>
                     </form>                                                                                                                                                
                 </div>
-            </div>
+            </div>            
 
             <div class="col-xl-3 col-sm-6">
                 <div class="position-relative z-index-1">
@@ -203,65 +210,148 @@
 @endsection
 
 @push('footer-script')
-
-
-<script>
-    const userCredit = {{ $userDetail ? $userDetail->kredit : 0 }};
-    const isUserLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; // Check if the user is logged in
+<script>    
+    const isUserLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
 
     document.getElementById('downloadButton').addEventListener('click', function () {
-        // Disable the download button to prevent double submission
         const downloadButton = this;
         downloadButton.disabled = true;
-        downloadButton.innerHTML = '...'; // Optional: Change button text to show processing
+        downloadButton.innerHTML = '...'; // Tampilkan loading state
 
-        // Check if the user has enough credit
-        if (userCredit >= 2) {
-            // If the user has enough credits, proceed to check the product availability
-            let input = document.getElementById('freepikInput').value;
-            Swal.fire({
-                title: 'Processing',
-                text: 'Please wait while we process your request...',
-                icon: 'info',
-                allowOutsideClick: false,
-                showConfirmButton: false,
-                didOpen: () => {
-                    Swal.showLoading(); // Show a loading spinner
+        const input = document.getElementById('envantoInput').value;
+
+        // Tampilkan SweetAlert Processing saat fetch berjalan
+        Swal.fire({
+            title: 'Processing',
+            text: 'Please wait while we process your request...',
+            icon: 'info',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading();
+            }
+        });
+
+        fetch(`/search-products?search=${encodeURIComponent(input)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.products.length > 0) {
+                    // Ambil productId dari hasil pencarian
+                    const productId = data.products[0].id;
+
+                    // Redirect ke route download
+                    Swal.fire({
+                        title: 'Processing',
+                        text: 'Product found, redirecting to download...',
+                        icon: 'info',
+                        allowOutsideClick: false,
+                        showConfirmButton: false,
+                        didOpen: () => Swal.showLoading()
+                    });
+
+                    const baseUrl = "{{ route('generate.download.link', ['productId' => '__PRODUCT_ID__']) }}";
+
+                    // Set delay dengan setTimeout untuk menjalankan fungsi setelah 2 detik
+                    setTimeout(() => {                                               
+                        const url = baseUrl.replace('__PRODUCT_ID__', productId);
+
+                        // Membuka URL di tab baru
+                        window.open(url, '_blank');
+
+                        // Mengarahkan halaman saat ini ke URL lain (reload halaman)
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Ganti dengan URL yang Anda inginkan
+                    }, 2000);
+                } else {
+                    if (isUserLoggedIn) {                        
+                        submitEmailAndUrl(input);
+                    } else {
+                        // Jika pengguna belum login, tampilkan prompt untuk memasukkan email
+                        showEmailPrompt(input);
+                    }
                 }
-            });
-            document.getElementById('freepikFrom').submit();            
-               
-        } else {
-            // If the user does not have enough credits, show a SweetAlert with different messages based on login status
-            if (isUserLoggedIn === 'false') {
-                // User is not logged in
-                Swal.fire({
-                    title: 'You Don\'t Have Enough Credits',
-                    text: 'Claim your FREE credit by registering to BILIK MEDIA.',
-                    icon: 'warning',
-                    confirmButtonText: 'Register Now'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = '/auth/register';
-                    }
-                });
+            })
+            .catch(error => handleError(error));
+    });
+
+    function showEmailPrompt(envantoUrl) {
+        Swal.fire({
+            title: 'Attention',
+            text: 'The Freepik file you are looking for is not available in our database. Leave your email, and we will notify you when it becomes available.',
+            input: 'email',
+            inputPlaceholder: 'Enter your email',
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            cancelButtonText: 'Cancel'
+        }).then(result => {
+            if (result.isConfirmed && result.value) {
+                submitEmailAndUrl(envantoUrl, result.value);
             } else {
-                Swal.fire({
-                    title: 'No Credits Available',
-                    text: 'Claim your FREE credit.',
-                    icon: 'info',
-                    confirmButtonText: 'Claim'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        window.location.href = '/credit';
-                    }
+                resetButton();
+            }
+        });
+    }
+
+    function submitEmailAndUrl(envantoUrl, email = null) {
+        // Tampilkan SweetAlert saat request berjalan
+        Swal.fire({
+            title: 'Processing',
+            text: 'Submitting your request...',
+            icon: 'info',
+            allowOutsideClick: false,
+            showConfirmButton: false,
+            didOpen: () => {
+                Swal.showLoading(); // Tampilkan spinner
+            }
+        });
+
+        // Jika pengguna sudah login, email tidak perlu diambil dari prompt
+        let requestData = { envanto_url: envantoUrl };
+        if (!isUserLoggedIn && email) {
+            requestData.email = email;
+        }
+
+        fetch('{{ route('request.download.freepik') }}', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+            },
+            body: JSON.stringify(requestData)
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.message || 'Failed to submit your request.');
                 });
             }
+            return response.json();
+        })
+        .then(data => {           
 
-            // Re-enable the button since no credit deduction occurs
-            downloadButton.disabled = false;
-            downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">'; // Reset button text/icon
-        }
-    });
+            window.open('{{ route('freepik.downloader') }}', '_blank');
+
+            window.location.href = 'https://luglawhaulsano.net/4/8261677';
+        })
+        .catch(error => handleError(error));
+    }
+
+    function handleError(error) {
+        console.error('Error:', error);
+        Swal.fire({
+            title: 'Error',
+            text: error.message || 'An error occurred. Please try again later.',
+            icon: 'error',
+            confirmButtonText: 'OK'
+        });
+
+        resetButton();
+    }
+
+    function resetButton() {
+        const downloadButton = document.getElementById('downloadButton');
+        downloadButton.disabled = false;
+        downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">';
+    }
+
 </script>
 @endpush
