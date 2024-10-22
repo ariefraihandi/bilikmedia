@@ -1,46 +1,59 @@
 @extends('Index.app')
 
 @push('header-script')       
-    <style>
+<style>
+    .ad-banner {
+        position: fixed;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 14px;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    /* Iklan di sebelah kiri */
+    .ad-banner.left {
+        width: 160px;
+        height: 600px;
+        top: 100px;
+        left: 10px;
+    }
+
+    /* Iklan di sebelah kanan */
+    .ad-banner.right {
+        width: 160px;
+        height: 600px;
+        top: 100px;
+        right: 10px;
+    }
+
+    .small-ad {
+        display: none;
+    }
+    
+    .large-ad {
+        display: block;
+    }
+    /* Sembunyikan iklan di layar kecil (mobile) */
+    @media (max-width: 768px) {
         .ad-banner {
-            position: fixed;
-            background-color: #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 14px;
-            border: 1px solid #bbb;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            z-index: 1000;
+            display: none;
         }
-
-        /* Iklan di sebelah kiri */
-        .ad-banner.left {
-            width: 160px;
-            height: 600px;
-            top: 100px;
-            left: 10px;
+        .small-ad {
+            display: block;
         }
-
-        /* Iklan di sebelah kanan */
-        .ad-banner.right {
-            width: 160px;
-            height: 600px;
-            top: 100px;
-            right: 10px;
+        .large-ad {
+            display: none;
         }
+    }
 
-        /* Sembunyikan iklan di layar kecil (mobile) */
-        @media (max-width: 768px) {
-            .ad-banner {
-                display: none;
-            }
-        }
-
-    </style>
+</style>
 @endpush
 @section('content')
 <section class="banner-two position-relative z-index-1 overflow-hidden">
@@ -68,8 +81,13 @@
                     <p class="banner-two__desc">
                         Get Freepik files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
-                    <!-- Banner Ad -->
-                    {{-- {!! $bannerAd->code !!}     --}}
+                    <div class="ad-container large-ad">
+                        {!! $bannerAd->code !!}
+                    </div>
+            
+                    <div class="ad-container small-ad">
+                        {!! $smallAd->code !!}
+                    </div>           
                 
                     <form action="{{ route('request.download.freepik') }}" method="POST" class="search-box" id="envantoForm">
                         @csrf
@@ -101,112 +119,13 @@
     </div>
 </section>
 
-<section class="popular-item-card-section padding-y-120 overflow-hidden">
-
-  <img src="{{ asset('assets') }}/images/shapes/brush.png" alt="" class="element-brush">
-  
-    <div class="container container-two">
-        <div class="section-heading">
-            <h3 class="section-heading__title">Most Downloaded Items</h3>
-        </div>
-
-       
-        <div class="tab-content" id="pills-tab-popularContent">
-            <div class="tab-pane fade show active" id="pills-all-two" role="tabpanel" aria-labelledby="pills-all-two-tab" tabindex="0">
-                <div class="row gy-4">
-                    @foreach($products as $product)
-                        <div class="col-xl-3 col-lg-4 col-sm-6 col-xs-6">
-                            <div class="popular-item-card">
-                                <div class="popular-item-card__thumb">
-                                    <a href="{{ route('product.details', $product->slug) }}" class="link w-100"> 
-                                        <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{ $product->title }}">
-                                    </a>
-                                    <div class="product-item__bottom flx-between gap-2">
-                                        <div>
-                                            <span class="product-item__sales font-14 mb-0 text-white">{{ $product->downloads_count }} Downloads</span>
-                                            
-                                            <!-- Menampilkan rating bintang -->
-                                            <div class="d-flex align-items-center gap-1">
-                                                <ul class="star-rating">
-                                                    @php
-                                                        $avgRating = $product->ratings_avg_rating ?? 0; // Rata-rata rating
-                                                        $filledStars = floor($avgRating); // Bintang penuh
-                                                        $emptyStars = 5 - $filledStars; // Bintang kosong
-                                                    @endphp
-        
-                                                    <!-- Bintang terisi penuh -->
-                                                    @for ($i = 0; $i < $filledStars; $i++)
-                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                                                    @endfor
-        
-                                                    <!-- Bintang kosong -->
-                                                    @for ($i = 0; $i < $emptyStars; $i++)
-                                                        <li class="star-rating__item font-11"><i class="far fa-star"></i></li>
-                                                    @endfor
-                                                </ul>                                                                                              
-                                            </div>
-                                        </div>
-                                        <span class="product-item__author">
-                                            by
-                                            <a href="#" class="link text-decoration-underline"> {{ $product->author }}</a>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="popular-item-card__content d-flex align-items-center justify-content-between gap-2 text-start">
-                                    <h6 class="popular-item-card__title mb-0">
-                                        <a href="{{ route('product.details', $product->slug) }}" class="link"> {{ $product->title }}</a>
-                                    </h6>
-                                    <a href="{{ route('product.details', $product->slug) }}" class="btn-link line-height-1 flex-shrink-0">
-                                        <img src="{{ asset('assets/images/icons/link.svg') }}" alt="" class="white-version">
-                                        <img src="{{ asset('assets/images/icons/link-light.svg') }}" alt="" class="dark-version">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach            
-                </div>
-            </div>
-        </div>
-        
-    </div>
-</section>
-
-<section class="newsletter position-relative z-index-1 overflow-hidden">
-    <img src="{{ asset('assets') }}/images/gradients/newsletter-gradient-bg.png" alt="" class="bg--gradient">
-
-    <img src="{{ asset('assets') }}/images/shapes/element1.png" alt="" class="element two">
-    <img src="{{ asset('assets') }}/images/shapes/element2.png" alt="" class="element one">
-
-    <img src="{{ asset('assets') }}/images/shapes/line-vector-one.png" alt="" class="line-vector one">
-    <img src="{{ asset('assets') }}/images/shapes/line-vector-two.png" alt="" class="line-vector two">
-
-    <img src="{{ asset('assets') }}/images/thumbs/newsletter-man.png" alt="" class="newsletter-man">
-    
-    <div class="container container-two">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-8 col-md-10">
-                <div class="newsletter-content">
-                    <h3 class="newsletter-content__title text-white mb-2 text-center">Get update Newsletter</h3>
-                    <p class="newsletter-content__desc pb-2 text-white text-center font-18 fw-300">Subscribe our newsletter to get the latest news</p>
-
-                    <form action="#" class="mt-4 newsletter-box position-relative">
-                        <input type="text" class="form-control common-input common-input--lg pill text-white" placeholder="Enter Mail">
-                        <button type="submit" class="btn btn-main btn-lg pill flx-align gap-1">Subscribe <span class="text d-sm-flex d-none">Now</span> </button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-{{-- <div class="ad-banner left">
+<div class="ad-banner left">
     {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
     {!! $sideAd->code !!}
-</div> --}}
+</div>
 @endsection
 
 @push('footer-script')

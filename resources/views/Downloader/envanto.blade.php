@@ -1,46 +1,59 @@
 @extends('Index.app')
 
 @push('header-script')       
-    <style>
+<style>
+    .ad-banner {
+        position: fixed;
+        background-color: #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #666;
+        font-size: 14px;
+        border: 1px solid #bbb;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        z-index: 1000;
+    }
+
+    /* Iklan di sebelah kiri */
+    .ad-banner.left {
+        width: 160px;
+        height: 600px;
+        top: 100px;
+        left: 10px;
+    }
+
+    /* Iklan di sebelah kanan */
+    .ad-banner.right {
+        width: 160px;
+        height: 600px;
+        top: 100px;
+        right: 10px;
+    }
+
+    .small-ad {
+        display: none;
+    }
+    
+    .large-ad {
+        display: block;
+    }
+    /* Sembunyikan iklan di layar kecil (mobile) */
+    @media (max-width: 768px) {
         .ad-banner {
-            position: fixed;
-            background-color: #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 14px;
-            border: 1px solid #bbb;
-            border-radius: 8px;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            z-index: 1000;
+            display: none;
         }
-
-        /* Iklan di sebelah kiri */
-        .ad-banner.left {
-            width: 160px;
-            height: 600px;
-            top: 100px;
-            left: 10px;
+        .small-ad {
+            display: block;
         }
-
-        /* Iklan di sebelah kanan */
-        .ad-banner.right {
-            width: 160px;
-            height: 600px;
-            top: 100px;
-            right: 10px;
+        .large-ad {
+            display: none;
         }
+    }
 
-        /* Sembunyikan iklan di layar kecil (mobile) */
-        @media (max-width: 768px) {
-            .ad-banner {
-                display: none;
-            }
-        }
-
-    </style>
+</style>
 @endpush
 @section('content')
 <section class="banner-two position-relative z-index-1 overflow-hidden">
@@ -68,8 +81,13 @@
                     <p class="banner-two__desc">
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
-                    <!-- Banner Ad -->
-                    {{-- {!! $bannerAd->code !!}     --}}
+                    <div class="ad-container large-ad">
+                        {!! $bannerAd->code !!}
+                    </div>
+            
+                    <div class="ad-container small-ad">
+                        {!! $smallAd->code !!}
+                    </div>           
                 
                     <form action="{{ route('request.download') }}" method="POST" class="search-box" id="envantoForm">
                         @csrf
@@ -103,13 +121,13 @@
 </section>
 
 
-{{-- <div class="ad-banner left">
+<div class="ad-banner left">
     {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
     {!! $sideAd->code !!}
-</div> --}}
+</div>
 @endsection
 
 @push('footer-script')

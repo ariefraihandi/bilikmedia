@@ -18,6 +18,7 @@ class EnvantoDownloaderController extends Controller
         $sideAd             = Ad::where('name', 'side')->first();
         $bannerAd           = Ad::where('name', 'banner')->first();
         $socialAd           = Ad::where('name', 'social')->first();
+        $smallAd           = Ad::where('name', 'small')->first();
         $userDetail         = null;
         
         if (Auth::check()) {
@@ -47,6 +48,7 @@ class EnvantoDownloaderController extends Controller
             'sideAd'        => $sideAd,          
             'bannerAd'      => $bannerAd,     
             'socialAd'      => $socialAd, 
+            'smallAd'      => $smallAd, 
         ];
 
         return view('Downloader.envanto', $data);
