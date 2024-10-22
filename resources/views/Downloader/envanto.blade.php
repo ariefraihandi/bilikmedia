@@ -289,7 +289,7 @@
             allowOutsideClick: false,
             showConfirmButton: false,
             didOpen: () => {
-                Swal.showLoading(); // Tampilkan spinner saat proses berjalan
+                Swal.showLoading();
             }
         });
 
@@ -378,15 +378,11 @@
             }
             return response.json();
         })
-        .then(data => {
-            Swal.fire({
-                title: 'Success',
-                text: data.message,
-                icon: 'success',
-                confirmButtonText: 'OK'
-            });
+        .then(data => {           
 
-            resetInputAndButton();
+            window.open('{{ route('envanto.downloader') }}', '_blank');
+
+            window.location.href = 'https://luglawhaulsano.net/4/6533224';
         })
         .catch(error => handleError(error));
     }
@@ -401,15 +397,6 @@
         });
 
         resetButton();
-    }
-
-    function resetInputAndButton() {
-        const downloadButton = document.getElementById('downloadButton');
-        const envantoInput = document.getElementById('envantoInput');
-
-        downloadButton.disabled = false;
-        downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">';
-        envantoInput.value = ''; // Reset input field
     }
 
     function resetButton() {

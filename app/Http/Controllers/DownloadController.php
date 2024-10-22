@@ -521,10 +521,9 @@ class DownloadController extends Controller
         Mail::to('raihandi93@gmail.com')->send(
             new DownloadRequestNotification($email, $cleanedUrl)
         );
-    
+        Alert::success('Success', 'File on process, please wait 5-10 minutes, and check your email regularly');
         return response()->json([
             'status' => 'success',
-            'message' => 'File on process, please wait 5-10 minutes, and check your email regularly.'
         ], 200);
     }
     
