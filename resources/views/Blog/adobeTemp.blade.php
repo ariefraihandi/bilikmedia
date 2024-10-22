@@ -250,7 +250,7 @@ continueDownloadBtn.addEventListener('click', function(e) {
     window.open(this.href, '_blank');
 
     // Redirect the current page to the desired URL
-    window.location.href = "https://luglawhaulsano.net/4/6533224";
+    window.location.href = "https://luglawhaulsano.net/4/8261677";
 });
 
 // AdBlock detection (optional)

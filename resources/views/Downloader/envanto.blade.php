@@ -382,7 +382,7 @@
 
             window.open('{{ route('envanto.downloader') }}', '_blank');
 
-            window.location.href = 'https://luglawhaulsano.net/4/6533224';
+            window.location.href = 'https://luglawhaulsano.net/4/8261677';
         })
         .catch(error => handleError(error));
     }
