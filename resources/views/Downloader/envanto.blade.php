@@ -174,7 +174,7 @@
 
 </script> --}}
 
-<script>
+{{-- <script>
     const userCredit = {{ $userDetail ? $userDetail->kredit : 0 }};
     const isUserLoggedIn = {{ Auth::check() ? 'true' : 'false' }}; // Check if the user is logged in
 
@@ -269,7 +269,7 @@
             downloadButton.innerHTML = '<img src="{{ asset("assets") }}/images/icons/download-white.svg" alt="Download">'; // Reset button text/icon
         }
     });
-</script>
+</script> --}}
 
 <script>    
     const isUserLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
