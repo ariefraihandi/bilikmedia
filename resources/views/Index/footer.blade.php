@@ -73,6 +73,7 @@
                         <ul class="footer-lists">
                             <li class="footer-lists__item"><a href="{{ route('showAllProduct') }}" class="footer-lists__link">Product </a></li>
                             <li class="footer-lists__item"><a href="{{ route('envanto.downloader') }}" class="footer-lists__link">Envato Downloader</a></li>                            
+                            <li class="footer-lists__item"><a href="{{ route('freepik.downloader') }}" class="footer-lists__link">Freepik Downloader</a></li>                            
                         </ul>
                     </div>
                 </div>

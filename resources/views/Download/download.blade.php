@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-lg-12" id="downloadOptions" style="display: none;">
                                 <button id="freeDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mb-3">
-                                    Free Download<br>(Watch 7 Step Ads)
+                                    Free Download
                                 </button>         
                                 <div class="ad-container large-ad">
                                     {!! $bannerAd->code !!}
@@ -158,74 +158,76 @@
 
 @push('footer-script')
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const downloadButton = document.getElementById('downloadButton');
-        const downloadOptions = document.getElementById('downloadOptions');     
-        let secondsLeft = 10;
-        let isAdBlockActive = false;
+  document.addEventListener('DOMContentLoaded', function () {
+      const downloadButton = document.getElementById('downloadButton');
+      const downloadOptions = document.getElementById('downloadOptions');
+      let secondsLeft = 10;
+      let isAdBlockActive = false;
 
-        // Fungsi untuk memulai countdown
-        function startCountdown() {
-            downloadButton.disabled = true;
-            downloadButton.textContent = `Download in `;
-            const countdownElement = document.createElement('span');
-            countdownElement.id = 'countdown';
-            countdownElement.textContent = `${secondsLeft} seconds`;
-            downloadButton.appendChild(countdownElement);
+      // Fungsi untuk memulai countdown
+      function startCountdown() {
+          downloadButton.disabled = true;
+          downloadButton.textContent = `Download in `;
+          const countdownElement = document.createElement('span');
+          countdownElement.id = 'countdown';
+          countdownElement.textContent = `${secondsLeft} seconds`;
+          downloadButton.appendChild(countdownElement);
 
-            const countdownTimer = setInterval(function () {
-                secondsLeft--;
-                countdownElement.textContent = `${secondsLeft} seconds`;
+          const countdownTimer = setInterval(function () {
+              secondsLeft--;
+              countdownElement.textContent = `${secondsLeft} seconds`;
 
-                if (secondsLeft <= 0) {
-                    clearInterval(countdownTimer);
-                    downloadButton.style.display = 'none';
-                    downloadOptions.style.display = 'block';
-                }
-            }, 1000);
-        }
+              if (secondsLeft <= 0) {
+                  clearInterval(countdownTimer);
+                  downloadButton.style.display = 'none';
+                  downloadOptions.style.display = 'block';
+              }
+          }, 1000);
+      }
 
-        // Fungsi deteksi AdBlock
-        (function detectAdBlock() {
-            const bait = document.createElement('iframe');
-            bait.style = 'width: 1px; height: 1px; position: absolute; left: -9999px; border: none;';
-            bait.src = "https://ads.fakeurl.com";
-            document.body.appendChild(bait);
+      // Fungsi untuk mendeteksi AdBlock
+      function detectAdBlock() {
+          const adTest = document.createElement('script');
+          adTest.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js'; // URL iklan Google yang biasanya diblokir
+          adTest.async = true;
 
-            setTimeout(function () {
-                if (!bait || bait.offsetParent === null || bait.offsetHeight === 0 || bait.offsetWidth === 0) {
-                    adBlockDetected();
-                } else {
-                    adBlockNotDetected();
-                }
-                document.body.removeChild(bait);
-            }, 100);
-        })();
+          adTest.onerror = function () {
+              adBlockDetected();
+          };
 
-        // Fungsi jika AdBlock terdeteksi
-        function adBlockDetected() {
-            isAdBlockActive = true;
-            downloadButton.disabled = false;
-            downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh';
-            downloadButton.addEventListener('click', function () {
-                location.reload();
-            });
-        }
+          adTest.onload = function () {
+              adBlockNotDetected();
+          };
 
-        // Fungsi jika AdBlock tidak terdeteksi
-        function adBlockNotDetected() {
-            isAdBlockActive = false;
-            downloadButton.disabled = false;
-            downloadButton.textContent = 'Please Verify';
+          document.body.appendChild(adTest);
+      }
 
-            downloadButton.addEventListener('click', function () {
-                if (!isAdBlockActive) {
-                    startCountdown();
-                }
-            }, { once: true });
-        }
-       
-    });
+      // Fungsi jika AdBlock terdeteksi
+      function adBlockDetected() {
+          isAdBlockActive = true;
+          downloadButton.disabled = false;
+          downloadButton.textContent = 'Please disable your AdBlock. Click To Refresh';
+          downloadButton.addEventListener('click', function () {
+              location.reload();
+          });
+      }
+
+      // Fungsi jika AdBlock tidak terdeteksi
+      function adBlockNotDetected() {
+          isAdBlockActive = false;
+          downloadButton.disabled = false;
+          downloadButton.textContent = 'Please Verify';
+
+          downloadButton.addEventListener('click', function () {
+              if (!isAdBlockActive) {
+                  startCountdown();
+              }
+          }, { once: true });
+      }
+
+      // Mulai proses deteksi AdBlock saat halaman dimuat
+      detectAdBlock();
+  });
 </script>
 
 <script>
@@ -391,15 +393,16 @@
       });
     });
 </script>
+
 <script>
     const blogRoute = "{{ route('blog.One', ['token' => ':token']) }}";
     document.getElementById('freeDownload').addEventListener('click', function () {
         Swal.fire({
             title: 'Free Download',
-            text: 'You will watch 7 step ads. If interrupted, you will have to start over from the beginning. Do you want to continue?',
+            text: 'Are you sure you want to download using the free download method?',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Yes, I understand',
+            confirmButtonText: 'Yes, Continue',
             cancelButtonText: 'Cancel'
         }).then((result) => {
             if (result.isConfirmed) {
@@ -432,7 +435,7 @@
                         // Gantikan placeholder ':token' dengan token_satu
                         const blogUrl = blogRoute.replace(':token', data.token_satu);
                         newTab.location.href = blogUrl; // Arahkan tab baru
-                        window.location.href = 'https://www.google.com'; // Arahkan halaman dasar
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Arahkan halaman dasar
                     })
                     .catch(error => {
                         console.error('Error:', error);
