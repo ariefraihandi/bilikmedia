@@ -544,9 +544,8 @@ class DownloadController extends Controller
             'email' => 'email',
         ]);
     
-        $envantoUrl = explode('?', $request->input('envanto_url'))[0];
-        $cleanedUrl = preg_replace('/#.*$/', '', $envantoUrl);
-        $cleanedUrl = strtok($envantoUrl, '?');
+        $envantoUrl = $request->input('envanto_url');
+        $cleanedUrl = strtok($envantoUrl, '#?');                
     
         $existingRequest = RequestDownload::where('email', $email)
             ->where('url', $cleanedUrl)
