@@ -278,39 +278,46 @@ class ProductController extends Controller
     }
     
     public function searchProducts(Request $request)
-    {
-        // Ambil input pencarian
-        $search = $request->input('search');
+{
+    // Ambil input pencarian
+    $search = $request->input('search');
 
+    // Jika input mengandung "freepik", lakukan pembersihan dengan strtok untuk memotong dari tanda # atau ?
+    if (stripos($search, 'freepik') !== false) {
+        $cleanedSearch = strtok($search, '#?');
+    } else {
         // Hapus query string jika ada (misalnya ?epik=...)
         $cleanedSearch = explode('?', $search)[0];
-        
-        $cleanedSearch = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedSearch);
 
-        // Cari produk berdasarkan title atau url_source
-        $products = Product::where('title', 'LIKE', "%{$cleanedSearch}%")
-            ->orWhere('url_source', 'LIKE', "%{$cleanedSearch}%")
-            ->with('categories')
-            ->limit(10) 
+        // Lakukan pembersihan tambahan jika bukan freepik
+        $cleanedSearch = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedSearch);
+    }
+
+    // Cari produk berdasarkan title atau url_source
+    $products = Product::where('title', 'LIKE', "%{$cleanedSearch}%")
+        ->orWhere('url_source', 'LIKE', "%{$cleanedSearch}%")
+        ->with('categories')
+        ->limit(10)
+        ->get();
+
+    if ($products->isEmpty()) {
+        $categories = ProductCategory::where('name', 'LIKE', "%{$cleanedSearch}%")
+            ->limit(10)
             ->get();
 
-        if ($products->isEmpty()) {
-            $categories = ProductCategory::where('name', 'LIKE', "%{$cleanedSearch}%")
-                ->limit(10)
-                ->get();
-
-            return response()->json([
-                'products' => [],
-                'categories' => $categories
-            ]);
-        }
-
-        // Kembalikan hasil dalam bentuk JSON
         return response()->json([
-            'products' => $products,
-            'categories' => []
+            'products' => [],
+            'categories' => $categories
         ]);
     }
+
+    // Kembalikan hasil dalam bentuk JSON
+    return response()->json([
+        'products' => $products,
+        'categories' => []
+    ]);
+}
+
 
     public function showProduct()
     {

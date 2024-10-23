@@ -177,8 +177,7 @@
                         // Membuka URL di tab baru
                         window.open(url, '_blank');
 
-                        // Mengarahkan halaman saat ini ke URL lain (reload halaman)
-                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Ganti dengan URL yang Anda inginkan
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677';
                     }, 2000);
                 } else {
                     if (isUserLoggedIn) {                        
@@ -250,6 +249,7 @@
             window.open('{{ route('freepik.downloader') }}', '_blank');
 
             window.location.href = 'https://luglawhaulsano.net/4/8261677';
+            // window.location.href = 'https://google.com';
         })
         .catch(error => handleError(error));
     }
