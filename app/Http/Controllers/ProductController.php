@@ -361,7 +361,6 @@ class ProductController extends Controller
     
     public function storeProduct(Request $request)
     {
-        // Validasi data
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -369,34 +368,39 @@ class ProductController extends Controller
             'tags' => 'nullable|string',
             'types' => 'nullable|string',
             'additions' => 'nullable|string',
-            'author' => 'nullable|string|max:255',
-            'author_url' => 'nullable|url',
             'url_source' => 'nullable|url',
             'live_preview_url' => 'nullable|url',
-            'url_download' => 'nullable|url', // Validasi untuk url_download
-            'category' => 'nullable|array', // Kategori harus array
-            'category.*' => 'exists:product_category,id', // Validasi setiap kategori harus ada di database
-            'fileUpload' => 'nullable|image|mimes:webp,jpeg,png,jpg,gif|max:2048',
+            'url_download' => 'nullable|url',
+            'category' => 'nullable|array',
+            'category.*' => 'exists:product_category,id',
+            // Hapus validasi fileUpload di sini
         ]);
-
-        // Menggunakan transaksi untuk memastikan rollback jika terjadi error
+    
+        // Menambahkan default value untuk author dan author_url
+        $validated['author'] = 'bilikmedia';
+        $validated['author_url'] = 'https://bilikmedia.com/';
+    
         DB::beginTransaction();
-
+    
         try {
-            // Proses upload file gambar
+            // Menentukan nama gambar berdasarkan input radio
             $imageName = null;
-            if ($request->hasFile('fileUpload')) {
+            if ($request->has('envanto')) {
+                $imageName = 'envato.png';
+            } elseif ($request->has('freepik')) {
+                $imageName = 'freepik.png';
+            } elseif ($request->hasFile('fileUpload')) {
+                // Jika upload file disediakan, gunakan file tersebut (jika masih ingin mengizinkan upload)
+                // Hapus bagian ini jika tidak ingin mengizinkan upload
                 $imageName = time() . '.' . $request->fileUpload->extension();
                 $request->fileUpload->move(public_path('uploads/products'), $imageName);
             }
-
-            // Generate slug dari title dan tambahkan 5 karakter acak
+    
             $slug = Str::slug($validated['title']) . '-' . Str::random(5);
-
-            // Menyimpan data produk ke database
+    
             $product = new Product();
             $product->title = $validated['title'];
-            $product->slug = $slug; // Simpan slug yang dihasilkan
+            $product->slug = $slug;
             $product->description = $validated['description'];
             $product->features = $validated['features'];
             $product->tags = $validated['tags'];
@@ -406,42 +410,31 @@ class ProductController extends Controller
             $product->author_url = $validated['author_url'];
             $product->url_source = $validated['url_source'];
             $product->live_preview_url = $validated['live_preview_url'];
-            $product->url_download = $validated['url_download']; // Simpan url_download
+            $product->url_download = $validated['url_download'];
             $product->image = $imageName;
             $product->save();
-
-            // Menyimpan kategori (relasi many-to-many)
+    
             if (isset($validated['category'])) {
-                $product->categories()->sync($validated['category']); // Menghubungkan kategori dengan produk
+                $product->categories()->sync($validated['category']);
             }
-
-            // Cek apakah ada request download yang memiliki url_source yang sama
+    
             if ($product->url_source) {
                 $requestDownload = RequestDownload::where('url', $product->url_source)->first();
-
                 if ($requestDownload) {
-                    // Update status menjadi 1 jika ditemukan
                     $requestDownload->status = 1;
                     $requestDownload->save();
                 }
             }
-
-            // Commit transaksi jika semua berhasil
+    
             DB::commit();
-
-            // Jika berhasil, tampilkan alert sukses
-            Alert::success('Submitted', 'New Product Submitted!');
-            return redirect()->route('show.add.product')->with('success', 'Product saved successfully!');
-
+            return redirect()->route('show.add.product')->with('success', 'Product Submitted successfully!');
         } catch (\Exception $e) {
-            // Rollback semua perubahan jika terjadi error
             DB::rollBack();
-
-            // Jika gagal, tampilkan alert error
             Alert::error('Error', 'Failed to submit product: ' . $e->getMessage());
             return redirect()->back()->withInput()->withErrors(['error' => $e->getMessage()]);
         }
     }
+    
 
 
     public function storeCategory(Request $request)

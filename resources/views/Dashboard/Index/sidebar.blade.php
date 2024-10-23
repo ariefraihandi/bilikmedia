@@ -37,7 +37,7 @@
                                 <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active14.svg" alt="" class="icon icon-active">
                             @endif
                         </span>
-                        <span class="text">Produk</span>
+                        <span class="text">Add Produk</span>
                     </a>
                 </li>
 

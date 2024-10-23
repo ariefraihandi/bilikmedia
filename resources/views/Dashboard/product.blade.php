@@ -60,18 +60,7 @@
                                                 <label for="additions" class="form-label">Additions</label>
                                                 <input type="text" class="common-input common-input--md border--color-dark bg--white" id="additions" name="additions">
                                         </div>                                        
-                                        <div class="col-sm-6 col-xs-6">
-                                                <label for="author" class="form-label">Author</label>
-                                                <input type="text" class="common-input common-input--md border--color-dark bg--white" id="author" name="author">
-                                        </div>
-                                        <div class="col-sm-6 col-xs-6">
-                                                <label for="author_url" class="form-label">Author Url</label>
-                                                <input type="text" class="common-input common-input--md border--color-dark bg--white" id="author_url" name="author_url">
-                                        </div>                                        
-                                        <div class="col-sm-12">
-                                            <label for="fileUpload" class="form-label">Image</label>
-                                            <input type="file" class="common-input common-input--md border--color-dark bg--white" id="fileUpload" name="fileUpload">
-                                        </div>                                        
+                                                                            
                                         <div class="col-sm-12">
                                             <label for="category" class="form-label">Category</label>
                                             <div class="d-flex flex-column mb-3">
