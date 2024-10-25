@@ -40,7 +40,7 @@ class EnvantoDownloaderController extends Controller
         }
         
         $data = [
-            'title' => 'Free Envato Downloader Tool - Easily Download Envato Elements | Bilik Media',
+            'title' => 'Free Envato Downloader Tool - Easily Download Envato Elements',
             'description'   => $metaDescription,
      
             'userDetail'      => $userDetail, 
