@@ -9,7 +9,7 @@
 <!-- magnific popup -->
 <script src="{{ asset('assets') }}/js/jquery.magnific-popup.js"></script>
 <!-- apex chart -->
-<script src="{{ asset('assets') }}/js/apexchart.js"></script>
+
 <!-- marquee -->
 <script src="{{ asset('assets') }}/js/marquee.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>

@@ -49,20 +49,20 @@
                         <div class="footer-widget__social">
                             <ul class="social-icon-list">
                                 <li class="social-icon-list__item">
-                                    <a href="https://www.facebook.com" class="social-icon-list__link flx-center"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="https://www.facebook.com" class="social-icon-list__link flx-center" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                                 </li>
                                 <li class="social-icon-list__item">
-                                    <a href="https://www.twitter.com" class="social-icon-list__link flx-center"> <i class="fab fa-twitter"></i></a>
+                                    <a href="https://x.com/bilikmedia_?t=QvjxaAhBMIF9IO1NdNqdRQ&s=08" class="social-icon-list__link flx-center" aria-label="Facebook"> <i class="fab fa-x"></i></a>
                                 </li>
                                 <li class="social-icon-list__item">
-                                    <a href="https://www.linkedin.com" class="social-icon-list__link flx-center"> <i class="fab fa-linkedin-in"></i></a>
+                                    <a href="https://www.linkedin.com" class="social-icon-list__link flx-center" aria-label="Linkedin"> <i class="fab fa-linkedin-in"></i></a>
                                 </li>
                                 <li class="social-icon-list__item">
-                                    <a href="https://www.pinterest.com" class="social-icon-list__link flx-center"> <i class="fab fa-pinterest-p"></i></a>
+                                    <a href="https://www.pinterest.com" class="social-icon-list__link flx-center" aria-label="Pinterest"> <i class="fab fa-pinterest-p"></i></a>
                                 </li>
                                 <li class="social-icon-list__item">
-                                    <a href="https://www.pinterest.com" class="social-icon-list__link flx-center"> <i class="fab fa-youtube"></i></a>
-                                </li>
+                                    <a href="https://www.youtube.com/@bilik_media/" class="social-icon-list__link flx-center" aria-label="Youtube"> <i class="fab fa-youtube"></i></a>
+                                </li>                                
                             </ul>
                         </div>
                     </div>
