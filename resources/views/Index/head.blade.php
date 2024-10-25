@@ -73,9 +73,7 @@
       gtag('js', new Date());
 
       gtag('config', 'G-MG5CGMG7LP');
-    </script>
-
-   
+    </script>  
 
     <!-- CSRF Token for Security -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
