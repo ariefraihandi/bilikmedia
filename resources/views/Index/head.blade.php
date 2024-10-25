@@ -63,13 +63,16 @@
     <!-- MS Validation (Bing Webmaster) -->
     <meta name="msvalidate.01" content="59894226D4BEAEE11743D1E1A5CAF44F" />
 
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KTRYD66LYS"></script>
+
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MG5CGMG7LP"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-KTRYD66LYS');
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MG5CGMG7LP');
     </script>
 
    
