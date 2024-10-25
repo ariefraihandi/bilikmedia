@@ -38,7 +38,7 @@ class EnvantoDownloaderController extends Controller
                 $userDetail->save();
             }
         }
-        
+
         $data = [
             'title' => 'Free Envato Downloader Tool - Easily Download Envato Elements',
             'description'   => $metaDescription,

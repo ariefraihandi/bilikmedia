@@ -1,7 +1,6 @@
 @extends('Index.app')
 
 @push('header-script')      
-<h1>Free Envato Downloader Tool - Easily Download Envato Elements</h1> 
 <style>
     .ad-banner {
         position: fixed;
@@ -78,7 +77,7 @@
 
             <div class="col-xl-6 d-flex justify-content-center align-items-center flex-column">
                 <div class="banner-two__content text-center">
-                    <h2 class="banner-two__title mb-3">Envato Downloader</h2>
+                    <h1 class="banner-two__title mb-3">Free Envato Downloader Tool</h1>
                     <p class="banner-two__desc">
                         Get Envato files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
