@@ -1,10 +1,10 @@
 <footer class="footer-three  bg-black position-relative">
 
-    <img src="{{ asset('assets') }}/images/gradients/footer-gradient.png" alt="" class="bg--gradient">
-    <img src="{{ asset('assets') }}/images/shapes/element2.png" alt="" class="element one">
-    <img src="{{ asset('assets') }}/images/shapes/element3.png" alt="" class="element two"> 
+    <img src="{{ asset('assets') }}/images/gradients/footer-gradient.png" alt="footer-gradient" class="bg--gradient">
+    <img src="{{ asset('assets') }}/images/shapes/element2.png" alt="element2" class="element one">
+    <img src="{{ asset('assets') }}/images/shapes/element3.png" alt="element3" class="element two"> 
 
-    <img src="{{ asset('assets') }}/images/shapes/footer-shape4.png" alt="" class="position-absolute end-0 top-0">
+    <img src="{{ asset('assets') }}/images/shapes/footer-shape4.png" alt="footer-shape4" class="position-absolute end-0 top-0">
 
     <!-- text slider -->
     <div class="text-slider-section overflow-hidden">
@@ -43,7 +43,7 @@
                 <div class="col-xl-3 col-sm-6">
                     <div class="footer-widget">
                         <div class="footer-widget__logo">
-                            <a href="index.html"> <img src="{{ asset('assets') }}/images/logo/white-logo.png" alt=""></a>
+                            <a href="index.html"> <img src="{{ asset('assets') }}/images/logo/white-logo.png" alt="logo"></a>
                         </div>
                         <p>Your gateway to digital creativity and media solutions.</p>
                         <div class="footer-widget__social">

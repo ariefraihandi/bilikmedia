@@ -114,10 +114,10 @@
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" class="d-none" id="checkbox">
                         <span class="slider text-black header-right__button white-version">
-                            <img src="assets/images/icons/sun.svg" alt="">
+                            <img src="assets/images/icons/sun.svg" alt="sun">
                         </span>
                         <span class="slider text-black header-right__button dark-version">
-                            <img src="assets/images/icons/moon.svg" alt="">
+                            <img src="assets/images/icons/moon.svg" alt="moon">
                         </span>
                     </label>
                 </div>
@@ -128,7 +128,7 @@
                     <!-- Jika pengguna sudah login, tampilkan tombol "Profile" -->
                         <a href="{{ route('user.profile') }}" class="btn btn-main pill">
                             <span class="icon-left icon"> 
-                                <img src="{{ asset('assets/images/icons/user.svg') }}" alt="">
+                                <img src="{{ asset('assets/images/icons/user.svg') }}" alt="user">
                             </span>Profile  
                         </a>
                         <div class="language-select flx-align">
@@ -144,7 +144,7 @@
                         <!-- Jika pengguna belum login, tampilkan tombol "Create Account" -->
                         <a href="{{ route('showRegisterForm') }}" class="btn btn-main pill">
                             <span class="icon-left icon"> 
-                                <img src="{{ asset('assets/images/icons/user.svg') }}" alt="">
+                                <img src="{{ asset('assets/images/icons/user.svg') }}" alt="user">
                             </span>Create Account  
                         </a>
                     @endif                
