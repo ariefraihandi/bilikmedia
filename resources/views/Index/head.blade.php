@@ -16,7 +16,7 @@
     <link rel="canonical" href="{{ url()->current() }}">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="{{ asset('assets') }}/images/logo/favicon.png">
+    <link rel="shortcut icon" href="https://bilikmedia.com/assets/images/logo/favicon.ico">
 
     <!-- Open Graph (OG) Tags for Social Media Optimization -->
 <meta property="og:title" content="{{ $title ?? 'Bilik Media | Best Digital Solution for Your Business' }}">
