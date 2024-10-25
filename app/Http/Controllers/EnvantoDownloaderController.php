@@ -13,7 +13,7 @@ class EnvantoDownloaderController extends Controller
     public function showEnvantoDownloader()
     {        
         $metaDescription    = "Download Envato Elements quickly and for free with Bilik Media's easy-to-use tool! Get your creative files now";
-        $metaKeywords       = "Envato, Download Envato Files, Envato Downloader, Bilik Media, Fast Envato Downloads";
+        $metaKeywords       = "Free Envato Downloader, Download Envato Files, Bilik Media, Quick Envato Downloads, Easy Envato Elements Download";
    
         $sideAd             = Ad::where('name', 'side')->first();
         $bannerAd           = Ad::where('name', 'banner')->first();
