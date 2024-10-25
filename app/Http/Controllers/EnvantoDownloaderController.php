@@ -12,7 +12,7 @@ class EnvantoDownloaderController extends Controller
 {
     public function showEnvantoDownloader()
     {        
-        $metaDescription    = "Bilik Media offers a fast and easy service to download files from Envato. Get your desired files effortlessly.";
+        $metaDescription    = "Download Envato Elements quickly and for free with Bilik Media's easy-to-use tool! Get your creative files now";
         $metaKeywords       = "Envato, Download Envato Files, Envato Downloader, Bilik Media, Fast Envato Downloads";
    
         $sideAd             = Ad::where('name', 'side')->first();
@@ -40,7 +40,7 @@ class EnvantoDownloaderController extends Controller
         }
         
         $data = [
-            'title' => 'Free Envato Downloader Tool - Download Envato Elements Easily | Bilik Media',
+            'title' => 'Free Envato Downloader Tool - Easily Download Envato Elements | Bilik Media',
             'description'   => $metaDescription,
      
             'userDetail'      => $userDetail, 

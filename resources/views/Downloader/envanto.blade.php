@@ -1,6 +1,7 @@
 @extends('Index.app')
 
-@push('header-script')       
+@push('header-script')      
+<h1>Free Envato Downloader Tool - Easily Download Envato Elements</h1> 
 <style>
     .ad-banner {
         position: fixed;
