@@ -23,6 +23,7 @@
 <meta property="og:description" content="{{ $description ?? 'Bilik Media menyediakan berbagai jasa digital terbaik untuk bisnis Anda.' }}">
 <meta property="og:type" content="website">
 <meta property="og:url" content="{{ url()->current() }}">
+<meta name="yandex-verification" content="45d481f936add53f" />
 
 @if(isset($product) && $product->image)
   <meta property="og:image" content="{{ asset('uploads/products/' . $product->image) }}">
