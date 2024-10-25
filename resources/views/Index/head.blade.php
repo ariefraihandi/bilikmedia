@@ -65,16 +65,15 @@
     <meta name="msvalidate.01" content="59894226D4BEAEE11743D1E1A5CAF44F" />
 
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KTRYD66LYS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MG5CGMG7LP"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-MG5CGMG7LP');
-    </script>  
+  gtag('config', 'G-KTRYD66LYS');
+</script>
 
     <!-- CSRF Token for Security -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
