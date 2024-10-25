@@ -44,7 +44,7 @@
     --heading-font: "Jost", sans-serif;
     --body-font: "Inter", sans-serif;
   /* Font Size Variable Start */
-    --heading-one: clamp(1.875rem, -2.0093rem + 8.3527vw, 4.25rem);
+    --heading-one: clamp(1.75rem, -0.8115rem + 5.3364vw, 3.1875rem);
     --heading-two: clamp(1.75rem, -0.8115rem + 5.3364vw, 3.1875rem);
     --heading-three: clamp(1.5rem, -0.0592rem + 3.2483vw, 2.375rem);
     --heading-four: clamp(1.375rem, 0.7068rem + 1.3921vw, 1.75rem);
