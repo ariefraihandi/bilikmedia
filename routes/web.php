@@ -19,7 +19,11 @@
 //!Controller
 
 //Index
-    Route::get('/robots.txt', function () {return response("User-agent: *\nDisallow: /admin", 200)->header('Content-Type', 'text/plain');});
+Route::get('/robots.txt', function () {
+    return response("User-agent: *\nDisallow: /admin\nDisallow:\nSitemap: https://bilikmedia.com/sitemap.xml", 200)
+        ->header('Content-Type', 'text/plain');
+});
+
     Route::get('/sitemap.xml', [SitemapController::class, 'viewSitemap']);
 //!Index
 
