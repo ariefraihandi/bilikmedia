@@ -162,164 +162,6 @@
 <!-- ======================== About Section End ========================== -->
 
 
-    <!-- ======================= Services Section Start ===================== -->
-<section class="service-three position-relative section-bg padding-y-120 z-index-1">
-
-    <img src="{{ asset('assets') }}/images/shapes/line-curve3.png" alt="" class="line-curve right-bottom one">
-    
-        <div class="container container-two">
-            <div class="section-heading style-three">
-                <span class="section-heading__subtitle">Services</span>
-                <h3 class="section-heading__title">We do everything on product design</h3>
-                <p class="section-heading__desc">Every month we pick some best products for you. This month's best web themes & templates have arrived, chosen by our content specialists.</p>
-            </div>
-            <div class="row gy-4">
-                <div class="col-xxl-5 col-lg-6">
-                    <div class="service-three-item-wrapper">
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative active">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon1.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Strategy</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative ">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon2.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Design</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative ">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon3.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Creative Tech</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                    </div>
-                </div>
-                <div class="col-xxl-7 col-lg-6">
-                    <div class="service-three-item-wrapper">
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative ">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon4.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Strategy</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative ">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon5.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Strategy</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative ">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon6.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Strategy</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                        <div class="service-three-item d-flex align-items-start gap-3 z-index-1 position-relative ">
-        <img src="{{ asset('assets') }}/images/gradients/service-item-gradient.png" alt="" class="service-three-item__bg position-absolute start-0 top-0 w-100 h-100 z-index--1">
-        <span class="service-three-item__icon flex-shrink-0"><img src="{{ asset('assets') }}/images/icons/service-icon2.svg" alt=""></span>
-        <div class="service-three-item__content">
-            <h5 class="service-three-item__title mb-2">Strategy</h5>
-            <p class="service-three-item__desc">Each user's self-serve multifactor settings are enforced automatically during sign-in.</p>
-
-            <ul class="ser-list d-flex flex-column gap-2 mt-32">
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Market analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Competitive analysis</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Branding Positioning</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">User research</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">innovation strategy</li>
-                <li class="ser-list__item fw-500 font-heading font-18 transition text-capitalize">Concept strategy</li>
-            </ul>
-            
-            <button type="button" class="service-three-item__button ms-auto text-end"> <i class="las la-plus"></i> </button>
-        </div>
-    </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-</section>
-<!-- ======================= Services Section End ===================== -->
-
     <!-- ======================= Featured Products Start =============================== -->
 <section class="featured-product padding-y-120 position-relative z-index-1">
 
@@ -330,12 +172,9 @@
                 <div class="col-xl-5">
                     <div class="section-content">
                         <div class="section-heading style-left">
-                            <h3 class="section-heading__title">Featured Products</h3>
-                            <p class="section-heading__desc font-18 w-sm">Every month we pick some best products for you. This month's best web themes & templates have arrived, chosen by our content specialists.</p>
-                        </div>
-                        <a href="{{ route('index') }}" class="btn btn-main btn-lg fw-300">
-                            View All Items
-                        </a>
+                            <h3 class="section-heading__title">Featured Tools</h3>
+                            <p class="section-heading__desc font-18 w-sm"><strong>Simplify your design process with our best tools!</strong> Quickly access and download assets, saving you time to focus on creating amazing content.</p>
+                        </div>                       
                     </div>
                 </div>
                 <div class="col-xl-7">
@@ -343,168 +182,66 @@
                         <div class="row gy-4">
                             <div class="col-sm-6">
                                 <div class="product-item box-shadow">
-        <div class="product-item__thumb d-flex">
-            <a href="{{ route('index') }}" class="link w-100">
-                <img src="{{ asset('assets') }}/images/thumbs/product-img1.png" alt="" class="cover-img"> 
-            </a>
-            <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-        </div>
-        <div class="product-item__content">
-            <h6 class="product-item__title">
-                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
-            </h6>
-            <div class="product-item__info flx-between gap-2">
-                <span class="product-item__author">
-                    by
-                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
-                </span>
-                <div class="flx-align gap-2">
-                    <h6 class="product-item__price mb-0">$120</h6>
-                    <span class="product-item__prevPrice text-decoration-line-through">$259</span>
-                </div>
-            </div>
-            <div class="product-item__bottom flx-between gap-2">
-                <div>
-                    <span class="product-item__sales font-14 mb-2">1200 Sales</span>
-                    <div class="d-flex align-items-center gap-1">
-                        <ul class="star-rating">
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        </ul>
-                        <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                    </div>
-                </div>
-                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-            </div>
-        </div>
-    </div>
+                                    <div class="product-item__thumb d-flex">
+                                        <a href="{{ route('index') }}" class="link w-100">
+                                            <img src="{{ asset('uploads') }}/products/envato.png" alt="envato" class="cover-img"> 
+                                        </a>
+                                    </div>
+                                    <div class="product-item__content">
+                                        <h6 class="product-item__title">
+                                            <a href="{{ route('envanto.downloader') }}" class="link">Envato Downloader</a>
+                                        </h6>
+                                        <span class="product-item__author">
+                                            Simplify your design process with Envato Downloader! Quickly access and download assets from the Envato Market, saving you time to focus on creating amazing content.                                          
+                                        </span>
+                                        <div class="product-item__bottom flx-between gap-2">
+                                            <div class="d-flex align-items-center gap-1">
+                                                <ul class="star-rating">
+                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                </ul>                                                
+                                            </div>
+                                            <a href="{{ route('envanto.downloader') }}" class="btn btn-outline-light btn-sm pill">Start Download</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="product-item box-shadow">
-        <div class="product-item__thumb d-flex">
-            <a href="{{ route('index') }}" class="link w-100">
-                <img src="{{ asset('assets') }}/images/thumbs/product-img2.png" alt="" class="cover-img"> 
-            </a>
-            <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-        </div>
-        <div class="product-item__content">
-            <h6 class="product-item__title">
-                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
-            </h6>
-            <div class="product-item__info flx-between gap-2">
-                <span class="product-item__author">
-                    by
-                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
-                </span>
-                <div class="flx-align gap-2">
-                    <h6 class="product-item__price mb-0">$129</h6>
-                    <span class="product-item__prevPrice text-decoration-line-through">$236</span>
-                </div>
-            </div>
-            <div class="product-item__bottom flx-between gap-2">
-                <div>
-                    <span class="product-item__sales font-14 mb-2">100 Sales</span>
-                    <div class="d-flex align-items-center gap-1">
-                        <ul class="star-rating">
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        </ul>
-                        <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                    </div>
-                </div>
-                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-            </div>
-        </div>
-    </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="product-item box-shadow">
-        <div class="product-item__thumb d-flex">
-            <a href="{{ route('index') }}" class="link w-100">
-                <img src="{{ asset('assets') }}/images/thumbs/product-img3.png" alt="" class="cover-img"> 
-            </a>
-            <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-        </div>
-        <div class="product-item__content">
-            <h6 class="product-item__title">
-                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
-            </h6>
-            <div class="product-item__info flx-between gap-2">
-                <span class="product-item__author">
-                    by
-                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
-                </span>
-                <div class="flx-align gap-2">
-                    <h6 class="product-item__price mb-0">$79</h6>
-                    <span class="product-item__prevPrice text-decoration-line-through">$99</span>
-                </div>
-            </div>
-            <div class="product-item__bottom flx-between gap-2">
-                <div>
-                    <span class="product-item__sales font-14 mb-2">900 Sales</span>
-                    <div class="d-flex align-items-center gap-1">
-                        <ul class="star-rating">
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        </ul>
-                        <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                    </div>
-                </div>
-                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-            </div>
-        </div>
-    </div>
-                            </div>
-                            <div class="col-sm-6">
-                                <div class="product-item box-shadow">
-        <div class="product-item__thumb d-flex">
-            <a href="{{ route('index') }}" class="link w-100">
-                <img src="{{ asset('assets') }}/images/thumbs/product-img4.png" alt="" class="cover-img"> 
-            </a>
-            <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
-        </div>
-        <div class="product-item__content">
-            <h6 class="product-item__title">
-                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
-            </h6>
-            <div class="product-item__info flx-between gap-2">
-                <span class="product-item__author">
-                    by
-                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
-                </span>
-                <div class="flx-align gap-2">
-                    <h6 class="product-item__price mb-0">$59</h6>
-                    <span class="product-item__prevPrice text-decoration-line-through">$129</span>
-                </div>
-            </div>
-            <div class="product-item__bottom flx-between gap-2">
-                <div>
-                    <span class="product-item__sales font-14 mb-2">1225 Sales</span>
-                    <div class="d-flex align-items-center gap-1">
-                        <ul class="star-rating">
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                            <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
-                        </ul>
-                        <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
-                    </div>
-                </div>
-                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
-            </div>
-        </div>
-    </div>
-                            </div>
+                                    <div class="product-item__thumb d-flex">
+                                        <a href="{{ route('index') }}" class="link w-100">
+                                            <img src="{{ asset('uploads') }}/products/freepik.png" alt="freepik" class="cover-img"> 
+                                        </a>                                        
+                                    </div>
+                                    <div class="product-item__content">
+                                        <h6 class="product-item__title">
+                                            <a href="{{ route('freepik.downloader') }}" class="link">Freepik Downloader</a>
+                                        </h6>
+                                        <div class="product-item__info flx-between gap-2">
+                                            <span class="product-item__author">
+                                                Discover a treasure trove of free resources at Freepik, including vectors, illustrations, and photos. Perfect for designers and content creators looking to elevate their projects!
+                                            </span>                                            
+                                        </div>
+                                        <div class="product-item__bottom flx-between gap-2">
+                                            <div>                                                
+                                                <div class="d-flex align-items-center gap-1">
+                                                    <ul class="star-rating">
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    </ul>                                                   
+                                                </div>
+                                            </div>
+                                            <a href="{{ route('freepik.downloader') }}" class="btn btn-outline-light btn-sm pill">Start Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                         
                         </div>
                     </div>
                 </div>

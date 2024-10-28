@@ -7,7 +7,7 @@
 <!-- ======================== Breadcrumb Two Section Start ===================== -->
 <section class="breadcrumb border-bottom p-0 d-block section-bg position-relative z-index-1">
     <div class="breadcrumb-two">
-        <img src="{{ asset('assets') }}/images/gradients/breadcrumb-gradient-bg.png" alt="" class="bg--gradient">
+        <img src="{{ asset('assets') }}/images/gradients/breadcrumb-gradient-bg.png" alt="breadcrumb-gradient" class="bg--gradient">
         <div class="container container-two">
             <div class="row justify-content-center">
                 <div class="col-lg-12">
@@ -15,7 +15,7 @@
     
                         <ul class="breadcrumb-list flx-align gap-2 mb-2">
                             <li class="breadcrumb-list__item font-14 text-body">
-                                <a href="/" class="breadcrumb-list__link text-body hover-text-main">Home</a>
+                                <a href="{{ route('index') }}" class="breadcrumb-list__link text-body hover-text-main">Home</a>
                             </li>
                             <li class="breadcrumb-list__item font-14 text-body">
                                 <span class="breadcrumb-list__icon font-10"><i class="fas fa-chevron-right"></i></span>
@@ -44,16 +44,16 @@
                             </div>                            
                             <div class="breadcrumb-content__item text-heading fw-500 flx-align gap-2">
                                 <span class="icon">
-                                    <img src="{{ asset('assets') }}/images/icons/download.svg" alt="" class="white-version">
-                                    <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="" class="dark-version w-20">
+                                    <img src="{{ asset('assets') }}/images/icons/download.svg" alt="download" class="white-version">
+                                    <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="download-white" class="dark-version w-20">
                                 </span>
                                 <span class="text">{{ $downloadCount }} Downloads</span>
                             </div>                            
                             @foreach($additions as $addition)
                                 <div class="breadcrumb-content__item text-heading fw-500 flx-align gap-2">
                                     <span class="icon">
-                                        <img src="{{ asset('assets') }}/images/icons/check-icon.svg" alt="" class="white-version">
-                                        <img src="{{ asset('assets') }}/images/icons/check-icon-white.svg" alt="" class="dark-version">
+                                        <img src="{{ asset('assets') }}/images/icons/check-icon.svg" alt="check-icon" class="white-version">
+                                        <img src="{{ asset('assets') }}/images/icons/check-icon-white.svg" alt="check-icon-white" class="dark-version">
                                     </span>
                                     <span class="text">{{ trim($addition) }}</span> <!-- trim() digunakan untuk menghapus spasi yang tidak perlu -->
                                 </div>
@@ -92,7 +92,7 @@
             </ul>
             <div class="social-share">
                 <button type="button" class="social-share__button">
-                    <img src="{{ asset('assets') }}/images/icons/share-icon.svg" alt="">
+                    <img src="{{ asset('assets') }}/images/icons/share-icon.svg" alt="share-icon">
                 </button>
                 <div class="social-share__icons">
                     <ul class="social-icon-list colorful-style">
@@ -124,19 +124,19 @@
                         <!-- Product Details Content Start -->
                         <div class="product-details">
                             <div class="product-details__thumb">
-                                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="">
+                                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{$product->name}}">
                             </div>
                             <div class="product-details__buttons flx-align justify-content-center gap-3">
                                 {!! $bannerAd->code !!}
                                 @if($product->live_preview_url !== $product->url_source)
                                     <a href="{{ $product->live_preview_url }}" target="_blank" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
                                         Live Preview
-                                        <img src="{{ asset('assets') }}/images/icons/eye-outline.svg" alt=""> 
+                                        <img src="{{ asset('assets') }}/images/icons/eye-outline.svg" alt="eye-outline"> 
                                     </a>
                                 @endif                                
                                 <a href="{{ route('generate.download.link', $product->id) }}" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
                                     Download
-                                    <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
+                                    <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="download-white">
                                 </a>
                                 {!! $bannerAd->code !!}
                             </div>
@@ -187,14 +187,14 @@
 
                     <ul class="sidebar-list">
                         <li class="sidebar-list__item flx-align gap-2 font-14 fw-300 mb-2">
-                            <span class="icon"><img src="{{ asset('assets') }}/images/icons/check-cirlce.svg" alt=""></span>
+                            <span class="icon"><img src="{{ asset('assets') }}/images/icons/check-cirlce.svg" alt="check-cirlce"></span>
                             <span class="text">Quality verified</span>
                         </li>                      
                     </ul>
                     {!! $smallAd->code !!}
                     <button type="button" class="btn btn-main d-flex w-100 justify-content-center align-items-center gap-2 pill px-sm-5 mt-3 mb-3"
                         onclick="window.location.href='{{ route('generate.download.link', $product->id) }}'">
-                        <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="">
+                        <img src="{{ asset('assets') }}/images/icons/download-white.svg" alt="download-white">
                         Download
                     </button>                
                     {!! $petakAd->code !!}
@@ -226,36 +226,5 @@
 </div>
 <!-- ======================= Product Details Section End ==================== -->
 
-<!-- ======================== Brand Section Start ========================= -->
-<div class="brand ">
-    <div class="container container">
-        <div class="brand-slider">
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img1.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img1.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img2.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img2.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img3.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img3.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img4.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img4.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img5.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img5.png" alt="" class="dark-version">
-            </div>
-            <div class="brand-item d-flex align-items-center justify-content-center">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-img3.png" alt="" class="white-version">
-                <img src="{{ asset('assets') }}/images/thumbs/brand-white-img3.png" alt="" class="dark-version">
-            </div>
-        </div>
-    </div>
-</div>
 <!-- ======================== Brand Section End ========================= -->
 @endsection
