@@ -336,6 +336,7 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
             'title'         => 'Why Choose Bilik Media for Downloading Envato Products | Bilik Media',
@@ -349,6 +350,7 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
+            'socialAd'      => $socialAd, 
         ];
 
         return view('Blog.adsBlog_a', $data);
@@ -390,6 +392,7 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
             'title' => 'What is Envato Downloader? | Bilik Media',
@@ -403,6 +406,7 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
+            'socialAd'      => $socialAd, 
         ];
 
         return view('Blog.adsBlog_b', $data);
@@ -444,6 +448,7 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
             'title' => 'Become Bilik Media Member | Bilik Media',
@@ -457,6 +462,7 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
+            'socialAd'      => $socialAd, 
         ];
 
         return view('Blog.adsBlog_c', $data);
@@ -498,6 +504,7 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
             'title'         => 'What is Freepik Downloader? | Bilik Media',
@@ -511,6 +518,7 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
+            'socialAd'      => $socialAd, 
         ];
 
         return view('Blog.adsBlog_d', $data);
@@ -552,6 +560,7 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
             'title'         => 'What is Mixkit Downloader ?| Bilik Media',
@@ -565,6 +574,7 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
+            'socialAd'      => $socialAd, 
         ];
 
         return view('Blog.adsBlog_e', $data);
@@ -606,6 +616,7 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
             'title'         => 'Why Choose Bilik Media for Downloading Envato Products | Bilik Media',
@@ -619,6 +630,7 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
+            'socialAd'      => $socialAd, 
         ];
 
         return view('Blog.adsBlog_f', $data);
@@ -666,9 +678,10 @@ class BlogController extends Controller
         $nativeAd         = Ad::where('name', 'native')->first();
         $monetagAd        = Ad::where('name', 'monetag')->first();
         $popAd            = Ad::where('name', 'pop')->first();
+        $socialAd         = Ad::where('name', 'social')->first();
 
         $data = [
-            'title' => 'What is Envato Downloader? | Bilik Media',
+            'title' => 'Use Envato Downloader | Bilik Media',
             'token'         => $token,
             'userDetail'    => $userDetail,
             'bannerAd'      => $bannerAd,     
@@ -679,7 +692,8 @@ class BlogController extends Controller
             'nativeAd'      => $nativeAd, 
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
-            'urlDownload'        => $urlDownload, 
+            'socialAd'      => $socialAd, 
+            'urlDownload'   => $urlDownload, 
         ];
 
         return view('Blog.adsBlog_g', $data);
