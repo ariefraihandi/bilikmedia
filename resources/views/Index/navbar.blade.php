@@ -16,7 +16,7 @@
             <div class="header-menu d-lg-block d-none">
                 <ul class="nav-menu flx-align ">                
                     <li class="nav-menu__item">
-                        <a href="/" class="nav-menu__link">Home</a>
+                        <a href="{{ route('index') }}" class="nav-menu__link">Home</a>
                     </li>
                     <li class="nav-menu__item">
                         <a href="{{ route('showAllProduct') }}" class="nav-menu__link">Product</a>
@@ -30,9 +30,7 @@
                             <li class="nav-submenu__item">
                                 <a href="{{ route('freepik.downloader') }}" class="nav-submenu__link"> Freepik Downloader</a>
                             </li>
-                            {{-- <li class="nav-submenu__item">
-                                <a href="all-product.html" class="nav-submenu__link"> Motionarray Downloader</a>
-                            </li>                                                --}}
+                            
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
@@ -50,21 +48,11 @@
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'adobe-indesign']) }}" class="nav-submenu__link"> Adobe InDesign</a>
                             </li>
-                            {{-- <li class="nav-submenu__item">
-                                <a href="product-details.html" class="nav-submenu__link"> Adobe XD</a>
-                            </li>                            
-                            <li class="nav-submenu__item">
-                                <a href="product-details.html" class="nav-submenu__link"> Figma</a>
-                            </li>
-                            <li class="nav-submenu__item">
-                                <a href="product-details.html" class="nav-submenu__link"> Sketch</a>
-                            </li> --}}
+                           
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'canva']) }}" class="nav-submenu__link"> Canva</a>
                             </li>
-                            {{-- <li class="nav-submenu__item">
-                                <a href="product-details.html" class="nav-submenu__link"> Microsoft Word</a>
-                            </li>                         --}}
+                         
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">
@@ -81,11 +69,7 @@
                             </li>
                             <li class="nav-submenu__item">
                                 <a href="{{ route('showProductByCategory', ['slug' => 'woocommerce']) }}" class="nav-submenu__link"> WooCommerce</a>
-                            </li>
-                           
-                            <li class="nav-submenu__item">
-                                <a href="cart-thank-you.html" class="nav-submenu__link"> Portfolio</a>
-                            </li>                        
+                            </li>                                           
                         </ul>
                     </li>                    
                     <li class="nav-menu__item has-submenu">
@@ -114,10 +98,10 @@
                     <label class="theme-switch" for="checkbox">
                         <input type="checkbox" class="d-none" id="checkbox">
                         <span class="slider text-black header-right__button white-version">
-                            <img src="assets/images/icons/sun.svg" alt="sun">
+                            <img src="{{ asset('assets') }}/images/icons/sun.svg" alt="sun">
                         </span>
                         <span class="slider text-black header-right__button dark-version">
-                            <img src="assets/images/icons/moon.svg" alt="moon">
+                            <img src="{{ asset('assets') }}/images/icons/moon.svg" alt="moon">
                         </span>
                     </label>
                 </div>

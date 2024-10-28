@@ -15,7 +15,7 @@
         @include('Index.mobileMenu')
         
         <main class="main-wrapper index-three-wrapper position-relative z-index-1">
-            <img src="assets/images/shapes/border-box.png" alt="" class="border-box">
+            <img src="{{ asset('assets') }}/images/shapes/border-box.png" alt="" class="border-box">
                 
             @yield('content')
         </main>

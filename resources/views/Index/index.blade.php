@@ -17,13 +17,13 @@
                     <p class="banner-three-content__desc font-18">We're here to help bring your creative ideas to life with the best digital solutions. Let's create something amazing together!</p>
 
                     <div class="buttons flx-align gap-sm-3 gap-2 mt-40">
-                        <a href="all-product.html" class="btn btn-black btn-lg-icon">
+                        <a href="{{ route('index') }}" class="btn btn-black btn-lg-icon">
                             <span class="d-sm-flex d-none me-1">Our best </span> Services
                             <span class="icon-right icon"> 
                                 <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
                             </span>
                         </a>
-                        <a href="all-product.html" class="btn btn-outline-black btn-lg fw-500">
+                        <a href="{{ route('index') }}" class="btn btn-outline-black btn-lg fw-500">
                             About Us
                         </a>
                     </div>
@@ -152,7 +152,7 @@
                         </div>
                     </div>
 
-                    <a href="about-three.html" class="mt-48 btn btn-black btn-lg"> More About Us  </a>
+                    <a href="{{ route('index') }}" class="mt-48 btn btn-black btn-lg"> More About Us  </a>
                     
                 </div>
             </div>
@@ -333,7 +333,7 @@
                             <h3 class="section-heading__title">Featured Products</h3>
                             <p class="section-heading__desc font-18 w-sm">Every month we pick some best products for you. This month's best web themes & templates have arrived, chosen by our content specialists.</p>
                         </div>
-                        <a href="all-product.html" class="btn btn-main btn-lg fw-300">
+                        <a href="{{ route('index') }}" class="btn btn-main btn-lg fw-300">
                             View All Items
                         </a>
                     </div>
@@ -344,19 +344,19 @@
                             <div class="col-sm-6">
                                 <div class="product-item box-shadow">
         <div class="product-item__thumb d-flex">
-            <a href="product-details.html" class="link w-100">
+            <a href="{{ route('index') }}" class="link w-100">
                 <img src="{{ asset('assets') }}/images/thumbs/product-img1.png" alt="" class="cover-img"> 
             </a>
             <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-item__content">
             <h6 class="product-item__title">
-                <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
+                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
             </h6>
             <div class="product-item__info flx-between gap-2">
                 <span class="product-item__author">
                     by
-                    <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
+                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
                 </span>
                 <div class="flx-align gap-2">
                     <h6 class="product-item__price mb-0">$120</h6>
@@ -377,7 +377,7 @@
                         <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
                     </div>
                 </div>
-                <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
+                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
             </div>
         </div>
     </div>
@@ -385,19 +385,19 @@
                             <div class="col-sm-6">
                                 <div class="product-item box-shadow">
         <div class="product-item__thumb d-flex">
-            <a href="product-details.html" class="link w-100">
+            <a href="{{ route('index') }}" class="link w-100">
                 <img src="{{ asset('assets') }}/images/thumbs/product-img2.png" alt="" class="cover-img"> 
             </a>
             <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-item__content">
             <h6 class="product-item__title">
-                <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
+                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
             </h6>
             <div class="product-item__info flx-between gap-2">
                 <span class="product-item__author">
                     by
-                    <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
+                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
                 </span>
                 <div class="flx-align gap-2">
                     <h6 class="product-item__price mb-0">$129</h6>
@@ -418,7 +418,7 @@
                         <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
                     </div>
                 </div>
-                <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
+                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
             </div>
         </div>
     </div>
@@ -426,19 +426,19 @@
                             <div class="col-sm-6">
                                 <div class="product-item box-shadow">
         <div class="product-item__thumb d-flex">
-            <a href="product-details.html" class="link w-100">
+            <a href="{{ route('index') }}" class="link w-100">
                 <img src="{{ asset('assets') }}/images/thumbs/product-img3.png" alt="" class="cover-img"> 
             </a>
             <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-item__content">
             <h6 class="product-item__title">
-                <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
+                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
             </h6>
             <div class="product-item__info flx-between gap-2">
                 <span class="product-item__author">
                     by
-                    <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
+                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
                 </span>
                 <div class="flx-align gap-2">
                     <h6 class="product-item__price mb-0">$79</h6>
@@ -459,7 +459,7 @@
                         <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
                     </div>
                 </div>
-                <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
+                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
             </div>
         </div>
     </div>
@@ -467,19 +467,19 @@
                             <div class="col-sm-6">
                                 <div class="product-item box-shadow">
         <div class="product-item__thumb d-flex">
-            <a href="product-details.html" class="link w-100">
+            <a href="{{ route('index') }}" class="link w-100">
                 <img src="{{ asset('assets') }}/images/thumbs/product-img4.png" alt="" class="cover-img"> 
             </a>
             <button type="button" class="product-item__wishlist"><i class="fas fa-heart"></i></button>
         </div>
         <div class="product-item__content">
             <h6 class="product-item__title">
-                <a href="product-details.html" class="link">SaaS dashboard digital products Title here</a>
+                <a href="{{ route('index') }}" class="link">SaaS dashboard digital products Title here</a>
             </h6>
             <div class="product-item__info flx-between gap-2">
                 <span class="product-item__author">
                     by
-                    <a href="profile.html" class="link hover-text-decoration-underline"> themepix</a>
+                    <a href="{{ route('index') }}" class="link hover-text-decoration-underline"> themepix</a>
                 </span>
                 <div class="flx-align gap-2">
                     <h6 class="product-item__price mb-0">$59</h6>
@@ -500,7 +500,7 @@
                         <span class="star-rating__text text-heading fw-500 font-14"> (16)</span>
                     </div>
                 </div>
-                <a href="product-details.html" class="btn btn-outline-light btn-sm pill">Live Demo</a>
+                <a href="{{ route('index') }}" class="btn btn-outline-light btn-sm pill">Live Demo</a>
             </div>
         </div>
     </div>
@@ -678,7 +678,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -709,7 +709,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -740,7 +740,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -771,7 +771,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -806,7 +806,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -837,7 +837,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -868,7 +868,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -899,7 +899,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -934,7 +934,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -965,7 +965,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -996,7 +996,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1027,7 +1027,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1062,7 +1062,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1093,7 +1093,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1124,7 +1124,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1155,7 +1155,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1190,7 +1190,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1221,7 +1221,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1252,7 +1252,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1283,7 +1283,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1318,7 +1318,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1349,7 +1349,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1380,7 +1380,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1411,7 +1411,7 @@
             </a>
         </div>
         <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="register.html" class="btn btn-main btn-lg-icon">
+            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
                 Get Started
                 <span class="icon-right icon"> 
                     <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
@@ -1429,7 +1429,7 @@
         </div>
     </div>
 
-    <a href="product-detais.html" class="btn-rounded text-white d-flex flex-column gap-2 justify-content-center text-center font-24 fw-600 font-heading mx-auto mt-64">
+    <a href="{{ route('index') }}" class="btn-rounded text-white d-flex flex-column gap-2 justify-content-center text-center font-24 fw-600 font-heading mx-auto mt-64">
         <span class="icon"><img src="{{ asset('assets') }}/images/icons/arrow-top-right.svg" alt=""></span>
         <span class="text">View All</span>
     </a>
@@ -1450,7 +1450,7 @@
                 <h3 class="section-heading__title">Meet Our Team</h3>
                 <p class="section-heading__desc font-18">Every month we pick some best products for you. This month's best web themes & templates have arrived, chosen by our content specialists.</p>
             </div>
-            <a href="all-product.html" class="btn btn-main btn-lg fw-300">
+            <a href="{{ route('index') }}" class="btn btn-main btn-lg fw-300">
                 View All Members
             </a>
         </div>
@@ -1526,7 +1526,7 @@
                 <div class="section-heading style-left">
                     <h3 class="section-heading__title">Our Acceptable <br> Payment Methods</h3>
                     <p class="section-heading__desc mb-0 font-18">Many desktop publishing packages and web page <br> editors now use orem many web sites still in their infancy.</p>
-                    <a href="about.html" class="btn btn-black btn-lg fw-500 mt-48"> Start Invest </a>
+                    <a href="{{ route('index') }}" class="btn btn-black btn-lg fw-500 mt-48"> Start Invest </a>
                 </div>
                 <div class="payment-method">
                     <div class="row g-md-3 g-2 justify-content-center">
@@ -1992,19 +1992,19 @@
             <div class="section-heading__inner">
                 <h3 class="section-heading__title">Browse all latest blogs and articles</h3>
             </div>
-            <a href="blog.html" class="btn btn-main btn-lg pill">Browse All Articles </a>
+            <a href="{{ route('index') }}" class="btn btn-main btn-lg pill">Browse All Articles </a>
         </div>
         <div class="row gy-4">
             <div class="col-lg-4 col-sm-6">
     <div class="post-item">
         <div class="post-item__thumb">
-            <a href="blog-details.html" class="link">
+            <a href="{{ route('index') }}" class="link">
                 <img src="{{ asset('assets') }}/images/thumbs/blog1.png" class="cover-img" alt="">
             </a>
         </div>
         <div class="post-item__content">
             <div class="post-item__top flx-align">
-                <a href="blog.html" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Hiring</a>
+                <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Hiring</a>
                 <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
                     <span class="icon">
                         <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
@@ -2014,22 +2014,22 @@
                 </div>
             </div>
             <h5 class="post-item__title">
-                <a href="blog-details.html" class="link">How to hire a right business executive for your company</a>
+                <a href="{{ route('index') }}" class="link">How to hire a right business executive for your company</a>
             </h5>
-            <a href="blog-details.html" class="btn btn-outline-light pill fw-600">Read More </a>
+            <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
         </div>
     </div>
     </div>
             <div class="col-lg-4 col-sm-6">
     <div class="post-item">
         <div class="post-item__thumb">
-            <a href="blog-details.html" class="link">
+            <a href="{{ route('index') }}" class="link">
                 <img src="{{ asset('assets') }}/images/thumbs/blog2.png" class="cover-img" alt="">
             </a>
         </div>
         <div class="post-item__content">
             <div class="post-item__top flx-align">
-                <a href="blog.html" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Workshop</a>
+                <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Workshop</a>
                 <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
                     <span class="icon">
                         <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
@@ -2039,22 +2039,22 @@
                 </div>
             </div>
             <h5 class="post-item__title">
-                <a href="blog-details.html" class="link">The Gig Economy: Adapting to a Flexible Workforce</a>
+                <a href="{{ route('index') }}" class="link">The Gig Economy: Adapting to a Flexible Workforce</a>
             </h5>
-            <a href="blog-details.html" class="btn btn-outline-light pill fw-600">Read More </a>
+            <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
         </div>
     </div>
     </div>
             <div class="col-lg-4 col-sm-6">
     <div class="post-item">
         <div class="post-item__thumb">
-            <a href="blog-details.html" class="link">
+            <a href="{{ route('index') }}" class="link">
                 <img src="{{ asset('assets') }}/images/thumbs/blog3.png" class="cover-img" alt="">
             </a>
         </div>
         <div class="post-item__content">
             <div class="post-item__top flx-align">
-                <a href="blog.html" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Project Management</a>
+                <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Project Management</a>
                 <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
                     <span class="icon">
                         <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
@@ -2064,9 +2064,9 @@
                 </div>
             </div>
             <h5 class="post-item__title">
-                <a href="blog-details.html" class="link">The Future of Remote Work: Strategies for Success</a>
+                <a href="{{ route('index') }}" class="link">The Future of Remote Work: Strategies for Success</a>
             </h5>
-            <a href="blog-details.html" class="btn btn-outline-light pill fw-600">Read More </a>
+            <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
         </div>
     </div>
     </div>

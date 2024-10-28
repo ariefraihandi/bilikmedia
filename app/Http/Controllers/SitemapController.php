@@ -15,7 +15,7 @@ class SitemapController extends Controller
         // Buat instance sitemap
         $sitemap = Sitemap::create()
             ->add(Url::create('/'))            // Halaman Home
-            ->add(Url::create('/about'))       // Halaman About
+            // ->add(Url::create('/about'))       // Halaman About
             ->add(Url::create('/envato-downloader') 
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.9))

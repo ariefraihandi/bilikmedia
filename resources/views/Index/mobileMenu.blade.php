@@ -1,14 +1,14 @@
 <div class="mobile-menu d-lg-none d-block">
     <button type="button" class="close-button"> <i class="las la-times"></i> </button>
     <div class="mobile-menu__inner">
-        <a href="/" class="mobile-menu__logo">
+        <a href="{{ route('index') }}" class="mobile-menu__logo">
             <img src="{{ asset('assets') }}/images/logo/logo.png" alt="Logo" class="white-version">
             <img src="{{ asset('assets') }}/images/logo/white-logo-two.png" alt="Logo" class="dark-version">
         </a>
         <div class="mobile-menu__menu">             
             <ul class="nav-menu flx-align nav-menu--mobile">                
                 <li class="nav-menu__item">
-                    <a href="/" class="nav-menu__link">Home</a>
+                    <a href="{{ route('index') }}" class="nav-menu__link">Home</a>
                 </li>
                 <li class="nav-menu__item">
                     <a href="{{ route('showAllProduct') }}" class="nav-menu__link">Product</a>
@@ -19,12 +19,7 @@
                         <li class="nav-submenu__item">
                             <a href="{{ route('envanto.downloader') }}" class="nav-submenu__link">Envato Downloader</a>
                         </li>                            
-                        {{-- <li class="nav-submenu__item">
-                            <a href="product-details.html" class="nav-submenu__link"> Freepik Downloader</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="all-product.html" class="nav-submenu__link"> Motionarray Downloader</a>
-                        </li>                                                --}}
+                       
                     </ul>
                 </li>
                 <li class="nav-menu__item has-submenu">
@@ -42,21 +37,11 @@
                         <li class="nav-submenu__item">
                             <a href="{{ route('showProductByCategory', ['slug' => 'adobe-indesign']) }}" class="nav-submenu__link"> Adobe InDesign</a>
                         </li>
-                        {{-- <li class="nav-submenu__item">
-                            <a href="product-details.html" class="nav-submenu__link"> Adobe XD</a>
-                        </li>                            
-                        <li class="nav-submenu__item">
-                            <a href="product-details.html" class="nav-submenu__link"> Figma</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="product-details.html" class="nav-submenu__link"> Sketch</a>
-                        </li> --}}
+                      
                         <li class="nav-submenu__item">
                             <a href="{{ route('showProductByCategory', ['slug' => 'canva']) }}" class="nav-submenu__link"> Canva</a>
                         </li>
-                        {{-- <li class="nav-submenu__item">
-                            <a href="product-details.html" class="nav-submenu__link"> Microsoft Word</a>
-                        </li>                         --}}
+                      
                     </ul>
                 </li>
                 <li class="nav-menu__item has-submenu">
@@ -74,10 +59,7 @@
                         <li class="nav-submenu__item">
                             <a href="{{ route('showProductByCategory', ['slug' => 'woocommerce']) }}" class="nav-submenu__link"> WooCommerce</a>
                         </li>
-                       
-                        <li class="nav-submenu__item">
-                            <a href="cart-thank-you.html" class="nav-submenu__link"> Portfolio</a>
-                        </li>                        
+                                      
                     </ul>
                 </li>                    
                 <li class="nav-menu__item has-submenu">
@@ -105,36 +87,7 @@
                         <li class="nav-submenu__item">
                             <a href="{{ route('showProductByCategory', ['slug' => 'royalty-free-music']) }}" class="nav-submenu__link"> Royalty Free Music</a>
                         </li>
-                        {{-- <li class="nav-submenu__item">
-                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Domestic Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog.html" class="nav-submenu__link"> Human Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details.html" class="nav-submenu__link"> Urban Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Nature Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog.html" class="nav-submenu__link"> Futuristic Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details.html" class="nav-submenu__link"> Interface Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Cartoon Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog.html" class="nav-submenu__link"> Industrial Sounds</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details.html" class="nav-submenu__link"> Sound Packs</a>
-                        </li>
-                        <li class="nav-submenu__item">
-                            <a href="blog-details-sidebar.html" class="nav-submenu__link"> Miscellaneous</a>
-                        </li> --}}
+                       
                     </ul>
                 </li>                                                                             
                 <li class="nav-menu__item has-submenu">

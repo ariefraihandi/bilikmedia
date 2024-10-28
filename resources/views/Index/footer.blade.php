@@ -43,7 +43,7 @@
                 <div class="col-xl-3 col-sm-6">
                     <div class="footer-widget">
                         <div class="footer-widget__logo">
-                            <a href="index.html"> <img src="{{ asset('assets') }}/images/logo/white-logo.png" alt="logo"></a>
+                            <a href="{{ route('index') }}"> <img src="{{ asset('assets') }}/images/logo/white-logo.png" alt="logo"></a>
                         </div>
                         <p>Your gateway to digital creativity and media solutions.</p>
                         <div class="footer-widget__social">
@@ -112,7 +112,7 @@
             <div class="footer-links">
                 <a href="#" class="footer-link font-14">Terms of service</a>
                 <a href="#" class="footer-link font-14">Privacy Policy</a>
-                <a href="contact.html" class="footer-link font-14">cookies</a>
+                <a href="#" class="footer-link font-14">cookies</a>
             </div>
         </div>
     </div>
