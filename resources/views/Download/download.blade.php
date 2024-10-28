@@ -54,6 +54,8 @@
         }
 
     </style>
+
+    <meta name="robots" content="noindex, nofollow">
 @endpush
 
 @section('content')

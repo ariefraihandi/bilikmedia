@@ -20,7 +20,7 @@
 
 //Index
 Route::get('/robots.txt', function () {
-    return response("User-agent: *\nDisallow: /admin\nDisallow:\nSitemap: https://bilikmedia.com/sitemap.xml", 200)
+    return response("User-agent: *\nDisallow: /admin\nDisallow: /download-file/\nSitemap: https://bilikmedia.com/sitemap.xml", 200)
         ->header('Content-Type', 'text/plain');
 });
 
