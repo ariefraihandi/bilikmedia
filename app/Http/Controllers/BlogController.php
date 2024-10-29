@@ -434,7 +434,12 @@ class BlogController extends Controller
             }
         }
 
-        $token = DownloadsFree::where('token_tiga', $token)->first();                      
+        $token = DownloadsFree::where('token_tiga', $token)->first();       
+        $productId = $token->product_id;
+
+        // Cari produk berdasarkan 'product_id' dan ambil 'url_download'
+        $product = Product::where('id', $productId)->first();
+        $urlDownload = $product->url_download;                       
 
         if (!$token) {
             return redirect()->route('credit.dashboard')->with('error', 'Invalid Data. Please try again.');
@@ -463,6 +468,7 @@ class BlogController extends Controller
             'popAd'         => $popAd, 
             'sideAd'        => $sideAd, 
             'socialAd'      => $socialAd, 
+            'urlDownload'   => $urlDownload, 
         ];
 
         return view('Blog.adsBlog_c', $data);

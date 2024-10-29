@@ -137,7 +137,7 @@
                     {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{ route('blog.Two', ['token' => $token->token_dua]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
-                            Next Step 1/7 >>                            
+                            Next Step 1/3 >>                            
                         </a>
                     </div>
                     {!! $nativeAd->code !!}

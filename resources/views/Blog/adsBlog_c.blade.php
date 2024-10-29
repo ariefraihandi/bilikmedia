@@ -137,8 +137,8 @@
                     </p>
                     {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
-                        <a href="{{ route('blog.Four', ['token' => $token->token_empat]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
-                            Next Step 3/7 >>                            
+                        <a href="{{$urlDownload}}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
+                           Download Link Ready                          
                         </a>
                     </div>
                     {!! $nativeAd->code !!}
