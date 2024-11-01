@@ -6,10 +6,10 @@
 <!-- ======================== Breadcrumb one Section Start ===================== -->
 <section class="breadcrumb breadcrumb-one padding-y-60 section-bg position-relative z-index-1 overflow-hidden">
 
-    <img src="{{ asset('assets') }}/images/gradients/breadcrumb-gradient-bg.png" alt="" class="bg--gradient">
+    <img src="{{ asset('assets') }}/images/gradients/breadcrumb-gradient-bg.png" alt="breadcrumb-gradient" class="bg--gradient">
 
-    <img src="{{ asset('assets') }}/images/shapes/element-moon3.png" alt="" class="element one">
-    <img src="{{ asset('assets') }}/images/shapes/element-moon1.png" alt="" class="element three">
+    <img src="{{ asset('assets') }}/images/shapes/element-moon3.png" alt="element-moon3" class="element one">
+    <img src="{{ asset('assets') }}/images/shapes/element-moon1.png" alt="element-moon1" class="element three">
     
     <div class="container container-two">
         <div class="row justify-content-center">
@@ -21,7 +21,7 @@
                     <form action="#" class="search-box">
                         <input type="text" id="searchInput" class="common-input common-input--lg pill shadow-sm" placeholder="Search title, freepik url, envanto url &amp; more..." oninput="handleInputChange(this.value)">
                         <button type="submit" class="btn btn-main btn-icon icon border-0">
-                            <img src="{{ asset('assets') }}/images/icons/search.svg" alt="">
+                            <img src="{{ asset('assets') }}/images/icons/search.svg" alt="search">
                         </button>
                     </form>
     
@@ -39,7 +39,7 @@
             <div class="col-lg-12">
                 <div class="filter-tab gap-3 flx-between">
                     <button type="button" class="filter-tab__button btn btn-outline-light pill d-flex align-items-center">
-                        <span class="icon icon-left"><img src="{{ asset('assets') }}/images/icons/filter.svg" alt=""></span>
+                        <span class="icon icon-left"><img src="{{ asset('assets') }}/images/icons/filter.svg" alt="filter"></span>
                         <span class="font-18 fw-500">Filters</span>
                     </button>
                     <ul class="nav common-tab nav-pills mb-0 gap-lg-2 gap-1 ms-lg-auto" id="pills-tab" role="tablist">
@@ -77,7 +77,7 @@
                             </div>
                             <div class="position-relative">
                                 <input type="text" class="common-input border-gray-five common-input--withLeftIcon" id="tag" placeholder="Search By Tag...">
-                                <span class="input-icon input-icon--left"><img src="{{ asset('assets') }}/images/icons/search-two.svg" alt=""></span>
+                                <span class="input-icon input-icon--left"><img src="{{ asset('assets') }}/images/icons/search-two.svg" alt="search-two"></span>
                             </div>
                         </div>
                         <div class="col-sm-4 col-xs-6">
@@ -208,7 +208,7 @@
                                     <div class="product-item section-bg">
                                         <div class="product-item__thumb d-flex">
                                             <a href="{{ url('product-details/'.$product->slug) }}" class="link w-100">
-                                                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="" class="cover-img"> 
+                                                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{$product->title}}" class="cover-img"> 
                                             </a>
                                         </div>
                                         <div class="product-item__content">

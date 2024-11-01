@@ -252,6 +252,8 @@ class ProductController extends Controller
         $smallAd           = Ad::where('name', 'small')->first();
         $petakAd           = Ad::where('name', 'petak')->first();
         $besarAd           = Ad::where('name', 'besar')->first();
+        $besarAd           = Ad::where('name', 'besar')->first();
+        $monetagAd           = Ad::where('name', 'monetag')->first();
     
     
         // Membuat array data untuk dikirim ke view
@@ -270,6 +272,7 @@ class ProductController extends Controller
             'smallAd'      => $smallAd, 
             'petakAd'      => $petakAd, 
             'besarAd'      => $besarAd, 
+            'monetagAd'      => $monetagAd, 
             'userDetail' => $userDetail,
         ];
     

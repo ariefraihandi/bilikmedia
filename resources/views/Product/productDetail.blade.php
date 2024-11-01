@@ -1,8 +1,7 @@
 @extends('Index.app')
-{{-- @push('header-script')    
-
-
-@endpush --}}
+@push('header-script')    
+{!! $monetagAd->code !!}
+@endpush
 @section('content')
 <!-- ======================== Breadcrumb Two Section Start ===================== -->
 <section class="breadcrumb border-bottom p-0 d-block section-bg position-relative z-index-1">
@@ -70,25 +69,7 @@
             <ul class="nav tab-bordered nav-pills" id="pills-tab" role="tablist">
                 <li class="nav-item" role="presentation">
                   <button class="nav-link active" id="pills-product-details-tab" data-bs-toggle="pill" data-bs-target="#pills-product-details" type="button" role="tab" aria-controls="pills-product-details" aria-selected="true">Product Details</button>
-                </li>
-                {{-- <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-rating-tab" data-bs-toggle="pill" data-bs-target="#pills-rating" type="button" role="tab" aria-controls="pills-rating" aria-selected="false">
-                    <span class="d-flex align-items-center gap-1">
-                        <span class="star-rating">
-                            <span class="star-rating__item font-11"><i class="fas fa-star"></i></span>
-                            <span class="star-rating__item font-11"><i class="fas fa-star"></i></span>
-                            <span class="star-rating__item font-11"><i class="fas fa-star"></i></span>
-                            <span class="star-rating__item font-11"><i class="fas fa-star"></i></span>
-                            <span class="star-rating__item font-11"><i class="fas fa-star"></i></span>
-                        </span>
-                        <span class="star-rating__text text-body"> 5.0</span>
-                        <span class="star-rating__text text-body"> (180)</span>
-                    </span>
-                  </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-comments-tab" data-bs-toggle="pill" data-bs-target="#pills-comments" type="button" role="tab" aria-controls="pills-comments" aria-selected="false">Comments (50)</button>
-                </li> --}}
+                </li>        
             </ul>
             <div class="social-share">
                 <button type="button" class="social-share__button">
