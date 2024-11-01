@@ -1,8 +1,7 @@
 @extends('Index.app')
 @push('header-script')  
 {!! $monetagAd->code !!}     
-{!! $popAd->code !!}     
-{!! $socialAd->code !!}      
+  
     <style>
         .ad-banner {
             position: fixed;
