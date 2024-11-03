@@ -30,7 +30,9 @@
                             <li class="nav-submenu__item">
                                 <a href="{{ route('freepik.downloader') }}" class="nav-submenu__link"> Freepik Downloader</a>
                             </li>
-                            
+                            <li class="nav-submenu__item">
+                                <a href="{{ route('motionarray.downloader') }}" class="nav-submenu__link"> Motion Array Downloader</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">

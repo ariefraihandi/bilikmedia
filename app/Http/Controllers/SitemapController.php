@@ -21,7 +21,10 @@ class SitemapController extends Controller
                 ->setPriority(0.9))
             ->add(Url::create('/freepik-downloader') 
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
-                ->setPriority(0.9)); // Prioritas lebih tinggi untuk halaman ini
+                ->setPriority(0.9))
+            ->add(Url::create('/download-motionarray') 
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.9));
 
         // Ambil semua produk dari database
         $products = Product::all();
