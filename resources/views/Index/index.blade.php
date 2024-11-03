@@ -242,6 +242,39 @@
                                     </div>
                                 </div>
                             </div>                         
+                            <div class="col-sm-6">
+                                <div class="product-item box-shadow">
+                                    <div class="product-item__thumb d-flex">
+                                        <a href="{{ route('index') }}" class="link w-100">
+                                            <img src="{{ asset('uploads') }}/products/freepik.png" alt="freepik" class="cover-img"> 
+                                        </a>                                        
+                                    </div>
+                                    <div class="product-item__content">
+                                        <h6 class="product-item__title">
+                                            <a href="{{ route('freepik.downloader') }}" class="link">Motion Array Downloader</a>
+                                        </h6>
+                                        <div class="product-item__info flx-between gap-2">
+                                            <span class="product-item__author">
+                                                Motion Array Downloader is a tool for downloading assets from Motion Array, including templates, stock footage, music, and sound effects, allowing creators to access resources offline easily.
+                                            </span>                                            
+                                        </div>
+                                        <div class="product-item__bottom flx-between gap-2">
+                                            <div>                                                
+                                                <div class="d-flex align-items-center gap-1">
+                                                    <ul class="star-rating">
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                        <li class="star-rating__item font-11"><i class="fas fa-star"></i></li>
+                                                    </ul>                                                   
+                                                </div>
+                                            </div>
+                                            <a href="{{ route('motionarray.downloader') }}" class="btn btn-outline-light btn-sm pill">Start Download</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                         
                         </div>
                     </div>
                 </div>
