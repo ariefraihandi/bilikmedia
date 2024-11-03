@@ -392,959 +392,959 @@
 </section>
 <!-- ============================= Working Process End ============================ -->
 
-    <!-- ========================= Latest Project Section Start ======================= -->
-<section class="latest-project padding-t-120">
-    <div class="latest-project__inner overflow-hidden">
-        <div class="container container-two">
-            <div class="section-heading">
-                <h3 class="section-heading__title">our latest projects</h3>
-                <p class="section-heading__desc">Every month we pick some best products for you. This month's best web themes &amp; templates have arrived, chosen by our content specialists.</p>
-            </div>
-            
-            <div class="latest-project__tab">
-                <ul class="nav common-tab justify-content-center nav-pills mb-48" id="pills-tab-two" role="tablist">
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link active" id="pills-itManagement-tab" data-bs-toggle="pill" data-bs-target="#pills-itManagement" type="button" role="tab" aria-controls="pills-itManagement" aria-selected="true">itManagement Item</button>
+<!-- ========================= Latest Project Section Start ======================= -->
+    {{-- <section class="latest-project padding-t-120">
+        <div class="latest-project__inner overflow-hidden">
+            <div class="container container-two">
+                <div class="section-heading">
+                    <h3 class="section-heading__title">our latest projects</h3>
+                    <p class="section-heading__desc">Every month we pick some best products for you. This month's best web themes &amp; templates have arrived, chosen by our content specialists.</p>
+                </div>
+                
+                <div class="latest-project__tab">
+                    <ul class="nav common-tab justify-content-center nav-pills mb-48" id="pills-tab-two" role="tablist">
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-itManagement-tab" data-bs-toggle="pill" data-bs-target="#pills-itManagement" type="button" role="tab" aria-controls="pills-itManagement" aria-selected="true">itManagement Item</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-dataSecurity-tab" data-bs-toggle="pill" data-bs-target="#pills-dataSecurity" type="button" role="tab" aria-controls="pills-dataSecurity" aria-selected="false">dataSecurity</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-siteTemplate-tab" data-bs-toggle="pill" data-bs-target="#pills-siteTemplate" type="button" role="tab" aria-controls="pills-siteTemplate" aria-selected="false">site Template</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-blogging-tab" data-bs-toggle="pill" data-bs-target="#pills-blogging" type="button" role="tab" aria-controls="pills-blogging" aria-selected="false">blogging</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" data-bs-target="#pills-marketing" type="button" role="tab" aria-controls="pills-marketing" aria-selected="false">marketing</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-plugins-tab" data-bs-toggle="pill" data-bs-target="#pills-plugins" type="button" role="tab" aria-controls="pills-plugins" aria-selected="false">plugins</button>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="latest-project-wrapper">
+                    <div class="tab-content" id="pills-tabContentTwo">
+                        <div class="tab-pane fade show active" id="pills-itManagement" role="tabpanel" aria-labelledby="pills-itManagement-tab" tabindex="0">
+                            <div class="latest-project-slider">
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
                     </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-dataSecurity-tab" data-bs-toggle="pill" data-bs-target="#pills-dataSecurity" type="button" role="tab" aria-controls="pills-dataSecurity" aria-selected="false">dataSecurity</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-siteTemplate-tab" data-bs-toggle="pill" data-bs-target="#pills-siteTemplate" type="button" role="tab" aria-controls="pills-siteTemplate" aria-selected="false">site Template</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-blogging-tab" data-bs-toggle="pill" data-bs-target="#pills-blogging" type="button" role="tab" aria-controls="pills-blogging" aria-selected="false">blogging</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-marketing-tab" data-bs-toggle="pill" data-bs-target="#pills-marketing" type="button" role="tab" aria-controls="pills-marketing" aria-selected="false">marketing</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                      <button class="nav-link" id="pills-plugins-tab" data-bs-toggle="pill" data-bs-target="#pills-plugins" type="button" role="tab" aria-controls="pills-plugins" aria-selected="false">plugins</button>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
                     </li>
                 </ul>
             </div>
-            
-             <div class="latest-project-wrapper">
-                <div class="tab-content" id="pills-tabContentTwo">
-                    <div class="tab-pane fade show active" id="pills-itManagement" role="tabpanel" aria-labelledby="pills-itManagement-tab" tabindex="0">
-                        <div class="latest-project-slider">
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-dataSecurity" role="tabpanel" aria-labelledby="pills-dataSecurity-tab" tabindex="0">
-                        <div class="latest-project-slider">
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-siteTemplate" role="tabpanel" aria-labelledby="pills-siteTemplate-tab" tabindex="0">
-                        <div class="latest-project-slider">
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-blogging" role="tabpanel" aria-labelledby="pills-blogging-tab" tabindex="0">
-                        <div class="latest-project-slider">
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-marketing" role="tabpanel" aria-labelledby="pills-marketing-tab" tabindex="0">
-                        <div class="latest-project-slider">
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-plugins" role="tabpanel" aria-labelledby="pills-plugins-tab" tabindex="0">
-                        <div class="latest-project-slider">
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    <div class="latest-project-item">
-        <div class="latest-project-item__content">
-            <h5 class="latest-project-item__title mb-3">
-                <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
-            </h5>
-            <ul class="tag-list flx-align gap-2">
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">SaaS</a>
-                </li>
-                <li class="tag-list__item">
-                    <a href="#" class="tag-list__link">Digital Product</a>
-                </li>
-            </ul>
-        </div>
-        <div class="latest-project-item__thumb">
-            <a href="#" class="link w-100 d-block">
-                <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
-            </a>
-        </div>
-        <div class="latest-project-item__bottom flx-between gap-2">
-            <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
-                Get Started
-                <span class="icon-right icon"> 
-                    <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
-                </span>  
-            </a>
-            <button type="button" class="bookmark-btn">
-                <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
-            </button>
-        </div>
-    </div>
-    </div>
-                    </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-dataSecurity" role="tabpanel" aria-labelledby="pills-dataSecurity-tab" tabindex="0">
+                            <div class="latest-project-slider">
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-siteTemplate" role="tabpanel" aria-labelledby="pills-siteTemplate-tab" tabindex="0">
+                            <div class="latest-project-slider">
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-blogging" role="tabpanel" aria-labelledby="pills-blogging-tab" tabindex="0">
+                            <div class="latest-project-slider">
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-marketing" role="tabpanel" aria-labelledby="pills-marketing-tab" tabindex="0">
+                            <div class="latest-project-slider">
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        </div>
+                        </div>
+                        <div class="tab-pane fade" id="pills-plugins" role="tabpanel" aria-labelledby="pills-plugins-tab" tabindex="0">
+                            <div class="latest-project-slider">
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project1.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project3.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        <div class="latest-project-item">
+            <div class="latest-project-item__content">
+                <h5 class="latest-project-item__title mb-3">
+                    <a href="#" class="link w-100 d-block"> Hyip MoneyPro - Advance hyip investment financial html template </a>
+                </h5>
+                <ul class="tag-list flx-align gap-2">
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">SaaS</a>
+                    </li>
+                    <li class="tag-list__item">
+                        <a href="#" class="tag-list__link">Digital Product</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="latest-project-item__thumb">
+                <a href="#" class="link w-100 d-block">
+                    <img src="{{ asset('assets') }}/images/thumbs/latest-project2.png" alt="">
+                </a>
+            </div>
+            <div class="latest-project-item__bottom flx-between gap-2">
+                <a href="{{ route('showRegisterForm') }}" class="btn btn-main btn-lg-icon">
+                    Get Started
+                    <span class="icon-right icon"> 
+                        <img src="{{ asset('assets') }}/images/icons/arrow-right-white.svg" alt="">
+                    </span>  
+                </a>
+                <button type="button" class="bookmark-btn">
+                    <img src="{{ asset('assets') }}/images/icons/bookmark.svg" alt="">
+                </button>
+            </div>
+        </div>
+        </div>
+                        </div>
+                    </div> 
                 </div> 
-            </div> 
+            </div>
         </div>
-    </div>
 
-    <a href="{{ route('index') }}" class="btn-rounded text-white d-flex flex-column gap-2 justify-content-center text-center font-24 fw-600 font-heading mx-auto mt-64">
-        <span class="icon"><img src="{{ asset('assets') }}/images/icons/arrow-top-right.svg" alt=""></span>
-        <span class="text">View All</span>
-    </a>
-    
-</section>
+        <a href="{{ route('index') }}" class="btn-rounded text-white d-flex flex-column gap-2 justify-content-center text-center font-24 fw-600 font-heading mx-auto mt-64">
+            <span class="icon"><img src="{{ asset('assets') }}/images/icons/arrow-top-right.svg" alt=""></span>
+            <span class="text">View All</span>
+        </a>
+        
+    </section> --}}
 <!-- ========================= Latest Project Section End ======================= -->
 
-    <!-- ========================= Team Section Start ======================= -->
-<section class="team padding-y-120 position-relative z-index-1 overflow-hidden">
+<!-- ========================= Team Section Start ======================= -->
+    {{-- <section class="team padding-y-120 position-relative z-index-1 overflow-hidden">
 
-    <img src="{{ asset('assets') }}/images/shapes/full-line.png" alt="" class="full-line position-absolute start-0 top-0 w-100 h-100 z-index--1">
-    <img src="{{ asset('assets') }}/images/shapes/element1.png" alt="" class="element two top-50">
+        <img src="{{ asset('assets') }}/images/shapes/full-line.png" alt="" class="full-line position-absolute start-0 top-0 w-100 h-100 z-index--1">
+        <img src="{{ asset('assets') }}/images/shapes/element1.png" alt="" class="element two top-50">
 
-    <div class="container container-two">
+        <div class="container container-two">
 
-        <div class="section-heading style-left flx-between max-w-unset gap-4">
-            <div>
-                <h3 class="section-heading__title">Meet Our Team</h3>
-                <p class="section-heading__desc font-18">Every month we pick some best products for you. This month's best web themes & templates have arrived, chosen by our content specialists.</p>
+            <div class="section-heading style-left flx-between max-w-unset gap-4">
+                <div>
+                    <h3 class="section-heading__title">Meet Our Team</h3>
+                    <p class="section-heading__desc font-18">Every month we pick some best products for you. This month's best web themes & templates have arrived, chosen by our content specialists.</p>
+                </div>
+                <a href="{{ route('index') }}" class="btn btn-main btn-lg fw-300">
+                    View All Members
+                </a>
             </div>
-            <a href="{{ route('index') }}" class="btn btn-main btn-lg fw-300">
-                View All Members
-            </a>
-        </div>
 
-        <div class="team-item-slider">
-            <div class="team-item shadow-sm mb-2">
-    <div class="team-item__thumb">
-        <img src="{{ asset('assets') }}/images/thumbs/team1.png" alt="" class="cover-img">
-    </div>
-    <div class="team-item__content">
-        <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
-        <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">Maria Jany</a></h6>
-        <span class="team-item__designation text-heading fw-500">Product Manager</span>
-    </div>
-    </div>
-            <div class="team-item shadow-sm mb-2">
-    <div class="team-item__thumb">
-        <img src="{{ asset('assets') }}/images/thumbs/team2.png" alt="" class="cover-img">
-    </div>
-    <div class="team-item__content">
-        <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
-        <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">Ralph Edwards</a></h6>
-        <span class="team-item__designation text-heading fw-500">Product Manager</span>
-    </div>
-    </div>
-            <div class="team-item shadow-sm mb-2">
-    <div class="team-item__thumb">
-        <img src="{{ asset('assets') }}/images/thumbs/team3.png" alt="" class="cover-img">
-    </div>
-    <div class="team-item__content">
-        <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
-        <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">John Doe</a></h6>
-        <span class="team-item__designation text-heading fw-500">Product Manager</span>
-    </div>
-    </div>
-            <div class="team-item shadow-sm mb-2">
-    <div class="team-item__thumb">
-        <img src="{{ asset('assets') }}/images/thumbs/team4.png" alt="" class="cover-img">
-    </div>
-    <div class="team-item__content">
-        <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
-        <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">John Edwards</a></h6>
-        <span class="team-item__designation text-heading fw-500">Product Manager</span>
-    </div>
-    </div>
-            <div class="team-item shadow-sm mb-2">
-    <div class="team-item__thumb">
-        <img src="{{ asset('assets') }}/images/thumbs/team2.png" alt="" class="cover-img">
-    </div>
-    <div class="team-item__content">
-        <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
-        <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">Martin Luthar</a></h6>
-        <span class="team-item__designation text-heading fw-500">Product Manager</span>
-    </div>
-    </div>
+            <div class="team-item-slider">
+                <div class="team-item shadow-sm mb-2">
+        <div class="team-item__thumb">
+            <img src="{{ asset('assets') }}/images/thumbs/team1.png" alt="" class="cover-img">
         </div>
-    </div>
-</section>
+        <div class="team-item__content">
+            <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
+            <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">Maria Jany</a></h6>
+            <span class="team-item__designation text-heading fw-500">Product Manager</span>
+        </div>
+        </div>
+                <div class="team-item shadow-sm mb-2">
+        <div class="team-item__thumb">
+            <img src="{{ asset('assets') }}/images/thumbs/team2.png" alt="" class="cover-img">
+        </div>
+        <div class="team-item__content">
+            <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
+            <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">Ralph Edwards</a></h6>
+            <span class="team-item__designation text-heading fw-500">Product Manager</span>
+        </div>
+        </div>
+                <div class="team-item shadow-sm mb-2">
+        <div class="team-item__thumb">
+            <img src="{{ asset('assets') }}/images/thumbs/team3.png" alt="" class="cover-img">
+        </div>
+        <div class="team-item__content">
+            <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
+            <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">John Doe</a></h6>
+            <span class="team-item__designation text-heading fw-500">Product Manager</span>
+        </div>
+        </div>
+                <div class="team-item shadow-sm mb-2">
+        <div class="team-item__thumb">
+            <img src="{{ asset('assets') }}/images/thumbs/team4.png" alt="" class="cover-img">
+        </div>
+        <div class="team-item__content">
+            <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
+            <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">John Edwards</a></h6>
+            <span class="team-item__designation text-heading fw-500">Product Manager</span>
+        </div>
+        </div>
+                <div class="team-item shadow-sm mb-2">
+        <div class="team-item__thumb">
+            <img src="{{ asset('assets') }}/images/thumbs/team2.png" alt="" class="cover-img">
+        </div>
+        <div class="team-item__content">
+            <a href="#" class="btn btn-black btn-icon btn-icon--sm ms-auto"> <i class="las la-plus"></i> </a>
+            <h6 class="team-item__name mb-2"><a href="#" class="link hover-text-main">Martin Luthar</a></h6>
+            <span class="team-item__designation text-heading fw-500">Product Manager</span>
+        </div>
+        </div>
+            </div>
+        </div>
+    </section> --}}
 <!-- ========================= Team Section End ======================= -->
 
 
-    <!-- ======================== Payment Method Section Start ============================== -->
-<section class="payment padding-t-120 position-relative z-index-1 overflow-hidden">
+<!-- ======================== Payment Method Section Start ============================== -->
+    {{-- <section class="payment padding-t-120 position-relative z-index-1 overflow-hidden">
 
-    <img src="{{ asset('assets') }}/images/shapes/element3.png" alt="" class="element one top-0">
-    
-    <div class="container container-three">
-        <div class="payment-inner position-relative padding-t-120">
-            <div class="payment-wrapper">
-                <div class="payment-thumb d-xl-block d-none">
-                    <img src="{{ asset('assets') }}/images/thumbs/pyament-thumb.png" alt="">
-                </div>
-                <div class="section-heading style-left">
-                    <h3 class="section-heading__title">Our Acceptable <br> Payment Methods</h3>
-                    <p class="section-heading__desc mb-0 font-18">Many desktop publishing packages and web page <br> editors now use orem many web sites still in their infancy.</p>
-                    <a href="{{ route('index') }}" class="btn btn-black btn-lg fw-500 mt-48"> Start Invest </a>
-                </div>
-                <div class="payment-method">
-                    <div class="row g-md-3 g-2 justify-content-center">
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment1.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment2.png" alt="">
-                            </div>
-                        </div>
+        <img src="{{ asset('assets') }}/images/shapes/element3.png" alt="" class="element one top-0">
+        
+        <div class="container container-three">
+            <div class="payment-inner position-relative padding-t-120">
+                <div class="payment-wrapper">
+                    <div class="payment-thumb d-xl-block d-none">
+                        <img src="{{ asset('assets') }}/images/thumbs/pyament-thumb.png" alt="">
                     </div>
-                    <div class="row g-md-3 g-2 justify-content-center">
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment3.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment4.png" alt="">
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment5.png" alt="">
-                            </div>
-                        </div>
+                    <div class="section-heading style-left">
+                        <h3 class="section-heading__title">Our Acceptable <br> Payment Methods</h3>
+                        <p class="section-heading__desc mb-0 font-18">Many desktop publishing packages and web page <br> editors now use orem many web sites still in their infancy.</p>
+                        <a href="{{ route('index') }}" class="btn btn-black btn-lg fw-500 mt-48"> Start Invest </a>
                     </div>
-                    <div class="row g-md-3 g-2 justify-content-center">
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment6.png" alt="">
+                    <div class="payment-method">
+                        <div class="row g-md-3 g-2 justify-content-center">
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment1.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment2.png" alt="">
+                                </div>
                             </div>
                         </div>
-                        <div class="col-4">
-                            <div class="payment-method__item">
-                                <img src="{{ asset('assets') }}/images/thumbs/payment7.png" alt="">
+                        <div class="row g-md-3 g-2 justify-content-center">
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment3.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment4.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment5.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-md-3 g-2 justify-content-center">
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment6.png" alt="">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="payment-method__item">
+                                    <img src="{{ asset('assets') }}/images/thumbs/payment7.png" alt="">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section> --}}
 <!-- ======================== Payment Method Section End ============================== -->
 
     <!-- ============================ Testimonial Section Start ======================= -->
@@ -1407,477 +1407,477 @@
 </section>
 <!-- ============================ Testimonial Section End ======================= -->
 
-    <!-- ========================= Pricing Plan Section Start ============================ -->
-<section class="pricing-plan-three padding-y-120 position-relative z-index-1">
-    
-    <div class="container container-two">
-        <div class="section-heading">
-            <h3 class="section-heading__title">Flexible Plans For your Business growth</h3>
-            <p class="section-heading__desc">Many desktop publishing packages and web page editors now use orem many web sites still in their infancy.</p>
-        </div>
-        <div class="row gy-4">
-            <div class="col-xl-3 col-sm-6 mx-auto">
-                <div class="welcome-card h-100">
-                    <div class="text-center">
-                        <img src="{{ asset('assets') }}/images/thumbs/price-vector.png" alt="" class="price-vector">
-                    </div>
-                    <div class="pricing-plan-three-item active hover-bg-main">
-                        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-                        <div class="plan-tab">
-                            <div class="mb-32">
-                                <h4 class="text-white mb-2 fw-600"> Welcome Back</h4>
-                                <p class="text-white mb-32 fw-300">Choose your best plan</p>
+<!-- ========================= Pricing Plan Section Start ============================ -->
+    {{-- <section class="pricing-plan-three padding-y-120 position-relative z-index-1">
+        
+        <div class="container container-two">
+            <div class="section-heading">
+                <h3 class="section-heading__title">Flexible Plans For your Business growth</h3>
+                <p class="section-heading__desc">Many desktop publishing packages and web page editors now use orem many web sites still in their infancy.</p>
+            </div>
+            <div class="row gy-4">
+                <div class="col-xl-3 col-sm-6 mx-auto">
+                    <div class="welcome-card h-100">
+                        <div class="text-center">
+                            <img src="{{ asset('assets') }}/images/thumbs/price-vector.png" alt="" class="price-vector">
+                        </div>
+                        <div class="pricing-plan-three-item active hover-bg-main">
+                            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+                            <div class="plan-tab">
+                                <div class="mb-32">
+                                    <h4 class="text-white mb-2 fw-600"> Welcome Back</h4>
+                                    <p class="text-white mb-32 fw-300">Choose your best plan</p>
+                                </div>
+
+                                <ul class="nav tab-gradient nav-pills mb-3" id="pills-tab-three" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                    <button class="nav-link font-18 font-heading pill text-white fw-600 active" id="pills-monthly-tab" data-bs-toggle="pill" data-bs-target="#pills-monthly" type="button" role="tab" aria-controls="pills-monthly" aria-selected="true">monthly</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                    <button class="nav-link font-18 font-heading pill text-white fw-600" id="pills-yearly-tab" data-bs-toggle="pill" data-bs-target="#pills-yearly" type="button" role="tab" aria-controls="pills-yearly" aria-selected="false">yearly</button>
+                                    </li>
+                                </ul>
+                                
                             </div>
-
-                            <ul class="nav tab-gradient nav-pills mb-3" id="pills-tab-three" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                  <button class="nav-link font-18 font-heading pill text-white fw-600 active" id="pills-monthly-tab" data-bs-toggle="pill" data-bs-target="#pills-monthly" type="button" role="tab" aria-controls="pills-monthly" aria-selected="true">monthly</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                  <button class="nav-link font-18 font-heading pill text-white fw-600" id="pills-yearly-tab" data-bs-toggle="pill" data-bs-target="#pills-yearly" type="button" role="tab" aria-controls="pills-yearly" aria-selected="false">yearly</button>
-                                </li>
-                            </ul>
-                            
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-9">
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-monthly" role="tabpanel" aria-labelledby="pills-monthly-tab" tabindex="0">
+                            <div class="row gy-4">
+                                <div class="col-lg-4 col-sm-6">
+        <div class="pricing-plan-three-item hover-bg-main">
+            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+            <span class="popular-badge d-none"></span>
+            <div class="pricing-plan-three-item__top flx-align gap-3">
+                <span class="pricing-plan-three-item__icon">
+                    <img src="{{ asset('assets') }}/images/icons/price-icon1.svg" alt="">
+                </span>
+                <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Startup</h6>
             </div>
-            <div class="col-xl-9">
-                <div class="tab-content" id="pills-tabContent">
-                    <div class="tab-pane fade show active" id="pills-monthly" role="tabpanel" aria-labelledby="pills-monthly-tab" tabindex="0">
-                        <div class="row gy-4">
-                            <div class="col-lg-4 col-sm-6">
-    <div class="pricing-plan-three-item hover-bg-main">
-        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-        <span class="popular-badge d-none"></span>
-        <div class="pricing-plan-three-item__top flx-align gap-3">
-            <span class="pricing-plan-three-item__icon">
-                <img src="{{ asset('assets') }}/images/icons/price-icon1.svg" alt="">
-            </span>
-            <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Startup</h6>
+            <div class="pricing-plan-three-item__content">
+                <h5 class="pricing-plan-three-item__price mb-0"> $1589.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
+                <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+            </div>
+            <div class="pricing-plan-three-item__lists">
+                <ul class="text-list">
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Up to 30 members
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Collaboration
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Project management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Case management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Process management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Workflow management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Team management
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
         </div>
-        <div class="pricing-plan-three-item__content">
-            <h5 class="pricing-plan-three-item__price mb-0"> $1589.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
-            <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
         </div>
-        <div class="pricing-plan-three-item__lists">
-            <ul class="text-list">
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Up to 30 members
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Collaboration
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Project management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Case management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Process management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Workflow management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Team management
-                </li>
-            </ul>
+                                <div class="col-lg-4 col-sm-6">
+        <div class="pricing-plan-three-item hover-bg-main">
+            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+            <span class="popular-badge ">Popular</span>
+            <div class="pricing-plan-three-item__top flx-align gap-3">
+                <span class="pricing-plan-three-item__icon">
+                    <img src="{{ asset('assets') }}/images/icons/price-icon2.svg" alt="">
+                </span>
+                <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Professional</h6>
+            </div>
+            <div class="pricing-plan-three-item__content">
+                <h5 class="pricing-plan-three-item__price mb-0"> $1689.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
+                <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+            </div>
+            <div class="pricing-plan-three-item__lists">
+                <ul class="text-list">
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Up to 30 members
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Collaboration
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Project management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Case management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Process management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Workflow management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Team management
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
         </div>
-        <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
-    </div>
-    </div>
-                            <div class="col-lg-4 col-sm-6">
-    <div class="pricing-plan-three-item hover-bg-main">
-        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-        <span class="popular-badge ">Popular</span>
-        <div class="pricing-plan-three-item__top flx-align gap-3">
-            <span class="pricing-plan-three-item__icon">
-                <img src="{{ asset('assets') }}/images/icons/price-icon2.svg" alt="">
-            </span>
-            <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Professional</h6>
         </div>
-        <div class="pricing-plan-three-item__content">
-            <h5 class="pricing-plan-three-item__price mb-0"> $1689.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
-            <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+                                <div class="col-lg-4 col-sm-6">
+        <div class="pricing-plan-three-item hover-bg-main">
+            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+            <span class="popular-badge d-none"></span>
+            <div class="pricing-plan-three-item__top flx-align gap-3">
+                <span class="pricing-plan-three-item__icon">
+                    <img src="{{ asset('assets') }}/images/icons/price-icon3.svg" alt="">
+                </span>
+                <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Premium Plan</h6>
+            </div>
+            <div class="pricing-plan-three-item__content">
+                <h5 class="pricing-plan-three-item__price mb-0"> $1789.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
+                <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+            </div>
+            <div class="pricing-plan-three-item__lists">
+                <ul class="text-list">
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Up to 30 members
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Collaboration
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Project management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Case management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Process management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Workflow management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Team management
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
         </div>
-        <div class="pricing-plan-three-item__lists">
-            <ul class="text-list">
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Up to 30 members
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Collaboration
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Project management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Case management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Process management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Workflow management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Team management
-                </li>
-            </ul>
         </div>
-        <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
-    </div>
-    </div>
-                            <div class="col-lg-4 col-sm-6">
-    <div class="pricing-plan-three-item hover-bg-main">
-        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-        <span class="popular-badge d-none"></span>
-        <div class="pricing-plan-three-item__top flx-align gap-3">
-            <span class="pricing-plan-three-item__icon">
-                <img src="{{ asset('assets') }}/images/icons/price-icon3.svg" alt="">
-            </span>
-            <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Premium Plan</h6>
-        </div>
-        <div class="pricing-plan-three-item__content">
-            <h5 class="pricing-plan-three-item__price mb-0"> $1789.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
-            <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
-        </div>
-        <div class="pricing-plan-three-item__lists">
-            <ul class="text-list">
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Up to 30 members
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Collaboration
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Project management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Case management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Process management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Workflow management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Team management
-                </li>
-            </ul>
-        </div>
-        <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
-    </div>
-    </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="tab-pane fade" id="pills-yearly" role="tabpanel" aria-labelledby="pills-yearly-tab" tabindex="0">
-                        <div class="row gy-4">
-                            <div class="col-lg-4 col-sm-6">
-    <div class="pricing-plan-three-item hover-bg-main">
-        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-        <span class="popular-badge d-none"></span>
-        <div class="pricing-plan-three-item__top flx-align gap-3">
-            <span class="pricing-plan-three-item__icon">
-                <img src="{{ asset('assets') }}/images/icons/price-icon1.svg" alt="">
-            </span>
-            <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Startup</h6>
+                        <div class="tab-pane fade" id="pills-yearly" role="tabpanel" aria-labelledby="pills-yearly-tab" tabindex="0">
+                            <div class="row gy-4">
+                                <div class="col-lg-4 col-sm-6">
+        <div class="pricing-plan-three-item hover-bg-main">
+            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+            <span class="popular-badge d-none"></span>
+            <div class="pricing-plan-three-item__top flx-align gap-3">
+                <span class="pricing-plan-three-item__icon">
+                    <img src="{{ asset('assets') }}/images/icons/price-icon1.svg" alt="">
+                </span>
+                <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Startup</h6>
+            </div>
+            <div class="pricing-plan-three-item__content">
+                <h5 class="pricing-plan-three-item__price mb-0"> $1589.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
+                <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+            </div>
+            <div class="pricing-plan-three-item__lists">
+                <ul class="text-list">
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Up to 30 members
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Collaboration
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Project management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Case management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Process management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Workflow management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Team management
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
         </div>
-        <div class="pricing-plan-three-item__content">
-            <h5 class="pricing-plan-three-item__price mb-0"> $1589.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
-            <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
         </div>
-        <div class="pricing-plan-three-item__lists">
-            <ul class="text-list">
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Up to 30 members
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Collaboration
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Project management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Case management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Process management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Workflow management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Team management
-                </li>
-            </ul>
+                                <div class="col-lg-4 col-sm-6">
+        <div class="pricing-plan-three-item hover-bg-main">
+            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+            <span class="popular-badge ">Popular</span>
+            <div class="pricing-plan-three-item__top flx-align gap-3">
+                <span class="pricing-plan-three-item__icon">
+                    <img src="{{ asset('assets') }}/images/icons/price-icon2.svg" alt="">
+                </span>
+                <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Professional</h6>
+            </div>
+            <div class="pricing-plan-three-item__content">
+                <h5 class="pricing-plan-three-item__price mb-0"> $1689.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
+                <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+            </div>
+            <div class="pricing-plan-three-item__lists">
+                <ul class="text-list">
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Up to 30 members
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Collaboration
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Project management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Case management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Process management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Workflow management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Team management
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
         </div>
-        <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
-    </div>
-    </div>
-                            <div class="col-lg-4 col-sm-6">
-    <div class="pricing-plan-three-item hover-bg-main">
-        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-        <span class="popular-badge ">Popular</span>
-        <div class="pricing-plan-three-item__top flx-align gap-3">
-            <span class="pricing-plan-three-item__icon">
-                <img src="{{ asset('assets') }}/images/icons/price-icon2.svg" alt="">
-            </span>
-            <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Professional</h6>
         </div>
-        <div class="pricing-plan-three-item__content">
-            <h5 class="pricing-plan-three-item__price mb-0"> $1689.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
-            <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+                                <div class="col-lg-4 col-sm-6">
+        <div class="pricing-plan-three-item hover-bg-main">
+            <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
+            <span class="popular-badge d-none"></span>
+            <div class="pricing-plan-three-item__top flx-align gap-3">
+                <span class="pricing-plan-three-item__icon">
+                    <img src="{{ asset('assets') }}/images/icons/price-icon3.svg" alt="">
+                </span>
+                <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Premium Plan</h6>
+            </div>
+            <div class="pricing-plan-three-item__content">
+                <h5 class="pricing-plan-three-item__price mb-0"> $1789.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
+                <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
+            </div>
+            <div class="pricing-plan-three-item__lists">
+                <ul class="text-list">
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Up to 30 members
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Collaboration
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Project management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Case management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Process management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Workflow management
+                    </li>
+                    <li class="text-list__item text-heading">
+                        <span class="icon"><i class="fas fa-check"></i></span>
+                        Team management
+                    </li>
+                </ul>
+            </div>
+            <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
         </div>
-        <div class="pricing-plan-three-item__lists">
-            <ul class="text-list">
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Up to 30 members
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Collaboration
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Project management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Case management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Process management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Workflow management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Team management
-                </li>
-            </ul>
         </div>
-        <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
-    </div>
-    </div>
-                            <div class="col-lg-4 col-sm-6">
-    <div class="pricing-plan-three-item hover-bg-main">
-        <img src="{{ asset('assets') }}/images/gradients/price-hover-bg.png" alt="" class="hover-bg">
-        <span class="popular-badge d-none"></span>
-        <div class="pricing-plan-three-item__top flx-align gap-3">
-            <span class="pricing-plan-three-item__icon">
-                <img src="{{ asset('assets') }}/images/icons/price-icon3.svg" alt="">
-            </span>
-            <h6 class="pricing-plan-three-item__title mb-0 mt-2 fw-500">Premium Plan</h6>
-        </div>
-        <div class="pricing-plan-three-item__content">
-            <h5 class="pricing-plan-three-item__price mb-0"> $1789.00 <span class="text font-14 text-body font-body fw-300">/Per Month</span> </h5>
-            <p class="pricing-plan-three-item__desc mt-32 fw-300">Essential services for startups and small businesses seeking.</p>
-        </div>
-        <div class="pricing-plan-three-item__lists">
-            <ul class="text-list">
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Up to 30 members
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Collaboration
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Project management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Case management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Process management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Workflow management
-                </li>
-                <li class="text-list__item text-heading">
-                    <span class="icon"><i class="fas fa-check"></i></span>
-                    Team management
-                </li>
-            </ul>
-        </div>
-        <a href="#" class="btn btn-outline-light mt-32 w-100 fw-400">Get Started</a>
-    </div>
-    </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
         </div>
-    </div>
-</section>
+    </section> --}}
 <!-- ========================= Pricing Plan Section End ============================ -->
 
-    <!-- =========================== Blog Section Start ========================== -->
-<section class="blog padding-y-120 section-bg position-relative z-index-1 overflow-hidden">
-    <img src="{{ asset('assets') }}/images/shapes/pattern-five.png" class="position-absolute end-0 top-0 z-index--1" alt="">
-    <div class="container container-two">
-        <div class="section-heading style-left style-flex flx-between align-items-end gap-3">
-            <div class="section-heading__inner">
-                <h3 class="section-heading__title">Browse all latest blogs and articles</h3>
-            </div>
-            <a href="{{ route('index') }}" class="btn btn-main btn-lg pill">Browse All Articles </a>
-        </div>
-        <div class="row gy-4">
-            <div class="col-lg-4 col-sm-6">
-    <div class="post-item">
-        <div class="post-item__thumb">
-            <a href="{{ route('index') }}" class="link">
-                <img src="{{ asset('assets') }}/images/thumbs/blog1.png" class="cover-img" alt="">
-            </a>
-        </div>
-        <div class="post-item__content">
-            <div class="post-item__top flx-align">
-                <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Hiring</a>
-                <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
-                    <span class="icon">
-                        <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
-                        <img src="{{ asset('assets') }}/images/icons/calendar-white.svg" alt="" class="dark-version">
-                    </span> 
-                    <span class="text">Jan 17, 2024</span>
+<!-- =========================== Blog Section Start ========================== -->
+    {{-- <section class="blog padding-y-120 section-bg position-relative z-index-1 overflow-hidden">
+        <img src="{{ asset('assets') }}/images/shapes/pattern-five.png" class="position-absolute end-0 top-0 z-index--1" alt="">
+        <div class="container container-two">
+            <div class="section-heading style-left style-flex flx-between align-items-end gap-3">
+                <div class="section-heading__inner">
+                    <h3 class="section-heading__title">Browse all latest blogs and articles</h3>
                 </div>
+                <a href="{{ route('index') }}" class="btn btn-main btn-lg pill">Browse All Articles </a>
             </div>
-            <h5 class="post-item__title">
-                <a href="{{ route('index') }}" class="link">How to hire a right business executive for your company</a>
-            </h5>
-            <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
-        </div>
-    </div>
-    </div>
-            <div class="col-lg-4 col-sm-6">
-    <div class="post-item">
-        <div class="post-item__thumb">
-            <a href="{{ route('index') }}" class="link">
-                <img src="{{ asset('assets') }}/images/thumbs/blog2.png" class="cover-img" alt="">
-            </a>
-        </div>
-        <div class="post-item__content">
-            <div class="post-item__top flx-align">
-                <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Workshop</a>
-                <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
-                    <span class="icon">
-                        <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
-                        <img src="{{ asset('assets') }}/images/icons/calendar-white.svg" alt="" class="dark-version">
-                    </span> 
-                    <span class="text">Jan 17, 2024</span>
+            <div class="row gy-4">
+                <div class="col-lg-4 col-sm-6">
+        <div class="post-item">
+            <div class="post-item__thumb">
+                <a href="{{ route('index') }}" class="link">
+                    <img src="{{ asset('assets') }}/images/thumbs/blog1.png" class="cover-img" alt="">
+                </a>
+            </div>
+            <div class="post-item__content">
+                <div class="post-item__top flx-align">
+                    <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Hiring</a>
+                    <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
+                        <span class="icon">
+                            <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
+                            <img src="{{ asset('assets') }}/images/icons/calendar-white.svg" alt="" class="dark-version">
+                        </span> 
+                        <span class="text">Jan 17, 2024</span>
+                    </div>
                 </div>
+                <h5 class="post-item__title">
+                    <a href="{{ route('index') }}" class="link">How to hire a right business executive for your company</a>
+                </h5>
+                <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
             </div>
-            <h5 class="post-item__title">
-                <a href="{{ route('index') }}" class="link">The Gig Economy: Adapting to a Flexible Workforce</a>
-            </h5>
-            <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
         </div>
-    </div>
-    </div>
-            <div class="col-lg-4 col-sm-6">
-    <div class="post-item">
-        <div class="post-item__thumb">
-            <a href="{{ route('index') }}" class="link">
-                <img src="{{ asset('assets') }}/images/thumbs/blog3.png" class="cover-img" alt="">
-            </a>
         </div>
-        <div class="post-item__content">
-            <div class="post-item__top flx-align">
-                <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Project Management</a>
-                <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
-                    <span class="icon">
-                        <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
-                        <img src="{{ asset('assets') }}/images/icons/calendar-white.svg" alt="" class="dark-version">
-                    </span> 
-                    <span class="text">Jan 17, 2024</span>
+                <div class="col-lg-4 col-sm-6">
+        <div class="post-item">
+            <div class="post-item__thumb">
+                <a href="{{ route('index') }}" class="link">
+                    <img src="{{ asset('assets') }}/images/thumbs/blog2.png" class="cover-img" alt="">
+                </a>
+            </div>
+            <div class="post-item__content">
+                <div class="post-item__top flx-align">
+                    <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Workshop</a>
+                    <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
+                        <span class="icon">
+                            <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
+                            <img src="{{ asset('assets') }}/images/icons/calendar-white.svg" alt="" class="dark-version">
+                        </span> 
+                        <span class="text">Jan 17, 2024</span>
+                    </div>
                 </div>
+                <h5 class="post-item__title">
+                    <a href="{{ route('index') }}" class="link">The Gig Economy: Adapting to a Flexible Workforce</a>
+                </h5>
+                <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
             </div>
-            <h5 class="post-item__title">
-                <a href="{{ route('index') }}" class="link">The Future of Remote Work: Strategies for Success</a>
-            </h5>
-            <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
         </div>
-    </div>
-    </div>
         </div>
-    </div>
-</section>
+                <div class="col-lg-4 col-sm-6">
+        <div class="post-item">
+            <div class="post-item__thumb">
+                <a href="{{ route('index') }}" class="link">
+                    <img src="{{ asset('assets') }}/images/thumbs/blog3.png" class="cover-img" alt="">
+                </a>
+            </div>
+            <div class="post-item__content">
+                <div class="post-item__top flx-align">
+                    <a href="{{ route('index') }}" class="post-item__tag pill font-14 text-heading fw-500 hover-text-main">Project Management</a>
+                    <div class="post-item__date font-14 flx-align gap-2 font-14 text-heading fw-500"> 
+                        <span class="icon">
+                            <img src="{{ asset('assets') }}/images/icons/calendar.svg" alt="" class="white-version">
+                            <img src="{{ asset('assets') }}/images/icons/calendar-white.svg" alt="" class="dark-version">
+                        </span> 
+                        <span class="text">Jan 17, 2024</span>
+                    </div>
+                </div>
+                <h5 class="post-item__title">
+                    <a href="{{ route('index') }}" class="link">The Future of Remote Work: Strategies for Success</a>
+                </h5>
+                <a href="{{ route('index') }}" class="btn btn-outline-light pill fw-600">Read More </a>
+            </div>
+        </div>
+        </div>
+            </div>
+        </div>
+    </section> --}}
 <!-- =========================== Blog Section End ========================== -->
 
 
-    <!-- ========================= Newsletter Section Start ======================= -->
-<div class="newsletter-three padding-y-120">
-    <div class="container container-two">
-        <div class="row gy-4">
-            <div class="col-lg-6">
-                <div class="newsletter-three-content overflow-hidden z-index-1">
-                    <img src="{{ asset('assets') }}/images/gradients/newsletter-bg.png" alt="" class="bg--gradient">
-                    <img src="{{ asset('assets') }}/images/thumbs/newsletter-img.png" alt="" class="newsletter-three-content__img">
-                    <h3 class="mb-3">Newsletter</h3>
-                    <p class="mb-24 font-18">Subscribe our newsletter to get the latest news</p>
-                    <div class="search-box">
-                        <input type="text" class="common-input common-input--lg shadow-sm" placeholder="Enter Mail">
-                        <button type="submit" class="btn btn-main btn-lg">
-                            <span class="d-sm-block d-none">Subscribe Now</span>
-                            <span class="icon d-sm-none d-block"><i class="fas fa-bell"></i></span>
-                        </button>
+<!-- ========================= Newsletter Section Start ======================= -->
+    {{-- <div class="newsletter-three padding-y-120">
+        <div class="container container-two">
+            <div class="row gy-4">
+                <div class="col-lg-6">
+                    <div class="newsletter-three-content overflow-hidden z-index-1">
+                        <img src="{{ asset('assets') }}/images/gradients/newsletter-bg.png" alt="" class="bg--gradient">
+                        <img src="{{ asset('assets') }}/images/thumbs/newsletter-img.png" alt="" class="newsletter-three-content__img">
+                        <h3 class="mb-3">Newsletter</h3>
+                        <p class="mb-24 font-18">Subscribe our newsletter to get the latest news</p>
+                        <div class="search-box">
+                            <input type="text" class="common-input common-input--lg shadow-sm" placeholder="Enter Mail">
+                            <button type="submit" class="btn btn-main btn-lg">
+                                <span class="d-sm-block d-none">Subscribe Now</span>
+                                <span class="icon d-sm-none d-block"><i class="fas fa-bell"></i></span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="newsletter-three-content support-content overflow-hidden z-index-1">
+                        <img src="{{ asset('assets') }}/images/gradients/support-gradient.png" alt="" class="bg--gradient">
+                        <img src="{{ asset('assets') }}/images/shapes/arrow-round.png" alt="" class="arrow-round">
+                        <img src="{{ asset('assets') }}/images/thumbs/newsletter-thumb.png" alt="" class="newsletter-three-content__img">
+                        <h3 class="mb-3">Support 24/7</h3>
+                        <p class="mb-24 font-18">Wanna talk? Send us a message</p>
+                        <a href="mailto:azency@office.com" class="btn btn-outline-black btn-lg">azency@office.com</a>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-6">
-                <div class="newsletter-three-content support-content overflow-hidden z-index-1">
-                    <img src="{{ asset('assets') }}/images/gradients/support-gradient.png" alt="" class="bg--gradient">
-                    <img src="{{ asset('assets') }}/images/shapes/arrow-round.png" alt="" class="arrow-round">
-                    <img src="{{ asset('assets') }}/images/thumbs/newsletter-thumb.png" alt="" class="newsletter-three-content__img">
-                    <h3 class="mb-3">Support 24/7</h3>
-                    <p class="mb-24 font-18">Wanna talk? Send us a message</p>
-                    <a href="mailto:azency@office.com" class="btn btn-outline-black btn-lg">azency@office.com</a>
-                </div>
-            </div>
         </div>
-    </div>
-</div>
+    </div> --}}
 <!-- ========================= Newsletter Section End ======================= -->
 @endsection
