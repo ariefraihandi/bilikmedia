@@ -16,6 +16,7 @@
     use App\Http\Controllers\SitemapController;
     use App\Http\Controllers\EnvantoDownloaderController;
     use App\Http\Controllers\FreepikDownloaderController;
+    use App\Http\Controllers\MotionArrayDownloaderController;
 //!Controller
 
 //Index
@@ -42,6 +43,7 @@ Route::get('verify-email',                  [AuthController::class, 'verify'])->
 
 Route::get('/envato-downloader',            [EnvantoDownloaderController::class, 'showEnvantoDownloader'])->name('envanto.downloader');
 Route::get('/freepik-downloader',           [FreepikDownloaderController::class, 'showFreepikDownloader'])->name('freepik.downloader');
+Route::get('/download-motionarray',         [MotionArrayDownloaderController::class, 'showMotionArrayDownloader'])->name('motionarray.downloader');
 
 Route::get('/product',                      [ProductController::class, 'showAllProduct'])->name('showAllProduct');
 Route::get('/product/category/{slug}',      [ProductController::class, 'showProductByCategory'])->name('showProductByCategory');
@@ -54,6 +56,7 @@ Route::get('/download-file/{token}',        [DownloadController::class, 'downloa
 Route::get('/rating/{token}',               [DownloadController::class, 'showRating'])->name('rating.show');
 Route::post('/request-download',            [DownloadController::class, 'requestDownload'])->name('request.download');
 Route::post('/request-download-freepik',    [DownloadController::class, 'requestDownloadFreepik'])->name('request.download.freepik');
+Route::post('/request-download-motion',    [DownloadController::class, 'requestDownloadMotion'])->name('request.download.motion');
 Route::post('/generate-tokens',             [DownloadController::class, 'generateTokens']);
 Route::post('/rating',                      [DownloadController::class, 'submitRating'])->name('rating.submit');
 

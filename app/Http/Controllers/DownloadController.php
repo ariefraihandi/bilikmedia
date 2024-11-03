@@ -573,6 +573,55 @@ class DownloadController extends Controller
         ], 200);
     }
     
+    public function requestDownloadMotion(Request $request)
+    {
+        $email = Auth::check() ? Auth::user()->email : $request->input('email');
+
+        $request->validate([
+            'envanto_url' => [
+                'required',
+                'url',
+                function ($attribute, $value, $fail) {
+                    if (!str_starts_with($value, 'https://motionarray.com/')) {
+                        $fail('Motion Array URL is not valid');
+                    }
+                },
+            ],
+            'email' => 'email',
+        ]);
+
+        $envantoUrl = $request->input('envanto_url');
+        $cleanedUrl = strtok($envantoUrl, '#?');                
+
+        $existingRequest = RequestDownload::where('email', $email)
+            ->where('url', $cleanedUrl)
+            ->first();
+
+        if ($existingRequest) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'The file is already in your download history. Please check your download history.'
+            ], 400);
+        }
+
+        // Menyimpan permintaan download ke database
+        RequestDownload::create([
+            'email' => $email,
+            'url' => $cleanedUrl,
+            'status' => 0,
+        ]);
+
+        // Kirim email notifikasi ke admin
+        Mail::to('raihandi93@gmail.com')->send(
+            new DownloadRequestNotification($email, $cleanedUrl)
+        );
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Request submitted successfully. An email notification has been sent to the admin.',
+        ], 200);
+    }
+
     
     
     public function premiumDownload(Request $request)
