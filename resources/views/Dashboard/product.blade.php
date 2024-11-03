@@ -97,6 +97,12 @@
                                                     <img src="{{ asset('assets') }}/images/thumbs/payment-method2.png" alt="">
                                                 </label>
                                             </div>                                           
+                                            <div class="payment-method__item">
+                                                <input class="form-check-input" type="radio" name="motion" id="motion" hidden>
+                                                <label class="form-check-label" for="motion">
+                                                    <img src="{{ asset('uploads') }}/motionaray.png" alt="">
+                                                </label>
+                                            </div>                                           
                                         </div>
                                     </div>
                                     <div class="row gy-3">

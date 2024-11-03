@@ -253,7 +253,7 @@ class ProductController extends Controller
         $petakAd           = Ad::where('name', 'petak')->first();
         $besarAd           = Ad::where('name', 'besar')->first();
         $besarAd           = Ad::where('name', 'besar')->first();
-        $monetagAd           = Ad::where('name', 'monetag')->first();
+        $monetagAd          = Ad::where('name', 'monetag')->first();
     
     
         // Membuat array data untuk dikirim ke view
@@ -281,46 +281,45 @@ class ProductController extends Controller
     }
     
     public function searchProducts(Request $request)
-{
-    // Ambil input pencarian
-    $search = $request->input('search');
+    {
+        // Ambil input pencarian
+        $search = $request->input('search');
 
-    // Jika input mengandung "freepik", lakukan pembersihan dengan strtok untuk memotong dari tanda # atau ?
-    if (stripos($search, 'freepik') !== false) {
-        $cleanedSearch = strtok($search, '#?');
-    } else {
-        // Hapus query string jika ada (misalnya ?epik=...)
-        $cleanedSearch = explode('?', $search)[0];
+        // Jika input mengandung "freepik", lakukan pembersihan dengan strtok untuk memotong dari tanda # atau ?
+        if (stripos($search, 'freepik') !== false) {
+            $cleanedSearch = strtok($search, '#?');
+        } else {
+            // Hapus query string jika ada (misalnya ?epik=...)
+            $cleanedSearch = explode('?', $search)[0];
 
-        // Lakukan pembersihan tambahan jika bukan freepik
-        $cleanedSearch = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedSearch);
-    }
+            // Lakukan pembersihan tambahan jika bukan freepik
+            $cleanedSearch = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $cleanedSearch);
+        }
 
-    // Cari produk berdasarkan title atau url_source
-    $products = Product::where('title', 'LIKE', "%{$cleanedSearch}%")
-        ->orWhere('url_source', 'LIKE', "%{$cleanedSearch}%")
-        ->with('categories')
-        ->limit(10)
-        ->get();
-
-    if ($products->isEmpty()) {
-        $categories = ProductCategory::where('name', 'LIKE', "%{$cleanedSearch}%")
+        // Cari produk berdasarkan title atau url_source
+        $products = Product::where('title', 'LIKE', "%{$cleanedSearch}%")
+            ->orWhere('url_source', 'LIKE', "%{$cleanedSearch}%")
+            ->with('categories')
             ->limit(10)
             ->get();
 
+        if ($products->isEmpty()) {
+            $categories = ProductCategory::where('name', 'LIKE', "%{$cleanedSearch}%")
+                ->limit(10)
+                ->get();
+
+            return response()->json([
+                'products' => [],
+                'categories' => $categories
+            ]);
+        }
+
+        // Kembalikan hasil dalam bentuk JSON
         return response()->json([
-            'products' => [],
-            'categories' => $categories
+            'products' => $products,
+            'categories' => []
         ]);
     }
-
-    // Kembalikan hasil dalam bentuk JSON
-    return response()->json([
-        'products' => $products,
-        'categories' => []
-    ]);
-}
-
 
     public function showProduct()
     {
@@ -399,6 +398,8 @@ class ProductController extends Controller
                 $imageName = 'envato.png';
             } elseif ($request->has('freepik')) {
                 $imageName = 'freepik.png';
+            } elseif ($request->has('motion')){
+                $imageName = 'motionaray.png';
             } elseif ($request->hasFile('fileUpload')) {
                 // Jika upload file disediakan, gunakan file tersebut (jika masih ingin mengizinkan upload)
                 // Hapus bagian ini jika tidak ingin mengizinkan upload

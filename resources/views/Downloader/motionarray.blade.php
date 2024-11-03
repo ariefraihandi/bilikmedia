@@ -253,7 +253,7 @@
         })
         .then(data => {           
 
-            window.open('{{ route('envanto.downloader') }}', '_blank');
+            window.open('{{ route('motionarray.downloader') }}', '_blank');
 
             window.location.href = 'https://luglawhaulsano.net/4/8261677';
         })
