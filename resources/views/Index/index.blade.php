@@ -246,7 +246,7 @@
                                 <div class="product-item box-shadow">
                                     <div class="product-item__thumb d-flex">
                                         <a href="{{ route('index') }}" class="link w-100">
-                                            <img src="{{ asset('uploads') }}/products/freepik.png" alt="freepik" class="cover-img"> 
+                                            <img src="{{ asset('uploads') }}/products/motionaray.png" alt="motion array" class="cover-img"> 
                                         </a>                                        
                                     </div>
                                     <div class="product-item__content">
