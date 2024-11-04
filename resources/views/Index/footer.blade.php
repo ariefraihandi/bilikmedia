@@ -1,10 +1,10 @@
 <footer class="footer-three  bg-black position-relative">
 
-    <img src="{{ asset('assets') }}/images/gradients/footer-gradient.png" alt="footer-gradient" class="bg--gradient">
+    <img src="{{ asset('assets') }}/images/gradients/footer-gradient.webp" alt="footer-gradient" class="bg--gradient">
     <img src="{{ asset('assets') }}/images/shapes/element2.png" alt="element2" class="element one">
     <img src="{{ asset('assets') }}/images/shapes/element3.png" alt="element3" class="element two"> 
 
-    <img src="{{ asset('assets') }}/images/shapes/footer-shape4.png" alt="footer-shape4" class="position-absolute end-0 top-0">
+    <img src="{{ asset('assets') }}/images/shapes/footer-shape4.webp" alt="footer-shape4" class="position-absolute end-0 top-0">
 
     <!-- text slider -->
     <div class="text-slider-section overflow-hidden">

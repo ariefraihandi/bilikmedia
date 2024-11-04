@@ -57,7 +57,7 @@
 @endpush
 @section('content')
 <section class="banner-two position-relative z-index-1 overflow-hidden">
-    <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient.png" alt="banner-two-gradient" class="bg--gradient white-version">
+    <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient.webp" alt="banner-two-gradient" class="bg--gradient white-version">
     <img src="{{ asset('assets') }}/images/gradients/banner-two-gradient-dark.png" alt="two-gradient-dark" class="bg--gradient dark-version">
     <img src="{{ asset('assets') }}/images/shapes/element-moon3.png" alt="moon3" class="element one">
     <img src="{{ asset('assets') }}/images/shapes/element-moon2.png" alt="moon2" class="element two">
