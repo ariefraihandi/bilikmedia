@@ -15,7 +15,9 @@
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\SitemapController;
     use App\Http\Controllers\EnvantoDownloaderController;
+    use App\Http\Controllers\AcademiaDownloaderController;
     use App\Http\Controllers\FreepikDownloaderController;
+    use App\Http\Controllers\ScribdDownloaderController;
     use App\Http\Controllers\MotionArrayDownloaderController;
 //!Controller
 
@@ -38,36 +40,48 @@ Route::get('/auth/login',                   [AuthController::class, 'showLoginFo
 Route::get('/logout',                       [AuthController::class, 'logout'])->name('logout');
 Route::post('register',                     [AuthController::class, 'register'])->name('register');
 Route::post('login',                        [AuthController::class, 'login'])->name('login');
-Route::post('login/modal',                        [AuthController::class, 'loginModal'])->name('login.modal');
+Route::post('login/modal',                  [AuthController::class, 'loginModal'])->name('login.modal');
 Route::get('verify-email',                  [AuthController::class, 'verify'])->name('verify-email');
 
-Route::get('/envato-downloader',            [EnvantoDownloaderController::class, 'showEnvantoDownloader'])->name('envanto.downloader');
-Route::get('/freepik-downloader',           [FreepikDownloaderController::class, 'showFreepikDownloader'])->name('freepik.downloader');
-Route::get('/download-motionarray',         [MotionArrayDownloaderController::class, 'showMotionArrayDownloader'])->name('motionarray.downloader');
+// Downloader
+    Route::get('/envato-downloader',            [EnvantoDownloaderController::class, 'showEnvantoDownloader'])->name('envanto.downloader');
+    Route::get('/freepik-downloader',           [FreepikDownloaderController::class, 'showFreepikDownloader'])->name('freepik.downloader');
+    Route::get('/download-motionarray',         [MotionArrayDownloaderController::class, 'showMotionArrayDownloader'])->name('motionarray.downloader');
+    Route::get('/scribd-downloader',            [ScribdDownloaderController::class, 'showScribdDownloader'])->name('scribd.downloader');
+    Route::get('/academia-downloader',          [AcademiaDownloaderController::class, 'showAcademiaDownloader'])->name('academia.downloader');
+// Downloader
 
-Route::get('/product',                      [ProductController::class, 'showAllProduct'])->name('showAllProduct');
-Route::get('/product/category/{slug}',      [ProductController::class, 'showProductByCategory'])->name('showProductByCategory');
-Route::get('/product/rating/{rating}',      [ProductController::class, 'filterByRating'])->name('filterByRating');
-Route::get('/product-details/{slug}',       [ProductController::class, 'showProductDetails'])->name('product.details');//am
-Route::get('/search-products',              [ProductController::class, 'searchProducts'])->name('search.products');
+// Product
+    Route::get('/product',                      [ProductController::class, 'showAllProduct'])->name('showAllProduct');
+    Route::get('/product/category/{slug}',      [ProductController::class, 'showProductByCategory'])->name('showProductByCategory');
+    Route::get('/product/rating/{rating}',      [ProductController::class, 'filterByRating'])->name('filterByRating');
+    Route::get('/product-details/{slug}',       [ProductController::class, 'showProductDetails'])->name('product.details');//am
+    Route::get('/search-products',              [ProductController::class, 'searchProducts'])->name('search.products');
+// Product
+
+// RequestDownload
+    Route::post('/request-download',            [DownloadController::class, 'requestDownload'])->name('request.download');
+    Route::post('/request-download-freepik',    [DownloadController::class, 'requestDownloadFreepik'])->name('request.download.freepik');
+    Route::post('/request-download-motion',     [DownloadController::class, 'requestDownloadMotion'])->name('request.download.motion');
+    Route::post('/request-scribd-download',     [DownloadController::class, 'requestScribdDownload'])->name('request.scribd.download');
+    Route::post('/request-academia-download',   [DownloadController::class, 'requestAcademiaDownload'])->name('request.academia.download');
+// RequestDownload
 
 Route::get('/download/{productId}',         [DownloadController::class, 'generateDownloadLink'])->name('generate.download.link');
 Route::get('/download-file/{token}',        [DownloadController::class, 'downloadFile'])->name('download.file');
 Route::get('/rating/{token}',               [DownloadController::class, 'showRating'])->name('rating.show');
-Route::post('/request-download',            [DownloadController::class, 'requestDownload'])->name('request.download');
-Route::post('/request-download-freepik',    [DownloadController::class, 'requestDownloadFreepik'])->name('request.download.freepik');
-Route::post('/request-download-motion',    [DownloadController::class, 'requestDownloadMotion'])->name('request.download.motion');
 Route::post('/generate-tokens',             [DownloadController::class, 'generateTokens']);
 Route::post('/rating',                      [DownloadController::class, 'submitRating'])->name('rating.submit');
 
-Route::get('/blog/whats-is-bilikmedia/{token}',             [BlogController::class, 'showOne'])->name('blog.One');
-Route::get('/blog/whats-is-envato-downloader/{token}',      [BlogController::class, 'showTwo'])->name('blog.Two');
-Route::get('/blog/how-tobecome-a-member/{token}',           [BlogController::class, 'showThree'])->name('blog.Three');
-Route::get('/blog/whats-is-freepik-downloader/{token}',     [BlogController::class, 'showFour'])->name('blog.Four');
-Route::get('/blog/whats-is-mixkit-downloader/{token}',      [BlogController::class, 'showFive'])->name('blog.Five');
-Route::get('/blog/why-bilikmedia/{token}',                  [BlogController::class, 'showSix'])->name('blog.Six');
-Route::get('/blog/why-envato-downloader/{token}',           [BlogController::class, 'showSeven'])->name('blog.Seven');
-
+// Blog
+    Route::get('/blog/whats-is-bilikmedia/{token}',             [BlogController::class, 'showOne'])->name('blog.One');
+    Route::get('/blog/whats-is-envato-downloader/{token}',      [BlogController::class, 'showTwo'])->name('blog.Two');
+    Route::get('/blog/how-tobecome-a-member/{token}',           [BlogController::class, 'showThree'])->name('blog.Three');
+    Route::get('/blog/whats-is-freepik-downloader/{token}',     [BlogController::class, 'showFour'])->name('blog.Four');
+    Route::get('/blog/whats-is-mixkit-downloader/{token}',      [BlogController::class, 'showFive'])->name('blog.Five');
+    Route::get('/blog/why-bilikmedia/{token}',                  [BlogController::class, 'showSix'])->name('blog.Six');
+    Route::get('/blog/why-envato-downloader/{token}',           [BlogController::class, 'showSeven'])->name('blog.Seven');
+// Blog
 
 Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::get('/dashboard',                        [DashboardController::class, 'showDashboard'])->name('showDashboard');
@@ -105,7 +119,6 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::get('/blog/become-a-member/{token}',     [BlogController::class, 'showAdThree'])->name('blog.adsThree');
     Route::get('/blog/freepik-downloader/{token}',  [BlogController::class, 'showAdFour'])->name('blog.adsFour');
     Route::get('/blog/mixkit-downloader/{token}',   [BlogController::class, 'showAdFive'])->name('blog.adsFive');
-
 
     Route::post('/ads-store',                       [AdController::class, 'adsStore'])->name('ads.store');
     Route::get('/user-list-datatables',             [UserController::class, 'getUsersForDataTables'])->name('user.list.datatables');

@@ -39,7 +39,30 @@ class DownloadController extends Controller
             $data = RequestDownload::leftJoin('products', 'request_download.url', '=', 'products.url_source')
                 ->select('request_download.*', 'products.url_source as product_url')
                 ->orderBy('request_download.created_at', 'DESC') 
-                ->get();
+                ->get()
+                ->map(function ($item) {
+                    // Menentukan asal URL berdasarkan pola
+                    if (strpos($item->url, 'envato') !== false) {
+                        $item->type = 'Envato';
+                        $item->type_icon = asset('uploads/products/envato.png'); // Path ke ikon
+                    } elseif (strpos($item->url, 'freepik') !== false) {
+                        $item->type = 'Freepik';
+                        $item->type_icon = asset('uploads/products/freepik.png');
+                    } elseif (strpos($item->url, 'motionarray') !== false) {
+                        $item->type = 'Motion Array';
+                        $item->type_icon = asset('uploads/products/motionaray.png');
+                    } elseif (strpos($item->url, 'scribd') !== false) { // Menggunakan "scribd" untuk Scribd
+                        $item->type = 'Scribd';
+                        $item->type_icon = asset('uploads/products/scribd.png');
+                    } elseif (strpos($item->url, 'academia') !== false) { // Menggunakan "academia" untuk Academia
+                        $item->type = 'Academia';
+                        $item->type_icon = asset('uploads/products/academia.png');
+                    } else {
+                        $item->type = 'Other';
+                        $item->type_icon = asset('uploads/products/default.png'); // Path ikon default
+                    }
+                    return $item;
+                });
     
             return DataTables::of($data)
                 ->addColumn('action', function($data) {
@@ -56,14 +79,14 @@ class DownloadController extends Controller
                             <i class="fas fa-trash"></i>
                         </button>';
                 
-                    // Tombol invalid notify (untuk URL tidak valid)
-                    $invalidUrlButton = '
-                    <button class="btn btn-sm btn-warning small-btn invalid-notify-btn mb-1" data-id="'.$data->id.'" title="Invalid Notify">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </button>';
-                
-                    
-                    // Munculkan ketiga tombol
+                    $invalidUrlButton = '';
+                    if ($data->status != 3) {
+                        $invalidUrlButton = '
+                        <button class="btn btn-sm btn-warning small-btn invalid-notify-btn mb-1" data-id="'.$data->id.'" title="Invalid Notify">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </button>';
+                    }
+                                
                     return $notifyButton . ' ' . $invalidUrlButton . ' ' . $deleteButton;
                 })            
                 ->addColumn('url_exists', function($data) {
@@ -255,127 +278,6 @@ class DownloadController extends Controller
 
         return redirect()->route('download.file', ['token' => $download->token]);
     }
-   
-    // public function generateDownloadLink($productId)
-    // {
-    //     // Cek apakah user sudah login
-    //     if (!Auth::check()) {
-    //         // Jika belum login, tampilkan SweetAlert dan arahkan ke halaman login
-    //         Alert::error('Error', 'Please login first.');
-    //         return redirect()->route('showLoginForm');
-    //     }
-    
-    //     // Ambil informasi user yang sedang login
-    //     $user = Auth::user();
-    //     $userDetail = $user->userDetail;
-            
-    //     $product = Product::find($productId);
-    
-    //     // Jika produk tidak ditemukan, kembali ke halaman sebelumnya dengan pesan error
-    //     if (!$product) {
-    //         return redirect()->back()->withErrors('Product not found!');
-    //     }
-    
-    //     // Cek apakah email user dan url produk ada di tabel request_download
-    //     $requestDownload = RequestDownload::where('email', $user->email)
-    //         ->where('url', $product->url_source)
-    //         ->first();
-    
-    //     if (!$requestDownload) {
-    //         // Update expired credits to 0
-    //         Credit::where('user_id', $user->id)
-    //             ->where('is_expires', true)
-    //             ->where('expires_at', '<', now())
-    //             ->update(['credit_amount' => 0]);
-    
-    //         $neededCredit = 2; // Total kredit yang dibutuhkan
-    
-    //         // Hitung total kredit yang tersedia
-    //         $totalAvailableCredits = Credit::where('user_id', $user->id)
-    //             ->where('credit_amount', '>', 0)
-    //             ->sum('credit_amount');
-                
-    //         if ($totalAvailableCredits < $neededCredit) {
-    //             Alert::error('Error', 'You do not have enough credits to download this product.');
-    //             return redirect()->back();
-    //         }
-    
-    //         $remainingCreditToDeduct = $neededCredit; // Total kredit yang harus dipotong
-    
-    //         // Step 1: Prioritaskan daily, share, dan ad credits
-    //         $creditTypes = ['daily', 'share', 'ad']; // Non-reff credits
-    
-    //         foreach ($creditTypes as $creditType) {
-    //             $credits = Credit::where('user_id', $user->id)
-    //                 ->where('credit_type', $creditType)
-    //                 ->where('credit_amount', '>', 0)
-    //                 ->get();
-    
-    //             foreach ($credits as $credit) {
-    //                 if ($remainingCreditToDeduct <= 0) {
-    //                     break;  // Jika sudah cukup kredit terpotong
-    //                 }
-    
-    //                 if ($credit->credit_amount >= $remainingCreditToDeduct) {
-    //                     // Jika kredit yang tersedia lebih dari cukup, kurangi dan set sisa kebutuhan menjadi 0
-    //                     $credit->decrement('credit_amount', $remainingCreditToDeduct);
-    //                     $remainingCreditToDeduct = 0;
-    //                 } else {
-    //                     // Jika kredit yang tersedia kurang dari yang dibutuhkan, potong semuanya dan lanjutkan
-    //                     $remainingCreditToDeduct -= $credit->credit_amount;
-    //                     $credit->update(['credit_amount' => 0]); // Set credit_amount ke 0
-    //                 }
-    //             }
-    
-    //             // Jika sudah cukup kredit terpotong, hentikan loop
-    //             if ($remainingCreditToDeduct <= 0) {
-    //                 break;
-    //             }
-    //         }
-    
-    //         // Step 2: Jika masih butuh kredit, gunakan dari reff jika cukup
-    //         if ($remainingCreditToDeduct > 0) {
-    //             $reffCredits = Credit::where('user_id', $user->id)
-    //                 ->where('credit_type', 'reff')
-    //                 ->where('credit_amount', '>', 0)
-    //                 ->first();
-    
-    //             if ($reffCredits && $reffCredits->credit_amount >= $remainingCreditToDeduct) {
-    //                 // Jika kredit reff cukup, kurangi sesuai kebutuhan
-    //                 $reffCredits->decrement('credit_amount', $remainingCreditToDeduct);
-    //                 $remainingCreditToDeduct = 0;
-    //             } else {
-    //                 // Jika kredit reff tidak cukup, kembalikan error dan jangan lakukan pemotongan
-    //                 Alert::error('Error', 'Your referral credits are not enough to complete this download.');
-    //                 return redirect()->back();
-    //             }
-    //         }
-    
-    //         // Hitung total kredit terbaru setelah pemotongan
-    //         $totalCredits = Credit::where('user_id', $user->id)->sum('credit_amount');
-    
-    //         // Update total kredit di userDetail
-    //         $userDetail->kredit = $totalCredits;
-    //         $userDetail->save();
-    
-    //         // Buat request download baru
-    //         RequestDownload::create(['email' => $user->email, 'url' => $product->url_source, 'status' => 3]);
-    
-    //         // Buat token download baru
-    //         $download = Download::create(['product_id' => $product->id, 'token' => Str::random(40), 'expires_at' => Carbon::now()->addHours(2)]);
-    
-    //         return redirect()->route('download.file', ['token' => $download->token]);
-    //     }
-    
-    //     // Jika sudah ada request download, buat token download baru
-    //     $download = Download::create([
-    //         'product_id' => $product->id,
-    //         'token' => Str::random(40),
-    //         'expires_at' => Carbon::now()->addHours(2) // Link kadaluarsa setelah 2 jam
-    //     ]);
-    
-    //     return redirect()->route('download.file', ['token' => $download->token]);
-    // }
     
     public function downloadFile($token)
     {
@@ -526,6 +428,111 @@ class DownloadController extends Controller
             'status' => 'success',
         ], 200);
     }
+
+    public function requestScribdDownload(Request $request)
+    {
+        $email = Auth::check() ? Auth::user()->email : $request->input('email');
+    
+        // Cek apakah URL valid, jika tidak, langsung kembalikan respons error JSON
+        if (!str_starts_with($request->input('scribd_url'), 'https://www.scribd.com/')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid URL. The URL must start with https://www.scribd.com/'
+            ], 400);
+        }
+    
+        // Lakukan validasi lainnya
+        $request->validate([
+            'scribd_url' => 'required|url',
+            'email' => 'email',
+        ]);
+    
+        $scribdUrl = explode('?', $request->input('scribd_url'))[0];
+        $cleanedUrl = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $scribdUrl);
+    
+        // Cek apakah permintaan download ini sudah ada di database
+        $existingRequest = RequestDownload::where('email', $email)
+            ->where('url', $cleanedUrl)
+            ->first();
+    
+        if ($existingRequest) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'The file is already in your download history. Please check your download history.'
+            ], 400);
+        }
+    
+        // Jika permintaan baru, simpan ke dalam database
+        RequestDownload::create([
+            'email' => $email,
+            'url' => $cleanedUrl,
+            'status' => 0,
+        ]);
+    
+        Mail::to('raihandi93@gmail.com')->send(
+            new DownloadRequestNotification($email, $cleanedUrl)
+        );
+    
+        Alert::success('Success', 'File on process, please wait 5-10 minutes, and check your email regularly');
+        return response()->json([
+            'status' => 'success',
+        ], 200);
+    }
+
+    public function requestAcademiaDownload(Request $request)
+    {
+        $email = Auth::check() ? Auth::user()->email : $request->input('email');
+
+        // Cek apakah URL valid untuk Academia.edu
+        if (!str_starts_with($request->input('academia_url'), 'https://www.academia.edu/')) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Invalid URL. The URL must start with https://www.academia.edu/'
+            ], 400);
+        }
+
+        // Lakukan validasi tambahan untuk memastikan URL dan email memiliki format yang benar
+        $request->validate([
+            'academia_url' => 'required|url',
+            'email' => 'nullable|email',
+        ]);
+
+        // Bersihkan URL dari parameter tambahan
+        $academiaUrl = explode('?', $request->input('academia_url'))[0];
+        $cleanedUrl = preg_replace('/\/[a-z]{2}(?:-[a-z]{2})?\//i', '/', $academiaUrl);
+
+        // Cek apakah permintaan download ini sudah ada di database
+        $existingRequest = RequestDownload::where('email', $email)
+            ->where('url', $cleanedUrl)
+            ->first();
+
+        if ($existingRequest) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'The document is already in your download history. Please check your download history.'
+            ], 400);
+        }
+
+        // Jika permintaan baru, simpan ke dalam database
+        RequestDownload::create([
+            'email' => $email,
+            'url' => $cleanedUrl,
+            'status' => 0,
+        ]);
+
+        // Kirim notifikasi email ke admin
+        $adminEmail = 'raihandi93@gmail.com'; // Ganti dengan email admin yang diinginkan
+        Mail::to($adminEmail)->send(
+            new DownloadRequestNotification($email, $cleanedUrl)
+        );
+
+        // Kirim respon sukses ke pengguna
+        return response()->json([
+            'status' => 'success',
+            'message' => 'File is being processed. Please wait 5-10 minutes and check your email regularly.'
+        ], 200);
+    }
+
     
     public function requestDownloadFreepik(Request $request)
     {        

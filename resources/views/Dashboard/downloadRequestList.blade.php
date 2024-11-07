@@ -34,11 +34,12 @@
                 <table class="table style-two" id="request-table"  style="width: 100%; table-layout: fixed;">
                     <thead>
                         <tr>
-                            <th style="width: 5%;">#</th>
-                            <th style="width: 25%;">Product</th>
+                            <th style="width: 5%;">No</th>
+                            <th style="width: 20%;">Product</th>
+                            <th style="width: 5%;"><i class="fas fa-smile"></i></th>
                             <th style="width: 30%;">Email</th>
                             <th style="width: 15%;">Status</th>
-                            <th style="width: 10%;">Action</th>                          
+                            <th style="width: 25%;">Action</th>
                         </tr>
                     </thead>
                 </table>
@@ -132,6 +133,15 @@
                                 <button class="btn btn-sm btn-secondary copy-url-btn" data-url="${data}" title="Copy URL">
                                     <i class="fas fa-copy"></i>
                                 </button>`;
+                        }
+                    },
+                    { 
+                        data: 'type_icon', 
+                        name: 'type_icon',
+                        orderable: false, 
+                        searchable: false,
+                        render: function(data, type, row, meta) {
+                            return `<img src="${data}" alt="${row.type}" width="60" height="60" style="vertical-align: middle;">`;
                         }
                     },
                     { data: 'email', name: 'email' },

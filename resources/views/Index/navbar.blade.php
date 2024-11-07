@@ -33,6 +33,12 @@
                             <li class="nav-submenu__item">
                                 <a href="{{ route('motionarray.downloader') }}" class="nav-submenu__link"> Motion Array Downloader</a>
                             </li>
+                            <li class="nav-submenu__item">
+                                <a href="{{ route('scribd.downloader') }}" class="nav-submenu__link"> Scribd Downloader</a>
+                            </li>
+                            <li class="nav-submenu__item">
+                                <a href="{{ route('academia.downloader') }}" class="nav-submenu__link"> Academia Downloader</a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-menu__item has-submenu">

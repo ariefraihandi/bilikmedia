@@ -22,6 +22,12 @@ class SitemapController extends Controller
             ->add(Url::create('/freepik-downloader') 
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.9))
+            ->add(Url::create('/academia-downloader') 
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.9))
+            ->add(Url::create('/scribd-downloader') 
+                ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
+                ->setPriority(0.9))
             ->add(Url::create('/download-motionarray') 
                 ->setChangeFrequency(Url::CHANGE_FREQUENCY_WEEKLY)
                 ->setPriority(0.9));

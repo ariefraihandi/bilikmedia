@@ -392,7 +392,7 @@ class ProductController extends Controller
         DB::beginTransaction();
     
         try {
-            // Menentukan nama gambar berdasarkan input radio
+            // Menentukan nama gambar berdasarkan input radio 
             $imageName = null;
             if ($request->has('envanto')) {
                 $imageName = 'envato.png';
@@ -400,6 +400,10 @@ class ProductController extends Controller
                 $imageName = 'freepik.png';
             } elseif ($request->has('motion')){
                 $imageName = 'motionaray.png';
+            } elseif ($request->has('scribd')){
+                $imageName = 'scribd.png';
+            } elseif ($request->has('academia')){
+                $imageName = 'academia.png';
             } elseif ($request->hasFile('fileUpload')) {
                 // Jika upload file disediakan, gunakan file tersebut (jika masih ingin mengizinkan upload)
                 // Hapus bagian ini jika tidak ingin mengizinkan upload

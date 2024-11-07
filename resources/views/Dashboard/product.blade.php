@@ -103,6 +103,18 @@
                                                     <img src="{{ asset('uploads') }}/products/motionaray.png" alt="">
                                                 </label>
                                             </div>                                           
+                                            <div class="payment-method__item">
+                                                <input class="form-check-input" type="radio" name="scribd" id="scribd" hidden>
+                                                <label class="form-check-label" for="scribd">
+                                                    <img src="{{ asset('uploads') }}/products/scribd.png" alt="">
+                                                </label>
+                                            </div>                                           
+                                            <div class="payment-method__item">
+                                                <input class="form-check-input" type="radio" name="academia" id="academia" hidden>
+                                                <label class="form-check-label" for="academia">
+                                                    <img src="{{ asset('uploads') }}/products/academia.png" alt="">
+                                                </label>
+                                            </div>                                           
                                         </div>
                                     </div>
                                     <div class="row gy-3">
