@@ -455,5 +455,27 @@
         });
     });
 </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Tampilkan SweetAlert saat halaman dimuat
+      Swal.fire({
+          title: 'Enjoying Our Services?',
+          text: 'Please Click Some Ads to support us for providing the free premium assets.',
+          icon: 'info',
+          showCancelButton: true,
+          confirmButtonText: 'Sure!',
+          cancelButtonText: 'Maybe Later',
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33'
+      }).then((result) => {
+        if (result.isConfirmed) {
+                // Buka link iklan di tab baru
+                window.open('https://chikraighotoops.com/4/8261677', '_blank'); // Ganti 'https://example.com' dengan URL iklan Anda
+            }
+      });
+  });
+</script>
+
   
 @endpush

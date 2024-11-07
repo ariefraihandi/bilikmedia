@@ -232,7 +232,7 @@
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
             window.location.href = "https://luglawhaulsano.net/4/8261677";
-        }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
+        }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar       
     }
 </script>
 
