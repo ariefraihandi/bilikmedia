@@ -255,25 +255,23 @@ class ProductController extends Controller
         $besarAd           = Ad::where('name', 'besar')->first();
         $monetagAd          = Ad::where('name', 'monetag')->first();
     
-    
-        // Membuat array data untuk dikirim ke view
         $data = [
-            'title' => $product->title,    // Mengambil title dari produk
-            'description' => $product->description,    // Mengambil title dari produk
-            'product' => $product,         // Mengirim seluruh data produk
-            'category' => $category,       // Mengirim satu kategori yang dipilih
-            'downloadCount' => $downloadCount,  // Mengirim jumlah download
-            'additions' => $additions,    // Mengirim daftar additions yang dipisahkan
-            'tags' => $tags,
-            'features' => $features,
-            'relatedProducts' => $relatedProducts, 
-            'bannerAd'      => $bannerAd,     
-            'socialAd'      => $socialAd, 
-            'smallAd'      => $smallAd, 
-            'petakAd'      => $petakAd, 
-            'besarAd'      => $besarAd, 
-            'monetagAd'      => $monetagAd, 
-            'userDetail' => $userDetail,
+            'title'             => $product->title,         
+            'description'       => $product->description,   
+            'product'           => $product,      
+            'category'          => $category,     
+            'downloadCount'     => $downloadCount,
+            'additions'         => $additions,   
+            'tags'              => $tags,
+            'features'          => $features,
+            'relatedProducts'   => $relatedProducts, 
+            'bannerAd'          => $bannerAd,     
+            'socialAd'          => $socialAd, 
+            'smallAd'           => $smallAd, 
+            'petakAd'           => $petakAd, 
+            'besarAd'           => $besarAd, 
+            'monetagAd'         => $monetagAd, 
+            'userDetail'        => $userDetail,
         ];
     
         // Return view dan kirim data

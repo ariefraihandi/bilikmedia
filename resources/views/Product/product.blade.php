@@ -15,7 +15,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-7">
                 <div class="breadcrumb-one-content">
-                    <h3 class="breadcrumb-one-content__title text-center mb-3 text-capitalize">58,000+ products available for download</h3>
+                    <h1 class="breadcrumb-one-content__title text-center mb-3 text-capitalize">58,000+ products available for download</h1>
                     <p class="breadcrumb-one-content__desc text-center text-black-three">Explore the best premium themes and plugins available for sale. Our unique collection is hand-curated by experts. Find and buy the perfect premium theme.</p>
     
                     <form action="#" class="search-box">

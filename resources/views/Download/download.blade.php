@@ -64,8 +64,8 @@
 <section class="cart-payment padding-y-10 overflow-hidden">
     <div class="container container-two">        
         <div class="cart-payment__box position-relative z-index-1 overflow-hidden">
-            <img src="{{ asset('assets') }}/images/shapes/pattern-curve-six.png" alt="" class="position-absolute end-0 top-0 z-index--1">
-            <img src="{{ asset('assets') }}/images/shapes/pattern-curve-five.png" alt="" class="position-absolute start-0 top-0 z-index--1">
+            <img src="{{ asset('assets') }}/images/shapes/pattern-curve-six.png" alt="pattern-curve-six" class="position-absolute end-0 top-0 z-index--1">
+            <img src="{{ asset('assets') }}/images/shapes/pattern-curve-five.png" alt="pattern-curve-five" class="position-absolute start-0 top-0 z-index--1">
             
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-sm-10 text-center">

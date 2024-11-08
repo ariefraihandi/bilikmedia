@@ -11,7 +11,6 @@
             <div class="row justify-content-center">
                 <div class="col-lg-12">
                     <div class="breadcrumb-two-content">
-    
                         <ul class="breadcrumb-list flx-align gap-2 mb-2">
                             <li class="breadcrumb-list__item font-14 text-body">
                                 <a href="{{ route('index') }}" class="breadcrumb-list__link text-body hover-text-main">Home</a>
@@ -33,7 +32,7 @@
                         </ul>
                         
                         
-                        <h3 class="breadcrumb-two-content__title mb-3 text-capitalize">{{ $title }}</h3>
+                        <h1 class="breadcrumb-two-content__title mb-3 text-capitalize">{{ $title }}</h1>
     
                         <div class="breadcrumb-content flx-align gap-3">
                             <div class="breadcrumb-content__item text-heading fw-500 flx-align gap-2">
@@ -105,7 +104,7 @@
                         <!-- Product Details Content Start -->
                         <div class="product-details">
                             <div class="product-details__thumb">
-                                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{$product->name}}">
+                                <img src="{{ asset('uploads/products/' . $product->image) }}" alt="{{$product->title}}">
                             </div>
                             <div class="product-details__buttons flx-align justify-content-center gap-3">
                                 {!! $bannerAd->code !!}
@@ -121,10 +120,11 @@
                                 </a>
                                 {!! $bannerAd->code !!}
                             </div>
+                            <h2 class="product-details__title mb-3">Description</h2>
                             <p class="product-details__desc">{{ $product->description }}</p>
 
                             <div class="product-details__item">
-                                <h5 class="product-details__title mb-3">Features</h5>
+                                <h2 class="product-details__title mb-3">Features</h2>
                                 <ul class="product-list">
                                     @foreach($features as $feature)
                                         <li class="product-list__item">{{ trim($feature) }}</li>
@@ -132,7 +132,7 @@
                                 </ul>
                             </div>
                             <div class="product-details__item">
-                                <h5 class="product-details__title mb-3">Tags</h5>
+                                <h3 class="product-details__title mb-3">Tags</h3>
                                 <ul class="product-list product-list--tags">
                                     @foreach($tags as $tag)
                                         <li class="product-list__item">{{ trim($tag) }}</li>
@@ -142,7 +142,7 @@
                             
                             <div class="more-item">
                                 <div class="flx-between mb-4">
-                                    <h5 class="more-item__title">More Items</h5>                                    
+                                    <h3 class="more-item__title">More Items</h3>                                    
                                 </div>
                                 <div class="more-item__content flx-align">
                                     @foreach($relatedProducts as $relatedProduct)
