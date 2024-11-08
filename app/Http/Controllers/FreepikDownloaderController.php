@@ -10,8 +10,8 @@ class FreepikDownloaderController extends Controller
 {
     public function showFreepikDownloader()
     {        
-        $metaDescription    = "Bilik Media offers a fast and easy service to download files from Envato. Get your desired files effortlessly.";
-        $metaKeywords       = "Envato, Download Envato Files, Envato Downloader, Bilik Media, Fast Envato Downloads";
+        $metaDescription = "Download Freepik files quickly and for free with Bilik Media's easy-to-use tool. Access Freepik premium images, vectors, and more effortlessly!";
+        $metaKeywords = "freepik download, freepik free download, freepik image downloader, freepik premium downloader, freepik premium free download, freepik images free download";
         $products           = Product::withCount('downloads')
                               ->withAvg('ratings', 'rating')
                               ->orderBy('downloads_count', 'desc')

@@ -12,8 +12,8 @@ class EnvantoDownloaderController extends Controller
 {
     public function showEnvantoDownloader()
     {        
-        $metaDescription    = "Download Envato Elements quickly and for free with Bilik Media's easy-to-use tool! Get your creative files now";
-        $metaKeywords       = "envato elements downloader, Download Envato Files, how to download from envato for free, Quick Envato Downloads, Easy Envato Elements Download";
+        $metaDescription = "Download Envato Elements files for free, including templates, videos, and more with Bilik Media's easy-to-use tool. Access your creative assets effortlessly!";
+        $metaKeywords = "envato elements free download, envato elements downloader, download envato templates for free, envato free download, envato download";
    
         $sideAd             = Ad::where('name', 'side')->first();
         $bannerAd           = Ad::where('name', 'banner')->first();

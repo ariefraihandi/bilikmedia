@@ -11,8 +11,8 @@ class MotionArrayDownloaderController extends Controller
 {
     public function showMotionArrayDownloader()
     {        
-        $metaDescription = "Easily download Motion Array assets for free with Bilik Media’s convenient tool! Access top creative files instantly.";
-        $metaKeywords = "motion array downloader, download motion array templates, motion array video download, download motion array assets for free, free motion array downloads, quick motion array files";
+        $metaDescription = "Download Motion Array files for free with Bilik Media's easy tool. Access Motion Array templates, videos, and creative assets instantly!";
+        $metaKeywords = "motion array free download, motion array download, free motion array download, motion array templates free download, motion array video download, motion array free downloader";
    
         $sideAd             = Ad::where('name', 'side')->first();
         $bannerAd           = Ad::where('name', 'banner')->first();

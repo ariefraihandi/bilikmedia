@@ -18,13 +18,8 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="https://bilikmedia.com/assets/images/logo/favicon.ico">
 
-    <meta name="geo.region" content="US" />
-    <meta name="geo.placename" content="United States" />
-    <meta name="geo.position" content="37.0902;-95.7129" />
-    <meta name="ICBM" content="37.0902, -95.7129" />
     <meta http-equiv="content-language" content="en-US">
     <meta property="og:locale" content="en_US" />
-    <!-- Open Graph (OG) Tags for Social Media Optimization -->
     <meta property="og:title" content="{{ $title ?? 'Bilik Media | Best Digital Solution for Your Business' }}">
     <meta property="og:description" content="{{ $description ?? 'Bilik Media provides top-notch digital services for your business.' }}">
     <meta property="og:type" content="website">

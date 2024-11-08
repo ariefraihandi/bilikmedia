@@ -12,8 +12,8 @@ class ScribdDownloaderController extends Controller
 {
     public function showScribdDownloader()
     {        
-        $metaDescription = "Download Scribd documents quickly and for free with Bilik Media's easy-to-use tool!";
-        $metaKeywords = "scribd downloader, download scribd files, how to download from scribd for free, quick scribd downloads";
+        $metaDescription = "Download Scribd PDFs, documents, and books for free with Bilik Media's easy tool. Access Scribd content effortlessly!";
+        $metaKeywords = "scribd downloader, download scribd pdf, download scribd free, scribd document downloader, download scribd pdf free, free scribd download";
 
         $sideAd = Ad::where('name', 'side')->first();
         $bannerAd = Ad::where('name', 'banner')->first();
