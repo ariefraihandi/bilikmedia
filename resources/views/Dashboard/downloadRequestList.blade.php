@@ -174,7 +174,7 @@
                         Swal.showLoading(); // Menampilkan spinner loading
                     }
                 });
-
+                
                 $.ajax({
                     url: '/send-download-notification',
                     type: 'POST',

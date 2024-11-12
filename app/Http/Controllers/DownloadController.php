@@ -165,17 +165,16 @@ class DownloadController extends Controller
     
             if ($product) {
                 // Ambil detail produk seperti title dan slug
-                $title = $product->title;
-                $id = $product->id;
+                $title  = $product->title;
+                $id     = $product->id;
+                $slug   = $product->slug;
 
-                // Perbaiki panggilan route dengan menyertakan parameter id
                 $downloadUrl = route('generate.download.link', ['productId' => $id]);
+                $downloadUrl = route('product.details', ['slug' => $slug]);
     
                 try {
-                    // Kirim email
                     Mail::to($downloadRequest->email)->send(new DownloadNotification($title, $downloadUrl));
-    
-                    // Jika pengiriman email berhasil, ubah status menjadi 3
+
                     $downloadRequest->status = 3;
                     $downloadRequest->save();
     

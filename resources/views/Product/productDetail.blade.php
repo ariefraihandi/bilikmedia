@@ -209,3 +209,53 @@
 
 <!-- ======================== Brand Section End ========================= -->
 @endsection
+@push('footer-script')
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Fungsi untuk menampilkan SweetAlert ketika AdBlock terdeteksi
+        function showAdBlockAlert() {
+            Swal.fire({
+                icon: 'error',
+                title: 'AdBlock Detected',
+                text: 'Please disable your AdBlock to access this website.',
+                allowEscapeKey: false, // Tidak bisa ditutup dengan tombol Escape
+                allowOutsideClick: false, // Tidak bisa ditutup dengan klik di luar alert
+                confirmButtonText: 'Refresh',
+                confirmButtonColor: '#3085d6',
+                showCancelButton: false, // Hanya ada tombol Refresh
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.reload(); // Muat ulang halaman
+                }
+            });
+        }
+
+        // Elemen bait untuk mendeteksi AdBlock
+        const bait = document.createElement("div");
+        bait.innerHTML = "&nbsp;";
+        bait.className = "adsbox";
+        bait.style.position = "absolute";
+        bait.style.left = "-9999px";
+
+        // Fake ad script untuk memancing AdBlock
+        const adScript = document.createElement("script");
+        adScript.src = "https://ads.fakeurl.com";
+        adScript.async = true;
+        adScript.onerror = function () {
+            showAdBlockAlert(); // Panggil alert jika AdBlock aktif
+        };
+
+        document.body.appendChild(bait);
+        document.body.appendChild(adScript);
+
+        // Deteksi awal apakah bait diblokir
+        setTimeout(function () {
+            if (bait.offsetParent === null || bait.offsetHeight === 0) {
+                showAdBlockAlert(); // Tampilkan alert jika AdBlock aktif
+            }
+            document.body.removeChild(bait); // Hapus elemen bait
+        }, 100); // Periksa setelah 100ms
+    });
+</script>
+
+@endpush

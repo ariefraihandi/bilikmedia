@@ -4,12 +4,12 @@
     <body>        
         @include('sweetalert::alert')
 
-        <div class="loader-mask">
+        {{-- <div class="loader-mask">
             <div class="loader">
                 <div></div>
                 <div></div>
             </div>
-        </div>
+        </div> --}}
 
         <div class="overlay"></div>
         <div class="side-overlay"></div>
