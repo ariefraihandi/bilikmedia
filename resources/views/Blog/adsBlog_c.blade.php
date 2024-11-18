@@ -1,7 +1,7 @@
 @extends('Index.app')
 @push('header-script')   
 {!! $monetagAd->code !!}     
- 
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="86090" async data-cfasync="false"></script>
     <style>
         .ad-banner {
             position: fixed;
@@ -231,7 +231,9 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://luglawhaulsano.net/4/8261677";
+            window.location.href = 'https://whomeenoaglauns.com/4/8261677';
+            window.location.href = 'https://whomeenoaglauns.com/4/8528364';
+            window.location.href = 'https://whomeenoaglauns.com/4/8528374';
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>

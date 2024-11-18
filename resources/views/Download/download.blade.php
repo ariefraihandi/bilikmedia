@@ -280,7 +280,9 @@
                             // Buka URL unduhan dalam tab baru
                             window.open(data.download_url, '_blank');
 
-                            window.location.href = 'https://luglawhaulsano.net/4/6533224';
+                            window.location.href = 'https://whomeenoaglauns.com/4/8261677';
+                            window.location.href = 'https://whomeenoaglauns.com/4/8528364';
+                            window.location.href = 'https://whomeenoaglauns.com/4/8528374';
                         } else if (data.status === 'error') {
                             Swal.fire(
                             'Error!',
@@ -457,8 +459,7 @@
 </script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function() {
-      // Tampilkan SweetAlert saat halaman dimuat
+  document.addEventListener("DOMContentLoaded", function() {      
       Swal.fire({
           title: 'Enjoying Our Services?',
           text: 'Please Click Some Ads to support us for providing the free premium assets.',
