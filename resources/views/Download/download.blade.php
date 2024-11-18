@@ -278,10 +278,10 @@
                     .then(data => {
                         if (data.status === 'success') {
                             // Buka URL unduhan dalam tab baru
-                            window.open(data.download_url, '_blank');
+                            window.open(data.download_url, '_blank');                           
 
-                            window.location.href = 'https://whomeenoaglauns.com/4/8261677';
-                            window.location.href = 'https://whomeenoaglauns.com/4/8528364';
+                            window.open('https://whomeenoaglauns.com/4/8261677', '_blank');
+                            window.open('https://whomeenoaglauns.com/4/8528364', '_blank');
                             window.location.href = 'https://whomeenoaglauns.com/4/8528374';
                         } else if (data.status === 'error') {
                             Swal.fire(

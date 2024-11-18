@@ -231,9 +231,9 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = 'https://whomeenoaglauns.com/4/8261677';
-            window.location.href = 'https://whomeenoaglauns.com/4/8528364';
-            window.location.href = 'https://whomeenoaglauns.com/4/8528374';
+            window.open('https://whomeenoaglauns.com/4/8261677', '_blank');
+                            window.open('https://whomeenoaglauns.com/4/8528364', '_blank');
+                            window.location.href = 'https://whomeenoaglauns.com/4/8528374';
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>
