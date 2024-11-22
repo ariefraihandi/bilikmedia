@@ -49,6 +49,7 @@ class Product extends Model
     {
         return $this->hasMany(Download::class);
     }
+    
 
     // Method boot untuk event observer dan UUID
     protected static function boot()

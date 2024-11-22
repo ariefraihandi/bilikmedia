@@ -375,12 +375,11 @@ class ProductController extends Controller
             'tags' => 'nullable|string',
             'types' => 'nullable|string',
             'additions' => 'nullable|string',
-            'url_source' => 'nullable|url',
-            'live_preview_url' => 'nullable|url',
+            'url_source' => 'nullable',
+            'live_preview_url' => 'nullable',
             'url_download' => 'nullable|url',
             'category' => 'nullable|array',
             'category.*' => 'exists:product_category,id',
-            // Hapus validasi fileUpload di sini
         ]);
     
         // Menambahkan default value untuk author dan author_url
@@ -472,10 +471,11 @@ class ProductController extends Controller
 
     public function getProductListData()
     {
-        $products = Product::with('categories')->select('products.*');
-        
+        $products = Product::with('categories') // Ambil relasi kategori
+        ->orderBy('created_at', 'desc') // Urutkan berdasarkan produk terbaru
+        ->select('products.*'); // Pilih kolom produk
+
         if (!$products->exists()) {
-            // Jika data tidak ditemukan
             return response()->json([
                 'error' => 'No products found'
             ]);
@@ -485,7 +485,32 @@ class ProductController extends Controller
             ->addColumn('categories', function ($product) {
                 return $product->categories->pluck('name')->implode(', ');
             })
+            ->addColumn('download_count', function ($product) {
+                // Hitung jumlah unduhan secara manual
+                $downloaded = \DB::table('downloads')
+                    ->where('product_id', $product->id)
+                    ->count();
+    
+                return $downloaded; // Tampilkan jumlah unduhan
+            })
+            ->addColumn('detail', function ($product) {
+                $urlSource = $product->url_source
+                    ? '<a href="' . $product->url_source . '" target="_blank" class="btn btn-primary btn-sm">Source</a>'
+                    : '<button class="btn btn-secondary btn-sm" disabled>Source</button>';
+
+                $urlDownload = $product->url_download
+                    ? '<a href="' . $product->url_download . '" target="_blank" class="btn btn-success btn-sm">Download</a>'
+                    : '<button class="btn btn-secondary btn-sm" disabled>Download</button>';
+
+                $livePreview = ($product->live_preview_url && $product->url_source !== $product->live_preview_url)
+                    ? '<a href="' . $product->live_preview_url . '" target="_blank" class="btn btn-info btn-sm">Preview</a>'
+                    : '';
+
+                $viewButton = '<a href="' . route('product.details', ['slug' => $product->slug]) . '" class="btn btn-warning btn-sm">View</a>';
+
+                return '<div class="btn-group" role="group">' . $urlSource . $urlDownload . $livePreview . $viewButton . '</div>';
+            })
+            ->rawColumns(['detail'])
             ->make(true);
     }
-
 }

@@ -1,7 +1,6 @@
 @extends('Dashboard.Index.appDashboard')
 
 @push('header-script')    
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
 <style>
     #product-table th, #product-table td {
         text-align: left; /* Set all text to align left */
@@ -22,16 +21,13 @@
     <div class="dashboard-body__item-wrapper">
         <div class="dashboard-body__item">
             <div class="table-responsive">
-                <table  id="product-table" class="table text-body mt--24">            
+                <table id="product-table"  class="table text-body mt--24" style="width:100%">   
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Product</th>
-                            <th>Description</th>
-                            <th>Categories</th>
-                            <th>URL Source</th>
-                            <th>URL Download</th>
-                            <th>Live Preview URL</th>                        
+                            <th>Product</th>                            
+                            <th>Detail</th>
+                            <th>Download</th>                                                   
                         </tr>
                     </thead>
                 </table>
@@ -86,38 +82,30 @@
                     data: null, 
                     name: 'product',
                     render: function(data) {
-                        const image = data.image ? '/uploads/products/' + data.image : 'default-avatar.png'; // URL gambar atau default avatar
+                        const image = data.image ? '/uploads/products/' + data.image : 'default-avatar.png'; // URL gambar atau default avatar                        
                         const title = data.title;
-                        const author = data.author;
+                        const categories = data.categories; // Penulis
+                        const description = data.description; // Deskripsi produk
+                        const fullDescription = description; // Deskripsi lengkap untuk modal
 
                         return `
-                            <div style="display: flex; align-items: center;">
+                            <div style="display: flex; align-items: flex-start;">
                                 <img src="${image}" style="border-radius: 50%; width: 40px; height: 40px; object-fit: cover; margin-right: 10px;">
                                 <div>
                                     <div><strong>${title}</strong></div>
-                                    <div style="font-size: 12px; color: gray;">${author}</div>
+                                    <div style="font-size: 12px; color: gray;">${categories}</div>                                    
+                                    <div>
+                                        ${description.length > 10 
+                                            ? `<a href="#" class="read-more" data-description="${fullDescription}" data-toggle="modal" data-target="#descriptionModal">Deskripsi</a>`
+                                            : description}
+                                    </div>
                                 </div>
                             </div>
                         `;
-                    } 
-                },  // Kolom product (Image + Title + Author)
-                { 
-                    data: 'description', 
-                    name: 'description', 
-                    render: function(data) {
-                        const shortDescription = data.length > 200 ? data.substring(0, 200) + '...' : data;
-                        const fullDescription = data;
-
-                        return `
-                            <span>${shortDescription}</span>
-                            ${data.length > 200 ? `<a href="#" class="read-more" data-description="${fullDescription}" data-toggle="modal" data-target="#descriptionModal">Read More</a>` : ''}
-                        `;
                     }
-                },  // Kolom description dengan read more
-                { data: 'categories', name: 'categories' },  // Kolom categories
-                { data: 'url_source', name: 'url_source' },  // Kolom URL Source
-                { data: 'url_download', name: 'url_download' },  // Kolom URL Download
-                { data: 'live_preview_url', name: 'live_preview_url' }  // Kolom Live Preview URL
+                },            
+                { data: 'detail', name: 'detail' },  // Kolom URL Source
+                { data: 'download_count', name: 'download_count', orderable: true, searchable: false }
             ],
             autoWidth: false,
             language: {
