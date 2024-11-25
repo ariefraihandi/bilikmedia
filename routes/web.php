@@ -90,7 +90,9 @@ Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
     Route::post('/add/product',                     [ProductController::class, 'storeProduct'])->name('product.store');
     Route::post('/store-category',                  [ProductController::class, 'storeCategory'])->name('store-category');
     Route::get('/get-product-list-data',            [ProductController::class, 'getProductListData'])->name('get.product.list.data');
-    
+    Route::get('/delete/product/{id}',              [ProductController::class, 'deleteProduct'])->name('delete.product');
+
+
     Route::get('/profile',                          [UserController::class, 'index'])->name('user.profile');
     Route::get('/user-list',                        [UserController::class, 'showUserList'])->name('user.list');
     Route::get('/refferal-list',                    [UserController::class, 'showReffList'])->name('refferal.list');

@@ -131,5 +131,47 @@ $('#product-table').DataTable({
     }
 });
 
+$(document).on('click', '.delete-button', function () {
+    const productId = $(this).data('id'); // Ambil ID dari atribut data-id tombol
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: 'You won\'t be able to revert this!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Kirim permintaan AJAX DELETE
+            $.ajax({
+                url: `/delete/product/${productId}`,
+                type: 'GET',
+                success: function (response) {
+                    // Tampilkan pesan sukses
+                    Swal.fire(
+                        'Deleted!',
+                        response.message,
+                        'success'
+                    ).then(() => {
+                        // Refresh DataTable atau halaman
+                        $('#product-table').DataTable().ajax.reload();
+                    });
+                },
+                error: function (xhr) {
+                    // Tampilkan pesan error jika gagal
+                    Swal.fire(
+                        'Error!',
+                        xhr.responseJSON.message || 'Something went wrong!',
+                        'error'
+                    );
+                }
+            });
+        }
+    });
+});
+
+
 </script>
 @endpush

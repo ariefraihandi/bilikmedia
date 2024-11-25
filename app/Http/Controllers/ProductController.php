@@ -529,4 +529,25 @@ class ProductController extends Controller
     }
          
 
+    public function deleteProduct($id)
+    {
+        // Ambil data produk berdasarkan ID
+        $product = Product::where('id', $id)->first();
+
+        // Jika produk tidak ditemukan, kembalikan respons error
+        if (!$product) {
+            return response()->json(['message' => 'Product not found'], 404);
+        }
+
+        // Hapus data dari tabel product_category_product
+        \DB::table('product_category_product')->where('product_id', $id)->delete();
+
+        // Hapus data dari tabel products
+        $product->delete();
+
+        // Kembalikan respons sukses
+        return response()->json(['message' => 'Product deleted successfully'], 200);
+    }
+
+    
 }
