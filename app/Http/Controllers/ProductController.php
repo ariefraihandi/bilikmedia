@@ -468,49 +468,65 @@ class ProductController extends Controller
             'category' => $category
         ]);
     }
+    
 
     public function getProductListData()
     {
-        $products = Product::with('categories') // Ambil relasi kategori
-        ->orderBy('created_at', 'desc') // Urutkan berdasarkan produk terbaru
-        ->select('products.*'); // Pilih kolom produk
-
-        if (!$products->exists()) {
-            return response()->json([
-                'error' => 'No products found'
-            ]);
+        // Query utama dengan left join ke tabel downloads
+        $products = Product::with('categories')
+            ->leftJoin(DB::raw('(SELECT product_id, COUNT(*) as download_count FROM downloads GROUP BY product_id) as downloads_table'), 'products.id', '=', 'downloads_table.product_id')
+            ->select('products.id', 'products.title as product_title', 'products.image', 'products.url_source', 'products.url_download', 'products.live_preview_url', 'products.slug', 'products.created_at', 'downloads_table.download_count');
+    
+        // Tambahkan sorting dari request DataTable
+        if (request()->has('order')) {
+            $orderColumnIndex = request()->order[0]['column']; // Index kolom yang diminta untuk sorting
+            $orderDirection = request()->order[0]['dir']; // Arah sorting (asc/desc)
+    
+            $orderColumn = request()->columns[$orderColumnIndex]['name']; // Nama kolom dari frontend
+    
+            // Sorting berdasarkan kolom yang diminta
+            if ($orderColumn === 'download_count') {
+                $products = $products->orderBy('download_count', $orderDirection); // Sorting by download count
+            } else {
+                $products = $products->orderBy('products.created_at', $orderDirection); // Sorting by created_at
+            }
+        } else {
+            // Default sorting jika tidak ada permintaan
+            $products = $products->orderBy('products.created_at', 'desc');
         }
-
+    
         return DataTables::of($products)
             ->addColumn('categories', function ($product) {
                 return $product->categories->pluck('name')->implode(', ');
-            })
-            ->addColumn('download_count', function ($product) {
-                // Hitung jumlah unduhan secara manual
-                $downloaded = \DB::table('downloads')
-                    ->where('product_id', $product->id)
-                    ->count();
-    
-                return $downloaded; // Tampilkan jumlah unduhan
             })
             ->addColumn('detail', function ($product) {
                 $urlSource = $product->url_source
                     ? '<a href="' . $product->url_source . '" target="_blank" class="btn btn-primary btn-sm">Source</a>'
                     : '<button class="btn btn-secondary btn-sm" disabled>Source</button>';
-
+    
                 $urlDownload = $product->url_download
                     ? '<a href="' . $product->url_download . '" target="_blank" class="btn btn-success btn-sm">Download</a>'
                     : '<button class="btn btn-secondary btn-sm" disabled>Download</button>';
-
+    
                 $livePreview = ($product->live_preview_url && $product->url_source !== $product->live_preview_url)
                     ? '<a href="' . $product->live_preview_url . '" target="_blank" class="btn btn-info btn-sm">Preview</a>'
                     : '';
-
+    
                 $viewButton = '<a href="' . route('product.details', ['slug' => $product->slug]) . '" class="btn btn-warning btn-sm">View</a>';
-
+    
                 return '<div class="btn-group" role="group">' . $urlSource . $urlDownload . $livePreview . $viewButton . '</div>';
             })
-            ->rawColumns(['detail'])
+            ->addColumn('edit_delete', function ($product) {
+                return '
+                    <div class="btn-group" role="group">
+                        <button class="btn btn-primary btn-sm edit-button" data-id="' . $product->id . '">Edit</button>
+                        <button class="btn btn-danger btn-sm delete-button" data-id="' . $product->id . '">Delete</button>
+                    </div>
+                ';
+            })
+            ->rawColumns(['detail', 'edit_delete']) // Aktifkan HTML rendering
             ->make(true);
     }
+         
+
 }
