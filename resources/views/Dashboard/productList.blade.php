@@ -72,6 +72,7 @@ $('#product-table').DataTable({
         {
             data: 'product_title',
             name: 'product_title',
+            orderable: false,
             render: function (data, type, row) {
                 const image = row.image ? '/uploads/products/' + row.image : 'default-avatar.png';
                 const categories = row.categories;
@@ -87,7 +88,11 @@ $('#product-table').DataTable({
                 `;
             }
         },
-        { data: 'detail', name: 'detail' },
+        {   
+            data: 'detail', 
+            name: 'detail',  
+            orderable: false, 
+        },
         {
             data: 'download_count',
             name: 'download_count',
