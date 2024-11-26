@@ -18,7 +18,16 @@
     .bg-warning {
         background-color: yellow !important;
     }
+    div.dataTables_filter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px; /* Jarak antara elemen */
+    }
 
+    div.dataTables_filter label {
+        margin-bottom: 0; /* Hilangkan margin bawah default label */
+    }
 </style>
 @endpush
 
@@ -30,6 +39,9 @@
     </div>
     <div class="dashboard-body__item-wrapper">
         <div class="dashboard-body__item">
+            <!-- Filter berdasarkan kategori -->
+            
+    
             <div class="table-responsive">
                 <table id="product-table" class="table text-body mt--24" style="width:100%">  
                     <thead>
@@ -58,7 +70,32 @@ $('#product-table').DataTable({
     serverSide: true,
     ajax: {
         url: '{{ route("get.product.list.data") }}',
-        type: 'GET'
+        type: 'GET',
+        data: function (d) {
+            // Kirimkan parameter kategori yang dipilih
+            d.category_id = $('#category-filter').val();
+        }
+    },
+    dom: '<"row"<"col-sm-5"l><"col-sm-7"f>>rt<"row"<"col-sm-6"i><"col-sm-6"p>>',
+    initComplete: function () {
+        // Tambahkan dropdown filter kategori sebelum elemen pencarian default
+        const categoryFilter = `
+            <label for="category-filter" style="margin-right: 10px;">Filter by Category:</label>
+            <select id="category-filter" class="form-control form-control-sm" style="width: 200px; display: inline-block; margin-right: 10px;">
+                <option value="">All Categories</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        `;
+
+        // Sisipkan dropdown filter kategori sebelum elemen pencarian
+        $("div.dataTables_filter").prepend(categoryFilter);
+
+        // Event listener untuk dropdown kategori
+        $('#category-filter').on('change', function () {
+            $('#product-table').DataTable().ajax.reload(); // Reload DataTable dengan filter kategori
+        });
     },
     columns: [
         {
@@ -73,6 +110,7 @@ $('#product-table').DataTable({
             data: 'product_title',
             name: 'product_title',
             orderable: false,
+            searchable: true, // Kolom ini dapat dicari
             render: function (data, type, row) {
                 const image = row.image ? '/uploads/products/' + row.image : 'default-avatar.png';
                 const categories = row.categories;
@@ -88,10 +126,10 @@ $('#product-table').DataTable({
                 `;
             }
         },
-        {   
-            data: 'detail', 
-            name: 'detail',  
-            orderable: false, 
+        {
+            data: 'detail',
+            name: 'detail',
+            orderable: false,
         },
         {
             data: 'download_count',
@@ -106,7 +144,7 @@ $('#product-table').DataTable({
             searchable: false
         }
     ],
-    order: [[0, 'desc']], // Default sorting berdasarkan waktu created_at
+    order: [[0, 'desc']],
     language: {
         emptyTable: "No products available"
     },
@@ -134,7 +172,9 @@ $('#product-table').DataTable({
             }
         });
     }
+
 });
+
 
 $(document).on('click', '.delete-button', function () {
     const productId = $(this).data('id'); // Ambil ID dari atribut data-id tombol
