@@ -52,6 +52,18 @@
 
 @stack('footer-script')
 
+<script>
+    $(document).ready(function() {
+        // Menampilkan popup secara otomatis saat halaman dibuka
+        $('#popup-ad').fadeIn();
+
+        // Menutup popup saat ikon "X" diklik
+        $('#close-popup').click(function() {
+            $('#popup-ad').fadeOut();
+        });
+    });
+</script>
+
 {{-- <script>
     const recentRedemptions = [
         { item_name: "Envato Downloader", user_name: "A*** L***" },
