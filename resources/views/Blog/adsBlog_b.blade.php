@@ -1,7 +1,7 @@
 @extends('Index.app')
 @push('header-script')   
 {!! $monetagAd->code !!}     
- 
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="86090" async data-cfasync="false"></script>
     <style>
         .ad-banner {
             position: fixed;
