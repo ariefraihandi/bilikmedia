@@ -10,9 +10,9 @@ class HomeController extends Controller
  
     public function index()
     {
-        $metaDescription = "Bilik Media menyediakan jasa digital seperti pembuatan website, download elemen, dan berbagai solusi terbaik untuk bisnis Anda.";
-        $metaKeywords = "Jasa Digital, Pembuatan Website, SEO, Download Elemen, Digital Marketing, Bilik Media";
-        $userDetail = null;
+        $metaDescription    = "Bilik Media provides digital services such as website development, element downloads, and various best solutions for your business.";
+        $metaKeywords       = "Digital Services, Website Development, SEO, Element Downloads, Digital Marketing, Bilik Media";
+        $userDetail         = null;
 
         if (Auth::check()) {
             $user = Auth::user();
@@ -34,13 +34,12 @@ class HomeController extends Controller
 
         // Data yang dikirim ke view
         $data = [
-            'title' => 'Bilik Media',
-            'description' => $metaDescription,
-            'keywords' => $metaKeywords,
-            'userDetail' => $userDetail,
+            'title'         => 'Bilik Media',
+            'description'   => $metaDescription,
+            'keywords'      => $metaKeywords,
+            'userDetail'    => $userDetail,
         ];
-
-        // Mengarahkan ke view 'Index.index'
+    
         return view('Index.index', $data);
     }
 

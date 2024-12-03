@@ -52,7 +52,7 @@
 
 @stack('footer-script')
 
-<script>
+{{-- <script>
     $(document).ready(function() {
         // Menampilkan popup secara otomatis saat halaman dibuka
         $('#popup-ad').fadeIn();
@@ -62,7 +62,7 @@
             $('#popup-ad').fadeOut();
         });
     });
-</script>
+</script> --}}
 
 {{-- <script>
     const recentRedemptions = [

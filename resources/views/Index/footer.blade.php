@@ -104,7 +104,7 @@
     </div>
 </footer>
 
-<div id="popup-ad" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999; width: 80%; max-width: 600px;">
+{{-- <div id="popup-ad" style="display:none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); z-index: 9999; width: 80%; max-width: 600px;">
     
     <!-- Ikon X untuk menutup popup -->
     <span id="close-popup" style="position: absolute; top: 10px; right: 10px; font-size: 30px; color: #333; cursor: pointer;">&times;</span>
@@ -113,7 +113,7 @@
     <a href="https://bilikshopping.gumroad.com/l/pjssu" target="_blank">
         <img src="{{ asset('assets/images/ads.png') }}" alt="Advertisement" style="max-width: 100%; height: auto;">
     </a>
-</div>
+</div> --}}
 
 <!-- bottom Footer -->
 <div class="bottom-footer">

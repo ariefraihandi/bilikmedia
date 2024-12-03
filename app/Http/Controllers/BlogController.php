@@ -16,6 +16,22 @@ use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
+    public function showPremiumThemes()
+    {
+        // Meta Description dan Meta Keywords yang kuat
+        $metaDescription = "Bilik Media offers premium WordPress themes that are fully responsive, SEO optimized, and easy to customize. Perfect for businesses, blogs, and e-commerce sites.";
+        $metaKeywords = "Premium WordPress Themes, Responsive Themes, SEO Optimized WordPress, WordPress Themes for Business, WordPress Themes for Blogs, E-commerce WordPress Themes";
+        $metaTitle = "Premium WordPress Themes - Fully Responsive & SEO Optimized for Business & Blogs";
+
+        $data = [
+            'title' => $metaTitle,
+            'description' => $metaDescription,
+            'keywords' => $metaKeywords,
+        ];
+        // Return the view with meta data
+        return view('Blog.premium-themes', $data);
+    }
+
     public function showWebsiteTemplate()
     {
         $token = request()->input('data');         

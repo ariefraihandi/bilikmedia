@@ -32,6 +32,8 @@ Route::get('/robots.txt', function () {
 
 Route::get('/blog/website-template',        [BlogController::class, 'showWebsiteTemplate'])->name('blog.websiteTemp');
 Route::get('/blog/adobe-photoshop',         [BlogController::class, 'showAdobePhotoshop'])->name('blog.adobePhotoshop');
+Route::get('/premium-wordpress-themes',     [BlogController::class, 'showPremiumThemes'])->name('blog.premium-themes');
+
 
 Route::get('/',                             [HomeController::class, 'index'])->name('index');
 
