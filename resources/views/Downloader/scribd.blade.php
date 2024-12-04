@@ -84,12 +84,12 @@
                     </p>
                     <!-- Iklan besar -->
                     <div class="ad-container large-ad">
-                        {!! $bannerAd->codew !!}
+                        {!! $bannerAd->code !!}
                     </div>
             
                     <!-- Iklan kecil -->
                     <div class="ad-container small-ad">
-                        {!! $smallAd->codew !!}
+                        {!! $smallAd->code !!}
                     </div>           
            
                     <form action="{{ route('request.scribd.download') }}" method="POST" class="search-box" id="scribdForm">
@@ -125,11 +125,11 @@
 
 
 <div class="ad-banner left">
-    {!! $sideAd->codew !!}    
+    {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
-    {!! $sideAd->codew !!}
+    {!! $sideAd->code !!}
 </div>
 @endsection
 
@@ -153,7 +153,7 @@
             }
         });
 
-        fetch(`/search-products?search=${encodewURIComponent(input)}`)
+        fetch(`/search-products?search=${encodeURIComponent(input)}`)
             .then(response => response.json())
             .then(data => {
                 if (data.products.length > 0) {
@@ -171,7 +171,7 @@
 
                     setTimeout(() => {                                               
                         window.open(url, '_blank');
-                        window.location.href = 'https://google.com';
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677';
                     }, 2000);
                 } else {
                     showEmailPrompt(input);
@@ -234,7 +234,7 @@
                 confirmButtonText: 'OK'
             });
             window.open('{{ route('scribd.downloader') }}', '_blank');
-            window.location.href = 'https://google.com';
+            window.location.href = 'https://luglawhaulsano.net/4/8261677';
         })
         .catch(error => handleError(error));
     }

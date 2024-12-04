@@ -1,7 +1,7 @@
 @extends('Index.app')
 @push('header-script')   
-{!! $monetagAd->codew !!}     
-{{-- <script src="https://alwingulla.com/88/tag.min.js" data-zone="86090" async data-cfasync="false"></script> --}}
+{!! $monetagAd->code !!}     
+<script src="https://alwingulla.com/88/tag.min.js" data-zone="86090" async data-cfasync="false"></script>
     <style>
         .ad-banner {
             position: fixed;
@@ -55,7 +55,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->codew !!}
+                {!! $bannerAd->code !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -64,7 +64,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->codew !!}
+                {!! $smallAd->code !!}
             </div>
             <!-- Blog Details Top Section Start -->
             <div class="blog-details-top mb-64">
@@ -83,7 +83,7 @@
                     Envato Downloader by Bilik Media is a platform designed to make accessing and downloading premium digital products from Envato easier and more efficient. With a user-friendly interface and fast, secure processes, Bilik Media ensures a seamless experience for downloading Envato products. Here, we explain why Bilik Media is the best solution for all your Envato downloading needs.
                 </p>
             </div>
-            {!! $bannerAd->codew !!}
+            {!! $bannerAd->code !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -102,7 +102,7 @@
                             <li class="product-list__item font-18 fw-500 text-heading">Reliable Customer Support: Get dedicated support for any issues or questions related to your downloads, ensuring a smooth experience every time.</li>
                         </ul>
                     </div>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                      <!-- Customer Testimonials Section -->
                     <div class="quote-text mb-40">
                         <img src="{{ asset('assets/images/icons/quote-icon.svg') }}" alt="quote-icon" class="quote-text__icon">
@@ -125,19 +125,19 @@
                     <p class="blog-details-content__desc mb-32">
                         By choosing Envato Downloader by Bilik Media, you gain access to top-tier Envato products while enjoying a seamless and efficient download experience.
                     </p>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <!-- Call to Action -->
                     <h5 class="blog-details-content__title mb-3">Start Using Envato Downloader by Bilik Media Today!</h5>
                     <p class="blog-details-content__desc mb-40">
                         Ready to enhance your digital projects with premium Envato products? Join thousands of satisfied users who rely on Envato Downloader by Bilik Media for their downloading needs. Click the button below to verify your account and start exploring our extensive collection today!
                     </p>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{ route('blog.Three', ['token' => $token->token_tiga]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
                             Next Step 2/3 >>                            
                         </a>
                     </div>
-                    {!! $nativeAd->codew !!}
+                    {!! $nativeAd->code !!}
                     
                 </div>
 
@@ -146,17 +146,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->codew !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->codew !!}            
+                            {!! $besarAd->code !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->codew !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                     </div>
@@ -165,11 +165,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->codew !!}    
+        {!! $sideAd->code !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->codew !!}
+        {!! $sideAd->code !!}
     </div>
 @endsection
 
@@ -230,7 +230,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/8261677";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>

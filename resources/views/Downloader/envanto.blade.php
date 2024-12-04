@@ -182,7 +182,7 @@
                         window.open(url, '_blank');
 
                         // Mengarahkan halaman saat ini ke URL lain (reload halaman)
-                        window.location.href = 'https://google.com'; // Ganti dengan URL yang Anda inginkan
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Ganti dengan URL yang Anda inginkan
                     }, 2000);
                 } else {
                     if (isUserLoggedIn) {                        
@@ -253,7 +253,7 @@
 
             window.open('{{ route('envanto.downloader') }}', '_blank');
 
-            window.location.href = 'https://google.com';
+            window.location.href = 'https://luglawhaulsano.net/4/8261677';
         })
         .catch(error => handleError(error));
     }

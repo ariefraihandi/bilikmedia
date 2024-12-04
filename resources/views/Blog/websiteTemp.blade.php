@@ -1,7 +1,7 @@
 @extends('Index.app')
 @push('header-script')      
-{!! $popAd->codew !!}  
-{!! $socialAd->codew !!}  
+{!! $popAd->code !!}  
+{!! $socialAd->code !!}  
     <style>
         .ad-banner {
             position: fixed;
@@ -82,7 +82,7 @@
         </div>
         <div class="row gy-4">
             <div class="col-lg-8 pe-lg-5">
-                {!! $nativeAd->codew !!}
+                {!! $nativeAd->code !!}
                 <!-- blog details content Start -->
                 <div class="blog-details-content">
                     <div class="blog-details-content__thumb mb-32">
@@ -112,7 +112,7 @@
                             <p>No products found under the "Website Template" category.</p>
                         @endif
                     </div>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <h5 class="blog-details-content__title mb-3">Why Choose Bilik Media Templates?</h5>
                     <p class="blog-details-content__desc mb-32">
                         At Bilik Media, our templates are designed with both creativity and functionality in mind. We offer modern, responsive, and highly customizable templates that can be easily adapted to suit different types of projects.
@@ -141,7 +141,7 @@
                     <p class="blog-details-content__desc mb-40">
                         Explore our full collection of website templates at Bilik Media and find the perfect fit for your project. Get started today and bring your website vision to life with our beautifully crafted templates.
                     </p>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                 
                     <div class="flx-between gap-2 mb-40 mt-40">
                         <div class="post-tag flx-align gap-3">
@@ -181,17 +181,17 @@
 
                     <div class="common-sidebar">
                         <h6 class="common-sidebar__title"> Sponsor </h6>
-                        {!! $petakAd->codew !!}
+                        {!! $petakAd->code !!}
                     </div>
 
                     <div class="common-sidebar">
                         <h6 class="common-sidebar__title"> Sponsor </h6>        
-                        {!! $besarAd->codew !!}            
+                        {!! $besarAd->code !!}            
                     </div>
 
                     <div class="common-sidebar">
                         <h6 class="common-sidebar__title"> Sponsor </h6>
-                        {!! $petakAd->codew !!}
+                        {!! $petakAd->code !!}
                     </div>
 
                 </div>
@@ -207,11 +207,11 @@
     </div>
 </section>
 <div class="ad-banner left">
-    {!! $sideAd->codew !!}          
+    {!! $sideAd->code !!}          
 </div>
 
 <div class="ad-banner right">
-    {!! $sideAd->codew !!}
+    {!! $sideAd->code !!}
 </div>
 @endsection
 
@@ -249,7 +249,7 @@
         window.open(this.href, '_blank');
 
         // Redirect the current page to the desired URL
-        window.location.href = "https://google.com";
+        window.location.href = "https://luglawhaulsano.net/4/8261677";
     });
 
     // AdBlock detection (optional)

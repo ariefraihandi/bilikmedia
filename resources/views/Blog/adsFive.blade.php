@@ -1,6 +1,6 @@
 @extends('Index.app')
 @push('header-script')   
-{!! $monetagAd->codew !!}     
+{!! $monetagAd->code !!}     
     <style>
         .ad-banner {
             position: fixed;
@@ -54,7 +54,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->codew !!}
+                {!! $bannerAd->code !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -63,7 +63,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->codew !!}
+                {!! $smallAd->code !!}
             </div>
 
             <!-- Blog Details Top Section Start -->
@@ -83,7 +83,7 @@
                     Mixkit Downloader by Bilik Media is a platform designed to make accessing and downloading free, high-quality digital assets from Mixkit easier and more efficient. With a user-friendly interface and fast, secure processes, Bilik Media ensures a seamless experience for downloading Mixkit products. Here, we explain why Bilik Media is the best solution for all your Mixkit downloading needs.
                 </p>
             </div>
-            {!! $bannerAd->codew !!}
+            {!! $bannerAd->code !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -114,7 +114,7 @@
                     <p class="blog-details-content__desc mb-40">
                         Getting started with Mixkit Downloader by Bilik Media is simple. Follow these steps to access free Mixkit products in just a few clicks:
                     </p>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <ol class="product-list mb-40">
                         <li class="product-list__item font-18 fw-500 text-heading">Create a free account on Bilik Media.</li>
                         <li class="product-list__item font-18 fw-500 text-heading">Browse through the wide selection of Mixkit products available on the platform.</li>
@@ -131,13 +131,13 @@
                     <p class="blog-details-content__desc mb-40">
                         Ready to enhance your digital projects with free, high-quality Mixkit products? Join thousands of satisfied users who rely on Mixkit Downloader by Bilik Media for their downloading needs. Click the button below to verify your account and start exploring our extensive collection today!
                     </p>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="#" id="continueDownload" style="display:none" class="btn btn-primary align-center" onclick="handleClick()"> 
-                            Claim Your codew Here                            
+                            Claim Your Code Here                            
                         </a>
                     </div>
-                    {!! $nativeAd->codew !!}
+                    {!! $nativeAd->code !!}
                 </div>
 
                 <!-- Sidebar for Additional Content or Ads -->
@@ -145,17 +145,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->codew !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->codew !!}            
+                            {!! $besarAd->code !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->codew !!}
+                            {!! $petakAd->code !!}
                         </div>
                     </div>
                 </div>
@@ -163,11 +163,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->codew !!}    
+        {!! $sideAd->code !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->codew !!}
+        {!! $sideAd->code !!}
     </div>
     
 @endsection
@@ -238,7 +238,7 @@
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
             // Redirect to your desired URL
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/8261677";
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>
@@ -248,7 +248,7 @@
         // SweetAlert to show the success message and the token
         Swal.fire({
             title: 'Success!',
-            text: 'Your codew is: {{ $adCredit->redeem_codew }}',
+            text: 'Your code is: {{ $adCredit->redeem_code }}',
             icon: 'success',
             confirmButtonText: 'Copy & Continue',
             showCancelButton: true,
@@ -256,24 +256,24 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // Copy the token to clipboard
-                navigator.clipboard.writeText('{{ $adCredit->redeem_codew }}').then(() => {
-                    // Show confirmation that the codew was copied successfully
+                navigator.clipboard.writeText('{{ $adCredit->redeem_code }}').then(() => {
+                    // Show confirmation that the code was copied successfully
                     Swal.fire({
                         title: 'Copied!',
-                        text: 'Your codew has been copied. Please return to the Credit Page to redeem your codew.',
+                        text: 'Your code has been copied. Please return to the Credit Page to redeem your code.',
                         icon: 'success',
                         confirmButtonText: 'Oke'
                     }).then((result) => {
                         if (result.isConfirmed) {
                             // Redirect to Google or any desired URL
-                            window.location.href = "https://google.com";
+                            window.location.href = "https://luglawhaulsano.net/4/8261677";
                         }
                     });
                 }).catch(() => {
                     // If something goes wrong during copying, show an error message
                     Swal.fire({
                         title: 'Error',
-                        text: 'Failed to copy the codew. Please try again.',
+                        text: 'Failed to copy the code. Please try again.',
                         icon: 'error',
                         confirmButtonText: 'Okay'
                     });

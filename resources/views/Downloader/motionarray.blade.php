@@ -85,12 +85,12 @@
             
                     <!-- Iklan besar -->
                     <div class="ad-container large-ad">
-                        {!! $bannerAd->codew !!}
+                        {!! $bannerAd->code !!}
                     </div>
             
                     <!-- Iklan kecil -->
                     <div class="ad-container small-ad">
-                        {!! $smallAd->codew !!}
+                        {!! $smallAd->code !!}
                     </div>           
             
                     <!-- Form untuk mengunduh file Motion Array -->
@@ -128,11 +128,11 @@
 
 
 <div class="ad-banner left">
-    {!! $sideAd->codew !!}    
+    {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
-    {!! $sideAd->codew !!}
+    {!! $sideAd->code !!}
 </div>
 @endsection
 
@@ -160,7 +160,7 @@
             }
         });
 
-        fetch(`/search-products?search=${encodewURIComponent(input)}`)
+        fetch(`/search-products?search=${encodeURIComponent(input)}`)
             .then(response => response.json())
             .then(data => {
                 if (data.products.length > 0) {               
@@ -184,7 +184,7 @@
                         window.open(url, '_blank');
 
                         // Mengarahkan halaman saat ini ke URL lain (reload halaman)
-                        window.location.href = 'https://google.com'; // Ganti dengan URL yang Anda inginkan
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Ganti dengan URL yang Anda inginkan
                     }, 2000);
                 } else {
                     if (isUserLoggedIn) {                        
@@ -255,7 +255,7 @@
 
             window.open('{{ route('motionarray.downloader') }}', '_blank');
 
-            window.location.href = 'https://google.com';
+            window.location.href = 'https://luglawhaulsano.net/4/8261677';
         })
         .catch(error => handleError(error));
     }

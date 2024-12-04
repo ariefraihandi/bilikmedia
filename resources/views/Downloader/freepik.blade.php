@@ -82,11 +82,11 @@
                         Get Freepik files instantly with our free downloader. No hassle, just fast and easy downloads!
                     </p>
                     <div class="ad-container large-ad">
-                        {!! $bannerAd->codew !!}
+                        {!! $bannerAd->code !!}
                     </div>
             
                     <div class="ad-container small-ad">
-                        {!! $smallAd->codew !!}
+                        {!! $smallAd->code !!}
                     </div>           
                 
                     <form action="{{ route('request.download.freepik') }}" method="POST" class="search-box" id="envantoForm">
@@ -120,11 +120,11 @@
 </section>
 
 <div class="ad-banner left">
-    {!! $sideAd->codew !!}    
+    {!! $sideAd->code !!}    
 </div>
 
 <div class="ad-banner right">
-    {!! $sideAd->codew !!}
+    {!! $sideAd->code !!}
 </div>
 @endsection
 
@@ -151,7 +151,7 @@
             }
         });
 
-        fetch(`/search-products?search=${encodewURIComponent(input)}`)
+        fetch(`/search-products?search=${encodeURIComponent(input)}`)
             .then(response => response.json())
             .then(data => {
                 if (data.products.length > 0) {
@@ -177,7 +177,7 @@
                         // Membuka URL di tab baru
                         window.open(url, '_blank');
 
-                        window.location.href = 'https://google.com';
+                        window.location.href = 'https://luglawhaulsano.net/4/8261677';
                     }, 2000);
                 } else {
                     if (isUserLoggedIn) {                        
@@ -248,7 +248,7 @@
 
             window.open('{{ route('freepik.downloader') }}', '_blank');
 
-            window.location.href = 'https://google.com';
+            window.location.href = 'https://luglawhaulsano.net/4/8261677';
             // window.location.href = 'https://google.com';
         })
         .catch(error => handleError(error));

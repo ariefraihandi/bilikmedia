@@ -1,6 +1,6 @@
 @extends('Index.app')
 @push('header-script')  
-{!! $monetagAd->codew !!}      
+{!! $monetagAd->code !!}      
     <style>
         .ad-banner {
             position: fixed;
@@ -54,7 +54,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->codew !!}
+                {!! $bannerAd->code !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -63,7 +63,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->codew !!}
+                {!! $smallAd->code !!}
             </div>
 
             <!-- Blog Details Top Section Start -->
@@ -83,7 +83,7 @@
                     Freepik Downloader by Bilik Media is a platform designed to make accessing and downloading premium digital products from Freepik easier and more efficient. With a user-friendly interface and fast, secure processes, Bilik Media ensures a seamless experience for downloading Freepik products. Here, we explain why Bilik Media is the best solution for all your Freepik downloading needs.
                 </p>
             </div>
-            {!! $bannerAd->codew !!}
+            {!! $bannerAd->code !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -109,7 +109,7 @@
                         <p class="quote-text__desc mb-3 font-20 fw-500 text-heading">“Freepik Downloader by Bilik Media has transformed the way I access digital assets. It's fast, secure, and incredibly easy to use. I can always count on it for my design projects!”</p>
                         <h6 class="quote-text__name">Bilik Media</h6>
                     </div>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <h5 class="blog-details-content__title mb-3">How to Get Started with Freepik Downloader by Bilik Media</h5>
                     <p class="blog-details-content__desc mb-40">
                         Getting started with Freepik Downloader by Bilik Media is simple. Follow these steps to access premium Freepik products in just a few clicks:
@@ -131,13 +131,13 @@
                     <p class="blog-details-content__desc mb-40">
                         Ready to enhance your digital projects with premium Freepik products? Join thousands of satisfied users who rely on Freepik Downloader by Bilik Media for their downloading needs. Click the button below to verify your account and start exploring our extensive collection today!
                     </p>
-                    {!! $bannerAd->codew !!}
+                    {!! $bannerAd->code !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{ route('blog.adsFive', ['token' => $adCredit->token_5]) }}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
                             Next Step 4/5 >>                            
                         </a>
                     </div>
-                    {!! $nativeAd->codew !!}
+                    {!! $nativeAd->code !!}
                     
                 </div>
 
@@ -146,17 +146,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->codew !!}
+                            {!! $petakAd->code !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->codew !!}            
+                            {!! $besarAd->code !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->codew !!}
+                            {!! $petakAd->code !!}
                         </div>
                     </div>
                 </div>
@@ -164,11 +164,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->codew !!}    
+        {!! $sideAd->code !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->codew !!}
+        {!! $sideAd->code !!}
     </div>
 @endsection
 
@@ -229,7 +229,7 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.location.href = "https://google.com";
+            window.location.href = "https://luglawhaulsano.net/4/8261677";
         }, 500); 
     }
 </script>
