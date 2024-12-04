@@ -78,11 +78,11 @@
                         Author: <a href="{{ $product->author_url }}" target="_blank">{{ $product->author }}</a>
                     </p>
                     <div class="ad-container large-ad">
-                        {!! $bannerAd->code !!}
+                        {!! $bannerAd->codew !!}
                     </div>
             
                     <div class="ad-container small-ad">
-                        {!! $smallAd->code !!}
+                        {!! $smallAd->codew !!}
                     </div>           
             
                     <div class="cart-payment-card">
@@ -97,7 +97,7 @@
                                     Free Download
                                 </button>         
                                 <div class="ad-container large-ad">
-                                    {!! $bannerAd->code !!}
+                                    {!! $bannerAd->codew !!}
                                 </div>                  
                                 <button id="premiumDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mt-3">
                                     Premium Download<br>(Use 2 Credits)
@@ -107,12 +107,12 @@
                     </div>
                     <br>
                     <div class="ad-container large-ad">
-                        {!! $bannerAd->code !!}
+                        {!! $bannerAd->codew !!}
                     </div>
             
                     <!-- Iklan kecil untuk mobile -->
                     <div class="ad-container small-ad">
-                        {!! $smallAd->code !!}
+                        {!! $smallAd->codew !!}
                     </div>
                 </div>
             </div>
@@ -121,11 +121,11 @@
     </div>   
 </section>
 <div class="ad-banner left">
-    {!! $sideAd->code !!}    
+    {!! $sideAd->codew !!}    
 </div>
 
 <div class="ad-banner right">
-    {!! $sideAd->code !!}
+    {!! $sideAd->codew !!}
 </div>
 
 <div class="modal fade" id="loginModal" data-bs-backdrop="false" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -439,7 +439,7 @@
                         // Gantikan placeholder ':token' dengan token_satu
                         const blogUrl = blogRoute.replace(':token', data.token_satu);
                         newTab.location.href = blogUrl; // Arahkan tab baru
-                        window.location.href = 'https://luglawhaulsano.net/4/8261677'; // Arahkan halaman dasar
+                        window.location.href = 'https://google.com'; // Arahkan halaman dasar
                     })
                     .catch(error => {
                         console.error('Error:', error);
@@ -472,7 +472,7 @@
       }).then((result) => {
         if (result.isConfirmed) {
                 // Buka link iklan di tab baru
-                window.open('https://chikraighotoops.com/4/8261677', '_blank'); // Ganti 'https://example.com' dengan URL iklan Anda
+                window.open('https://google.com', '_blank'); // Ganti 'https://example.com' dengan URL iklan Anda
             }
       });
   });

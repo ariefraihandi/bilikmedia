@@ -1,7 +1,7 @@
 @extends('Index.app')
 @push('header-script')   
-{!! $monetagAd->code !!}     
-<script src="https://alwingulla.com/88/tag.min.js" data-zone="86090" async data-cfasync="false"></script>
+{!! $monetagAd->codew !!}     
+{{-- <script src="https://alwingulla.com/88/tag.min.js" data-zone="86090" async data-cfasync="false"></script> --}}
     <style>
         .ad-banner {
             position: fixed;
@@ -55,7 +55,7 @@
     <section class="blog-details padding-y-120 position-relative overflow-hidden">
         <div class="container container-two">
             <div class="d-flex justify-content-center">
-                {!! $bannerAd->code !!}
+                {!! $bannerAd->codew !!}
             </div>
             <div class="d-flex justify-content-center">
                 <a href="#" id="verifydownload" class="btn btn-main d-inline-flex align-items-center gap-2 pill px-sm-5 justify-content-center">
@@ -64,7 +64,7 @@
                 </a>
             </div>
             <div class="d-flex justify-content-center mb-5">
-                {!! $smallAd->code !!}
+                {!! $smallAd->codew !!}
             </div>    
             
 
@@ -85,7 +85,7 @@
                     Joining Bilik Media is a step towards unlocking exclusive access to premium digital content, valuable tools, and a supportive community. Whether you're a designer, developer, or a digital content creator, Bilik Media offers a variety of benefits that cater to your professional needs.
                 </p>
             </div>
-            {!! $bannerAd->code !!}
+            {!! $bannerAd->codew !!}
             <div class="row gy-4">
                 <div class="col-lg-8 pe-lg-5">
                     <!-- Benefits Section -->
@@ -103,7 +103,7 @@
                             <li class="product-list__item font-18 fw-500 text-heading">Start Exploring: Once verified, you can start browsing through the extensive selection of premium digital assets and tools.</li>                            
                         </ul>
                     </div>
-                    {!! $bannerAd->code !!}
+                    {!! $bannerAd->codew !!}
 
                     <h5 class="blog-details-content__title mb-3">Benefits of Joining Bilik Media</h5>
                     <p class="blog-details-content__desc mb-40">
@@ -134,13 +134,13 @@
                     <p class="blog-details-content__desc mb-40">
                         With all these benefits and more, Bilik Media is the ideal platform for professionals looking to streamline their workflow and access high-quality digital products. Becoming a member opens up opportunities to take advantage of exclusive content, offers, and top-tier customer support. Don’t miss out—join today!
                     </p>
-                    {!! $bannerAd->code !!}
+                    {!! $bannerAd->codew !!}
                     <div class="d-flex justify-content-center mb-4">
                         <a href="{{$urlDownload}}" id="continueDownload" style="display:none" class="btn btn-primary align-center" target="_blank" onclick="handleClick()"> 
                            Download Link Ready                          
                         </a>
                     </div>
-                    {!! $nativeAd->code !!}
+                    {!! $nativeAd->codew !!}
                 </div>
 
                 <!-- Sidebar for Additional Content or Ads -->
@@ -148,17 +148,17 @@
                     <div class="common-sidebar-wrapper">
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->code !!}
+                            {!! $petakAd->codew !!}
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>        
-                            {!! $besarAd->code !!}            
+                            {!! $besarAd->codew !!}            
                         </div>
 
                         <div class="common-sidebar">
                             <h6 class="common-sidebar__title"> Sponsor </h6>
-                            {!! $petakAd->code !!}
+                            {!! $petakAd->codew !!}
                         </div>
                     </div>
                 </div>
@@ -166,11 +166,11 @@
         </div>
     </section>
     <div class="ad-banner left">
-        {!! $sideAd->code !!}    
+        {!! $sideAd->codew !!}    
     </div>
     
     <div class="ad-banner right">
-        {!! $sideAd->code !!}
+        {!! $sideAd->codew !!}
     </div>
 @endsection
 
@@ -231,9 +231,9 @@
     function handleClick() {
         // Beri waktu agar tab baru dibuka sebelum mengarahkan halaman dasar
         setTimeout(function() {
-            window.open('https://whomeenoaglauns.com/4/8261677', '_blank');
-                            window.open('https://whomeenoaglauns.com/4/8528364', '_blank');
-                            window.location.href = 'https://whomeenoaglauns.com/4/8528374';
+            window.open('https://google.com', '_blank');
+                            window.open('https://google.com', '_blank');
+                            window.location.href = 'https://google.com';
         }, 500); // Tunggu setengah detik sebelum mengarahkan halaman dasar
     }
 </script>

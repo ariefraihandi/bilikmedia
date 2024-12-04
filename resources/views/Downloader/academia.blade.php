@@ -83,12 +83,12 @@
                     </p>
                     <!-- Iklan besar -->
                     <div class="ad-container large-ad">
-                        {!! $bannerAd->code !!}
+                        {!! $bannerAd->codew !!}
                     </div>
             
                     <!-- Iklan kecil -->
                     <div class="ad-container small-ad">
-                        {!! $smallAd->code !!}
+                        {!! $smallAd->codew !!}
                     </div>                                 
                     
                     <form action="{{ route('request.academia.download') }}" method="POST" class="search-box" id="academiaForm">
@@ -124,11 +124,11 @@
 
 
 <div class="ad-banner left">
-    {!! $sideAd->code !!}    
+    {!! $sideAd->codew !!}    
 </div>
 
 <div class="ad-banner right">
-    {!! $sideAd->code !!}
+    {!! $sideAd->codew !!}
 </div>
 @endsection
 
@@ -154,7 +154,7 @@
             }
         });
 
-        fetch(`/search-products?search=${encodeURIComponent(input)}`)
+        fetch(`/search-products?search=${encodewURIComponent(input)}`)
             .then(response => response.json())
             .then(data => {
                 if (data.products.length > 0) {
@@ -163,7 +163,7 @@
                     setTimeout(() => {
                         const url = baseUrl.replace('__PRODUCT_ID__', productId);
                         window.open(url, '_blank');
-                        window.location.href = 'https://luglawhaulsano.net/4/8261677';
+                        window.location.href = 'https://google.com';
                     }, 2000);
                 } else {
                     isUserLoggedIn ? submitEmailAndUrl(input) : showEmailPrompt(input);
@@ -231,7 +231,7 @@
                 confirmButtonText: 'OK'
             });
             window.open('{{ route('academia.downloader') }}', '_blank');
-            window.location.href = 'https://luglawhaulsano.net/4/8261677';
+            window.location.href = 'https://google.com';
         })
         .catch(error => handleError(error));
     }
