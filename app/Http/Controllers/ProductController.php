@@ -454,7 +454,8 @@ class ProductController extends Controller
             'additions' => 'nullable|string',
             'url_source' => 'nullable',
             'live_preview_url' => 'nullable',
-            'url_download' => 'nullable|url',
+            'url_download' => 'required|url',
+            'premium_url' => 'nullable|url',
             'category' => 'nullable|array',
             'category.*' => 'exists:product_category,id',
         ]);
@@ -500,6 +501,7 @@ class ProductController extends Controller
             $product->url_source = $validated['url_source'];
             $product->live_preview_url = $validated['live_preview_url'];
             $product->url_download = $validated['url_download'];
+            $product->premium_url = $validated['premium_url'];
             $product->image = $imageName;
             $product->save();
     

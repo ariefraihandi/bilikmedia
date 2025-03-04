@@ -131,6 +131,12 @@
                                     </div>
                                     <div class="row gy-3">
                                         <div class="col-sm-12">
+                                            <label for="premium_url" class="form-label">Premium Url</label>
+                                            <input type="text" class="common-input common-input--md border--color-dark bg--white" id="premium_url" name="premium_url">
+                                        </div>
+                                    </div>
+                                    <div class="row gy-3">
+                                        <div class="col-sm-12">
                                             <label for="live_preview_url" class="form-label">Url Preview</label>
                                             <input type="text" class="common-input common-input--md border--color-dark bg--white" id="live_preview_url" name="live_preview_url">
                                         </div>

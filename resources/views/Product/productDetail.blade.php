@@ -226,37 +226,25 @@
                 showCancelButton: false, // Hanya ada tombol Refresh
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.reload(); // Muat ulang halaman
+                    window.location.reload(); // Muat ulang halaman jika user menekan Refresh
                 }
             });
         }
 
-        // Elemen bait untuk mendeteksi AdBlock
-        const bait = document.createElement("div");
-        bait.innerHTML = "&nbsp;";
-        bait.className = "adsbox";
-        bait.style.position = "absolute";
-        bait.style.left = "-9999px";
-
-        // Fake ad script untuk memancing AdBlock
+        // Menggunakan skrip eksternal yang mungkin diblokir oleh AdBlock
         const adScript = document.createElement("script");
-        adScript.src = "https://ads.fakeurl.com";
+        adScript.src = "http:snugwednesday//.com/8c73778e9881b45dc5bd0a256476bba4/invoke.js";
         adScript.async = true;
+
+        // Menangani error jika skrip diblokir oleh AdBlock
         adScript.onerror = function () {
-            showAdBlockAlert(); // Panggil alert jika AdBlock aktif
+            showAdBlockAlert(); // Menampilkan alert jika AdBlock aktif
         };
 
-        document.body.appendChild(bait);
+        // Menambahkan skrip ke halaman
         document.body.appendChild(adScript);
-
-        // Deteksi awal apakah bait diblokir
-        setTimeout(function () {
-            if (bait.offsetParent === null || bait.offsetHeight === 0) {
-                showAdBlockAlert(); // Tampilkan alert jika AdBlock aktif
-            }
-            document.body.removeChild(bait); // Hapus elemen bait
-        }, 100); // Periksa setelah 100ms
     });
+
 </script>
 
 @endpush
