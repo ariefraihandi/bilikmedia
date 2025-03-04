@@ -211,40 +211,5 @@
 <!-- ======================== Brand Section End ========================= -->
 @endsection
 @push('footer-script')
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Fungsi untuk menampilkan SweetAlert ketika AdBlock terdeteksi
-        function showAdBlockAlert() {
-            Swal.fire({
-                icon: 'error',
-                title: 'AdBlock Detected',
-                text: 'Please disable your AdBlock to access this website.',
-                allowEscapeKey: false, // Tidak bisa ditutup dengan tombol Escape
-                allowOutsideClick: false, // Tidak bisa ditutup dengan klik di luar alert
-                confirmButtonText: 'Refresh',
-                confirmButtonColor: '#3085d6',
-                showCancelButton: false, // Hanya ada tombol Refresh
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.reload(); // Muat ulang halaman jika user menekan Refresh
-                }
-            });
-        }
-
-        // Menggunakan skrip eksternal yang mungkin diblokir oleh AdBlock
-        const adScript = document.createElement("script");
-        adScript.src = "http:snugwednesday//.com/8c73778e9881b45dc5bd0a256476bba4/invoke.js";
-        adScript.async = true;
-
-        // Menangani error jika skrip diblokir oleh AdBlock
-        adScript.onerror = function () {
-            showAdBlockAlert(); // Menampilkan alert jika AdBlock aktif
-        };
-
-        // Menambahkan skrip ke halaman
-        document.body.appendChild(adScript);
-    });
-
-</script>
 
 @endpush
