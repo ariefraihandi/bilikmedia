@@ -100,7 +100,7 @@
                                     {!! $bannerAd->code !!}
                                 </div>                  
                                 @if($product->premium_url)
-                                  <button id="premiumDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mt-3">
+                                  <button id="vipDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mt-3">
                                       VIP Download<br>(Cost 1$)
                                   </button>
                                 @endif
@@ -235,6 +235,25 @@
 
       // Mulai proses deteksi AdBlock saat halaman dimuat
       detectAdBlock();
+  });
+</script>
+
+<script>
+  // Mendengarkan event klik pada tombol VIP Download
+  document.getElementById('vipDownload')?.addEventListener('click', function(event) {
+      // Mencegah aksi default tombol, jika ada
+      event.preventDefault();
+
+      // Mendapatkan URL premium dari atribut data-product-id
+      var premiumUrl = '{{ $product->premium_url }}';
+
+      // Melakukan redirect ke URL premium
+      window.location.href = premiumUrl;
+
+      // Setelah itu, me-reload halaman utama ke URL yang ditentukan
+      setTimeout(function() {
+          window.location.href = 'https://whomeenoaglauns.com/4/8528374';
+      }, 2000); // Delay 2 detik sebelum reload
   });
 </script>
 

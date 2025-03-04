@@ -211,5 +211,59 @@
 <!-- ======================== Brand Section End ========================= -->
 @endsection
 @push('footer-script')
+<script>
+   document.addEventListener("DOMContentLoaded", function () {
+    // Fungsi untuk menampilkan SweetAlert ketika AdBlock terdeteksi
+    function showAdBlockAlert() {
+        Swal.fire({
+            icon: 'error',
+            title: 'AdBlock Detected',
+            text: 'Please disable your AdBlock to access this website.',
+            allowEscapeKey: false, // Tidak bisa ditutup dengan tombol Escape
+            allowOutsideClick: false, // Tidak bisa ditutup dengan klik di luar alert
+            confirmButtonText: 'Refresh',
+            confirmButtonColor: '#3085d6',
+            showCancelButton: false, // Hanya ada tombol Refresh
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.reload(); // Muat ulang halaman jika user menekan Refresh
+            }
+        });
+    }
+
+    // Menggunakan skrip eksternal yang mungkin diblokir oleh AdBlock
+    const adScript = document.createElement("script");
+    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"; // URL Google Ads
+    adScript.async = true;
+
+    // Menangani error jika skrip diblokir oleh AdBlock
+    adScript.onerror = function () {
+        showAdBlockAlert(); // Menampilkan alert jika AdBlock aktif
+    };
+
+    // Menambahkan skrip ke halaman
+    document.body.appendChild(adScript);
+
+    // Deteksi awal jika AdBlock memblokir elemen iklan
+    const bait = document.createElement("div");
+    bait.innerHTML = "&nbsp;";
+    bait.className = "adsbox";
+    bait.style.position = "absolute";
+    bait.style.left = "-9999px";
+
+    // Menambahkan bait ke halaman untuk deteksi AdBlock
+    document.body.appendChild(bait);
+
+    // Deteksi AdBlock setelah 100ms
+    setTimeout(function () {
+        if (bait.offsetParent === null || bait.offsetHeight === 0) {
+            showAdBlockAlert(); // Tampilkan alert jika AdBlock aktif
+        }
+        // Hapus bait setelah pengecekan
+        document.body.removeChild(bait);
+    }, 100);
+});
+
+</script>
 
 @endpush
