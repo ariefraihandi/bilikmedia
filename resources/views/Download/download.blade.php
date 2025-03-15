@@ -103,8 +103,7 @@
                                   <button id="vipDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mt-3">
                                       VIP Download<br>(Cost 1$)
                                   </button>
-                                @endif
-                                                                                          
+                                @endif                                                                                          
                                 <button id="premiumDownload" data-product-id="{{ $product->id }}" class="btn btn-main btn-lg w-100 pill mt-3">
                                     Premium Download<br>(Use 2 Credits)
                                 </button>                                                                 

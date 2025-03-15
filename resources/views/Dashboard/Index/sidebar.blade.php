@@ -83,16 +83,20 @@
                         <span class="text">User List</span>
                     </a>
                 </li>
-                
                 <li class="sidebar-list__item">
-                    <a href="setting.html" class="sidebar-list__link">
+                    <a href="{{ route('show.add.url') }}" class="sidebar-list__link">
                         <span class="sidebar-list__icon">
-                            <img src="{{ asset('assets') }}/images/icons/sidebar-icon10.svg" alt="" class="icon">
-                            <img src="{{ asset('assets') }}/images/icons/sidebar-icon-active10.svg" alt="" class="icon icon-active">
+                            @if(Route::currentRouteName() == 'show.add.url')
+                            <img src="{{ asset('assets') }}/images/icons/website-active.svg" alt="" class="icon">
+                            <img src="{{ asset('assets') }}/images/icons/website-active.svg" alt="" class="icon icon-active">
+                            @else
+                            <img src="{{ asset('assets') }}/images/icons/website.svg" alt="" class="icon">
+                            <img src="{{ asset('assets') }}/images/icons/website-active.svg" alt="" class="icon icon-active">
+                            @endif
                         </span>
-                        <span class="text">Settings</span>
+                        <span class="text">Pages</span>
                     </a>
-                </li>                       
+                </li>                                 
             @endif
             <li class="sidebar-list__item">
                 <a href="{{ route('user.profile') }}" class="sidebar-list__link">

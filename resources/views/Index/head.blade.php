@@ -39,6 +39,8 @@
     <meta name="twitter:description" content="{{ $description ?? 'Bilik Media menyediakan berbagai jasa digital terbaik untuk bisnis Anda.' }}">
     @if(isset($product) && $product->image)
         <meta name="twitter:image" content="{{ asset('uploads/products/' . $product->image) }}">
+    @elseif(isset($landingPage))
+        <meta name="twitter:image" content="{{ asset('assets/images/pages/' . $landingPage->thumbnail) }}">
     @else
         <meta name="twitter:image" content="{{ asset('assets/images/logo/favicon.png') }}">
     @endif

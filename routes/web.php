@@ -14,6 +14,7 @@
     use App\Http\Controllers\CreditController;
     use App\Http\Controllers\UserController;
     use App\Http\Controllers\SitemapController;
+    use App\Http\Controllers\LandingPageController;
     use App\Http\Controllers\EnvantoDownloaderController;
     use App\Http\Controllers\AcademiaDownloaderController;
     use App\Http\Controllers\FreepikDownloaderController;
@@ -34,6 +35,9 @@ Route::get('/blog/website-template',        [BlogController::class, 'showWebsite
 Route::get('/blog/adobe-photoshop',         [BlogController::class, 'showAdobePhotoshop'])->name('blog.adobePhotoshop');
 Route::get('/premium-wordpress-themes',     [BlogController::class, 'showPremiumThemes'])->name('blog.premium-themes');
 
+
+Route::get('/vid/{code}',                   [LandingPageController::class, 'showLandOne'])->name('showLandOne');
+Route::get('/streaming/{code}',                   [LandingPageController::class, 'showLandTwo'])->name('showLandtwo');
 
 Route::get('/',                             [HomeController::class, 'index'])->name('index');
 
@@ -86,6 +90,9 @@ Route::post('/rating',                      [DownloadController::class, 'submitR
 // Blog
 
 Route::middleware([RedirectIfNotAuthenticated::class])->group(function () {
+    Route::get('/add/url',                          [LandingPageController::class, 'showAddUrl'])->name('show.add.url');
+    Route::post('/url/store',                       [LandingPageController::class, 'storeUrl'])->name('url.store');
+
     Route::get('/dashboard',                        [DashboardController::class, 'showDashboard'])->name('showDashboard');
     Route::get('/add/product',                      [ProductController::class, 'showProduct'])->name('show.add.product');
     Route::get('/list/product',                     [ProductController::class, 'showProductlist'])->name('show.list.product');

@@ -526,8 +526,6 @@ class ProductController extends Controller
         }
     }
     
-
-
     public function storeCategory(Request $request)
     {
         // Validasi input kategori
@@ -547,10 +545,6 @@ class ProductController extends Controller
             'category' => $category
         ]);
     }
-    
-
-    
-         
 
     public function deleteProduct($id)
     {
