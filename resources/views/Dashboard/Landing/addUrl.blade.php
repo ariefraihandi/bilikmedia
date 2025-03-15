@@ -56,8 +56,7 @@
                     <table class="table text-body mt--24">
                         <thead>
                             <tr>
-                                <th>Title</th>
-                                <th>Description</th>
+                                <th>Title</th>                                
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -65,7 +64,7 @@
                             @foreach($LandingPage as $page)
                                 <tr>
                                     <td>{{ $page->title }}</td>
-                                    <td>{{ $page->description }}</td>
+                                    
                                     <td>
                                         <button class="btn btn-info" onclick="copyToClipboard('{{ route('showLandOne', ['code' => $page->code]) }}')">Copy URL</button>
                                     </td>
